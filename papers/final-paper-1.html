@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Final Paper | IT-308 Mobile Application Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/outline.css">
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">IT-308</a>
+  <a href="../index.html">Home</a>
+  <a href="../outline/index.html">Outline</a>
+  <a href="../practice.html">Practice</a>
+  <a href="../programs.html">Programs</a>
+  <a href="index.html" class="active">Past Papers</a>
+  <a href="../assessment.html">Assessment</a>
+  <a href="../references.html">References</a>
+</nav>
+
+<main>
+  <p><a href="index.html">&larr; All past papers</a></p>
+  <h1>Final Term Examination</h1>
+  <p class="lead">Bahauddin Zakariya University Multan &middot; BSIT (7th Semester) &middot; Mobile Application Development (IT-403)</p>
+
+  <div class="table-wrap"><table>
+    <tr><th>Paper code</th><th>Time allowed</th><th>Total marks</th><th>Year / session</th></tr>
+    <tr><td>BS-849-22-26</td><td>2&frac12; hours</td><td>60</td><td><!-- ADD YEAR OR SESSION HERE --></td></tr>
+  </table></div>
+  <div class="explain"><b>Note:</b> Attempt ALL questions.</div>
+
+  <details class="exam">
+    <summary>Show the original paper</summary>
+    <figure><img src="../images/papers/final-paper-1.jpg" alt="Original final term paper" onerror="this.outerHTML='&lt;div class=img-missing&gt;Add the paper photo here: images/papers/final-paper-1.jpg&lt;/div&gt;'"></figure>
+    <p><a href="../files/papers/final-paper-1.pdf" download>Download the original paper (PDF)</a></p>
+  </details>
+
+  <!-- ===== QUESTION 1 ===== -->
+  <h2>Question 1 <span class="badge">10 &times; 3 = 30 marks</span></h2>
+
+  <div class="card"><h3>i. <span class="badge">3</span></h3>
+    <p>Differentiate between native, cross-platform, and hybrid (web-based) approaches to mobile application development. Name one example technology/framework for each.</p>
+    <p class="chips"><span><a href="../outline/platforms.html#madp">Topic: Mobile Application Development Platform</a></span></p></div>
+  <br>
+  <div class="card"><h3>ii. <span class="badge">3</span></h3>
+    <p>Explain any THREE HTML5 features that specifically benefit mobile web application development.</p>
+    <p class="chips"><span><a href="../outline/platforms.html#html5-mobiles">Topic: HTML5 for Mobiles</a></span></p></div>
+  <br>
+  <div class="card"><h3>iii. <span class="badge">3</span></h3>
+    <p>Briefly describe the four core Android application components.</p>
+    <p class="chips"><span><a href="../outline/platforms.html#android-os">Topic: Android OS</a></span></p></div>
+  <br>
+  <div class="card"><h3>iv. <span class="badge">3</span></h3>
+    <p>What is the purpose of AndroidManifest.xml? List any three things it declares.</p>
+    <p class="chips"><span><a href="../outline/platforms.html#android-os">Topic: Android OS</a></span></p></div>
+  <br>
+  <div class="card"><h3>v. <span class="badge">3</span></h3>
+    <p>Compare iOS and Android in terms of the programming language used, the official IDE, and the app-store submission requirements.</p>
+    <p class="chips"><span><a href="../outline/platforms.html#ios">Topic: iOS</a></span><span><a href="../outline/platforms.html#android-os">Topic: Android OS</a></span></p></div>
+  <br>
+  <div class="card"><h3>vi. <span class="badge">3</span></h3>
+    <p>What is a Fragment? Explain four reasons why fragments are used in Android app design.</p>
+    <p class="chips"><span><a href="../outline/ui-screens.html#fragments">Topic: Fragments</a></span></p></div>
+  <br>
+  <div class="card"><h3>vii. <span class="badge">3</span></h3>
+    <p>Write the intent code needed to open a specific location on a map using a geo: URI (uniform link).</p>
+    <details class="exam"><summary>Show solution</summary>
+<p>A <code>geo:</code> URI opens a location in a maps app. It is an implicit Intent with <code>ACTION_VIEW</code>.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>Uri uri = Uri.parse("geo:30.1978,71.4697?q=Multan");
+
+Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+
+try {
+    startActivity(intent);
+} catch (ActivityNotFoundException e) {
+    Toast.makeText(this, "No maps app found", Toast.LENGTH_SHORT).show();
+}</code></pre>
+<p><code>30.1978,71.4697</code> are the latitude and longitude, and <code>?q=Multan</code> adds a label for the marker.</p>
+    </details>
+    <p class="chips"><span><a href="../outline/communication.html">Topic: Displaying Maps</a></span></p></div>
+  <br>
+  <div class="card"><h3>viii. <span class="badge">3</span></h3>
+    <p>Explain what happens to an Activity during a configuration change such as screen rotation and how a ViewModel helps preserve data through it.</p>
+    <details class="exam"><summary>Show solution</summary>
+<p><b>During a configuration change</b> (such as rotation) Android destroys the Activity (<code>onPause()</code>, <code>onStop()</code>, <code>onDestroy()</code>) and creates a new one (<code>onCreate()</code>), loading the layout for the new orientation. Data kept in the old Activity is lost unless it is saved.</p>
+<p><b>How ViewModel helps:</b> a ViewModel stores UI data outside the Activity, and it survives the recreation. The new Activity gets the same ViewModel and shows the old data again.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>public class StudentViewModel extends ViewModel {
+    private String studentName = "";
+
+    public void setStudentName(String name) { studentName = name; }
+    public String getStudentName() { return studentName; }
+}
+
+// In the Activity
+StudentViewModel model =
+    new ViewModelProvider(this).get(StudentViewModel.class);
+
+model.setStudentName("Muhammad");
+String name = model.getStudentName();</code></pre>
+    </details>
+    <p class="chips"><span><a href="../outline/ui-screens.html#manage-orientation-changes">Topic: Managing Changes to Screen Orientation</a></span></p></div>
+  <br>
+  <div class="card"><h3>ix. <span class="badge">3</span></h3>
+    <p>Differentiate between the Action Bar and the modern &ldquo;Toolbar&rdquo; widget in Android.</p>
+    <p class="chips"><span><a href="../outline/ui-screens.html">Topic: Utilizing the Action Bar</a></span></p></div>
+  <br>
+  <div class="card"><h3>x. <span class="badge">3</span></h3>
+    <p>What is a Content Provider? Give one example of a built-in Android Content Provider and explain what it is used for.</p>
+    <p class="chips"><span><a href="../outline/data-storage.html#sharing-data">Topic: Sharing Data</a></span></p></div>
+
+  <!-- ===== QUESTION 2 ===== -->
+  <h2>Question 2 <span class="badge">10 marks</span></h2>
+  <div class="card">
+    <p>Explain the concept of a Web Service. Differentiate between REST and SOAP, and describe the standard HTTP methods (GET, POST, PUT/PATCH, DELETE) used in RESTful services.</p>
+    <p class="chips"><span><a href="../outline/communication.html">Topic: Web Services</a></span></p></div>
+
+  <!-- ===== QUESTION 3 ===== -->
+  <h2>Question 3 <span class="badge">10 marks</span></h2>
+  <div class="card">
+    <p>Discuss in detail major challenges to publicity and wireless communication faced by mobile applications (battery life, bandwidth variability, latency, connectivity loss, security). Also describe at least four mobile network technologies used today.</p>
+    <p class="chips"><span><a href="../outline/advanced.html">Topic: Challenges with Mobility and Wireless Communication</a></span></p></div>
+
+  <!-- ===== QUESTION 4 ===== -->
+  <h2>Question 4 <span class="badge">10 marks</span></h2>
+  <div class="card">
+    <p>Write and explain the code required to perform an HTTP GET request from an Android app and process the response of a background thread. Explain why this operation cannot be performed directly on the main thread.</p>
+    <details class="exam"><summary>Show solution</summary>
+<p><b>Why not on the main thread?</b> The main (UI) thread draws the screen and handles touches. A network call can take seconds, so running it there would freeze the app and can cause an ANR (Application Not Responding). Android also blocks it and throws <code>NetworkOnMainThreadException</code>. So the request runs on a background thread and the result is posted back to the main thread.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>ExecutorService executor = Executors.newSingleThreadExecutor();
+Handler handler = new Handler(Looper.getMainLooper());
+
+executor.execute(() -&gt; {
+    String response;
+    try {
+        URL url = new URL("https://jsonplaceholder.typicode.com/users/1");
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setConnectTimeout(10000);
+        conn.setReadTimeout(10000);
+
+        BufferedReader reader = new BufferedReader(
+            new InputStreamReader(conn.getInputStream()));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line);
+        }
+        reader.close();
+        response = sb.toString();
+
+    } catch (Exception e) {
+        response = "Error: " + e.getMessage();
+    }
+
+    String finalResponse = response;
+
+    // Process the response back on the main thread
+    handler.post(() -&gt; txtResult.setText(finalResponse));
+});</code></pre>
+<p>Add <code>&lt;uses-permission android:name="android.permission.INTERNET" /&gt;</code> to the manifest. The request is sent with <code>HttpURLConnection</code>, the response is read line by line, and <code>handler.post()</code> updates the TextView safely.</p>
+    </details>
+    <p class="chips"><span><a href="../outline/communication.html">Topic: Consuming Web Services Using HTTP</a></span><span><a href="../outline/communication.html">Topic: Threading</a></span></p></div>
+
+  <h2>Marks summary</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Question</th><th>Marks</th><th>Main topics</th></tr>
+    <tr><td>Question 1 (i&ndash;x)</td><td>30</td><td>Platforms, Android, iOS, Fragments, Maps, Orientation, Action Bar, Content Provider</td></tr>
+    <tr><td>Question 2</td><td>10</td><td>Web Services</td></tr>
+    <tr><td>Question 3</td><td>10</td><td>Mobility and wireless communication</td></tr>
+    <tr><td>Question 4</td><td>10</td><td>HTTP and Threading</td></tr>
+    <tr><td><b>Total</b></td><td><b>60</b></td><td></td></tr>
+  </table></div>
+</main>
+
+<footer>IT-308 Mobile Application Development &middot; BS Information Technology
+<br>Copyright &copy; 2026 <a href="https://gcsmultan.edu.pk/">Govt. Graduate College of Science and Technology</a></footer>
+<script src="../js/script.js"></script>
+</body>
+</html>

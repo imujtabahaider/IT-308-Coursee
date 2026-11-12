@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mid Term Paper | IT-308 Mobile Application Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/outline.css">
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">IT-308</a>
+  <a href="../index.html">Home</a>
+  <a href="../outline/index.html">Outline</a>
+  <a href="../practice.html">Practice</a>
+  <a href="../programs.html">Programs</a>
+  <a href="index.html" class="active">Past Papers</a>
+  <a href="../assessment.html">Assessment</a>
+  <a href="../references.html">References</a>
+</nav>
+
+<main>
+  <p><a href="index.html">&larr; All past papers</a></p>
+  <h1>Mid Term Examination</h1>
+  <p class="lead">Paper: Mobile Application Development &middot; Mid Terms &middot; Code IT308</p>
+
+  <div class="table-wrap"><table>
+    <tr><th>Paper</th><th>Time allowed</th><th>Code</th><th>Marks</th></tr>
+    <tr><td>Mid Terms</td><td>90 Mins.</td><td>IT308</td><td>Not printed on the paper</td></tr>
+  </table></div>
+
+  <details class="exam">
+    <summary>Show the original paper</summary>
+    <figure><img src="../images/papers/final-paper-7.jpg" alt="Original mid term paper" onerror="this.outerHTML='&lt;div class=img-missing&gt;Add the paper photo here: images/papers/final-paper-7.jpg&lt;/div&gt;'"></figure>
+  </details>
+
+  <h2>Questions</h2>
+  <div class="card"><h3>Q.No.1</h3>
+    <p>Explain the architecture of Android OS.</p>
+    <p class="chips"><span><a href="../outline/platforms.html#android-os">Topic: Android OS</a></span></p></div>
+  <br>
+  <div class="card"><h3>Q.No.2</h3>
+    <p>What is Intent? Explain different types of intent with exa&hellip;</p>
+    <details class="exam"><summary>Show solution</summary>
+<p><b>Explicit Intent:</b> names the exact component to start, usually inside the same app. <b>Implicit Intent:</b> describes an action, and Android finds an app that can do it.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>// Explicit Intent: open ProfileActivity in the same app
+Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+startActivity(intent);
+
+// Implicit Intent: open a website in any browser
+Intent web = new Intent(
+    Intent.ACTION_VIEW,
+    Uri.parse("https://www.google.com")
+);
+startActivity(web);</code></pre>
+    </details>
+    <p class="chips"><span><a href="../outline/data-storage.html#sharing-data">Topic: Sharing Data</a></span></p></div>
+  <br>
+  <div class="card"><h3>Q.No.3</h3>
+    <p>Write a code which can add, subtract, divide, and multip&hellip; appropriate button.</p>
+    <details class="exam"><summary>Show solution</summary>
+<p>The paper is cut off, so this solution assumes a calculator that takes two numbers and has one button for each operation: add, subtract, multiply and divide.</p>
+<p><b>Layout</b> (<code>activity_main.xml</code>):</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"&gt;
+
+    &lt;EditText
+        android:id="@+id/edtNum1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First number"
+        android:inputType="numberDecimal|numberSigned" /&gt;
+
+    &lt;EditText
+        android:id="@+id/edtNum2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Second number"
+        android:inputType="numberDecimal|numberSigned" /&gt;
+
+    &lt;Button android:id="@+id/btnAdd" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Add (+)" /&gt;
+    &lt;Button android:id="@+id/btnSub" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Subtract (-)" /&gt;
+    &lt;Button android:id="@+id/btnMul" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Multiply (x)" /&gt;
+    &lt;Button android:id="@+id/btnDiv" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Divide (/)" /&gt;
+
+    &lt;TextView
+        android:id="@+id/txtResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="22sp" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+<p><b>Java</b> (<code>MainActivity.java</code>):</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>public class MainActivity extends AppCompatActivity {
+
+    EditText edtNum1, edtNum2;
+    TextView txtResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        edtNum1 = findViewById(R.id.edtNum1);
+        edtNum2 = findViewById(R.id.edtNum2);
+        txtResult = findViewById(R.id.txtResult);
+
+        findViewById(R.id.btnAdd).setOnClickListener(v -&gt; calculate('+'));
+        findViewById(R.id.btnSub).setOnClickListener(v -&gt; calculate('-'));
+        findViewById(R.id.btnMul).setOnClickListener(v -&gt; calculate('*'));
+        findViewById(R.id.btnDiv).setOnClickListener(v -&gt; calculate('/'));
+    }
+
+    private void calculate(char operation) {
+
+        String s1 = edtNum1.getText().toString().trim();
+        String s2 = edtNum2.getText().toString().trim();
+
+        if (s1.isEmpty() || s2.isEmpty()) {
+            Toast.makeText(this, "Enter both numbers", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double a = Double.parseDouble(s1);
+        double b = Double.parseDouble(s2);
+        double result;
+
+        switch (operation) {
+            case '+': result = a + b; break;
+            case '-': result = a - b; break;
+            case '*': result = a * b; break;
+            case '/':
+                if (b == 0) {
+                    txtResult.setText("Cannot divide by zero");
+                    return;
+                }
+                result = a / b;
+                break;
+            default: return;
+        }
+
+        txtResult.setText("Result: " + result);
+    }
+}</code></pre>
+<p>Each button calls <code>calculate()</code> with its own operation. The code checks for empty input and for division by zero before showing the result.</p>
+    </details>
+    <p class="chips"><span><a href="../outline/ui-screens.html#creating-the-ui">Topic: Creating the User Interface</a></span><span><a href="../outline/ui-screens.html#listening-for-ui-events">Topic: Listening for UI Notifications</a></span></p></div>
+  <br>
+
+  <div class="explain">The paper is torn at the right edge, so the ends of Question 2 and Question 3 are cut off. They are shown here as far as they can be read. Question 2 ends with &ldquo;exa&hellip;&rdquo; (probably &ldquo;examples&rdquo;), and Question 3 is cut after &ldquo;multip&hellip;&rdquo; (probably &ldquo;multiply&rdquo;).</div>
+
+  <h2>Questions summary</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Question</th><th>Main topic</th></tr>
+    <tr><td>Q.No.1</td><td>Android architecture</td></tr>
+    <tr><td>Q.No.2</td><td>Intents and their types</td></tr>
+    <tr><td>Q.No.3</td><td>A calculator program with buttons and click listeners</td></tr>
+  </table></div>
+</main>
+
+<footer>IT-308 Mobile Application Development &middot; BS Information Technology
+<br>Copyright &copy; 2026 <a href="https://gcsmultan.edu.pk/">Govt. Graduate College of Science and Technology</a></footer>
+<script src="../js/script.js"></script>
+</body>
+</html>

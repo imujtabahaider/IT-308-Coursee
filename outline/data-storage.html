@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data & Storage | IT-308 Mobile Application Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/outline.css">
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">IT-308</a>
+  <a href="../index.html">Home</a>
+  <a href="index.html" class="active">Outline</a>
+  <a href="../practice.html">Practice</a>
+  <a href="../programs.html">Programs</a>
+  <a href="../papers/index.html">Past Papers</a>
+  <a href="../references.html">References</a>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Contents</h2>
+    <input type="search" id="side-search" placeholder="Search topics">
+    <div class="progress">
+      <div class="row"><span id="prog-text">Progress: 0/0</span><span id="prog-pct">0%</span></div>
+      <div class="bar"><span id="prog-bar"></span></div>
+    </div>
+    <div id="sidebar-list"></div>   <!-- filled automatically by outline.js -->
+  </aside>
+
+  <main style="padding:0;margin:0;max-width:none">
+    <div class="group-tabs"><a href="index.html">&larr; All groups</a><a href="platforms.html">Platforms</a><a href="ui-screens.html">UI & Screens</a><a href="data-storage.html" class="current">Data & Storage</a><a href="communication.html">Communication</a><a href="publishing.html">Publishing</a><a href="advanced.html">Advanced</a></div>
+    <h1>Data and storage</h1>
+    <!-- ===== 15. USER PREFERENCES IN ANDROID ===== -->
+<section class="topic-card" id="user-preferences" data-group="Data and storage">
+  <div class="banner">
+    <h3>User Preferences in Android</h3>
+    <p>Saving and reading small settings with SharedPreferences</p>
+  </div>
+  <div class="body">
+
+    <h4>15.1 Introduction</h4>
+    <p>Every Android application needs to remember some information about its users. For example, imagine you use a mobile application and make these settings:</p>
+    <ul><li>Select Dark Mode</li><li>Choose English as the language</li><li>Turn notifications ON</li><li>Set the font size to Large</li><li>Save your login preference</li></ul>
+    <p>Now, suppose you close the application and open it again. You would expect the application to remember your previous settings instead of asking you to select everything again. Android provides a feature called <b>SharedPreferences</b> to store small amounts of information, such as user settings and preferences.</p>
+    <figure><!-- <img src="../images/data/user-preferences-intro.jpg" alt="App settings remembered by the app"> --><figcaption>An app remembering user settings</figcaption></figure>
+
+    <h4>15.2 Definition of User Preferences</h4>
+    <div class="def"><b>User Preferences</b> are settings or choices selected by users that an application stores so that it can remember them for future use.</div>
+    <p>In simple words, user preferences allow an application to remember how a user wants the application to work.</p>
+    <div class="example"><b>Example:</b> suppose you open a student application and select Dark Mode. The application saves this choice. When you open the application again, it remembers your selection and displays Dark Mode.</div>
+
+    <h4>15.3 Why Are User Preferences Important?</h4>
+    <p>User preferences are important because they make applications more convenient and personalized.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>15.3.1 Remember User Settings</h5><p>An application can remember the settings selected by the user. For example, if a user selects Dark Mode, the application can remember that choice.</p></div>
+      <div class="mini"><h5>15.3.2 Improve User Experience</h5><p>Users do not need to configure the application every time they open it. For example, a user can select a preferred language once, and the application can remember it.</p></div>
+      <div class="mini"><h5>15.3.3 Personalization</h5><p>Applications can provide different experiences based on user preferences:</p><ul><li>Light Mode or Dark Mode</li><li>English or Urdu</li><li>Small or large text</li><li>Notifications ON or OFF</li></ul></div>
+      <div class="mini"><h5>15.3.4 Save Time</h5><p>User preferences reduce repeated work. For example, a student application can remember the selected semester instead of asking the student to select it every time.</p></div>
+      <div class="mini"><h5>15.3.5 Maintain Application Settings</h5><p>When the application closes and opens again, saved preferences can remain available. This is useful because users expect their settings to remain the same.</p></div>
+    </div>
+
+    <h4>15.4 What Is SharedPreferences?</h4>
+    <div class="def"><b>SharedPreferences</b> is an Android storage mechanism used to save small amounts of data in key-value pairs.</div>
+    <p>Let's understand the term key-value. A key-value pair contains two parts:</p>
+    <ul>
+      <li><b>Key:</b> the name used to identify stored information.</li>
+      <li><b>Value:</b> the actual information stored under that name.</li>
+    </ul>
+    <div class="table-wrap"><table>
+      <tr><th>Key</th><th>Value</th></tr>
+      <tr><td>username</td><td>Muhammad</td></tr>
+      <tr><td>dark_mode</td><td>true</td></tr>
+      <tr><td>language</td><td>English</td></tr>
+      <tr><td>notifications</td><td>false</td></tr>
+      <tr><td>font_size</td><td>Large</td></tr>
+    </table></div>
+    <p>Here, <code>dark_mode</code> is the key and <code>true</code> is its value; <code>language</code> is the key and <code>English</code> is its value. The application uses the key to find the corresponding value.</p>
+    <p><b>How does it work?</b> Suppose a user selects Dark Mode.</p>
+    <ol class="steps">
+      <li>The user turns on the Dark Mode switch.</li>
+      <li>The application receives the selection.</li>
+      <li>The application saves <code>dark_mode = true</code>.</li>
+      <li>The user closes the application.</li>
+      <li>The user opens it again.</li>
+      <li>The application reads the saved value.</li>
+      <li>The application enables Dark Mode.</li>
+    </ol>
+<pre><code>User selects Dark Mode
+          ↓
+Application saves the preference
+          ↓
+dark_mode = true
+          ↓
+Application closes and opens again
+          ↓
+Application reads the saved value
+          ↓
+Dark Mode is enabled</code></pre>
+    <figure><!-- <img src="../images/data/sharedpreferences-flow.jpg" alt="SharedPreferences working"> --><figcaption>How SharedPreferences works</figcaption></figure>
+
+    <h4>15.5 Types of Data Stored in SharedPreferences</h4>
+    <p>SharedPreferences is designed for small amounts of simple data. It supports these main data types:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Data type</th><th>Purpose</th><th>Example</th></tr>
+      <tr><td>String</td><td>Stores text</td><td>"Muhammad"</td></tr>
+      <tr><td>Integer</td><td>Stores whole numbers</td><td>25</td></tr>
+      <tr><td>Float</td><td>Stores decimal numbers</td><td>5.5</td></tr>
+      <tr><td>Long</td><td>Stores large whole numbers</td><td>123456789</td></tr>
+      <tr><td>Boolean</td><td>Stores true or false</td><td>true</td></tr>
+      <tr><td>String Set</td><td>Stores a set of strings</td><td>Subjects list</td></tr>
+    </table></div>
+    <p>For example, a username can be stored as a String, age as an Integer, Dark Mode as a Boolean and font size as an Integer.</p>
+    <div class="explain"><b>Important:</b> SharedPreferences is not suitable for storing large files, images, videos, or complex database records.</div>
+
+    <h4>15.6 How to Use SharedPreferences in Java</h4>
+    <p>Let's understand how to save and retrieve user preferences. There are three basic operations: create or access SharedPreferences, save data, and retrieve data.</p>
+
+    <h5 class="sub">Step 1: Create or Access SharedPreferences</h5>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>SharedPreferences preferences =
+    getSharedPreferences(
+        "MyPreferences",
+        MODE_PRIVATE
+    );</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><b>SharedPreferences</b> is the Android class used to access stored preferences.</li>
+      <li><b>getSharedPreferences()</b> opens a preferences file.</li>
+      <li><b>"MyPreferences"</b> is the name of the file.</li>
+      <li><b>MODE_PRIVATE</b> means the preferences are private to the application.</li>
+    </ul>
+    <p>The application can use this preferences file to save different settings.</p>
+
+    <h5 class="sub">Step 2: Save Data</h5>
+    <p>To save information, Android provides <code>SharedPreferences.Editor</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>SharedPreferences.Editor editor =
+    preferences.edit();
+
+editor.putString("username", "Muhammad");
+
+editor.putBoolean("dark_mode", true);
+
+editor.putInt("age", 22);
+
+editor.apply();</code></pre>
+    <p>Understand each method:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Method</th><th>Purpose</th></tr>
+      <tr><td><code>edit()</code></td><td>Opens an editor to make changes</td></tr>
+      <tr><td><code>putString()</code></td><td>Saves text</td></tr>
+      <tr><td><code>putBoolean()</code></td><td>Saves true or false</td></tr>
+      <tr><td><code>putInt()</code></td><td>Saves a whole number</td></tr>
+      <tr><td><code>apply()</code></td><td>Saves changes asynchronously</td></tr>
+    </table></div>
+    <p>Here, the application saves three values: Username = Muhammad, Dark Mode = true and Age = 22.</p>
+    <p><b>What is the purpose of apply()?</b> After adding or changing values, we must save those changes. <code>apply()</code> saves the changes asynchronously, meaning it does not make the application wait for the disk write to finish. Another method is <code>commit()</code>, which saves synchronously and returns a Boolean indicating success or failure. For normal preference saving, <code>apply()</code> is generally preferred.</p>
+
+    <h5 class="sub">Step 3: Retrieve Saved Data</h5>
+    <p>When the application opens again, it can retrieve the saved information.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>String username =
+    preferences.getString("username", "Guest");
+
+boolean darkMode =
+    preferences.getBoolean("dark_mode", false);
+
+int age =
+    preferences.getInt("age", 0);</code></pre>
+    <p><b>Explanation:</b> <code>getString()</code> retrieves a text value, <code>getBoolean()</code> retrieves a true or false value, and <code>getInt()</code> retrieves an integer value. The second argument is the default value. For example:</p>
+<pre><code>preferences.getString("username", "Guest");</code></pre>
+    <p>This means: if the username exists, return the saved username; if it does not exist, return "Guest".</p>
+
+    <h4>15.7 Updating and Removing Preferences</h4>
+    <p>SharedPreferences also allows applications to update and remove stored values.</p>
+
+    <h5 class="sub">15.7.1 Updating Data</h5>
+    <p>Suppose the username changes from Muhammad to Ali.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>SharedPreferences.Editor editor =
+    preferences.edit();
+
+editor.putString("username", "Ali");
+
+editor.apply();</code></pre>
+    <p>The old value is replaced with the new value under the same key.</p>
+
+    <h5 class="sub">15.7.2 Removing One Preference</h5>
+    <p>If you want to remove only the username:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>SharedPreferences.Editor editor =
+    preferences.edit();
+
+editor.remove("username");
+
+editor.apply();</code></pre>
+    <p>This removes the value associated with the username key.</p>
+
+    <h5 class="sub">15.7.3 Clearing All Preferences</h5>
+    <p>If you want to remove all stored preferences from that file:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>SharedPreferences.Editor editor =
+    preferences.edit();
+
+editor.clear();
+
+editor.apply();</code></pre>
+    <p>This clears all entries in the selected preferences file.</p>
+
+    <h4>15.8 Practical Example: Remembering Dark Mode</h4>
+    <p>Let's create a simple application that remembers whether Dark Mode is enabled.</p>
+    <figure><!-- <img src="../images/data/dark-mode-output.jpg" alt="Dark mode example output"> --><figcaption>Dark Mode switch example</figcaption></figure>
+
+    <h5 class="sub">Step 1: XML Layout</h5>
+    <p>Create <code>activity_main.xml</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Application Settings"
+        android:textSize="24sp" /&gt;
+
+    &lt;Switch
+        android:id="@+id/darkModeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dark Mode" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    <p>This creates a main layout, a heading and a Dark Mode switch.</p>
+
+    <h5 class="sub">Step 2: Java Code</h5>
+    <p>Create <code>MainActivity.java</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>package com.example.studentapp;
+
+import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.widget.Switch;
+import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    Switch darkModeSwitch;
+    LinearLayout mainLayout;
+
+    SharedPreferences preferences;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        darkModeSwitch = findViewById(R.id.darkModeSwitch);
+
+        mainLayout = findViewById(R.id.mainLayout);
+
+        preferences = getSharedPreferences(
+            "MyPreferences",
+            MODE_PRIVATE
+        );
+
+        boolean isDarkMode =
+            preferences.getBoolean("dark_mode", false);
+
+        darkModeSwitch.setChecked(isDarkMode);
+
+        updateTheme(isDarkMode);
+
+        darkModeSwitch.setOnCheckedChangeListener(
+            (buttonView, isChecked) -&gt; {
+
+                SharedPreferences.Editor editor =
+                    preferences.edit();
+
+                editor.putBoolean("dark_mode", isChecked);
+
+                editor.apply();
+
+                updateTheme(isChecked);
+            }
+        );
+    }
+
+    private void updateTheme(boolean darkMode) {
+
+        if (darkMode) {
+
+            mainLayout.setBackgroundColor(Color.BLACK);
+
+        } else {
+
+            mainLayout.setBackgroundColor(Color.WHITE);
+        }
+    }
+}</code></pre>
+
+    <h5 class="sub">Step 3: Understand the Complete Working</h5>
+    <p><b>When the application opens:</b></p>
+    <ol class="steps">
+      <li>Android loads the XML layout.</li>
+      <li>Java connects to the Dark Mode switch.</li>
+      <li>The application opens the <code>MyPreferences</code> file.</li>
+      <li>It retrieves the saved <code>dark_mode</code> value.</li>
+      <li>If the value is true, the switch is enabled and the background becomes black.</li>
+      <li>If the value is false, the switch is disabled and the background becomes white.</li>
+    </ol>
+    <p><b>When the user changes the switch:</b></p>
+    <ol class="steps">
+      <li>Android detects the switch change.</li>
+      <li>The event listener runs.</li>
+      <li>The new value is saved using SharedPreferences.</li>
+      <li>The background changes.</li>
+      <li>The setting remains saved when the application is closed.</li>
+    </ol>
+    <div class="explain"><b>Important concept:</b> this example demonstrates the basic idea of saving and retrieving user preferences. A production application should also manage its overall application theme, including text and other UI components, rather than changing only the background color.</div>
+
+    <h4>15.9 SharedPreferences vs Database</h4>
+    <p>Both SharedPreferences and databases store information, but they are designed for different purposes.</p>
+    <div class="table-wrap"><table>
+      <tr><th>SharedPreferences</th><th>Database</th></tr>
+      <tr><td>Stores small amounts of simple data</td><td>Stores structured and larger amounts of data</td></tr>
+      <tr><td>Uses key-value pairs</td><td>Uses tables and records</td></tr>
+      <tr><td>Suitable for application settings</td><td>Suitable for student, employee, and product records</td></tr>
+      <tr><td>Simple to use</td><td>Provides querying and relationships</td></tr>
+      <tr><td>Not designed for complex searches</td><td>Supports complex searches and queries</td></tr>
+    </table></div>
+    <div class="example"><b>Example:</b> a student application may use SharedPreferences to remember Dark Mode, and a database to store student names, registration numbers, marks, and attendance records.</div>
+
+    <h4>15.10 Advantages and 15.11 Limitations of SharedPreferences</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Easy to use:</b> developers can save and retrieve data with simple methods.</li>
+        <li><b>Persistent storage:</b> saved values remain available after the application closes or the device restarts.</li>
+        <li><b>Fast access:</b> suitable for reading and writing small settings.</li>
+        <li><b>Simple structure:</b> data is organized using keys and values.</li>
+        <li><b>No database required:</b> developers do not need to create tables for simple preferences.</li>
+        <li><b>Private storage:</b> preferences are normally private to the application.</li></ol></div>
+      <div class="con"><b>Limitations</b><ol>
+        <li>It is not designed for large amounts of data.</li>
+        <li>It does not provide advanced database queries.</li>
+        <li>It is not suitable for storing images, videos, or large files.</li>
+        <li>It does not provide database-style relationships between records.</li>
+        <li>Sensitive information should not be stored as ordinary unencrypted preferences.</li></ol></div>
+    </div>
+    <div class="explain">For modern Android development, <b>DataStore</b> is often recommended instead of SharedPreferences for new preference-storage implementations. DataStore provides asynchronous data operations and is available in Preferences and Proto forms.</div>
+
+    <h4>15.12 Real-Life Examples of User Preferences</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Application</th><th>User preference</th></tr>
+      <tr><td>YouTube</td><td>Playback and notification settings</td></tr>
+      <tr><td>WhatsApp</td><td>Chat and notification settings</td></tr>
+      <tr><td>Student Portal</td><td>Selected semester</td></tr>
+      <tr><td>Shopping App</td><td>Preferred language</td></tr>
+      <tr><td>Calculator</td><td>Calculation settings</td></tr>
+      <tr><td>News App</td><td>Selected news categories</td></tr>
+      <tr><td>Music App</td><td>Playback preferences</td></tr>
+    </table></div>
+
+    <h4>15.13 Short Questions for Exams</h4>
+    <details class="exam"><summary>Short questions with answers</summary>
+      <p><b>Q1. What are User Preferences?</b><br>User Preferences are settings or choices selected by users that an application stores for future use.</p>
+      <p><b>Q2. What is SharedPreferences?</b><br>SharedPreferences is an Android storage mechanism used to save small amounts of data in key-value pairs.</p>
+      <p><b>Q3. What is a key-value pair?</b><br>A key-value pair consists of a key used to identify information and a value containing the actual information.</p>
+      <p><b>Q4. What is the purpose of getSharedPreferences()?</b><br>It is used to access a named SharedPreferences file.</p>
+      <p><b>Q5. What is the purpose of putString()?</b><br>It saves a String value in SharedPreferences.</p>
+      <p><b>Q6. What is the purpose of getBoolean()?</b><br>It retrieves a Boolean value from SharedPreferences.</p>
+      <p><b>Q7. What is the purpose of apply()?</b><br>It saves preference changes asynchronously.</p>
+      <p><b>Q8. What is the difference between apply() and commit()?</b><br>apply() saves changes asynchronously, while commit() saves synchronously and returns a success or failure result.</p>
+      <p><b>Q9. What is the purpose of clear()?</b><br>It removes all stored entries from the selected SharedPreferences file.</p>
+    </details>
+
+    <h4>15.14 Long Questions for Exams</h4>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define User Preferences and explain their importance in Android applications.</li>
+      <li>What is SharedPreferences? Explain its working with examples.</li>
+      <li>Explain the different data types supported by SharedPreferences.</li>
+      <li>Describe the process of saving and retrieving data using SharedPreferences.</li>
+      <li>Explain how to create an Android application that remembers Dark Mode settings.</li>
+      <li>Differentiate between SharedPreferences and a Database.</li>
+      <li>Discuss the advantages and limitations of SharedPreferences.</li></ol></details>
+
+    <h4>15.15 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Meaning</th></tr>
+      <tr><td>User Preferences</td><td>Settings selected by users</td></tr>
+      <tr><td>SharedPreferences</td><td>Stores small amounts of key-value data</td></tr>
+      <tr><td>Key</td><td>Name used to identify stored data</td></tr>
+      <tr><td>Value</td><td>Actual stored information</td></tr>
+      <tr><td><code>getSharedPreferences()</code></td><td>Opens a preferences file</td></tr>
+      <tr><td><code>edit()</code></td><td>Creates an editor</td></tr>
+      <tr><td><code>putString()</code></td><td>Saves text</td></tr>
+      <tr><td><code>putInt()</code></td><td>Saves an integer</td></tr>
+      <tr><td><code>putBoolean()</code></td><td>Saves true or false</td></tr>
+      <tr><td><code>getString()</code></td><td>Retrieves text</td></tr>
+      <tr><td><code>getInt()</code></td><td>Retrieves an integer</td></tr>
+      <tr><td><code>getBoolean()</code></td><td>Retrieves true or false</td></tr>
+      <tr><td><code>apply()</code></td><td>Saves changes asynchronously</td></tr>
+      <tr><td><code>remove()</code></td><td>Removes one preference</td></tr>
+      <tr><td><code>clear()</code></td><td>Removes all preferences in the file</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+<!-- ===== 16. PERSISTING DATA IN ANDROID ===== -->
+<section class="topic-card" id="persisting-data" data-group="Data and storage">
+  <div class="banner">
+    <h3>Persisting Data in Android</h3>
+    <p>Files, SQLite, Room, DataStore and cloud storage</p>
+  </div>
+  <div class="body">
+
+    <h4>16.1 Introduction</h4>
+    <p>Every Android application works with different types of information. For example, a Student Management System may contain:</p>
+    <ul><li>Student names</li><li>Registration numbers</li><li>Examination marks</li><li>Attendance records</li><li>Profile pictures</li><li>Login information</li><li>Assignment files</li></ul>
+    <p>Now imagine that a student enters their name and marks into an application. The application closes unexpectedly. When the student opens the application again, the information should still be available. How can Android applications remember information even after they are closed? The answer is <b>Data Persistence</b>. Data persistence is an important part of Android development because applications often need to store information for future use.</p>
+    <figure><!-- <img src="../images/data/data-persistence-intro.jpg" alt="Data persistence"> --><figcaption>Data persistence</figcaption></figure>
+
+    <h4>16.2 Definition of Data Persistence</h4>
+    <div class="def"><b>Data Persistence</b> is the process of storing information in a way that allows it to remain available even after an application is closed or the device is restarted.</div>
+    <p>In simple words, data persistence means saving information so that it is not lost when an application stops running.</p>
+    <div class="example"><b>Example:</b> suppose you use a Notes application.
+      <ol><li>You write a note.</li><li>You press the Save button.</li><li>The application stores the note.</li><li>You close the application.</li><li>You open it again.</li><li>Your note is still available.</li></ol>
+      This is called data persistence.</div>
+
+    <h4>16.3 Why Is Data Persistence Important?</h4>
+    <p>Data persistence is necessary because most applications need to remember information.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>16.3.1 Prevents Data Loss</h5><p>If information is stored properly, it remains available even after the application closes. For example, a student does not lose saved examination marks when closing the application.</p></div>
+      <div class="mini"><h5>16.3.2 Stores Important Information</h5><p>Applications can store important records:</p><ul><li>Student details</li><li>Employee information</li><li>Customer records</li><li>Product information</li><li>Payment history</li></ul></div>
+      <div class="mini"><h5>16.3.3 Supports Offline Applications</h5><p>Some applications allow users to access saved information without an internet connection. For example, a Notes application can display previously saved notes even when the phone is offline.</p></div>
+      <div class="mini"><h5>16.3.4 Improves User Experience</h5><p>Users do not need to enter the same information repeatedly. For example, a shopping application can save a user's cart information for later use.</p></div>
+      <div class="mini"><h5>16.3.5 Maintains Application History</h5><p>Applications can store previous activities: search history, download history, previous transactions and recently opened documents.</p></div>
+    </div>
+
+    <h4>16.4 Different Methods of Data Persistence in Android</h4>
+    <p>Android provides several methods for storing information. Each method is designed for a different type of data. The main methods include:</p>
+    <ol><li>SharedPreferences</li><li>DataStore</li><li>Internal Storage</li><li>External Storage</li><li>SQLite Database</li><li>Room Database</li><li>Cloud Storage</li></ol>
+    <div class="table-wrap"><table>
+      <tr><th>Method</th><th>Used for</th></tr>
+      <tr><td>SharedPreferences</td><td>Small settings</td></tr>
+      <tr><td>DataStore</td><td>Modern preferences</td></tr>
+      <tr><td>Internal Storage</td><td>Private files</td></tr>
+      <tr><td>External Storage</td><td>Shared or app-specific files</td></tr>
+      <tr><td>SQLite / Room</td><td>Structured records</td></tr>
+      <tr><td>Cloud Storage</td><td>Online data</td></tr>
+    </table></div>
+    <figure><!-- <img src="../images/data/storage-methods.jpg" alt="Android data storage methods"> --><figcaption>Android data storage methods</figcaption></figure>
+    <p>Let's understand each method in detail.</p>
+
+    <h4>16.5 SharedPreferences</h4>
+    <p>SharedPreferences is used to store small amounts of information in key-value pairs. It is useful for saving simple application settings, for example the username, Dark Mode setting, language selection, notification preference and selected application theme.</p>
+    <p><b>How does SharedPreferences work?</b> Suppose a user enables Dark Mode. The application saves <code>dark_mode = true</code>. When the application opens again, it reads the saved value and enables Dark Mode.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>SharedPreferences preferences =
+    getSharedPreferences("MySettings", MODE_PRIVATE);
+
+SharedPreferences.Editor editor = preferences.edit();
+
+editor.putBoolean("dark_mode", true);
+
+editor.apply();</code></pre>
+    <p>To retrieve the value:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>boolean darkMode =
+    preferences.getBoolean("dark_mode", false);</code></pre>
+    <div class="explain"><b>Important:</b> SharedPreferences was covered in the previous topic. Here, remember that it is one of the methods used for data persistence.</div>
+
+    <h4>16.6 DataStore</h4>
+    <p>DataStore is a modern Android storage solution that can be used instead of SharedPreferences for storing small amounts of application data. It provides asynchronous data operations and uses Kotlin Coroutines and Flow in its common implementation. There are two main types:</p>
+    <div class="pc">
+      <div class="pro"><b>16.6.1 Preferences DataStore</b><p>Stores information using key-value pairs, for example Dark Mode, language, notification settings and user preferences. It is conceptually similar to SharedPreferences but provides a more modern asynchronous approach.</p></div>
+      <div class="con"><b>16.6.2 Proto DataStore</b><p>Stores structured data using Protocol Buffers. For example, an application can store a structured user settings object containing username, language, theme and notification settings.</p></div>
+    </div>
+    <div class="explain"><b>Remember:</b> DataStore is a modern option for small settings and structured preference data. It is not intended to replace a relational database for large collections of records.</div>
+
+    <h4>16.7 Internal Storage</h4>
+    <div class="def"><b>Internal Storage</b> is used to save files privately inside an application's dedicated storage area.</div>
+    <p>Each Android application normally has its own private internal storage directory. Other ordinary applications cannot directly access these private files. Examples include private text files, application configuration files, downloaded private documents and temporary application files.</p>
+    <p><b>How does Internal Storage work?</b> Suppose a Notes application allows users to save notes. When a user saves a note:</p>
+    <ol class="steps">
+      <li>The application receives the text.</li>
+      <li>It creates or opens a file in internal storage.</li>
+      <li>It writes the note into the file.</li>
+      <li>The file remains available after the application closes.</li>
+      <li>The application reads the file when the user opens the note again.</li>
+    </ol>
+    <div class="pc">
+      <div class="pro"><b>Advantages of Internal Storage</b><ol>
+        <li>Private to the application by default.</li>
+        <li>No general storage permission is required to access the application's own internal files.</li>
+        <li>Useful for sensitive application-specific files.</li>
+        <li>Files remain available after restarting the device.</li></ol></div>
+      <div class="con"><b>Disadvantages of Internal Storage</b><ol>
+        <li>Storage space is limited.</li>
+        <li>Files are normally removed when the application is uninstalled.</li>
+        <li>Files are not automatically accessible to other applications.</li>
+        <li>Large files may consume valuable application storage.</li></ol></div>
+    </div>
+    <p><b>Java example: saving a file.</b> Suppose we want to save a student's name in a text file.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>String fileName = "student.txt";
+
+String studentName = "Muhammad";
+
+try (
+    FileOutputStream fos =
+        openFileOutput(fileName, MODE_PRIVATE)
+) {
+
+    fos.write(studentName.getBytes());
+
+} catch (IOException e) {
+
+    e.printStackTrace();
+}</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><b>fileName</b> defines the file's name.</li>
+      <li><b>studentName</b> contains the information to save.</li>
+      <li><b>openFileOutput()</b> opens a file in the application's internal storage.</li>
+      <li><b>MODE_PRIVATE</b> creates or replaces the file privately.</li>
+      <li><b>write()</b> writes the information into the file.</li>
+      <li><b>close()</b> is handled automatically by the try-with-resources statement.</li>
+    </ul>
+    <p><b>Java example: reading a file.</b> Now suppose we want to retrieve the saved student name.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>try (
+    FileInputStream fis =
+        openFileInput("student.txt")
+) {
+
+    ByteArrayOutputStream buffer =
+        new ByteArrayOutputStream();
+
+    byte[] data = new byte[1024];
+
+    int length;
+
+    while ((length = fis.read(data)) != -1) {
+
+        buffer.write(data, 0, length);
+    }
+
+    String studentName =
+        buffer.toString("UTF-8");
+
+} catch (IOException e) {
+
+    e.printStackTrace();
+}</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><b>openFileInput()</b> opens the saved file.</li>
+      <li><b>read()</b> reads the file's content.</li>
+      <li>The loop continues until the end of the file.</li>
+      <li><b>buffer.toString()</b> converts the saved bytes into text.</li>
+      <li>The final String contains the student's name.</li>
+    </ul>
+    <p>This demonstrates how an application can save information and retrieve it later.</p>
+
+    <h4>16.8 External Storage</h4>
+    <div class="def"><b>External Storage</b> is used for files that may need to be accessed outside an application's private internal storage area.</div>
+    <p>Examples include photos, videos, documents, music and downloaded files. External storage can include shared device storage and removable storage, such as an SD card on supported devices.</p>
+    <div class="explain"><b>Important:</b> modern Android uses scoped storage, which limits how applications access shared files. External storage does not automatically mean that every application can access every file.</div>
+    <p><b>Types of external storage access</b></p>
+    <div class="pc">
+      <div class="pro"><b>16.8.1 App-Specific External Storage</b><p>Storage reserved for files belonging to a particular application. For example, a photo-editing application may save edited images in its own application-specific external directory. Other applications generally cannot access these files directly unless access is shared through an appropriate mechanism.</p></div>
+      <div class="con"><b>16.8.2 Shared Storage</b><p>Contains files that users may want to access through different applications: pictures, videos, music and documents. Android provides tools such as <b>MediaStore</b> for managing shared media and the <b>Storage Access Framework</b> for allowing users to select documents and files.</p></div>
+    </div>
+    <div class="pc">
+      <div class="pro"><b>Advantages of External Storage</b><ol>
+        <li>Useful for large files.</li>
+        <li>Supports user-accessible documents and media.</li>
+        <li>Allows files to be shared with other applications through supported mechanisms.</li>
+        <li>Can provide more available space than internal storage.</li></ol></div>
+      <div class="con"><b>Disadvantages of External Storage</b><ol>
+        <li>Storage availability may change.</li>
+        <li>Files may become unavailable if removable storage is removed.</li>
+        <li>Shared files require appropriate access management.</li>
+        <li>Developers must follow Android's storage restrictions.</li></ol></div>
+    </div>
+    <p><b>Example: saving a file in app-specific external storage</b></p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>File file = new File(
+    getExternalFilesDir(null),
+    "student.txt"
+);
+
+try (
+    FileOutputStream fos =
+        new FileOutputStream(file)
+) {
+
+    fos.write("Muhammad".getBytes());
+
+} catch (IOException e) {
+
+    e.printStackTrace();
+}</code></pre>
+    <p>Here:</p>
+    <ul>
+      <li><b>getExternalFilesDir(null)</b> gets the application's external files directory.</li>
+      <li><b>File</b> represents the file to create.</li>
+      <li><b>FileOutputStream</b> writes information into the file.</li>
+    </ul>
+    <div class="explain">This example saves a file in app-specific external storage. It does not save a document into the public Downloads folder.</div>
+
+    <h4>16.9 SQLite Database</h4>
+    <div class="def"><b>SQLite</b> is a lightweight relational database management system included in Android. It is used to store structured information in tables.</div>
+    <p>Unlike SharedPreferences, which stores key-value pairs, SQLite organizes data using rows and columns. For example, a student management application may store student records in a table:</p>
+    <div class="table-wrap"><table>
+      <tr><th>ID</th><th>Name</th><th>Semester</th><th>Marks</th></tr>
+      <tr><td>1</td><td>Ali</td><td>4</td><td>85</td></tr>
+      <tr><td>2</td><td>Muhammad</td><td>4</td><td>90</td></tr>
+      <tr><td>3</td><td>Ahmed</td><td>3</td><td>78</td></tr>
+    </table></div>
+    <p>Here, each row represents one student, each column represents a particular type of information, and the table stores multiple student records.</p>
+    <figure><!-- <img src="../images/data/sqlite-table.jpg" alt="SQLite table of students"> --><figcaption>A SQLite table</figcaption></figure>
+    <p><b>Why is SQLite used?</b> SQLite is useful when an application needs to store many records, search for specific information, update existing records, delete records, organize information into tables and work with data offline.</p>
+    <p><b>Important SQL operations.</b> SQLite uses SQL (Structured Query Language) to manage information. The four basic operations are:</p>
+    <p><b>INSERT</b> – used to add new records.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>INSERT INTO Students
+(name, semester, marks)
+VALUES
+('Muhammad', 4, 90);</code></pre>
+    <p><b>SELECT</b> – used to retrieve records. This retrieves all records from the Students table.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>SELECT * FROM Students;</code></pre>
+    <p><b>UPDATE</b> – used to modify existing records. This changes the marks of the student whose ID is 1.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>UPDATE Students
+SET marks = 95
+WHERE id = 1;</code></pre>
+    <p><b>DELETE</b> – used to remove records. This removes the student record whose ID is 1.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>DELETE FROM Students
+WHERE id = 1;</code></pre>
+    <div class="pc">
+      <div class="pro"><b>Advantages of SQLite</b><ol>
+        <li>Built into Android.</li>
+        <li>Does not require a separate database server.</li>
+        <li>Supports SQL queries.</li>
+        <li>Stores structured information.</li>
+        <li>Works offline.</li>
+        <li>Suitable for local application databases.</li></ol></div>
+      <div class="con"><b>Disadvantages of SQLite</b><ol>
+        <li>Not designed for direct synchronization between multiple devices.</li>
+        <li>Complex database operations require proper SQL knowledge.</li>
+        <li>It is not a complete replacement for a centralized server database in large online systems.</li></ol></div>
+    </div>
+
+    <h4>16.10 Room Database</h4>
+    <div class="def"><b>Room</b> is an Android persistence library that provides an easier and safer way to work with SQLite databases. It is part of Android Jetpack.</div>
+    <p>Instead of writing all database operations manually, developers can use Room components to manage database records. Room has three main components.</p>
+
+    <h5 class="sub">16.10.1 Entity</h5>
+    <p>An Entity represents a database table. For example, a Student Entity defines the structure of a Students table.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>@Entity
+public class Student {
+
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+
+    public String name;
+
+    public int marks;
+}</code></pre>
+    <p>Here:</p>
+    <ul>
+      <li><b>@Entity</b> identifies the class as a database table.</li>
+      <li><b>@PrimaryKey</b> identifies the primary key.</li>
+      <li><b>autoGenerate = true</b> allows IDs to be generated automatically.</li>
+      <li><b>name</b> and <b>marks</b> are table columns.</li>
+    </ul>
+
+    <h5 class="sub">16.10.2 DAO (Data Access Object)</h5>
+    <p>DAO defines methods for performing database operations. For example:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>@Dao
+public interface StudentDao {
+
+    @Insert
+    void insertStudent(Student student);
+
+    @Query("SELECT * FROM Student")
+    List&lt;Student&gt; getAllStudents();
+
+    @Delete
+    void deleteStudent(Student student);
+}</code></pre>
+    <p>Here, <b>@Insert</b> inserts a student, <b>@Query</b> retrieves student records using SQL, and <b>@Delete</b> deletes a student.</p>
+
+    <h5 class="sub">16.10.3 Database Class</h5>
+    <p>The Database class connects the entities and DAOs and provides access to the database.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>@Database(
+    entities = {Student.class},
+    version = 1
+)
+public abstract class AppDatabase extends RoomDatabase {
+
+    public abstract StudentDao studentDao();
+}</code></pre>
+    <p>This defines a Room database containing the Student entity and providing access to StudentDao.</p>
+    <p><b>How Room works</b></p>
+<pre><code>Application
+Requests database operations
+        ↓
+DAO
+Defines insert, update, delete and query methods
+        ↓
+Room Database
+Manages database access
+        ↓
+SQLite Database
+Stores structured records</code></pre>
+    <figure><!-- <img src="../images/data/room-architecture.jpg" alt="Room architecture"> --><figcaption>Room architecture</figcaption></figure>
+    <div class="explain"><b>Remember:</b> Entity defines the table. DAO defines database operations. The Database class provides database access. SQLite stores the actual records. Room is generally preferred over directly using SQLite APIs in modern Android applications.</div>
+
+    <h4>16.11 Cloud Storage</h4>
+    <div class="def"><b>Cloud Storage</b> means storing application information on remote servers accessed through the internet.</div>
+    <p>Instead of keeping all information only on the mobile device, an application can send data to an online server. Examples of cloud-based services include Firebase, Amazon Web Services (AWS), Microsoft Azure and Google Cloud.</p>
+    <p><b>How does Cloud Storage work?</b> Imagine a student uses an application on two different mobile phones. If student information is stored only in the first phone's internal storage, the second phone will not automatically have that information. But if the information is stored on a cloud server:</p>
+    <ol class="steps">
+      <li>The student enters information into the application.</li>
+      <li>The application sends the information to the server through an API.</li>
+      <li>The server stores the information.</li>
+      <li>The student opens the application on another phone.</li>
+      <li>The application requests the information from the server.</li>
+      <li>The server sends the saved information back.</li>
+    </ol>
+    <p>This allows data to be accessed from different devices, subject to authentication and permissions.</p>
+    <figure><!-- <img src="../images/data/cloud-storage.jpg" alt="Cloud storage"> --><figcaption>Cloud storage between two devices</figcaption></figure>
+    <div class="pc">
+      <div class="pro"><b>Advantages of Cloud Storage</b><ol>
+        <li>Data can be accessed from multiple devices.</li>
+        <li>Supports online synchronization.</li>
+        <li>Can provide large storage capacity.</li>
+        <li>Makes centralized data management possible.</li>
+        <li>Supports online collaboration.</li></ol></div>
+      <div class="con"><b>Disadvantages of Cloud Storage</b><ol>
+        <li>Usually requires an internet connection.</li>
+        <li>Server usage may involve costs.</li>
+        <li>Security and privacy must be managed carefully.</li>
+        <li>Server failures can affect application availability.</li>
+        <li>Data synchronization can become complicated.</li></ol></div>
+    </div>
+
+    <h4>16.12 Difference Between Internal and External Storage</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Internal Storage</th><th>External Storage</th></tr>
+      <tr><td>Used for private application files</td><td>Used for app-specific or shared files</td></tr>
+      <tr><td>Private to the application by default</td><td>Access depends on storage type and Android permissions</td></tr>
+      <tr><td>Suitable for private application data</td><td>Suitable for documents, media and larger files</td></tr>
+      <tr><td>No general storage permission for own internal files</td><td>Shared storage access follows Android storage rules</td></tr>
+      <tr><td>Usually removed when the application is uninstalled</td><td>App-specific files are also generally removed on uninstall</td></tr>
+    </table></div>
+
+    <h4>16.13 Difference Between SQLite and Room Database</h4>
+    <div class="table-wrap"><table>
+      <tr><th>SQLite</th><th>Room</th></tr>
+      <tr><td>A relational database engine</td><td>An Android persistence library</td></tr>
+      <tr><td>Provides direct database operations</td><td>Provides an abstraction over SQLite</td></tr>
+      <tr><td>Requires more manual database code</td><td>Reduces repetitive database code</td></tr>
+      <tr><td>SQL operations are managed directly</td><td>Supports SQL through DAO methods</td></tr>
+      <tr><td>Does not provide Room's compile-time query validation</td><td>Checks many query errors at compile time</td></tr>
+    </table></div>
+    <div class="explain"><b>Important:</b> Room does not replace SQLite. Room uses SQLite underneath.</div>
+
+    <h4>16.14 Difference Between SharedPreferences, Files and Database</h4>
+    <p>These methods are used for different storage requirements.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Storage method</th><th>Best used for</th></tr>
+      <tr><td>SharedPreferences</td><td>Small settings and preferences</td></tr>
+      <tr><td>DataStore</td><td>Modern preference and small structured settings</td></tr>
+      <tr><td>Internal Storage</td><td>Private application files</td></tr>
+      <tr><td>External Storage</td><td>App-specific or user-accessible files</td></tr>
+      <tr><td>SQLite</td><td>Structured local records</td></tr>
+      <tr><td>Room</td><td>Easier management of SQLite databases</td></tr>
+      <tr><td>Cloud Storage</td><td>Online storage and synchronization</td></tr>
+    </table></div>
+    <div class="example"><b>Example: Student Management Application.</b> A student application might use SharedPreferences to remember Dark Mode, Internal Storage to save a private text file, External Storage to save exported documents, a Room Database to store student records and Cloud Storage to synchronize information between devices.</div>
+
+    <h4>16.15 Important Factors When Choosing a Storage Method</h4>
+    <p>Developers should consider the following points before selecting a storage method.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>16.15.1 Type of Data</h5><p>First, identify what needs to be stored. Settings → DataStore. Text files → Internal Storage. Student records → Room Database. Images → File or media storage.</p></div>
+      <div class="mini"><h5>16.15.2 Amount of Data</h5><p>Small settings do not need a full database. However, thousands of student records are better managed using a database.</p></div>
+      <div class="mini"><h5>16.15.3 Security</h5><p>Sensitive information should be protected. For example, passwords and authentication tokens should not be stored as ordinary unencrypted text in SharedPreferences or files. Use appropriate secure storage and authentication practices.</p></div>
+      <div class="mini"><h5>16.15.4 Internet Availability</h5><p>If the application must work offline, local storage is important. If users need to access the same information from multiple devices, cloud storage may be required.</p></div>
+      <div class="mini"><h5>16.15.5 Performance</h5><p>The storage method should match the application's requirements. For example, a database is more suitable for searching thousands of student records than manually reading many separate text files.</p></div>
+    </div>
+
+    <h4>16.16 Short Questions for Exams</h4>
+    <details class="exam"><summary>Short questions with answers</summary>
+      <p><b>Q1. What is Data Persistence?</b><br>Data Persistence is the process of storing information so that it remains available after an application closes or a device restarts.</p>
+      <p><b>Q2. Why is data persistence important?</b><br>It prevents data loss, stores important information, supports offline access, and improves user experience.</p>
+      <p><b>Q3. What is Internal Storage?</b><br>Internal Storage is a private storage area used by an application to save its own files.</p>
+      <p><b>Q4. What is External Storage?</b><br>External Storage provides app-specific or shared storage for files such as documents, pictures, and videos.</p>
+      <p><b>Q5. What is SQLite?</b><br>SQLite is a lightweight relational database management system used to store structured information locally.</p>
+      <p><b>Q6. What is Room Database?</b><br>Room is an Android Jetpack persistence library that provides an abstraction layer over SQLite.</p>
+      <p><b>Q7. What is an Entity in Room?</b><br>An Entity represents a database table.</p>
+      <p><b>Q8. What is DAO?</b><br>DAO stands for Data Access Object. It defines methods for inserting, updating, deleting, and retrieving database records.</p>
+      <p><b>Q9. What is Cloud Storage?</b><br>Cloud Storage is a method of storing information on remote servers through the internet.</p>
+      <p><b>Q10. What is DataStore?</b><br>DataStore is a modern Android solution for storing small amounts of application data asynchronously.</p>
+    </details>
+
+    <h4>16.17 Long Questions for Exams</h4>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define Data Persistence and explain its importance in Android application development.</li>
+      <li>Explain different methods of data persistence in Android.</li>
+      <li>Explain Internal Storage and External Storage with examples.</li>
+      <li>What is SQLite? Explain its features and SQL operations.</li>
+      <li>Explain Room Database and its three main components.</li>
+      <li>Explain Cloud Storage and its advantages and disadvantages.</li>
+      <li>Differentiate between Internal Storage and External Storage.</li>
+      <li>Differentiate between SQLite and Room Database.</li>
+      <li>Explain the factors involved in selecting an appropriate data storage method.</li>
+      <li>Discuss how an Android application can store and retrieve information using different storage techniques.</li></ol></details>
+
+    <h4>16.18 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>Data Persistence</td><td>Keeping information saved for future use</td></tr>
+      <tr><td>SharedPreferences</td><td>Stores small key-value settings</td></tr>
+      <tr><td>DataStore</td><td>Modern Android preference storage</td></tr>
+      <tr><td>Internal Storage</td><td>Private application file storage</td></tr>
+      <tr><td>External Storage</td><td>App-specific or shared file storage</td></tr>
+      <tr><td>SQLite</td><td>Local relational database</td></tr>
+      <tr><td>Room</td><td>Library built over SQLite</td></tr>
+      <tr><td>Entity</td><td>Defines a database table</td></tr>
+      <tr><td>DAO</td><td>Defines database operations</td></tr>
+      <tr><td>Cloud Storage</td><td>Stores data on remote servers</td></tr>
+      <tr><td><code>INSERT</code></td><td>Adds records</td></tr>
+      <tr><td><code>SELECT</code></td><td>Retrieves records</td></tr>
+      <tr><td><code>UPDATE</code></td><td>Changes records</td></tr>
+      <tr><td><code>DELETE</code></td><td>Removes records</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+<!-- ===== 17. SHARING DATA IN ANDROID ===== -->
+<section class="topic-card" id="sharing-data" data-group="Data and storage">
+  <div class="banner">
+    <h3>Sharing Data in Android</h3>
+    <p>Intents, FileProvider, ContentProvider and the Sharesheet</p>
+  </div>
+  <div class="body">
+
+    <h4>17.1 Introduction</h4>
+    <p>Android applications often need to share information with other applications. For example, imagine you are using a student application and want to:</p>
+    <ul><li>Share your examination result through WhatsApp</li><li>Send a document through Gmail</li><li>Share a picture with a friend</li><li>Send a website link through a messaging application</li><li>Open a PDF file using another application</li></ul>
+    <p>Android provides different methods that allow applications to exchange information. This process is called <b>Data Sharing</b>. Android mainly uses a mechanism called Intents to communicate between application components and request actions from other applications.</p>
+    <figure><!-- <img src="../images/data/data-sharing-intro.jpg" alt="Sharing data between apps"> --><figcaption>Sharing data between applications</figcaption></figure>
+
+    <h4>17.2 Definition of Data Sharing</h4>
+    <div class="def"><b>Data Sharing</b> in Android is the process of transferring or making information available between different applications or components of an application.</div>
+    <p>In simple words, data sharing allows one application to send information to another application.</p>
+    <div class="example"><b>Example:</b> suppose you have a PDF file in a student application.
+      <ol><li>You open the PDF.</li><li>You tap the Share button.</li><li>Android displays a list of available applications.</li><li>You select WhatsApp.</li><li>The PDF is shared through WhatsApp.</li></ol>
+      This is an example of data sharing between Android applications.</div>
+
+    <h4>17.3 Why Is Data Sharing Important?</h4>
+    <p>Data sharing makes Android applications more useful because users can work with information across different applications.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>17.3.1 Easy Communication</h5><p>Users can send information through messaging and email applications. For example, a student can share examination results with a teacher through WhatsApp.</p></div>
+      <div class="mini"><h5>17.3.2 Sharing Files</h5><p>Applications can share different types of files: PDF documents, images, videos, audio files and text files.</p></div>
+      <div class="mini"><h5>17.3.3 Better User Experience</h5><p>Users do not need to manually copy and paste information into another application. They can use the Android sharing interface to select the application they want.</p></div>
+      <div class="mini"><h5>17.3.4 Application Integration</h5><p>Different applications can work together. A Gallery application can share pictures with WhatsApp, a browser can share website links through Gmail, and a file manager can open documents using a PDF reader.</p></div>
+      <div class="mini"><h5>17.3.5 Reuse of Existing Applications</h5><p>Developers do not need to create every feature themselves. For example, instead of building an email system inside a student application, they can send information to an existing email application.</p></div>
+    </div>
+
+    <h4>17.4 What Is an Intent in Android?</h4>
+    <div class="def">An <b>Intent</b> is a messaging object used to request an action from another Android application component.</div>
+    <p>In simple words, an Intent tells Android what action should be performed. For example: open another Activity, open a web page, share text, send an email, open a picture or share a document. An Intent can also carry information from one component to another.</p>
+    <div class="example"><b>Example:</b> suppose a student application wants to share the message <i>"My examination result is available."</i> The application creates an Intent containing the action (share information), the data (the examination result message) and the type (plain text). Android then provides suitable applications that can receive the information.</div>
+
+    <h4>17.5 Types of Intents</h4>
+    <p>Android mainly has two types of Intents: Explicit Intent and Implicit Intent. Let's understand both.</p>
+
+    <h5 class="sub">17.5.1 Explicit Intent</h5>
+    <p>An Explicit Intent specifies exactly which application component should receive the request. It is commonly used when moving from one Activity to another Activity inside the same application.</p>
+    <p><b>Example:</b> a student application contains two screens, MainActivity and ProfileActivity. When the user clicks the Profile button, the application should open ProfileActivity.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Intent intent = new Intent(
+    MainActivity.this,
+    ProfileActivity.class
+);
+
+startActivity(intent);</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><b>Intent</b> creates an Intent object.</li>
+      <li><b>MainActivity.this</b> identifies the current Activity.</li>
+      <li><b>ProfileActivity.class</b> identifies the Activity to open.</li>
+      <li><b>startActivity()</b> starts the selected Activity.</li>
+    </ul>
+    <p>The destination is clearly specified. Therefore, this is an Explicit Intent.</p>
+    <div class="example"><b>Real-life example:</b> opening the Settings screen from the Home screen of the same application.</div>
+
+    <h5 class="sub">17.5.2 Implicit Intent</h5>
+    <p>An Implicit Intent describes an action that should be performed without specifying one particular application component. Android finds applications that can perform the requested action.</p>
+    <p><b>Example:</b> a user wants to open a website. The application does not need to specify a particular browser. Android can display or select an application capable of opening the website.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Intent intent = new Intent(
+    Intent.ACTION_VIEW,
+    Uri.parse("https://www.google.com")
+);
+
+startActivity(intent);</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><b>ACTION_VIEW</b> tells Android that the application wants to display something.</li>
+      <li><b>Uri.parse()</b> converts the website address into a URI.</li>
+      <li><b>startActivity()</b> sends the request to Android.</li>
+      <li>Android finds an application capable of opening the website.</li>
+    </ul>
+    <div class="example"><b>Real-life example:</b> opening a website link using Chrome or another installed browser.</div>
+
+    <p><b>Difference between Explicit and Implicit Intent</b></p>
+    <div class="table-wrap"><table>
+      <tr><th>Explicit Intent</th><th>Implicit Intent</th></tr>
+      <tr><td>Specifies the destination component</td><td>Specifies the required action</td></tr>
+      <tr><td>Commonly used inside an application</td><td>Commonly used to request actions from other applications</td></tr>
+      <tr><td>Destination is known</td><td>Android finds a suitable application</td></tr>
+      <tr><td>Example: Open ProfileActivity</td><td>Example: Open a website</td></tr>
+    </table></div>
+
+    <h4>17.6 Sharing Data Using Intent</h4>
+    <p>Android provides a standard action called <code>ACTION_SEND</code> for sharing information. It allows an application to send data to another application that supports the requested data type. For example, an application can share text, images, documents and other supported files.</p>
+
+    <h5 class="sub">17.6.1 Sharing Text</h5>
+    <p>Suppose you want to share a message from your student application.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Intent intent = new Intent(Intent.ACTION_SEND);
+
+intent.setType("text/plain");
+
+intent.putExtra(
+    Intent.EXTRA_TEXT,
+    "My examination result is available."
+);
+
+startActivity(
+    Intent.createChooser(intent, "Share using")
+);</code></pre>
+    <p><b>Explanation:</b> let's understand each line.</p>
+    <p><b>Line 1</b> – creates an Intent that requests Android to send information.</p>
+<pre><code>Intent intent = new Intent(Intent.ACTION_SEND);</code></pre>
+    <p><b>Line 2</b> – defines the data type as plain text.</p>
+<pre><code>intent.setType("text/plain");</code></pre>
+    <p><b>Line 3</b> – adds the message that should be shared.</p>
+<pre><code>intent.putExtra(
+    Intent.EXTRA_TEXT,
+    "My examination result is available."
+);</code></pre>
+    <p><b>Line 4</b> – creates a sharing interface that allows the user to select an application.</p>
+<pre><code>Intent.createChooser(intent, "Share using")</code></pre>
+    <p><b>Line 5</b> – displays the sharing interface.</p>
+<pre><code>startActivity(...)</code></pre>
+    <figure><!-- <img src="../images/data/share-chooser.jpg" alt="Share using chooser"> --><figcaption>The "Share using" chooser</figcaption></figure>
+
+    <h5 class="sub">17.6.2 What Is Intent.createChooser()?</h5>
+    <p><code>Intent.createChooser()</code> creates a system-provided selection interface. It allows users to select an application for performing the requested action. For example, when sharing text, Android may show suitable applications such as Gmail, WhatsApp, Messages and other compatible applications.</p>
+    <p><b>Why is it useful?</b> Because the developer does not need to create a separate sharing menu or manually list every installed application. Android handles the selection interface.</p>
+
+    <h4>17.7 Sharing Images</h4>
+    <p>Android applications can also share images with other applications. For example, a photo-editing application may allow users to share edited pictures through messaging applications. To share an image, Android commonly uses:</p>
+    <ul><li><code>ACTION_SEND</code></li><li>An image MIME type such as <code>image/jpeg</code> or <code>image/png</code></li><li><code>EXTRA_STREAM</code> to provide the image URI</li><li>A content URI that the receiving application can access</li></ul>
+    <p><b>Example: sharing an image</b></p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Intent intent = new Intent(Intent.ACTION_SEND);
+
+intent.setType("image/jpeg");
+
+intent.putExtra(
+    Intent.EXTRA_STREAM,
+    imageUri
+);
+
+intent.addFlags(
+    Intent.FLAG_GRANT_READ_URI_PERMISSION
+);
+
+startActivity(
+    Intent.createChooser(intent, "Share Image")
+);</code></pre>
+    <div class="table-wrap"><table>
+      <tr><th>Code</th><th>Purpose</th></tr>
+      <tr><td><code>ACTION_SEND</code></td><td>Requests data sharing</td></tr>
+      <tr><td><code>setType("image/jpeg")</code></td><td>Identifies the data as a JPEG image</td></tr>
+      <tr><td><code>EXTRA_STREAM</code></td><td>Supplies the image URI</td></tr>
+      <tr><td><code>FLAG_GRANT_READ_URI_PERMISSION</code></td><td>Grants temporary read access</td></tr>
+      <tr><td><code>createChooser()</code></td><td>Displays compatible sharing applications</td></tr>
+    </table></div>
+    <div class="explain"><b>Important:</b> <code>imageUri</code> must be a valid content URI that the receiving application can access. For files in an application's private storage, developers commonly use Android's FileProvider rather than sharing a direct file path.</div>
+
+    <h4>17.8 What Is a URI?</h4>
+    <div class="def">URI stands for <b>Uniform Resource Identifier</b>. A URI is an identifier used to identify a resource.</div>
+    <p>In Android, URIs are commonly used to identify files, images, documents, and other data. For example:</p>
+<pre><code>content://com.example.app.provider/images/photo.jpg</code></pre>
+    <p>This is an example of a content URI. A content URI identifies a resource that can be accessed through a ContentProvider.</p>
+    <p><b>Why are URIs important?</b> Suppose an application wants to share an image with another application. Instead of giving the other application a private file path, Android can provide a content URI. The receiving application can use that URI to access the shared image when permission is granted.</p>
+    <p><b>Types of URI schemes</b></p>
+    <div class="table-wrap"><table>
+      <tr><th>Scheme</th><th>Example</th><th>Purpose</th></tr>
+      <tr><td>https</td><td><code>https://example.com</code></td><td>Website resource</td></tr>
+      <tr><td>content</td><td><code>content://...</code></td><td>Content provided through a ContentProvider</td></tr>
+      <tr><td>file</td><td><code>file://...</code></td><td>File URI, generally not suitable for sharing files between modern Android apps</td></tr>
+    </table></div>
+    <p>For modern Android file sharing, use content URIs and appropriate permissions.</p>
+
+    <h4>17.9 What Is FileProvider?</h4>
+    <div class="def"><b>FileProvider</b> is an Android component that securely allows an application to share its files with other applications using content URIs.</div>
+    <p>Imagine that your application stores a PDF file in its private internal storage. Another application cannot normally access that private file directly. FileProvider provides a controlled way to share access to it.</p>
+    <p><b>How FileProvider works</b></p>
+    <ol class="steps">
+      <li>Your application stores a file.</li>
+      <li>FileProvider creates a content URI for that file.</li>
+      <li>Your application places that URI inside an Intent.</li>
+      <li>Your application grants temporary read permission.</li>
+      <li>The receiving application reads the file through the URI.</li>
+    </ol>
+<pre><code>Application A
+Contains a private PDF file
+        ↓
+FileProvider
+Creates a content URI
+        ↓
+Android Intent
+Shares the URI with temporary read permission
+        ↓
+Application B
+Reads the shared PDF file</code></pre>
+    <figure><!-- <img src="../images/data/fileprovider-flow.jpg" alt="FileProvider flow"> --><figcaption>How FileProvider shares a file</figcaption></figure>
+    <p><b>Example: sharing a PDF file using FileProvider</b></p>
+
+    <h5 class="sub">Step 1: Add FileProvider to AndroidManifest.xml</h5>
+    <p>Inside the <code>application</code> element:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;provider
+    android:name="androidx.core.content.FileProvider"
+    android:authorities="${applicationId}.provider"
+    android:exported="false"
+    android:grantUriPermissions="true"&gt;
+
+    &lt;meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/file_paths" /&gt;
+
+&lt;/provider&gt;</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><b>FileProvider</b> provides secure file-sharing access.</li>
+      <li><b>authorities</b> defines the provider's unique authority.</li>
+      <li><b>exported="false"</b> prevents other applications from directly accessing the provider.</li>
+      <li><b>grantUriPermissions="true"</b> allows temporary URI permissions.</li>
+      <li><b>file_paths</b> defines which directories can be shared.</li>
+    </ul>
+
+    <h5 class="sub">Step 2: Create file_paths.xml</h5>
+    <p>Create a folder named <code>xml</code> inside the <code>res</code> folder, then create <code>file_paths.xml</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;paths xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+    &lt;files-path
+        name="shared_files"
+        path="." /&gt;
+
+&lt;/paths&gt;</code></pre>
+    <p>This configuration allows FileProvider to generate URIs for files stored in the application's internal files directory.</p>
+
+    <h5 class="sub">Step 3: Create a Content URI</h5>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>File file = new File(
+    getFilesDir(),
+    "result.pdf"
+);
+
+Uri uri = FileProvider.getUriForFile(
+    this,
+    getPackageName() + ".provider",
+    file
+);</code></pre>
+    <p>Here:</p>
+    <ul>
+      <li><b>getFilesDir()</b> accesses the internal files directory.</li>
+      <li><b>File</b> represents the PDF file.</li>
+      <li><b>getUriForFile()</b> creates a content URI.</li>
+      <li>The authority must match the authority configured in the manifest.</li>
+    </ul>
+
+    <h5 class="sub">Step 4: Share the PDF</h5>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Intent intent = new Intent(Intent.ACTION_SEND);
+
+intent.setType("application/pdf");
+
+intent.putExtra(Intent.EXTRA_STREAM, uri);
+
+intent.addFlags(
+    Intent.FLAG_GRANT_READ_URI_PERMISSION
+);
+
+startActivity(
+    Intent.createChooser(intent, "Share PDF")
+);</code></pre>
+    <p>Now Android can display applications that support receiving PDF files.</p>
+    <div class="explain"><b>Note:</b> the PDF file must already exist at the specified location. The FileProvider path configuration must also include the file's directory.</div>
+
+    <h4>17.10 Sharing Data Using ACTION_SENDTO</h4>
+    <p>Android also provides <code>ACTION_SENDTO</code>, which is commonly used when directing a message to a particular type of communication application. For example, you can open an email application to compose an email.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Intent intent = new Intent(
+    Intent.ACTION_SENDTO
+);
+
+intent.setData(
+    Uri.parse("mailto:student@example.com")
+);
+
+intent.putExtra(
+    Intent.EXTRA_SUBJECT,
+    "Examination Result"
+);
+
+intent.putExtra(
+    Intent.EXTRA_TEXT,
+    "Please find my examination result."
+);
+
+startActivity(intent);</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><b>ACTION_SENDTO</b> requests an application that handles the specified communication address.</li>
+      <li><b>mailto:</b> identifies an email destination.</li>
+      <li><b>EXTRA_SUBJECT</b> provides the email subject.</li>
+      <li><b>EXTRA_TEXT</b> provides the email body.</li>
+    </ul>
+    <p>This is useful when you want to open an email application rather than show a general sharing interface.</p>
+
+    <h4>17.11 What Is a ContentProvider?</h4>
+    <div class="def">A <b>ContentProvider</b> is an Android component that manages and provides access to application data.</div>
+    <p>It allows one application to expose selected information to other applications in a controlled way. For example, the Contacts Provider provides access to contact information, the Media Provider manages media information, and a custom application can create its own ContentProvider.</p>
+    <p><b>Why is ContentProvider used?</b> Suppose a contacts application stores names and phone numbers. Another application may need to access those contacts. Instead of directly accessing the contacts application's database, it can request information through the Contacts ContentProvider, subject to the required permissions.</p>
+    <p><b>Main operations of ContentProvider</b></p>
+    <div class="table-wrap"><table>
+      <tr><th>Operation</th><th>Purpose</th></tr>
+      <tr><td>Query</td><td>Retrieve data</td></tr>
+      <tr><td>Insert</td><td>Add new data</td></tr>
+      <tr><td>Update</td><td>Modify existing data</td></tr>
+      <tr><td>Delete</td><td>Remove data</td></tr>
+    </table></div>
+    <p><b>How ContentProvider works</b></p>
+    <ol class="steps">
+      <li>An application requests information.</li>
+      <li>The request contains a content URI.</li>
+      <li>Android directs the request to the appropriate ContentProvider.</li>
+      <li>The provider checks access permissions.</li>
+      <li>The provider performs the requested operation.</li>
+      <li>The result is returned to the requesting application.</li>
+    </ol>
+    <div class="explain"><b>Remember:</b> a ContentProvider is useful for structured data sharing, while FileProvider is a specialized implementation used to share files through content URIs.</div>
+
+    <h4>17.12 Difference Between ContentProvider and FileProvider</h4>
+    <div class="table-wrap"><table>
+      <tr><th>ContentProvider</th><th>FileProvider</th></tr>
+      <tr><td>Provides controlled access to application data</td><td>Provides controlled access to files</td></tr>
+      <tr><td>Can support query, insert, update and delete operations</td><td>Mainly provides file access through content URIs</td></tr>
+      <tr><td>Can expose structured data</td><td>Commonly shares PDFs, images and other files</td></tr>
+      <tr><td>Can be custom-built by developers</td><td>AndroidX provides a ready-made implementation</td></tr>
+    </table></div>
+
+    <h4>17.13 Android Sharesheet</h4>
+    <div class="def">The <b>Android Sharesheet</b> is the system-provided interface that allows users to select an application or destination for sharing information.</div>
+    <p>For example, when a user clicks Share, Android may display compatible applications.</p>
+    <figure><!-- <img src="../images/data/sharesheet.jpg" alt="Android Sharesheet"> --><figcaption>Android Sharesheet</figcaption></figure>
+    <p><b>Main features</b></p>
+    <ol>
+      <li>Displays compatible applications.</li>
+      <li>Allows users to select a sharing destination.</li>
+      <li>Supports sharing text and files.</li>
+      <li>Provides a consistent sharing experience.</li>
+      <li>Reduces the need for developers to create their own sharing interface.</li>
+    </ol>
+    <p><b>How to display the Android Sharesheet</b> – for sharing text:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Intent sendIntent = new Intent(
+    Intent.ACTION_SEND
+);
+
+sendIntent.setType("text/plain");
+
+sendIntent.putExtra(
+    Intent.EXTRA_TEXT,
+    "Hello from my Android application!"
+);
+
+Intent chooser = Intent.createChooser(
+    sendIntent,
+    "Share using"
+);
+
+startActivity(chooser);</code></pre>
+    <p>This displays the Android sharing interface.</p>
+
+    <h4>17.14 Difference Between ACTION_SEND and ACTION_SENDTO</h4>
+    <div class="table-wrap"><table>
+      <tr><th>ACTION_SEND</th><th>ACTION_SENDTO</th></tr>
+      <tr><td>Used for general data sharing</td><td>Used for directing communication to a particular type of destination</td></tr>
+      <tr><td>Can share text, images and files</td><td>Commonly used with email or messaging addresses</td></tr>
+      <tr><td>Uses MIME type to describe shared data</td><td>Uses a URI scheme such as <code>mailto:</code></td></tr>
+      <tr><td>Example: Share a PDF</td><td>Example: Compose an email</td></tr>
+    </table></div>
+
+    <h4>17.15 Security in Data Sharing</h4>
+    <p>Data sharing must be handled carefully because applications may contain private information. Developers should follow security practices.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>17.15.1 Grant Only Required Permissions</h5><p>When sharing a file, give the receiving application only the permissions it needs. For example, if the other application only needs to read a PDF, grant read permission instead of unnecessary write access.</p></div>
+      <div class="mini"><h5>17.15.2 Use Content URIs</h5><p>Do not expose private file paths directly. Use FileProvider to create secure content URIs for sharing application files.</p></div>
+      <div class="mini"><h5>17.15.3 Validate Shared Data</h5><p>Applications should check incoming data before using it. For example, an application receiving a file should verify that the file type and content are acceptable.</p></div>
+      <div class="mini"><h5>17.15.4 Avoid Sharing Sensitive Information</h5><p>Do not share passwords, authentication tokens, or confidential information unnecessarily.</p></div>
+      <div class="mini"><h5>17.15.5 Use Appropriate Permissions</h5><p>Some data sources, such as contacts and media, require specific access permissions. Applications should request only the permissions they actually need.</p></div>
+    </div>
+
+    <h4>17.16 Real-Life Example: Student Result Sharing Application</h4>
+    <p>Imagine that we are developing a Student Result Application. It allows students to view and share their examination results. The application contains the student name, registration number, semester, total marks and obtained marks. When a student taps the Share Result button, the application creates a message:</p>
+<pre><code>Student Name: Muhammad
+Registration Number: 12345
+Semester: 4
+Total Marks: 500
+Obtained Marks: 450</code></pre>
+    <p>The application can share this information using an Intent.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>String result =
+    "Student Name: Muhammad\n" +
+    "Registration Number: 12345\n" +
+    "Semester: 4\n" +
+    "Total Marks: 500\n" +
+    "Obtained Marks: 450";
+
+Intent intent = new Intent(Intent.ACTION_SEND);
+
+intent.setType("text/plain");
+
+intent.putExtra(Intent.EXTRA_TEXT, result);
+
+startActivity(
+    Intent.createChooser(intent, "Share Result")
+);</code></pre>
+    <p>The student can select a compatible application to share the result. This example demonstrates how an Android application can share information without developing its own messaging system.</p>
+
+    <h4>17.17 Advantages and 17.18 Disadvantages of Data Sharing</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Easy communication:</b> users can send information through other applications.</li>
+        <li><b>Application integration:</b> different applications can work together.</li>
+        <li><b>Saves development time:</b> developers can reuse existing applications.</li>
+        <li><b>Better user experience:</b> users can share information through a standard interface.</li>
+        <li><b>Supports different data types:</b> text, images, videos and documents can be shared.</li>
+        <li><b>Controlled access:</b> content URIs and permissions help protect private files.</li></ol></div>
+      <div class="con"><b>Disadvantages and challenges</b><ol>
+        <li>The receiving application may not support the shared data type.</li>
+        <li>Sharing private information can create security risks.</li>
+        <li>Different applications may handle the same data differently.</li>
+        <li>File-sharing permissions must be configured correctly.</li>
+        <li>Some sharing operations depend on applications being installed on the device.</li></ol></div>
+    </div>
+
+    <h4>17.19 Difference Between Data Persistence and Data Sharing</h4>
+    <p>This is an important comparison because both topics deal with application data.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Data Persistence</th><th>Data Sharing</th></tr>
+      <tr><td>Stores information for future use</td><td>Transfers or provides access to information</td></tr>
+      <tr><td>Focuses on saving data</td><td>Focuses on exchanging data</td></tr>
+      <tr><td>Uses files, databases and preferences</td><td>Uses Intents, ContentProviders and content URIs</td></tr>
+      <tr><td>Example: Save student marks</td><td>Example: Send student marks through email</td></tr>
+      <tr><td>Data remains stored</td><td>Data is made available to another destination</td></tr>
+    </table></div>
+
+    <h4>17.20 Short Questions for Exams</h4>
+    <details class="exam"><summary>Short questions with answers</summary>
+      <p><b>Q1. What is Data Sharing in Android?</b><br>Data Sharing is the process of transferring or making information available between different applications or application components.</p>
+      <p><b>Q2. What is an Intent?</b><br>An Intent is a messaging object used to request an action from another Android application component.</p>
+      <p><b>Q3. What are the two main types of Intents?</b><br>Explicit Intent and Implicit Intent.</p>
+      <p><b>Q4. What is an Explicit Intent?</b><br>An Explicit Intent specifies the exact component that should receive the request.</p>
+      <p><b>Q5. What is an Implicit Intent?</b><br>An Implicit Intent specifies an action without identifying one particular application component.</p>
+      <p><b>Q6. What is ACTION_SEND?</b><br>ACTION_SEND is an Intent action used to share information with another compatible application.</p>
+      <p><b>Q7. What is Intent.createChooser()?</b><br>It creates a system selection interface that allows users to choose an application for performing an action.</p>
+      <p><b>Q8. What is a URI?</b><br>URI stands for Uniform Resource Identifier. It identifies a resource such as a file, image or website.</p>
+      <p><b>Q9. What is FileProvider?</b><br>FileProvider is an Android component that allows applications to securely share files through content URIs.</p>
+      <p><b>Q10. What is ContentProvider?</b><br>ContentProvider is an Android component that manages and provides controlled access to application data.</p>
+      <p><b>Q11. What is Android Sharesheet?</b><br>Android Sharesheet is a system interface that allows users to select an application or destination for sharing data.</p>
+      <p><b>Q12. What is ACTION_SENDTO?</b><br>ACTION_SENDTO is an Intent action commonly used to direct communication to a particular type of destination, such as an email address.</p>
+    </details>
+
+    <h4>17.21 Long Questions for Exams</h4>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define Data Sharing and explain its importance in Android application development.</li>
+      <li>What is an Intent? Explain Explicit and Implicit Intents with examples.</li>
+      <li>Explain how to share text and images using Android Intents.</li>
+      <li>What is FileProvider? Explain its working and implementation.</li>
+      <li>Explain ContentProvider and its main operations.</li>
+      <li>What is Android Sharesheet? Explain how it works.</li>
+      <li>Differentiate between ContentProvider and FileProvider.</li>
+      <li>Explain security considerations when sharing data between Android applications.</li>
+      <li>Differentiate between Data Persistence and Data Sharing.</li>
+      <li>Explain the use of ACTION_SEND and ACTION_SENDTO with examples.</li></ol></details>
+
+    <h4>17.22 Quick Revision Table</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>Data Sharing</td><td>Exchanging information between applications</td></tr>
+      <tr><td>Intent</td><td>Requests an action from an Android component</td></tr>
+      <tr><td>Explicit Intent</td><td>Specifies the destination component</td></tr>
+      <tr><td>Implicit Intent</td><td>Specifies an action</td></tr>
+      <tr><td><code>ACTION_SEND</code></td><td>Shares information</td></tr>
+      <tr><td><code>ACTION_SENDTO</code></td><td>Directs communication to a particular destination type</td></tr>
+      <tr><td>URI</td><td>Identifies a resource</td></tr>
+      <tr><td>Content URI</td><td>Identifies data provided through a ContentProvider</td></tr>
+      <tr><td>FileProvider</td><td>Shares files securely using content URIs</td></tr>
+      <tr><td>ContentProvider</td><td>Provides controlled access to application data</td></tr>
+      <tr><td>Android Sharesheet</td><td>System sharing interface</td></tr>
+      <tr><td><code>EXTRA_TEXT</code></td><td>Carries text</td></tr>
+      <tr><td><code>EXTRA_STREAM</code></td><td>Carries a URI for shared content</td></tr>
+      <tr><td>MIME Type</td><td>Describes the type of shared data</td></tr>
+      <tr><td><code>FLAG_GRANT_READ_URI_PERMISSION</code></td><td>Grants temporary read access</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+  </main>
+</div>
+
+<footer>IT-308 Mobile Application Development &middot; BS Information Technology
+<br>Copyright &copy; 2026 <a href="https://gcsmultan.edu.pk/">Govt. Graduate College of Science and Technology</a></footer>
+<script src="../js/script.js"></script>
+<script src="../js/outline.js"></script>
+</body>
+</html>

@@ -1,0 +1,2968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI & Screens | IT-308 Mobile Application Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/outline.css">
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">IT-308</a>
+  <a href="../index.html">Home</a>
+  <a href="index.html" class="active">Outline</a>
+  <a href="../practice.html">Practice</a>
+  <a href="../programs.html">Programs</a>
+  <a href="../papers/index.html">Past Papers</a>
+  <a href="../references.html">References</a>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Contents</h2>
+    <input type="search" id="side-search" placeholder="Search topics">
+    <div class="progress">
+      <div class="row"><span id="prog-text">Progress: 0/0</span><span id="prog-pct">0%</span></div>
+      <div class="bar"><span id="prog-bar"></span></div>
+    </div>
+    <div id="sidebar-list"></div>   <!-- filled automatically by outline.js -->
+  </aside>
+
+  <main style="padding:0;margin:0;max-width:none">
+    <div class="group-tabs"><a href="index.html">&larr; All groups</a><a href="platforms.html">Platforms</a><a href="ui-screens.html" class="current">UI & Screens</a><a href="data-storage.html">Data & Storage</a><a href="communication.html">Communication</a><a href="publishing.html">Publishing</a><a href="advanced.html">Advanced</a></div>
+    <h1>User interface and screens</h1>
+    <p class="lead"><!-- YOUR EXPLANATION HERE --></p>
+
+    <!-- TOPICS STILL TO ADD HERE (from the course outline):
+         - Utilizing the Action Bar
+         - Creating the User Interface
+         - Views
+         - Displaying Notifications
+         - Listening for UI Notifications
+    -->
+
+    <!-- ===== PASTE NEW TOPICS BELOW, IN OUTLINE ORDER. One <section class="topic-card"> per topic. ===== -->
+
+<!-- ===== 7. FRAGMENTS IN ANDROID ===== -->
+
+<!-- IMAGES: every <figure> below is an image slot. Save your picture in the images/ folder with the file name shown in src. Until then the page shows a dashed "Add image here" box. -->
+<section class="topic-card" id="fragments" data-group="User interface and screens">
+  <div class="banner">
+    <h3>Fragments in Android</h3>
+    <p>Reusable parts of an Android screen</p>
+  </div>
+  <div class="body">
+
+    <h4>7.1 Introduction to Fragments</h4>
+    <div class="def">A <b>Fragment</b> is a reusable part of an Android application's user interface (UI). It represents a portion of an Activity's screen and has its own layout and lifecycle.</div>
+    <p>In simple words, a Fragment is a small section of an application screen that can be added, removed, or replaced without creating a completely new Activity.</p>
+    <div class="example"><b>Example:</b> imagine a shopping application with one screen containing product categories on the left and product details on the right. Each section can be designed as a separate Fragment.</div>
+    <figure><!-- <img src="../images/ui/fragment-intro.jpg" alt="Fragments on one screen"> --><figcaption>Fragments on one screen</figcaption></figure>
+
+    <h4>7.2 What is an Activity?</h4>
+    <p>Before understanding Fragments, you should understand Activities.</p>
+    <div class="def">An <b>Activity</b> is an Android application component that provides a screen with which users can interact.</div>
+    <p>For example, a shopping application may have Login, Home, Product and Profile activities. An Activity acts as a container for the user interface. A Fragment can be placed inside an Activity to divide its screen into smaller reusable sections.</p>
+    <p><b>Relationship between Activity and Fragment</b></p>
+    <ul>
+      <li>An Activity can contain one Fragment.</li>
+      <li>An Activity can contain multiple Fragments.</li>
+      <li>A Fragment cannot exist independently; it must be hosted by an Activity.</li>
+      <li>Multiple Activities can reuse the same Fragment.</li>
+    </ul>
+    <figure><!-- <img src="../images/ui/activity-fragment.jpg" alt="Activity hosting fragments"> --><figcaption>Activity and Fragments</figcaption></figure>
+    <div class="example"><b>Example:</b> in a student management application, the main Activity can contain three Fragments: Student Information, Attendance and Result. When a user selects Attendance, the application can replace the Student Information Fragment with the Attendance Fragment while keeping the same Activity.</div>
+
+    <h4>7.3 Why Do We Use Fragments?</h4>
+    <p>Fragments make Android applications more organized, flexible, and reusable.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Reusability</h5><p>A Fragment can be used in different Activities. For example, a Profile Fragment can be used in both a Home Activity and a Settings Activity.</p></div>
+      <div class="mini"><h5>2. Flexible User Interface</h5><p>Fragments divide one screen into multiple sections. A phone may display one section at a time, while a tablet may display two or more together.</p></div>
+      <div class="mini"><h5>3. Better Code Organization</h5><p>Instead of one large Activity, divide the application into smaller components: Login Fragment (login UI), Profile Fragment (profile UI), Settings Fragment (settings UI).</p></div>
+      <div class="mini"><h5>4. Dynamic Screen Changes</h5><p>Fragments can be added, removed, and replaced while an Activity is running. For example, clicking the Profile button can display the Profile Fragment without opening another Activity.</p></div>
+      <div class="mini"><h5>5. Support for Different Screen Sizes</h5><p>Fragments help developers create flexible layouts for mobile phones and tablets.</p></div>
+    </div>
+
+    <h4>7.4 Lifecycle of a Fragment</h4>
+    <p>A Fragment has its own lifecycle. The Fragment lifecycle describes the stages a Fragment passes through from creation to destruction. Understanding it is important because developers need to know when to create the interface, initialize components, save data, and release resources.</p>
+    <figure><!-- <img src="../images/ui/fragment-lifecycle.jpg" alt="Fragment lifecycle diagram"> --><figcaption>Fragment lifecycle</figcaption></figure>
+    <p><b>Important Fragment lifecycle methods</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. onAttach()</h5><p>Called when the Fragment becomes attached to its hosting Activity. It establishes the connection between the Fragment and the Activity.</p></div>
+      <div class="mini"><h5>2. onCreate()</h5><p>Called when the Fragment is being created. Generally used to initialize data and other non-UI components.</p></div>
+      <div class="mini"><h5>3. onCreateView()</h5><p>Responsible for creating the Fragment's user interface. For example, it loads an XML layout file containing buttons, text fields, and images.</p></div>
+      <div class="mini"><h5>4. onViewCreated()</h5><p>Called after the Fragment's view has been created. Used to initialize UI components and set click listeners.</p></div>
+      <div class="mini"><h5>5. onStart()</h5><p>The Fragment becomes visible to the user.</p></div>
+      <div class="mini"><h5>6. onResume()</h5><p>The Fragment becomes active and the user can interact with it.</p></div>
+      <div class="mini"><h5>7. onPause()</h5><p>The Fragment is losing its active state, for example because another screen is coming in front of it.</p></div>
+      <div class="mini"><h5>8. onStop()</h5><p>The Fragment is no longer visible to the user.</p></div>
+      <div class="mini"><h5>9. onDestroyView()</h5><p>The Fragment's view is destroyed, but the Fragment object itself may still exist. The view can be destroyed while the Fragment remains in memory.</p></div>
+      <div class="mini"><h5>10. onDestroy()</h5><p>The Fragment itself is being destroyed.</p></div>
+      <div class="mini"><h5>11. onDetach()</h5><p>The Fragment is disconnected from its hosting Activity.</p></div>
+    </div>
+    <p><b>Lifecycle order (simplified)</b> when a Fragment is created and then completely removed:</p>
+<pre><code>onAttach()
+    ↓
+onCreate()
+    ↓
+onCreateView()
+    ↓
+onViewCreated()
+    ↓
+onStart()
+    ↓
+onResume()
+    ↓
+User interacts with Fragment
+    ↓
+onPause()
+    ↓
+onStop()
+    ↓
+onDestroyView()
+    ↓
+onDestroy()
+    ↓
+onDetach()</code></pre>
+    <div class="explain"><b>Important:</b> not every lifecycle callback is necessarily called in every situation. For example, a Fragment's view can be destroyed while the Fragment itself is retained.</div>
+
+    <h4>7.5 Types of Fragments</h4>
+    <p>Fragments are not limited to one specific type. Developers can create different Fragments according to the application's requirements.</p>
+    <figure><!-- <img src="../images/ui/fragment-types.jpg" alt="Types of fragments"> --><figcaption>Types of Fragments</figcaption></figure>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Static Fragment</h5><p>Declared directly inside an Activity's XML layout. Suitable when a Fragment should remain in a fixed position and does not need to be dynamically replaced.</p></div>
+      <div class="mini"><h5>2. Dynamic Fragment</h5><p>Added, removed, or replaced programmatically while the application is running. Useful when the interface needs to change according to user actions.</p><p><i>Example:</i> clicking the Settings button replaces the Home Fragment with the Settings Fragment.</p></div>
+      <div class="mini"><h5>3. Dialog Fragment</h5><p>A DialogFragment is designed to display a dialog window.</p><ul><li>Confirmation dialog</li><li>Delete warning</li><li>Date picker</li><li>Information message</li></ul></div>
+      <div class="mini"><h5>4. List Fragment</h5><p>A ListFragment is an older Android framework class designed to display a list of items. Modern applications commonly use a regular Fragment with a RecyclerView instead.</p></div>
+    </div>
+    <figure><!-- <img src="../images/ui/dialog-fragment.jpg" alt="DialogFragment example"> --><figcaption>DialogFragment example</figcaption></figure>
+
+    <h4>7.6 How to Create a Fragment in Android</h4>
+    <p>Suppose we are developing a student application and want to display student information inside a Fragment. We will use Java and XML.</p>
+
+    <h5 class="sub">Step 1: Create an XML layout</h5>
+    <p>Create a file named <code>fragment_student.xml</code>. This file defines the Fragment's user interface.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"&gt;
+
+    &lt;TextView
+        android:id="@+id/studentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Muhammad"
+        android:textSize="24sp" /&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BS Information Technology"
+        android:textSize="18sp" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    <p><b>Understanding the code:</b></p>
+    <ul>
+      <li><b>LinearLayout:</b> organizes UI elements vertically.</li>
+      <li><b>TextView:</b> displays text.</li>
+      <li><b>layout_width:</b> defines the width of an element.</li>
+      <li><b>layout_height:</b> defines the height of an element.</li>
+      <li><b>orientation:</b> determines the direction of elements.</li>
+      <li><b>textSize:</b> controls the text size.</li>
+    </ul>
+
+    <h5 class="sub">Step 2: Create the Fragment Java class</h5>
+    <p>Create a Java class named <code>StudentFragment.java</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+public class StudentFragment extends Fragment {
+
+    public StudentFragment() {
+        // Required empty public constructor
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
+
+        return inflater.inflate(
+            R.layout.fragment_student,
+            container,
+            false
+        );
+    }
+}</code></pre>
+    <p><b>Understanding the important parts:</b></p>
+    <ul>
+      <li><b>StudentFragment:</b> defines our Fragment class.</li>
+      <li><b>extends Fragment:</b> makes this class an Android Fragment.</li>
+      <li><b>onCreateView():</b> creates the Fragment's interface.</li>
+      <li><b>LayoutInflater:</b> converts the XML layout into actual View objects.</li>
+      <li><b>R.layout.fragment_student:</b> identifies the XML layout.</li>
+      <li><b>container:</b> the parent ViewGroup where the Fragment's view will be placed.</li>
+      <li><b>false:</b> prevents the layout from being attached to the container immediately. The FragmentManager handles attachment.</li>
+    </ul>
+
+    <h5 class="sub">Step 3: Add a Fragment container to the Activity</h5>
+    <p>Open your Activity's XML layout and add a <code>FragmentContainerView</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;androidx.fragment.app.FragmentContainerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragmentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" /&gt;</code></pre>
+    <p>This container provides an area where Fragments can be displayed.</p>
+
+    <h5 class="sub">Step 4: Add the Fragment to the Activity</h5>
+    <p>Inside <code>MainActivity.java</code>, use FragmentManager to display the Fragment.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        if (savedInstanceState == null) {
+
+            getSupportFragmentManager()
+                .beginTransaction()
+                .replace(
+                    R.id.fragmentContainer,
+                    new StudentFragment()
+                )
+                .commit();
+        }
+    }
+}</code></pre>
+    <p><b>Understanding the process:</b></p>
+    <ol class="steps">
+      <li><code>getSupportFragmentManager()</code> gets the FragmentManager.</li>
+      <li><code>beginTransaction()</code> starts a Fragment transaction.</li>
+      <li><code>replace()</code> places the StudentFragment inside the container.</li>
+      <li><code>commit()</code> applies the transaction.</li>
+    </ol>
+    <p>The <code>savedInstanceState == null</code> condition prevents unnecessarily adding the same initial Fragment again after an Activity recreation.</p>
+    <p><b>Result:</b> the Activity will display the Student Fragment containing the student's name and degree.</p>
+    <figure><!-- <img src="../images/ui/fragment-output.jpg" alt="Output of the student fragment"> --><figcaption>Output of the example</figcaption></figure>
+
+    <h4>7.7 Fragment Transactions</h4>
+    <p>A Fragment Transaction is a process used to perform changes to Fragments inside an Activity. Developers use FragmentManager to manage these transactions.</p>
+    <p><b>Important transaction methods</b></p>
+    <div class="table-wrap"><table>
+      <tr><th>Method</th><th>Purpose</th></tr>
+      <tr><td><code>add()</code></td><td>Adds a Fragment</td></tr>
+      <tr><td><code>replace()</code></td><td>Replaces an existing Fragment</td></tr>
+      <tr><td><code>remove()</code></td><td>Removes a Fragment</td></tr>
+      <tr><td><code>hide()</code></td><td>Hides a Fragment's view</td></tr>
+      <tr><td><code>show()</code></td><td>Shows a hidden Fragment</td></tr>
+      <tr><td><code>addToBackStack()</code></td><td>Allows a transaction to be reversed using Back navigation</td></tr>
+      <tr><td><code>commit()</code></td><td>Submits the transaction</td></tr>
+    </table></div>
+    <p><b>Example:</b> replacing Home Fragment with Profile Fragment</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>getSupportFragmentManager()
+    .beginTransaction()
+    .replace(R.id.fragmentContainer, new ProfileFragment())
+    .addToBackStack(null)
+    .commit();</code></pre>
+    <p>Here, <code>addToBackStack(null)</code> allows the user to return to the previous Fragment using the Back button.</p>
+
+    <h4>7.8 Difference Between Activity and Fragment</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Activity</th><th>Fragment</th></tr>
+      <tr><td>Represents a complete application screen or window</td><td>Represents a reusable part of a screen</td></tr>
+      <tr><td>Can exist independently</td><td>Must be hosted by an Activity</td></tr>
+      <tr><td>Has its own lifecycle</td><td>Has its own lifecycle and a separate view lifecycle</td></tr>
+      <tr><td>Declared in the Android manifest</td><td>Usually managed through FragmentManager</td></tr>
+      <tr><td>Can contain multiple Fragments</td><td>Can be hosted inside an Activity</td></tr>
+      <tr><td>Used to manage application screens</td><td>Used to organize screen sections</td></tr>
+    </table></div>
+
+    <h4>7.9 Advantages and 7.10 Disadvantages of Fragments</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Reusability:</b> the same Fragment can be used in different Activities.</li>
+        <li><b>Flexibility:</b> change screen content dynamically.</li>
+        <li><b>Better Organization:</b> application code becomes easier to manage.</li>
+        <li><b>Multiple Screen Support:</b> helps create interfaces for phones and tablets.</li>
+        <li><b>Independent Lifecycle:</b> lifecycle callbacks for managing its operations.</li>
+        <li><b>Easy Navigation:</b> Fragments can be replaced to move between sections.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Complex Lifecycle:</b> managing Fragment and view lifecycles can be difficult for beginners.</li>
+        <li><b>Communication Challenges:</b> sharing data between Activities and Fragments requires proper communication methods.</li>
+        <li><b>Management Complexity:</b> multiple Fragments can make navigation and back-stack management complicated.</li>
+        <li><b>Debugging Difficulty:</b> lifecycle-related errors can be difficult to identify.</li></ol></div>
+    </div>
+
+    <h4>7.11 Real-Life Example</h4>
+    <p>Consider a student management application containing a Home Fragment, Profile Fragment, Attendance Fragment and Result Fragment.</p>
+    <figure><!-- <img src="../images/ui/fragment-real-life.jpg" alt="Student management app with fragments"> --><figcaption>Student management application</figcaption></figure>
+    <p>When the user clicks the Attendance button:</p>
+    <ol class="steps">
+      <li>The application receives the click event.</li>
+      <li>The current Fragment is replaced with the Attendance Fragment.</li>
+      <li>The Attendance Fragment displays attendance records.</li>
+      <li>The Activity remains the host of the Fragment.</li>
+    </ol>
+    <p>This is how Fragments help organize an application into reusable sections.</p>
+
+    <h4>7.12 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is a Fragment in Android?</li><li>Define Fragment lifecycle.</li><li>What is the purpose of onCreateView()?</li>
+      <li>What is FragmentManager?</li><li>What is a Fragment Transaction?</li><li>What is a DialogFragment?</li>
+      <li>What is the purpose of addToBackStack()?</li><li>Can a Fragment exist independently?</li>
+      <li>What is the difference between onDestroy() and onDestroyView()?</li><li>What is FragmentContainerView?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define Fragments and explain their importance in Android application development.</li>
+      <li>Explain the complete lifecycle of a Fragment with a diagram.</li>
+      <li>Explain the different types of Fragments.</li>
+      <li>Describe the procedure for creating and using a Fragment in Android.</li>
+      <li>Differentiate between Activity and Fragment.</li>
+      <li>Explain Fragment Transactions and their important methods.</li></ol></details>
+
+  </div>
+</section>
+
+<!-- ===== 8. COMPONENTS OF A SCREEN IN ANDROID ===== -->
+<section class="topic-card" id="components-of-a-screen" data-group="User interface and screens">
+  <div class="banner">
+    <h3>Components of a Screen in Android</h3>
+    <p>Activities, layouts, views and common UI widgets</p>
+  </div>
+  <div class="body">
+
+    <h4>8.1 Introduction</h4>
+    <p>Every Android application has a user interface (UI) through which users interact with the application. For example, when you open a WhatsApp-like application, you see:</p>
+    <div class="chips"><span>A screen title</span><span>A list of contacts</span><span>Profile pictures</span><span>Buttons</span><span>Text messages</span><span>Text input fields</span><span>Navigation icons</span></div>
+    <p>All these elements work together to create the application's screen.</p>
+    <div class="def"><b>Definition:</b> Components of a screen are the different elements used to create and organize the user interface of an Android application. These components allow users to view information and interact with the application.</div>
+    <figure><!-- <img src="../images/ui/screen-components-intro.jpg" alt="Components of an Android screen"> --><figcaption>Components of an Android screen</figcaption></figure>
+
+    <h4>8.2 What Is an Android Screen?</h4>
+    <p>An Android screen is the visible area of an application where users see information and perform different actions. In Android development, an Activity commonly provides the window for a screen.</p>
+    <p>For example, a student management application might have a Login Screen, Home Screen, Student Profile Screen, Attendance Screen and Result Screen. Each screen can contain different UI components according to its purpose.</p>
+    <div class="example"><b>Example: Login Screen.</b> Imagine that you open a student application. You see the application name at the top, an email field, a password field, a login button and a Forgot Password link. All these elements are components of the Login Screen.</div>
+
+    <h4>8.3 Main Components of an Android Screen</h4>
+    <p>An Android screen is made up of several important components. Let's understand them individually.</p>
+
+    <h5 class="sub">8.3.1 Activity</h5>
+    <p>An Activity is an Android application component that provides a window for the user interface. It acts as a main container for the screen. For example, when a user opens the Login Screen, the Login Activity manages that screen.</p>
+    <p><b>What does an Activity do?</b></p>
+    <ul><li>Creates and displays the screen</li><li>Manages user interaction</li><li>Connects the screen with application logic</li><li>Handles lifecycle events</li><li>Can host Fragments</li></ul>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+    }
+}</code></pre>
+    <p><b>Let's understand the important lines:</b></p>
+    <ul>
+      <li><b>MainActivity:</b> name of the Activity.</li>
+      <li><b>extends AppCompatActivity:</b> makes this class an Activity using AndroidX compatibility support.</li>
+      <li><b>onCreate():</b> called when the Activity is created.</li>
+      <li><b>setContentView():</b> sets the XML layout that will appear on the screen.</li>
+      <li><b>R.layout.activity_main:</b> refers to the <code>activity_main.xml</code> layout file.</li>
+    </ul>
+    <div class="explain">In simple words, the Activity provides the screen, and the layout defines what appears on that screen.</div>
+
+    <h5 class="sub">8.3.2 Layouts</h5>
+    <p>A Layout is a container that controls how UI components are arranged on the screen. For example, on a login screen with an email field, a password field and a login button, the layout decides where these elements appear and how they are arranged. Android provides different types of layouts.</p>
+
+    <p><b>A. LinearLayout</b></p>
+    <p>LinearLayout arranges components in one direction: vertically (top to bottom) or horizontally (left to right).</p>
+    <figure><!-- <img src="../images/ui/linear-layout.jpg" alt="LinearLayout"> --><figcaption>LinearLayout</figcaption></figure>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome" /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    <p>Here, the TextView appears first, the Button appears below it, and <code>orientation="vertical"</code> arranges them from top to bottom.</p>
+
+    <p><b>B. RelativeLayout</b></p>
+    <p>RelativeLayout arranges components in relation to other components or the parent container. For example, you can place a button below a TextView.</p>
+    <figure><!-- <img src="../images/ui/relative-layout.jpg" alt="RelativeLayout"> --><figcaption>RelativeLayout</figcaption></figure>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login" /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_below="@id/title" /&gt;
+
+&lt;/RelativeLayout&gt;</code></pre>
+    <p>Here, the button is placed below the TextView.</p>
+
+    <p><b>C. ConstraintLayout</b></p>
+    <p>ConstraintLayout allows developers to position UI components using relationships called constraints. For example, you can:</p>
+    <ul><li>Center a button on the screen</li><li>Place a text field below a heading</li><li>Align two buttons</li><li>Control spacing between components</li></ul>
+    <figure><!-- <img src="../images/ui/constraint-layout.jpg" alt="ConstraintLayout"> --><figcaption>ConstraintLayout</figcaption></figure>
+    <p>It is commonly used in modern Android interface design because it can create complex layouts while keeping the view hierarchy relatively flat.</p>
+    <div class="explain"><b>Important:</b> LinearLayout, RelativeLayout, and ConstraintLayout are different ways to organize UI components. They are not buttons or text fields themselves.</div>
+
+    <h5 class="sub">8.3.3 Views</h5>
+    <p>A View is the basic building block of an Android user interface. Almost every visible UI element is a View or is built using Views.</p>
+    <div class="chips"><span>TextView</span><span>Button</span><span>EditText</span><span>ImageView</span><span>CheckBox</span><span>RadioButton</span></div>
+    <p>Think of Views as individual objects placed inside a screen. For example, a login screen might contain three Views: the email input field, the password input field and the login button.</p>
+    <figure><!-- <img src="../images/ui/views.jpg" alt="Views on a screen"> --><figcaption>Views on a screen</figcaption></figure>
+    <p>We will study Views in detail in Topic 7: Views.</p>
+
+    <h5 class="sub">8.3.4 TextView</h5>
+    <p>TextView is used to display text on the screen, for example welcome messages, application titles, student names, product prices and instructions.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Welcome to My App"
+    android:textSize="24sp" /&gt;</code></pre>
+    <p><b>Understanding:</b></p>
+    <ul>
+      <li><b>TextView:</b> creates a text display component.</li>
+      <li><b>layout_width:</b> defines its width.</li>
+      <li><b>layout_height:</b> defines its height.</li>
+      <li><b>text:</b> specifies the displayed text.</li>
+      <li><b>textSize:</b> controls the text size.</li>
+    </ul>
+    <div class="explain">Remember: TextView displays text; it is not primarily used for entering text.</div>
+
+    <h5 class="sub">8.3.5 EditText</h5>
+    <p>EditText allows users to enter information into an application, for example an email address, password, username, phone number or search text.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;EditText
+    android:id="@+id/email"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter your email"
+    android:inputType="textEmailAddress" /&gt;</code></pre>
+    <p><b>Understanding:</b></p>
+    <ul>
+      <li><b>EditText:</b> creates an input field.</li>
+      <li><b>id:</b> gives the component a unique identifier.</li>
+      <li><b>hint:</b> displays temporary guidance inside the empty field.</li>
+      <li><b>inputType:</b> specifies what kind of input is expected.</li>
+    </ul>
+    <p>For example, <code>textEmailAddress</code> tells Android that the field is intended for an email address.</p>
+
+    <h5 class="sub">8.3.6 Button</h5>
+    <p>A Button is a UI component that allows users to perform an action by tapping it, for example Login, Register, Submit, Save and Delete.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;Button
+    android:id="@+id/loginButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Login" /&gt;</code></pre>
+    <p>We can connect a click action to this button using Java:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Button loginButton = findViewById(R.id.loginButton);
+
+loginButton.setOnClickListener(v -&gt; {
+
+    System.out.println("Login button clicked");
+
+});</code></pre>
+    <p>When the user taps the button, the click listener executes the code inside it.</p>
+
+    <h5 class="sub">8.3.7 ImageView</h5>
+    <p>ImageView is used to display images inside an Android application, for example profile pictures, product images, application logos, background illustrations and icons.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;ImageView
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:src="@drawable/profile"
+    android:contentDescription="Profile picture" /&gt;</code></pre>
+    <ul>
+      <li><b>ImageView:</b> displays an image.</li>
+      <li><b>src:</b> specifies the image resource.</li>
+      <li><b>@drawable/profile:</b> refers to an image stored in the drawable resources.</li>
+      <li><b>contentDescription:</b> provides a description useful for accessibility.</li>
+    </ul>
+
+    <h5 class="sub">8.3.8 CheckBox</h5>
+    <p>A CheckBox allows users to select or deselect an option. It is useful when users can choose multiple options.</p>
+    <p><b>Example:</b> a registration form might ask users to select their interests: Programming, Networking, Database, Web Development. A user can select more than one checkbox.</p>
+    <figure><!-- <img src="../images/ui/checkbox.jpg" alt="CheckBox example"> --><figcaption>CheckBox</figcaption></figure>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;CheckBox
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Programming" /&gt;</code></pre>
+
+    <h5 class="sub">8.3.9 RadioButton</h5>
+    <p>A RadioButton allows users to select one option from a group of choices, for example Male, Female, Other. When RadioButtons are placed inside a RadioGroup, the user can select only one option in that group at a time.</p>
+    <figure><!-- <img src="../images/ui/radiobutton.jpg" alt="RadioButton example"> --><figcaption>RadioGroup with RadioButtons</figcaption></figure>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;RadioGroup
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"&gt;
+
+    &lt;RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Option 1" /&gt;
+
+    &lt;RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Option 2" /&gt;
+
+&lt;/RadioGroup&gt;</code></pre>
+
+    <h5 class="sub">8.3.10 ProgressBar</h5>
+    <p>A ProgressBar shows the progress of an operation, for example uploading a file, downloading a document, loading application data or processing information.</p>
+    <figure><!-- <img src="../images/ui/progressbar.jpg" alt="ProgressBar example"> --><figcaption>ProgressBar</figcaption></figure>
+    <p>It helps users understand that the application is working instead of appearing frozen.</p>
+
+    <h4>8.4 Other Important Screen Components</h4>
+    <p>Apart from the components explained above, Android applications can contain several other UI elements.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Component</th><th>Purpose</th></tr>
+      <tr><td>Toolbar</td><td>Displays the screen title and actions</td></tr>
+      <tr><td>Menu</td><td>Provides additional application options</td></tr>
+      <tr><td>Switch</td><td>Turns a setting on or off</td></tr>
+      <tr><td>Spinner</td><td>Displays a dropdown selection list</td></tr>
+      <tr><td>RecyclerView</td><td>Displays a large or changing list efficiently</td></tr>
+      <tr><td>ScrollView</td><td>Allows users to scroll through content</td></tr>
+      <tr><td>CardView</td><td>Displays content inside a card-style container</td></tr>
+      <tr><td>SeekBar</td><td>Allows users to select a value by moving a slider</td></tr>
+    </table></div>
+    <p>For example, a music application might use a SeekBar to let users control playback position.</p>
+
+    <h4>8.5 View and ViewGroup: What Is the Difference?</h4>
+    <p>This is an important concept in Android screen design.</p>
+    <div class="pc">
+      <div class="pro"><b>View</b><p>An individual UI component that displays information or accepts user input.</p><p>Examples: Button, TextView, EditText, ImageView.</p></div>
+      <div class="con"><b>ViewGroup</b><p>A special type of View that acts as a container for other Views and ViewGroups.</p><p>Examples: LinearLayout, RelativeLayout, ConstraintLayout, FrameLayout.</p></div>
+    </div>
+    <figure><!-- <img src="../images/ui/view-viewgroup.jpg" alt="View and ViewGroup"> --><figcaption>View and ViewGroup</figcaption></figure>
+    <div class="example"><b>Example:</b> imagine a box containing a book, a pen and a notebook. The box represents the ViewGroup, while the individual objects represent Views. In Android, LinearLayout is the container, and TextView, Button and ImageView are its children. This arrangement is called a <b>View Hierarchy</b>.</div>
+
+    <h4>8.6 XML Layout and Java Code: How Do They Work Together?</h4>
+    <p>Android developers commonly use XML to design the screen and Java or Kotlin to control its behavior. Let's understand this with a login screen.</p>
+
+    <h5 class="sub">Step 1: Design the screen using XML</h5>
+    <p>Create <code>activity_main.xml</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student Login"
+        android:textSize="25sp" /&gt;
+
+    &lt;EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter email"
+        android:inputType="textEmailAddress" /&gt;
+
+    &lt;Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    <p>This XML creates three components: the TextView displays the heading, the EditText accepts the email, and the Button allows the user to perform an action.</p>
+
+    <h5 class="sub">Step 2: Control the screen using Java</h5>
+    <p>Create or open <code>MainActivity.java</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        EditText email = findViewById(R.id.email);
+
+        Button loginButton = findViewById(R.id.loginButton);
+
+        loginButton.setOnClickListener(v -&gt; {
+
+            String userEmail = email.getText().toString();
+
+            Toast.makeText(
+                this,
+                "Welcome " + userEmail,
+                Toast.LENGTH_SHORT
+            ).show();
+
+        });
+    }
+}</code></pre>
+
+    <h5 class="sub">Step 3: Understand how everything works</h5>
+    <p>When the application starts:</p>
+    <ol class="steps">
+      <li>Android opens MainActivity.</li>
+      <li><code>setContentView()</code> loads the XML layout.</li>
+      <li>The TextView, EditText, and Button appear on the screen.</li>
+      <li><code>findViewById()</code> finds the email field and button using their IDs.</li>
+      <li><code>setOnClickListener()</code> waits for the user to click Login.</li>
+      <li>When the user clicks, the program reads the email.</li>
+      <li>A Toast message displays the entered email.</li>
+    </ol>
+    <div class="explain"><b>Important concept:</b> XML defines how the screen looks, while Java/Kotlin defines how the screen behaves. This separation makes application development easier to organize.</div>
+
+    <h4>8.7 Important Layout Attributes</h4>
+    <p>Android provides different attributes to control the appearance and position of UI components.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Attribute</th><th>Meaning</th></tr>
+      <tr><td><code>layout_width</code></td><td>Controls component width</td></tr>
+      <tr><td><code>layout_height</code></td><td>Controls component height</td></tr>
+      <tr><td><code>id</code></td><td>Gives a component a unique identifier</td></tr>
+      <tr><td><code>text</code></td><td>Sets displayed text</td></tr>
+      <tr><td><code>textSize</code></td><td>Controls text size</td></tr>
+      <tr><td><code>textColor</code></td><td>Sets text color</td></tr>
+      <tr><td><code>background</code></td><td>Sets the background</td></tr>
+      <tr><td><code>padding</code></td><td>Adds space inside a component</td></tr>
+      <tr><td><code>layout_margin</code></td><td>Adds space outside a component</td></tr>
+      <tr><td><code>gravity</code></td><td>Controls content alignment inside a component</td></tr>
+      <tr><td><code>visibility</code></td><td>Controls whether a component is visible</td></tr>
+    </table></div>
+
+    <h5 class="sub">Important: match_parent and wrap_content</h5>
+    <p>These two values are frequently used in Android layouts.</p>
+    <p><b>match_parent</b> tells a component to take up the available space provided by its parent. It makes the component fill the available width.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>android:layout_width="match_parent"</code></pre>
+    <p><b>wrap_content</b> tells a component to take only the space needed for its content. If a button contains the text "Login", it will take enough width to display that text and its internal padding.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>android:layout_width="wrap_content"</code></pre>
+
+    <h5 class="sub">Padding vs Margin</h5>
+    <p>These two terms are often confused.</p>
+    <div class="pc">
+      <div class="pro"><b>Padding</b><p>Space between the component's content and its border.</p></div>
+      <div class="con"><b>Margin</b><p>Space outside the component, separating it from other components.</p></div>
+    </div>
+    <figure><!-- <img src="../images/ui/padding-margin.jpg" alt="Padding and margin"> --><figcaption>Padding vs margin</figcaption></figure>
+
+    <h4>8.8 Complete Example: Student Registration Screen</h4>
+    <p>Let's combine the components we have learned. Imagine you are developing a student registration application.</p>
+    <figure><!-- <img src="../images/ui/registration-screen.jpg" alt="Student registration screen"> --><figcaption>Student registration screen</figcaption></figure>
+    <p>The screen may contain:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Screen component</th><th>Purpose</th></tr>
+      <tr><td>TextView</td><td>Displays Registration Form</td></tr>
+      <tr><td>EditText</td><td>Accepts student name</td></tr>
+      <tr><td>EditText</td><td>Accepts email address</td></tr>
+      <tr><td>RadioGroup</td><td>Allows gender selection</td></tr>
+      <tr><td>Spinner</td><td>Allows course selection</td></tr>
+      <tr><td>CheckBox</td><td>Allows selection of terms and conditions</td></tr>
+      <tr><td>Button</td><td>Submits registration</td></tr>
+      <tr><td>ProgressBar</td><td>Shows registration processing</td></tr>
+    </table></div>
+    <p>When the user enters information and clicks Submit, the Activity handles the action and processes the entered information. This example demonstrates how multiple screen components work together to create one complete application interface.</p>
+
+    <h4>8.9 Advantages of Using Screen Components</h4>
+    <div class="pro"><ol>
+      <li><b>Easy Development:</b> build screens using ready-made UI components.</li>
+      <li><b>Code Reusability:</b> components can be reused in different application screens.</li>
+      <li><b>Better Organization:</b> layouts keep screen elements organized.</li>
+      <li><b>User Interaction:</b> buttons, input fields, and other controls allow users to interact with applications.</li>
+      <li><b>Easy Maintenance:</b> separating screen design from application logic makes changes easier.</li>
+      <li><b>Flexible Design:</b> different layouts support different screen sizes and arrangements.</li>
+      <li><b>Accessibility:</b> properly configured components can support screen readers and other accessibility features.</li></ol></div>
+
+    <h4>8.10 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is an Android screen?</li><li>Define Activity.</li><li>What is a Layout?</li><li>What is a View?</li>
+      <li>What is a ViewGroup?</li><li>What is the purpose of TextView?</li>
+      <li>What is the difference between TextView and EditText?</li><li>What is the purpose of ImageView?</li>
+      <li>What is the difference between CheckBox and RadioButton?</li><li>What is the purpose of ProgressBar?</li>
+      <li>What is the difference between match_parent and wrap_content?</li><li>Differentiate between padding and margin.</li>
+      <li>What is the purpose of setContentView()?</li><li>What is the purpose of findViewById()?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain the main components of an Android screen.</li>
+      <li>Describe different types of Android layouts with examples.</li>
+      <li>Explain View and ViewGroup with a suitable diagram.</li>
+      <li>Explain the role of Activity in Android screen development.</li>
+      <li>Explain how XML and Java work together to create an Android user interface.</li>
+      <li>Describe the different UI widgets used in Android application development.</li></ol></details>
+
+    <h4>8.11 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>Activity</td><td>Provides a window for an application screen</td></tr>
+      <tr><td>Layout</td><td>Arranges UI components</td></tr>
+      <tr><td>View</td><td>Basic UI element</td></tr>
+      <tr><td>ViewGroup</td><td>Container for other Views</td></tr>
+      <tr><td>TextView</td><td>Displays text</td></tr>
+      <tr><td>EditText</td><td>Accepts user input</td></tr>
+      <tr><td>Button</td><td>Performs an action when clicked</td></tr>
+      <tr><td>ImageView</td><td>Displays images</td></tr>
+      <tr><td>CheckBox</td><td>Allows multiple selections</td></tr>
+      <tr><td>RadioButton</td><td>Allows one selection in a group</td></tr>
+      <tr><td>ProgressBar</td><td>Shows progress</td></tr>
+      <tr><td>XML</td><td>Defines the screen design</td></tr>
+      <tr><td>Java/Kotlin</td><td>Controls application behavior</td></tr>
+      <tr><td>View Hierarchy</td><td>Parent-child structure of Views</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+<!-- ===== 9. ADAPTING TO DISPLAY ORIENTATION IN ANDROID ===== -->
+<section class="topic-card" id="display-orientation" data-group="User interface and screens">
+  <div class="banner">
+    <h3>Adapting to Display Orientation in Android</h3>
+    <p>Portrait, landscape and layouts that fit both</p>
+  </div>
+  <div class="body">
+
+    <h4>9.1 Introduction</h4>
+    <p>Android applications run on devices with different screen sizes and orientations. For example, when you hold your mobile phone normally, the screen is usually vertical. When you rotate your phone sideways, the screen becomes horizontal.</p>
+    <p>An Android application should adjust its user interface according to the screen orientation so that users can easily view and use the application.</p>
+    <div class="def"><b>Definition:</b> Adapting to Display Orientation is the process of adjusting an application's user interface according to the direction in which a device is held, such as portrait or landscape mode.</div>
+    <figure><!-- <img src="../images/ui/orientation-intro.jpg" alt="Portrait and landscape"> --><figcaption>Portrait and landscape orientation</figcaption></figure>
+
+    <h4>9.2 What Is Screen Orientation?</h4>
+    <p>Screen orientation refers to the direction in which the content of a device's screen is displayed. Android mainly supports two commonly used orientations: portrait and landscape.</p>
+    <div class="pc">
+      <div class="pro"><b>9.2.1 Portrait Orientation</b>
+        <p>The device is held vertically.</p>
+        <ul><li>The screen is taller than it is wide</li><li>Content is arranged mainly from top to bottom</li><li>Commonly used for reading, messaging, browsing, and social media applications</li></ul>
+        <p><i>Example:</i> WhatsApp on a phone held normally usually displays its interface in portrait orientation.</p></div>
+      <div class="con"><b>9.2.2 Landscape Orientation</b>
+        <p>The device is held horizontally.</p>
+        <ul><li>The screen is wider than it is tall</li><li>Content can be arranged from left to right</li><li>It provides more horizontal space</li><li>Commonly useful for videos, games, presentations, and maps</li></ul>
+        <p><i>Example:</i> when you rotate your phone while watching a video, the video may expand to use the wider screen.</p></div>
+    </div>
+    <figure><!-- <img src="../images/ui/portrait-landscape.jpg" alt="Portrait vs landscape example"> --><figcaption>Portrait (left) and landscape (right)</figcaption></figure>
+
+    <h4>9.3 Why Is Adapting to Screen Orientation Important?</h4>
+    <p>Imagine that you create a student management application. In portrait mode, the application displays the student name at the top, the student picture below the name, attendance information and result information. Now imagine the user rotates the phone into landscape mode. If the application does not adjust its layout, some content may become difficult to see or may require excessive scrolling. Adapting the interface solves this problem.</p>
+    <p><b>Main reasons</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Better User Experience</h5><p>Users can use the application comfortably in both orientations.</p></div>
+      <div class="mini"><h5>2. Better Use of Screen Space</h5><p>The application can arrange content according to the available width and height.</p></div>
+      <div class="mini"><h5>3. Improved Readability</h5><p>Text, images, and buttons can be positioned appropriately.</p></div>
+      <div class="mini"><h5>4. Flexible Interface</h5><p>The same application can work on phones, tablets, and other screen sizes.</p></div>
+      <div class="mini"><h5>5. Better Application Design</h5><p>Developers can provide different layouts for different orientations.</p></div>
+    </div>
+
+    <h4>9.4 How Does Android Detect Screen Orientation?</h4>
+    <p>Android devices use sensors, particularly the accelerometer, to detect changes in device position. The accelerometer measures acceleration along different directions. When a user rotates a phone, Android can use sensor information to determine whether the device is being held vertically or horizontally. The system can then update the display orientation according to the device's settings and application configuration.</p>
+    <p><b>Example:</b></p>
+    <ol class="steps">
+      <li>You open a calculator application.</li>
+      <li>The phone is held vertically.</li>
+      <li>The calculator displays its portrait layout.</li>
+      <li>You rotate the phone horizontally.</li>
+      <li>Android detects the orientation change.</li>
+      <li>The application can display a landscape layout.</li>
+    </ol>
+    <figure><!-- <img src="../images/ui/accelerometer.jpg" alt="Accelerometer detecting rotation"> --><figcaption>Orientation detection</figcaption></figure>
+
+    <h4>9.5 How Can Developers Adapt an Android Screen to Different Orientations?</h4>
+    <p>Android provides different methods for creating layouts that work in portrait and landscape modes. The most common traditional XML approach is to create separate layout resources.</p>
+
+    <h5 class="sub">9.5.1 Using a Default Layout</h5>
+    <p>First, developers create a normal layout inside the <code>res/layout</code> folder.</p>
+<pre><code>MyApplication
+    |
+    └── app
+        |
+        └── src
+            |
+            └── main
+                |
+                └── res
+                    |
+                    └── layout
+                        |
+                        └── activity_main.xml</code></pre>
+    <p>The <code>activity_main.xml</code> file contains the default screen design. Android uses this layout when no more specific matching layout resource is available.</p>
+
+    <h5 class="sub">9.5.2 Creating a Separate Landscape Layout</h5>
+    <p>Developers can create another folder named <code>res/layout-land/</code>. The <code>land</code> qualifier tells Android that these layouts are intended for landscape orientation. The project structure becomes:</p>
+<pre><code>res
+ |
+ |---- layout
+ |       |
+ |       |---- activity_main.xml
+ |
+ |---- layout-land
+         |
+         |---- activity_main.xml</code></pre>
+    <p>Notice that both files have the same name, but they are stored in different folders.</p>
+    <ul>
+      <li><code>layout/activity_main.xml</code> contains the default layout.</li>
+      <li><code>layout-land/activity_main.xml</code> contains the landscape layout.</li>
+    </ul>
+    <figure><!-- <img src="../images/ui/layout-land-folder.jpg" alt="layout and layout-land folders"> --><figcaption>layout and layout-land folders in Android Studio</figcaption></figure>
+    <p><b>How does Android choose?</b> When the device is in portrait mode, Android normally selects the default matching layout. When the device is in landscape mode, Android can select the layout from <code>layout-land</code>. Developers do not need to manually write code to select between these resource folders.</p>
+
+    <h4>9.6 Practical Example: Creating Portrait and Landscape Layouts</h4>
+    <p>Let's create a simple student application. We want the screen to display the student's information differently in portrait and landscape modes.</p>
+
+    <h5 class="sub">Step 1: Create the Portrait Layout</h5>
+    <p>Create this file: <code>res/layout/activity_main.xml</code></p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student Profile"
+        android:textSize="25sp" /&gt;
+
+    &lt;ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/profile"
+        android:contentDescription="Student profile picture" /&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name: Muhammad"
+        android:textSize="18sp" /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Results" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    <p><b>Understanding:</b> the layout uses a vertical LinearLayout, so the components appear one below another: the Student Profile heading, the student picture, the student name and the View Results button. This arrangement is suitable for a narrow portrait screen.</p>
+    <figure><!-- <img src="../images/ui/portrait-output.jpg" alt="Portrait layout output"> --><figcaption>Portrait layout output</figcaption></figure>
+
+    <h5 class="sub">Step 2: Create the Landscape Layout</h5>
+    <p>Create the folder <code>res/layout-land/</code>. Inside this folder, create another file named <code>activity_main.xml</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="20dp"&gt;
+
+    &lt;ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/profile"
+        android:contentDescription="Student profile picture" /&gt;
+
+    &lt;LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Profile"
+            android:textSize="25sp" /&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: Muhammad"
+            android:textSize="18sp" /&gt;
+
+        &lt;Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Results" /&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    <p><b>Understanding:</b> this layout uses a horizontal LinearLayout. The student picture appears on the left and the student information appears on the right. The heading, name, and button are arranged vertically inside the second LinearLayout. This arrangement uses the wider landscape screen more effectively.</p>
+    <figure><!-- <img src="../images/ui/landscape-output.jpg" alt="Landscape layout output"> --><figcaption>Landscape layout output</figcaption></figure>
+
+    <h5 class="sub">Step 3: Connect the Layout with the Activity</h5>
+    <p>You do not need to write separate Java code for portrait and landscape layouts. You can use the same Activity:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+    }
+}</code></pre>
+    <p>Android automatically selects the appropriate <code>activity_main.xml</code> resource based on the current configuration.</p>
+    <div class="explain"><b>Important:</b> both XML files represent the same layout resource name. Android selects the appropriate version; developers do not need to manually switch between them.</div>
+
+    <h4>9.7 Other Ways to Create Orientation-Friendly Screens</h4>
+    <p>Separate portrait and landscape layouts are useful, but they are not the only solution. Android provides other techniques to make applications work properly on different screens.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>9.7.1 Using Responsive Layouts</h5><p>A responsive layout adjusts its components according to the available screen space. For example, instead of giving every button a fixed width of 300dp, developers can use available width or constraints. This helps the application work on devices with different screen dimensions.</p></div>
+      <div class="mini"><h5>9.7.2 Using ConstraintLayout</h5><p>ConstraintLayout positions components according to relationships between them. For example, a heading can remain at the top, an image can stay centered, a button can remain below the image, and components can expand or move according to available space. It is useful for flexible interfaces without too many nested layouts.</p></div>
+    </div>
+
+    <h5 class="sub">9.7.3 Using ScrollView</h5>
+    <p>Sometimes the landscape screen has less vertical space than the portrait screen. As a result, some content may not fit. A ScrollView allows users to scroll vertically to access content that does not fit on the screen.</p>
+    <figure><!-- <img src="../images/ui/scrollview.jpg" alt="ScrollView example"> --><figcaption>ScrollView</figcaption></figure>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"&gt;
+
+        &lt;!-- Add screen components here --&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</code></pre>
+    <p>The user can scroll to see all the content.</p>
+
+    <h5 class="sub">9.7.4 Using Different Resources for Different Screen Sizes</h5>
+    <p>Android also allows developers to create alternative resources for different device configurations. This allows developers to design interfaces that work across phones and tablets.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Resource folder</th><th>Purpose</th></tr>
+      <tr><td><code>layout/</code></td><td>Default layouts</td></tr>
+      <tr><td><code>layout-land/</code></td><td>Landscape layouts</td></tr>
+      <tr><td><code>layout-sw600dp/</code></td><td>Layouts for devices with a smallest width of at least 600dp</td></tr>
+      <tr><td><code>drawable/</code></td><td>Default image resources</td></tr>
+      <tr><td><code>drawable-land/</code></td><td>Landscape-specific drawable resources</td></tr>
+    </table></div>
+
+    <h4>9.8 Important Units Used in Android Screen Design</h4>
+    <p>To create flexible interfaces, developers should understand these units.</p>
+    <div class="pc">
+      <div class="pro"><b>9.8.1 DP (Density-independent Pixels)</b>
+        <p>A unit used to define the size of UI components. It helps maintain relatively consistent physical sizes across screens with different pixel densities.</p>
+        <pre><code>android:layout_width="200dp"</code></pre>
+        <p>This defines a width of 200 density-independent pixels.</p></div>
+      <div class="con"><b>9.8.2 SP (Scale-independent Pixels)</b>
+        <p>Mainly used for text sizes. It takes the user's font-size preference into account.</p>
+        <pre><code>android:textSize="20sp"</code></pre>
+        <p>This defines text using 20 scale-independent pixels.</p></div>
+    </div>
+    <div class="explain">Remember: use DP mainly for component dimensions and spacing; use SP mainly for text sizes.</div>
+
+    <h4>9.9 Advantages and 9.10 Disadvantages</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages of adapting display orientation</b><ol>
+        <li><b>Better User Experience:</b> users can use the application in portrait and landscape modes.</li>
+        <li><b>Effective Screen Usage:</b> better use of available space.</li>
+        <li><b>Improved Readability:</b> components can be arranged appropriately.</li>
+        <li><b>Flexible Interface:</b> different layouts can support different device configurations.</li>
+        <li><b>Better Multimedia Experience:</b> videos, games, and presentations can benefit from landscape mode.</li>
+        <li><b>Multiple Device Support:</b> flexible designs can work across phones and tablets.</li></ol></div>
+      <div class="con"><b>Disadvantages and challenges</b><ol>
+        <li><b>Extra Development Work:</b> developers may need to create and maintain separate layouts.</li>
+        <li><b>Testing Requirements:</b> test in different orientations and screen sizes.</li>
+        <li><b>Layout Problems:</b> poorly designed layouts may overlap or hide components.</li>
+        <li><b>Different Space Requirements:</b> landscape mode often provides less vertical space.</li>
+        <li><b>Resource Management:</b> alternative resources must be organized and maintained correctly.</li></ol></div>
+    </div>
+
+    <h4>9.11 Real-Life Examples</h4>
+    <p>Let's see how different applications use screen orientation.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>YouTube</h5><p>Portrait mode displays video information and recommendations. Landscape mode provides a wider video viewing experience.</p><figure><!-- <img src="../images/ui/youtube-orientation.jpg" alt="YouTube portrait and landscape"> --></figure></div>
+      <div class="mini"><h5>Mobile Games</h5><p>Many racing and action games use landscape mode to provide a wider playing area and better control placement.</p><figure><!-- <img src="../images/ui/game-orientation.jpg" alt="Mobile game in landscape"> --></figure></div>
+      <div class="mini"><h5>Calculator</h5><p>Portrait mode may display basic calculations, while landscape mode can provide space for additional scientific functions.</p><figure><!-- <img src="../images/ui/calculator-orientation.jpg" alt="Calculator portrait and landscape"> --></figure></div>
+    </div>
+
+    <h4>9.12 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is screen orientation?</li><li>Define portrait orientation.</li><li>Define landscape orientation.</li>
+      <li>Why is adapting display orientation important?</li><li>What is the purpose of the layout-land folder?</li>
+      <li>What is a responsive layout?</li><li>What is the purpose of ScrollView?</li>
+      <li>What is the difference between DP and SP?</li><li>How does Android detect device orientation?</li>
+      <li>What is ConstraintLayout?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define display orientation and explain portrait and landscape modes.</li>
+      <li>Explain the importance of adapting an Android application to different screen orientations.</li>
+      <li>Explain how developers create separate layouts for portrait and landscape modes.</li>
+      <li>Describe the methods used to create orientation-friendly Android applications.</li>
+      <li>Explain how Android selects the appropriate layout when screen orientation changes.</li></ol></details>
+
+    <h4>9.13 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>Screen Orientation</td><td>Direction of the device display</td></tr>
+      <tr><td>Portrait</td><td>Vertical screen</td></tr>
+      <tr><td>Landscape</td><td>Horizontal screen</td></tr>
+      <tr><td>Accelerometer</td><td>Sensor that measures acceleration</td></tr>
+      <tr><td><code>layout/</code></td><td>Default layout resources</td></tr>
+      <tr><td><code>layout-land/</code></td><td>Landscape-specific layouts</td></tr>
+      <tr><td>Responsive Layout</td><td>Adjusts to available screen space</td></tr>
+      <tr><td>ConstraintLayout</td><td>Positions components using constraints</td></tr>
+      <tr><td>ScrollView</td><td>Allows scrolling through content</td></tr>
+      <tr><td>DP</td><td>Unit for UI dimensions</td></tr>
+      <tr><td>SP</td><td>Unit mainly used for text size</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+<!-- ===== 10. MANAGING CHANGES TO SCREEN ORIENTATION IN ANDROID ===== -->
+<section class="topic-card" id="manage-orientation-changes" data-group="User interface and screens">
+  <div class="banner">
+    <h3>Managing Changes to Screen Orientation in Android</h3>
+    <p>What happens when the phone rotates, and how to keep user data</p>
+  </div>
+  <div class="body">
+
+    <h4>10.1 Introduction</h4>
+    <p>In the previous topic, we learned about screen orientation and how Android applications adjust their layouts between Portrait and Landscape modes. Now we will learn what happens internally when a user rotates a mobile phone and how Android manages these changes.</p>
+    <p>Imagine that you are using a student management application and you enter this information:</p>
+    <ul><li>Student name: Muhammad</li><li>Email: muhammad@example.com</li><li>Phone number: 03001234567</li></ul>
+    <p>Suddenly, you rotate your phone from portrait to landscape mode. The screen changes its orientation. But what happens to the information you entered? Will it remain there, or will it disappear? This is the main problem that developers must understand when managing orientation changes.</p>
+    <div class="def"><b>Definition:</b> Managing Changes to Screen Orientation is the process of handling changes in an Android device's display direction while maintaining the application's functionality and preserving user data.</div>
+
+    <h4>10.2 What Happens When We Rotate a Phone?</h4>
+    <p>When a user rotates a phone, Android detects a configuration change. By default, an Activity is usually destroyed and recreated to adjust to the new configuration. Let's understand this process step by step.</p>
+    <figure><!-- <img src="../images/ui/orientation-change-flow.jpg" alt="What happens when the phone rotates"> --><figcaption>Rotation and Activity recreation</figcaption></figure>
+    <ol class="steps">
+      <li><b>Application is running:</b> the user opens an application in portrait mode. The Activity is running, and the user is interacting with the screen.</li>
+      <li><b>User rotates the phone:</b> the device is rotated from portrait to landscape mode. Android detects that the device configuration has changed.</li>
+      <li><b>Old Activity is destroyed:</b> in the normal configuration-change process, Android destroys the current Activity instance. Its lifecycle methods are called, including <code>onPause()</code>, <code>onStop()</code> and <code>onDestroy()</code>.</li>
+      <li><b>New Activity is created:</b> Android creates a new Activity instance. The <code>onCreate()</code> method runs again.</li>
+      <li><b>New layout is loaded:</b> Android selects the appropriate layout for the new orientation. Portrait: <code>res/layout/activity_main.xml</code>. Landscape: <code>res/layout-land/activity_main.xml</code>.</li>
+      <li><b>Application continues:</b> the Activity displays the new layout. If the developer has properly saved and restored the required information, the user can continue working without losing important data.</li>
+    </ol>
+
+    <h4>10.3 What Is Activity Recreation?</h4>
+    <div class="def"><b>Activity Recreation</b> means destroying an existing Activity instance and creating a new Activity instance.</div>
+    <p>Android may recreate an Activity when certain device configurations change. Examples include:</p>
+    <ol><li>Screen orientation changes</li><li>Device language changes</li><li>Screen size changes</li><li>Certain display configuration changes</li></ol>
+    <p><b>Why does Android recreate an Activity?</b> Different configurations may require different resources and layouts. For example, a portrait screen may use a vertical layout, while a landscape screen may use a horizontal layout. Recreating the Activity allows Android to initialize the interface using the new configuration.</p>
+    <div class="explain"><b>Important:</b> Activity recreation does not necessarily mean that the entire application is closed. The Activity is recreated while the application process and other components may continue running.</div>
+
+    <h4>10.4 Problems Caused by Activity Recreation</h4>
+    <p>Activity recreation can create problems if developers do not manage data properly. Three common problems:</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>10.4.1 Loss of User Input</h5><p>Suppose a user is filling out a registration form and enters Name: Muhammad, Email: muhammad@example.com, Age: 22. After rotation, the Activity is recreated. If the application does not preserve the entered information, the fields may become empty. This creates a poor user experience.</p></div>
+      <div class="mini"><h5>10.4.2 Loss of Temporary Data</h5><p>Temporary information may include the current search text, selected tab, current question number, selected item and form progress. If it is not saved, the application may return to its initial state after recreation.</p></div>
+      <div class="mini"><h5>10.4.3 Repeating Operations</h5><p>If an application is loading information from a server and the developer does not manage the operation correctly, Activity recreation may cause unnecessary repeated work. For example, the application might request the same information again, wasting network resources and processing time.</p></div>
+    </div>
+
+    <h4>10.5 How to Manage Orientation Changes</h4>
+    <p>Android provides different techniques for managing Activity recreation and preserving application state. Let's understand the most important methods.</p>
+
+    <h5 class="sub">10.5.1 Using onSaveInstanceState()</h5>
+    <p><code>onSaveInstanceState()</code> is a lifecycle callback that allows developers to save a small amount of temporary UI state before an Activity may be destroyed. For example, we can save entered text, selected options, the current screen position and the current question number.</p>
+    <p><b>Example:</b> the user enters a name into an EditText, and we want to save that name before the Activity is recreated.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>@Override
+protected void onSaveInstanceState(Bundle outState) {
+
+    super.onSaveInstanceState(outState);
+
+    EditText nameField = findViewById(R.id.name);
+
+    String name = nameField.getText().toString();
+
+    outState.putString("student_name", name);
+}</code></pre>
+    <p><b>Let's understand the code:</b></p>
+    <ol>
+      <li><b>onSaveInstanceState():</b> called when Android is saving the Activity's state.</li>
+      <li><b>Bundle outState:</b> a container used to store small amounts of data as key-value pairs.</li>
+      <li><b>findViewById():</b> finds the EditText component using its ID.</li>
+      <li><b>getText().toString():</b> gets the text entered by the user and converts it into a String.</li>
+      <li><b>putString():</b> stores the name inside the Bundle. Key: <code>"student_name"</code>; value: the entered student name.</li>
+    </ol>
+
+    <h5 class="sub">10.5.2 Using onCreate() to Restore Data</h5>
+    <p>Saving data is not enough. We must also restore it when the Activity is recreated. We can use the Bundle received by <code>onCreate()</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+
+    super.onCreate(savedInstanceState);
+
+    setContentView(R.layout.activity_main);
+
+    EditText nameField = findViewById(R.id.name);
+
+    if (savedInstanceState != null) {
+
+        String savedName =
+            savedInstanceState.getString("student_name");
+
+        nameField.setText(savedName);
+    }
+}</code></pre>
+    <p><b>Let's understand this code:</b></p>
+    <ol>
+      <li><b>savedInstanceState:</b> contains the previously saved state when one is available.</li>
+      <li><b>if (savedInstanceState != null):</b> checks whether saved information exists.</li>
+      <li><b>getString():</b> retrieves the saved student name using its key.</li>
+      <li><b>setText():</b> places the saved name back into the EditText field.</li>
+    </ol>
+    <p><b>Result:</b> when the user rotates the phone, the Activity saves the entered name, Android recreates the Activity, the new Activity retrieves the saved name and the EditText displays the previous name. The user does not need to enter the name again.</p>
+
+    <h4>10.6 Understanding Bundle in Android</h4>
+    <div class="def">A <b>Bundle</b> is an Android class used to store and transfer small amounts of data using key-value pairs.</div>
+    <p>Think of it like a small storage box. You put information inside using a key, and later retrieve that information using the same key.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Bundle data = new Bundle();
+
+data.putString("name", "Muhammad");
+
+data.putInt("age", 22);
+
+data.putBoolean("isStudent", true);</code></pre>
+    <p>Here we store three values:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Key</th><th>Value</th><th>Data type</th></tr>
+      <tr><td>name</td><td>Muhammad</td><td>String</td></tr>
+      <tr><td>age</td><td>22</td><td>Integer</td></tr>
+      <tr><td>isStudent</td><td>true</td><td>Boolean</td></tr>
+    </table></div>
+    <p>To retrieve the information:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>String name = data.getString("name");
+
+int age = data.getInt("age");
+
+boolean student = data.getBoolean("isStudent");</code></pre>
+    <div class="explain"><b>Remember:</b> Bundle is suitable for small, temporary state information. It is not intended to store large files or permanent application data.</div>
+
+    <h4>10.7 Using ViewModel to Preserve Data</h4>
+    <p>Another important Android technique is using a ViewModel. A ViewModel is a component that stores and manages UI-related data. One of its important benefits is that it survives Activity recreation caused by configuration changes, such as screen rotation.</p>
+    <figure><!-- <img src="../images/ui/viewmodel.jpg" alt="ViewModel surviving rotation"> --><figcaption>ViewModel across Activity recreation</figcaption></figure>
+    <p><b>Example:</b> a user is completing a long registration form, and the application stores the entered information in a ViewModel. When the phone rotates:</p>
+    <ol class="steps">
+      <li>The Activity is recreated.</li>
+      <li>The old Activity instance is destroyed.</li>
+      <li>The ViewModel remains available.</li>
+      <li>The new Activity obtains the existing ViewModel.</li>
+      <li>The application displays the previously stored information.</li>
+    </ol>
+    <p><b>Simple Java example</b></p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>public class StudentViewModel extends ViewModel {
+
+    private String studentName = "";
+
+    public void setStudentName(String name) {
+
+        studentName = name;
+    }
+
+    public String getStudentName() {
+
+        return studentName;
+    }
+}</code></pre>
+    <p>The Activity can obtain the ViewModel:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>StudentViewModel model =
+    new ViewModelProvider(this)
+        .get(StudentViewModel.class);</code></pre>
+    <p>The Activity can save a name, and retrieve it later:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>model.setStudentName("Muhammad");
+
+String name = model.getStudentName();</code></pre>
+    <p>When the Activity is recreated due to a configuration change, the same ViewModel instance is retained.</p>
+    <div class="explain"><b>Important distinction:</b> <code>onSaveInstanceState()</code> saves small pieces of temporary state in a Bundle. ViewModel manages UI-related data across configuration changes. Neither one alone guarantees permanent data storage if the application process is killed. For important permanent information, developers can use databases or other persistent storage solutions.</div>
+
+    <h4>10.8 Using onConfigurationChanged()</h4>
+    <p>Android also provides a method called <code>onConfigurationChanged()</code>. It is used when an application wants to handle certain configuration changes itself instead of allowing Android to recreate the Activity for those changes.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>@Override
+public void onConfigurationChanged(Configuration newConfig) {
+
+    super.onConfigurationChanged(newConfig);
+
+    if (newConfig.orientation ==
+            Configuration.ORIENTATION_LANDSCAPE) {
+
+        // Handle landscape mode
+
+    } else if (newConfig.orientation ==
+            Configuration.ORIENTATION_PORTRAIT) {
+
+        // Handle portrait mode
+    }
+}</code></pre>
+    <p>This method checks whether the device is in portrait or landscape orientation. However, simply overriding this method does not stop Activity recreation. Developers must also declare the relevant configuration changes in the Activity's manifest.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;activity
+    android:name=".MainActivity"
+    android:configChanges="orientation|screenSize" /&gt;</code></pre>
+    <p>Now the Activity can receive these declared configuration changes through <code>onConfigurationChanged()</code> rather than being automatically recreated for them.</p>
+    <div class="explain"><b>Important:</b> this approach should be used carefully. Developers become responsible for updating the interface and handling the affected resources correctly. For most applications, allowing Android to recreate the Activity and using ViewModel and saved state is the preferred approach.</div>
+
+    <h4>10.9 Difference Between Important Methods</h4>
+    <p>These methods are often confusing, so understand their purposes carefully.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Method</th><th>Purpose</th></tr>
+      <tr><td><code>onSaveInstanceState()</code></td><td>Saves temporary UI state</td></tr>
+      <tr><td><code>onCreate()</code></td><td>Creates the Activity and restores available saved state</td></tr>
+      <tr><td><code>onRestoreInstanceState()</code></td><td>Restores saved state after onStart() when available</td></tr>
+      <tr><td><code>onConfigurationChanged()</code></td><td>Handles declared configuration changes without automatic recreation</td></tr>
+      <tr><td><code>onDestroy()</code></td><td>Called when the Activity is being destroyed</td></tr>
+    </table></div>
+
+    <h5 class="sub">Understanding onRestoreInstanceState()</h5>
+    <p>This method is another way to restore saved information.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>@Override
+protected void onRestoreInstanceState(Bundle savedInstanceState) {
+
+    super.onRestoreInstanceState(savedInstanceState);
+
+    String name =
+        savedInstanceState.getString("student_name");
+
+    EditText nameField = findViewById(R.id.name);
+
+    nameField.setText(name);
+}</code></pre>
+    <p>It is called after <code>onStart()</code> when there is saved instance state to restore. You can restore state in either <code>onCreate()</code> or <code>onRestoreInstanceState()</code>, depending on your application design.</p>
+
+    <h4>10.10 Complete Working Process</h4>
+    <p>Let's understand the complete process using a registration form.</p>
+    <figure><!-- <img src="../images/ui/registration-rotation.jpg" alt="Registration form after rotation"> --><figcaption>Registration form before and after rotation</figcaption></figure>
+    <p>Imagine the user enters Name: Muhammad, Email: muhammad@example.com and Age: 22. Then the user rotates the phone. The process is:</p>
+<pre><code>User enters information
+          |
+          ↓
+User rotates phone
+          |
+          ↓
+Android detects configuration change
+          |
+          ↓
+Activity saves temporary state
+          |
+          ↓
+Old Activity is destroyed
+          |
+          ↓
+New Activity is created
+          |
+          ↓
+New layout is loaded
+          |
+          ↓
+Saved information is restored
+          |
+          ↓
+User continues working</code></pre>
+    <p>This process helps maintain a smooth user experience.</p>
+
+    <h4>10.11 Advantages of Managing Orientation Changes</h4>
+    <div class="pro"><ol>
+      <li><b>Prevents Data Loss:</b> users do not need to enter information again.</li>
+      <li><b>Better User Experience:</b> applications continue working smoothly after rotation.</li>
+      <li><b>Maintains Application State:</b> temporary information can be restored.</li>
+      <li><b>Improves Reliability:</b> applications behave more consistently.</li>
+      <li><b>Better Resource Management:</b> ViewModel and proper lifecycle handling help avoid unnecessary work.</li>
+      <li><b>Supports Different Devices:</b> applications can handle configuration changes more effectively.</li></ol></div>
+
+    <h4>10.12 Common Problems and Solutions</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Problem</th><th>Solution</th></tr>
+      <tr><td>Text disappears after rotation</td><td>Save and restore the UI state</td></tr>
+      <tr><td>Selected tab resets</td><td>Store the selected tab</td></tr>
+      <tr><td>Application repeats network requests</td><td>Use ViewModel and lifecycle-aware data handling</td></tr>
+      <tr><td>Layout looks incorrect</td><td>Provide suitable alternative layouts</td></tr>
+      <tr><td>Temporary information is lost</td><td>Use saved instance state</td></tr>
+      <tr><td>Permanent information disappears after process death</td><td>Use persistent storage such as Room or DataStore</td></tr>
+    </table></div>
+
+    <h4>10.13 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is Activity recreation?</li><li>What happens when an Android phone rotates?</li>
+      <li>What is onSaveInstanceState()?</li><li>What is a Bundle in Android?</li>
+      <li>What is the purpose of onRestoreInstanceState()?</li><li>What is ViewModel?</li>
+      <li>What is onConfigurationChanged()?</li><li>Why is saving UI state important?</li>
+      <li>What is configuration change?</li><li>Differentiate between temporary and permanent data storage.</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain how Android handles screen orientation changes.</li>
+      <li>What is Activity recreation? Explain its process.</li>
+      <li>Explain how to save and restore Activity state using Bundle.</li>
+      <li>Explain the role of ViewModel in managing orientation changes.</li>
+      <li>Describe the different methods used to manage configuration changes.</li>
+      <li>Explain the problems caused by Activity recreation and their solutions.</li></ol></details>
+
+    <h4>10.14 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>Configuration Change</td><td>Change in device configuration</td></tr>
+      <tr><td>Activity Recreation</td><td>Destroying and creating a new Activity instance</td></tr>
+      <tr><td><code>onSaveInstanceState()</code></td><td>Saves temporary UI information</td></tr>
+      <tr><td>Bundle</td><td>Stores information in key-value pairs</td></tr>
+      <tr><td><code>onCreate()</code></td><td>Creates the Activity</td></tr>
+      <tr><td><code>onRestoreInstanceState()</code></td><td>Restores previously saved information</td></tr>
+      <tr><td>ViewModel</td><td>Manages UI data across configuration changes</td></tr>
+      <tr><td><code>onConfigurationChanged()</code></td><td>Handles declared configuration changes</td></tr>
+      <tr><td>Persistent Storage</td><td>Stores data beyond temporary Activity recreation</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+<!-- ===== 11. CREATING THE USER INTERFACE (UI) IN ANDROID ===== -->
+<section class="topic-card" id="creating-the-ui" data-group="User interface and screens">
+  <div class="banner">
+    <h3>Creating the User Interface (UI) in Android</h3>
+    <p>UI elements, layouts, XML and Java, and a login screen example</p>
+  </div>
+  <div class="body">
+
+    <h4>11.1 Introduction</h4>
+    <p>Every mobile application has a user interface (UI). The user interface is the part of an application that users see and interact with. For example, when you open a student management application, you may see:</p>
+    <ul><li>A login screen</li><li>Text fields for entering a username and password</li><li>A button to log in</li><li>A menu to open different sections</li><li>Images, icons, and other information</li></ul>
+    <p>All these visible elements are part of the application's User Interface (UI). Creating a good user interface is an important part of Android application development because it allows users to interact with the application easily.</p>
+
+    <h4>11.2 Definition of User Interface</h4>
+    <div class="def"><b>User Interface (UI)</b> is the visual part of an application through which users interact with the system.</div>
+    <p>In simple words, UI is everything that a user can see and use on the screen, such as buttons, text, images, menus, and input fields.</p>
+    <div class="example"><b>Example:</b> consider a calculator application. It has number buttons (0–9), addition (+) and subtraction (−) buttons, a display area for showing results and a Clear button (C). All these elements make up the calculator's user interface.</div>
+    <figure><!-- <img src="../images/ui/ui-intro.jpg" alt="Calculator user interface"> --><figcaption>User interface of a calculator application</figcaption></figure>
+
+    <h4>11.3 Importance of Creating a Good User Interface</h4>
+    <p>A good UI makes an application easier and more comfortable to use.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>11.3.1 Easy to Use</h5><p>Users should understand how to use an application without complicated instructions. For example, a clearly labelled Login button makes it easy for users to sign in.</p></div>
+      <div class="mini"><h5>11.3.2 Better User Experience</h5><p>A clean and organized interface makes an application more comfortable to use. Arranging related information together helps users find what they need quickly.</p></div>
+      <div class="mini"><h5>11.3.3 Saves Time</h5><p>A well-designed interface allows users to complete tasks quickly. For example, a search button helps users find information without opening many screens.</p></div>
+      <div class="mini"><h5>11.3.4 Reduces Errors</h5><p>Clear labels, suitable input fields, and confirmation messages help users avoid mistakes. Showing an error message when a password is incorrect helps users understand the problem.</p></div>
+      <div class="mini"><h5>11.3.5 Attractive Appearance</h5><p>Suitable colors, fonts, icons, and spacing make an application visually appealing.</p></div>
+    </div>
+
+    <h4>11.4 Main Elements Used to Create an Android User Interface</h4>
+    <p>Android provides different UI elements to build application screens. These elements are commonly called Views and ViewGroups. Let's understand the important elements.</p>
+
+    <h5 class="sub">11.4.1 TextView</h5>
+    <p>TextView is used to display text on the screen, for example welcome messages, headings, student names and instructions.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;TextView
+    android:id="@+id/txtWelcome"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Welcome to Student Portal"
+    android:textSize="22sp" /&gt;</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><b>TextView:</b> creates a text display element.</li>
+      <li><b>android:id:</b> gives the element a unique identity.</li>
+      <li><b>layout_width:</b> defines its width.</li>
+      <li><b>layout_height:</b> defines its height.</li>
+      <li><b>android:text:</b> sets the displayed text.</li>
+      <li><b>android:textSize:</b> controls the size of the text.</li>
+    </ul>
+
+    <h5 class="sub">11.4.2 EditText</h5>
+    <p>EditText allows users to enter information, for example a username, password, email address or phone number.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;EditText
+    android:id="@+id/edtName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter your name" /&gt;</code></pre>
+    <p>Here, <code>hint</code> displays temporary guidance inside the input field.</p>
+
+    <h5 class="sub">11.4.3 Button</h5>
+    <p>A Button allows users to perform an action when they tap it, for example Login, Submit, Register and Save.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;Button
+    android:id="@+id/btnLogin"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Login" /&gt;</code></pre>
+
+    <h5 class="sub">11.4.4 ImageView</h5>
+    <p>ImageView displays images in an application, for example profile pictures, company logos, product images and icons.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;ImageView
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:src="@drawable/profile" /&gt;</code></pre>
+
+    <h5 class="sub">11.4.5 CheckBox</h5>
+    <p>A CheckBox allows users to select one or more options independently. For example, a registration form may contain these options, and a user can select all three:</p>
+    <ul><li>☐ HTML</li><li>☐ CSS</li><li>☐ JavaScript</li></ul>
+
+    <h5 class="sub">11.4.6 RadioButton</h5>
+    <p>A RadioButton allows users to select one option from a group. For example, "Choose your gender": Male or Female. Normally, RadioButtons are placed inside a RadioGroup when only one selection is allowed.</p>
+
+    <h5 class="sub">11.4.7 Spinner</h5>
+    <p>A Spinner displays a drop-down list of options. For example, a student registration form may contain a course selection list: BS IT, BS Computer Science and BS Software Engineering. The user taps the Spinner and selects one option.</p>
+
+    <h5 class="sub">11.4.8 ProgressBar</h5>
+    <p>A ProgressBar displays the progress of an operation, for example uploading a file, downloading information or loading application data.</p>
+
+    <h4>11.5 Android Layouts</h4>
+    <p>A layout is a container that controls how UI elements are arranged on the screen. For example, if a screen contains three buttons, a layout determines whether those buttons appear vertically, horizontally, or in another arrangement. Important Android layouts include:</p>
+    <figure><!-- <img src="../images/ui/layouts-overview.jpg" alt="Android layouts"> --><figcaption>Android layouts</figcaption></figure>
+
+    <h5 class="sub">11.5.1 LinearLayout</h5>
+    <p>LinearLayout arranges UI elements in one direction. It supports two main orientations: <b>vertical</b> (elements appear one below another) and <b>horizontal</b> (elements appear side by side).</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student Portal" /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    <p>In this example, the heading appears first and the Login button appears below it.</p>
+
+    <h5 class="sub">11.5.2 RelativeLayout</h5>
+    <p>RelativeLayout arranges UI elements according to their positions relative to other elements or the parent layout. For example, a button can be placed below a heading. It is a traditional Android layout. Many newer projects use ConstraintLayout instead.</p>
+
+    <h5 class="sub">11.5.3 ConstraintLayout</h5>
+    <p>ConstraintLayout allows developers to position UI elements by creating relationships, called constraints, between elements and the parent layout. For example, a heading can be placed at the top, a login button can be centered, and an image can be positioned above a text field. It is useful for creating flexible interfaces that work on different screen sizes.</p>
+
+    <h4>11.6 XML and Java in UI Development</h4>
+    <p>Android application development traditionally separates the user interface design from application logic. Two important technologies are XML and Java.</p>
+    <div class="pc">
+      <div class="pro"><b>11.6.1 XML</b><p>Used to define the appearance and structure of the user interface. It describes which UI elements appear, their sizes, positions, text, colors and spacing.</p><p>For example, an XML file can define a login screen containing two input fields and a button.</p></div>
+      <div class="con"><b>11.6.2 Java</b><p>Used to control the behavior of UI elements. It handles actions such as responding when a button is clicked, reading information entered by the user, validating login details, displaying messages and opening another screen.</p></div>
+    </div>
+    <p>Remember this difference:</p>
+    <div class="table-wrap"><table>
+      <tr><th>XML</th><th>Java</th></tr>
+      <tr><td>Defines the UI structure</td><td>Controls application behavior</td></tr>
+      <tr><td>Sets text and sizes</td><td>Handles button clicks</td></tr>
+      <tr><td>Arranges elements</td><td>Processes user input</td></tr>
+      <tr><td>Defines appearance</td><td>Performs operations</td></tr>
+    </table></div>
+    <div class="explain">Modern Android development can also use Kotlin and Jetpack Compose, where the UI is built using Kotlin code instead of XML layouts.</div>
+
+    <h4>11.7 Practical Example: Creating a Student Login Screen</h4>
+    <p>Let's understand how XML and Java work together to create a simple login screen.</p>
+    <figure><!-- <img src="../images/ui/login-screen-output.jpg" alt="Student login screen"> --><figcaption>Student login screen</figcaption></figure>
+
+    <h5 class="sub">Step 1: Create an XML Layout</h5>
+    <p>Create a file named <code>activity_main.xml</code> inside the <code>res/layout</code> folder.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student Login"
+        android:textSize="25sp" /&gt;
+
+    &lt;EditText
+        android:id="@+id/edtUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Username" /&gt;
+
+    &lt;EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Password"
+        android:inputType="textPassword" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    <p><b>What does this XML create?</b></p>
+    <ol><li>A vertical layout</li><li>A heading called Student Login</li><li>A username input field</li><li>A password input field</li><li>A Login button</li></ol>
+
+    <h5 class="sub">Step 2: Write Java Code</h5>
+    <p>Now open <code>MainActivity.java</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>package com.example.studentapp;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText username, password;
+    Button login;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        username = findViewById(R.id.edtUsername);
+        password = findViewById(R.id.edtPassword);
+        login = findViewById(R.id.btnLogin);
+
+        login.setOnClickListener(v -&gt; {
+
+            String name = username.getText().toString();
+            String pass = password.getText().toString();
+
+            if (name.equals("student") &amp;&amp; pass.equals("1234")) {
+
+                Toast.makeText(
+                    this,
+                    "Login Successful",
+                    Toast.LENGTH_SHORT
+                ).show();
+
+            } else {
+
+                Toast.makeText(
+                    this,
+                    "Invalid Username or Password",
+                    Toast.LENGTH_SHORT
+                ).show();
+            }
+        });
+    }
+}</code></pre>
+
+    <h5 class="sub">Step 3: Understand How It Works</h5>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. setContentView()</h5><button class="btn alt copy">Copy code</button>
+<pre><code>setContentView(R.layout.activity_main);</code></pre><p>Tells Android to display the XML layout named <code>activity_main</code> on the screen.</p></div>
+      <div class="mini"><h5>2. findViewById()</h5><button class="btn alt copy">Copy code</button>
+<pre><code>username = findViewById(R.id.edtUsername);</code></pre><p>Connects the Java variable to the username field created in XML.</p></div>
+      <div class="mini"><h5>3. setOnClickListener()</h5><button class="btn alt copy">Copy code</button>
+<pre><code>login.setOnClickListener(v -&gt; {</code></pre><p>Tells Android what to do when the user clicks the Login button.</p></div>
+      <div class="mini"><h5>4. getText().toString()</h5><button class="btn alt copy">Copy code</button>
+<pre><code>String name = username.getText().toString();</code></pre><p>Reads the text entered by the user and converts it into a Java String.</p></div>
+      <div class="mini"><h5>5. if-else condition</h5><p>The program checks whether the username and password match the example credentials.</p></div>
+      <div class="mini"><h5>6. Toast</h5><p>Toast displays a small temporary message on the screen.</p></div>
+    </div>
+    <div class="explain"><b>Important:</b> this is only a learning example. A real login system should verify credentials securely through a backend rather than storing a fixed password inside the application.</div>
+
+    <h4>11.8 Important Steps in Creating an Android User Interface</h4>
+    <p>The general process is:</p>
+    <ol class="steps">
+      <li><b>Understand the application requirements:</b> decide what the application needs to do and what information users must enter or see.</li>
+      <li><b>Plan the screen design:</b> decide where headings, buttons, images, and input fields should appear.</li>
+      <li><b>Choose suitable layouts:</b> select LinearLayout, ConstraintLayout, or another suitable layout.</li>
+      <li><b>Add UI elements:</b> add TextViews, EditTexts, Buttons, ImageViews, and other components.</li>
+      <li><b>Set properties:</b> define text, size, color, spacing, and positioning.</li>
+      <li><b>Connect UI with Java or Kotlin:</b> write code to handle user actions and application logic.</li>
+      <li><b>Test the interface:</b> check the screen on different devices and orientations, and fix any problems.</li>
+    </ol>
+
+    <h4>11.9 Important Design Principles</h4>
+    <p>When creating a user interface, developers should follow these principles:</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Simplicity</h5><p>Avoid unnecessary elements and complicated designs.</p></div>
+      <div class="mini"><h5>2. Consistency</h5><p>Use similar colors, fonts, and button styles throughout the application.</p></div>
+      <div class="mini"><h5>3. Readability</h5><p>Use clear text and suitable font sizes.</p></div>
+      <div class="mini"><h5>4. Responsiveness</h5><p>Make the interface work on different screen sizes.</p></div>
+      <div class="mini"><h5>5. Accessibility</h5><p>Design controls so that people with different abilities can use the application.</p></div>
+      <div class="mini"><h5>6. Feedback</h5><p>Show messages when users perform actions.</p></div>
+      <div class="mini"><h5>7. Easy Navigation</h5><p>Make it easy for users to move between different screens.</p></div>
+    </div>
+
+    <h4>11.10 Advantages and 11.11 Common Problems</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages of a good user interface</b><ul>
+        <li>Makes applications easier to understand</li><li>Improves user satisfaction</li><li>Reduces user mistakes</li>
+        <li>Makes navigation simple</li><li>Helps users complete tasks quickly</li><li>Gives applications a professional appearance</li></ul></div>
+      <div class="con"><b>Common problems in UI design</b><ul>
+        <li>Too many buttons on one screen</li><li>Small and difficult-to-read text</li><li>Poor color combinations</li>
+        <li>Incorrect positioning of elements</li><li>Interfaces that do not fit smaller screens</li><li>Missing feedback after a user action</li></ul></div>
+    </div>
+
+    <h4>11.12 Real-Life Example</h4>
+    <p>Consider a university student management application. Its user interface may contain:</p>
+    <div class="table-wrap"><table>
+      <tr><th>UI element</th><th>Purpose</th></tr>
+      <tr><td>TextView</td><td>Display student name</td></tr>
+      <tr><td>EditText</td><td>Enter registration number</td></tr>
+      <tr><td>Button</td><td>Submit information</td></tr>
+      <tr><td>ImageView</td><td>Display student picture</td></tr>
+      <tr><td>CheckBox</td><td>Select optional subjects</td></tr>
+      <tr><td>Spinner</td><td>Select semester</td></tr>
+      <tr><td>RecyclerView</td><td>Display student records</td></tr>
+      <tr><td>ProgressBar</td><td>Show loading progress</td></tr>
+    </table></div>
+    <p>All these components work together to create a complete application screen.</p>
+
+    <h4>11.13 Short Questions for Exams</h4>
+    <details class="exam"><summary>Short questions with answers</summary>
+      <p><b>Q1. What is a User Interface?</b><br>A User Interface is the visual part of an application through which users interact with the system.</p>
+      <p><b>Q2. What is the purpose of XML in Android UI development?</b><br>XML defines the structure and appearance of the user interface.</p>
+      <p><b>Q3. What is the purpose of Java in Android UI development?</b><br>Java controls the behavior of UI elements and handles user interactions.</p>
+      <p><b>Q4. What is LinearLayout?</b><br>LinearLayout is a layout that arranges UI elements vertically or horizontally.</p>
+      <p><b>Q5. What is TextView?</b><br>TextView is a UI component used to display text on the screen.</p>
+      <p><b>Q6. What is EditText?</b><br>EditText is a UI component that allows users to enter text.</p>
+      <p><b>Q7. What is ConstraintLayout?</b><br>ConstraintLayout is a layout that positions UI elements using relationships called constraints.</p>
+    </details>
+
+    <h4>11.14 Long Questions for Exams</h4>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define User Interface and explain its importance in Android application development.</li>
+      <li>Explain the major components used to create an Android User Interface.</li>
+      <li>Explain different Android layouts with examples.</li>
+      <li>Describe the role of XML and Java in Android UI development.</li>
+      <li>Explain the complete process of creating an Android login screen.</li>
+      <li>Discuss the important principles of good UI design.</li></ol></details>
+
+    <h4>11.15 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Meaning</th></tr>
+      <tr><td>UI</td><td>User Interface</td></tr>
+      <tr><td>XML</td><td>Defines UI structure and appearance</td></tr>
+      <tr><td>Java</td><td>Handles application behavior</td></tr>
+      <tr><td>TextView</td><td>Displays text</td></tr>
+      <tr><td>EditText</td><td>Accepts user input</td></tr>
+      <tr><td>Button</td><td>Performs an action</td></tr>
+      <tr><td>ImageView</td><td>Displays images</td></tr>
+      <tr><td>CheckBox</td><td>Allows multiple selections</td></tr>
+      <tr><td>RadioButton</td><td>Allows a single selection within a group</td></tr>
+      <tr><td>Spinner</td><td>Displays a drop-down list</td></tr>
+      <tr><td>LinearLayout</td><td>Arranges elements vertically or horizontally</td></tr>
+      <tr><td>ConstraintLayout</td><td>Positions elements using constraints</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+<!-- ===== 12. VIEWS IN ANDROID ===== -->
+<section class="topic-card" id="views" data-group="User interface and screens">
+  <div class="banner">
+    <h3>Views in Android</h3>
+    <p>The basic building blocks of an Android screen</p>
+  </div>
+  <div class="body">
+
+    <h4>12.1 Introduction</h4>
+    <p>In Android application development, almost everything that appears on the screen is created using a View. For example, when you open a mobile application, you may see:</p>
+    <div class="chips"><span>Text</span><span>Buttons</span><span>Images</span><span>Input fields</span><span>Checkboxes</span><span>Progress bars</span><span>Search bars</span></div>
+    <p>These are examples of Android Views. Views are the basic building blocks used to create an application's user interface. To understand Android UI development properly, you must understand what Views are, their types, their properties, and how they work together.</p>
+    <figure><!-- <img src="../images/ui/views-intro.jpg" alt="Views on an Android screen"> --><figcaption>Views on an Android screen</figcaption></figure>
+
+    <h4>12.2 Definition of View</h4>
+    <div class="def">A <b>View</b> is a basic building block of the Android user interface that represents a rectangular area on the screen and can display information or respond to user interaction.</div>
+    <p>In simple words, a View is an individual UI element that users can see or interact with.</p>
+    <div class="table-wrap"><table>
+      <tr><th>View</th><th>Purpose</th></tr>
+      <tr><td>TextView</td><td>Displays text</td></tr>
+      <tr><td>Button</td><td>Performs an action</td></tr>
+      <tr><td>EditText</td><td>Accepts user input</td></tr>
+      <tr><td>ImageView</td><td>Displays an image</td></tr>
+      <tr><td>CheckBox</td><td>Allows selection</td></tr>
+      <tr><td>RadioButton</td><td>Allows selection of one option in a group</td></tr>
+      <tr><td>ProgressBar</td><td>Displays progress</td></tr>
+    </table></div>
+
+    <h4>12.3 Main Types of Views in Android</h4>
+    <p>Android provides many types of Views. Each View has a different purpose. Let's understand the important ones.</p>
+
+    <h5 class="sub">12.3.1 TextView</h5>
+    <p>TextView is used to display text on the screen. It is commonly used for headings, labels, names, messages and instructions.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;TextView
+    android:id="@+id/txtName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Muhammad"
+    android:textSize="22sp"
+    android:textColor="#000000" /&gt;</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><b>TextView</b> creates a text element.</li>
+      <li><b>android:id</b> gives it a unique identity.</li>
+      <li><b>layout_width</b> defines its width.</li>
+      <li><b>layout_height</b> defines its height.</li>
+      <li><b>android:text</b> specifies the displayed text.</li>
+      <li><b>android:textSize</b> controls the font size.</li>
+      <li><b>android:textColor</b> controls the text color.</li>
+    </ul>
+
+    <h5 class="sub">12.3.2 EditText</h5>
+    <p>EditText allows users to enter information. It is commonly used in login forms, registration forms, search fields and feedback forms.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;EditText
+    android:id="@+id/edtEmail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter your email" /&gt;</code></pre>
+    <p>The <code>hint</code> attribute displays guidance inside the empty input field.</p>
+
+    <h5 class="sub">12.3.3 Button</h5>
+    <p>A Button is used to perform an action when a user taps it, for example Login, Submit, Save, Register and Delete.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;Button
+    android:id="@+id/btnSubmit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Submit" /&gt;</code></pre>
+    <p>A button can be connected to Java or Kotlin code to perform an operation.</p>
+
+    <h5 class="sub">12.3.4 ImageView</h5>
+    <p>ImageView is used to display images, for example profile pictures, product images, logos and illustrations.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;ImageView
+    android:id="@+id/imgProfile"
+    android:layout_width="120dp"
+    android:layout_height="120dp"
+    android:src="@drawable/profile" /&gt;</code></pre>
+    <p>Here, <code>@drawable/profile</code> refers to an image resource stored in the drawable resources folder.</p>
+
+    <h5 class="sub">12.3.5 CheckBox</h5>
+    <p>A CheckBox allows users to select one or more options. For example, a student can select multiple subjects: Programming, Database and Networking.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;CheckBox
+    android:id="@+id/chkProgramming"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Programming" /&gt;</code></pre>
+    <p>A CheckBox can be selected or unselected independently of other CheckBoxes.</p>
+
+    <h5 class="sub">12.3.6 RadioButton</h5>
+    <p>A RadioButton allows users to select an option. It is generally used inside a RadioGroup when only one option should be selected at a time.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;RadioGroup
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"&gt;
+
+    &lt;RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Male" /&gt;
+
+    &lt;RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Female" /&gt;
+
+&lt;/RadioGroup&gt;</code></pre>
+    <p>When the user selects Male, Female becomes unselected, and vice versa.</p>
+
+    <div class="mini-grid">
+      <div class="mini"><h5>12.3.7 Switch</h5><p>Allows users to turn a setting ON or OFF, for example Wi-Fi, dark mode, notifications and Bluetooth.</p></div>
+      <div class="mini"><h5>12.3.8 ProgressBar</h5><p>Displays the progress of an operation. For example, when an application downloads a file, a ProgressBar can show that the download is in progress.</p></div>
+      <div class="mini"><h5>12.3.9 SeekBar</h5><p>Allows users to select a value by moving a slider, for example adjusting volume, changing brightness or selecting video playback position.</p></div>
+      <div class="mini"><h5>12.3.10 RatingBar</h5><p>Allows users to give ratings, usually using stars. For example, a user can rate an application from one to five stars.</p></div>
+    </div>
+
+    <h4>12.4 Properties of Android Views</h4>
+    <p>Every View has properties that control its appearance, size, position, and behavior. Let's understand the most important properties.</p>
+
+    <h5 class="sub">12.4.1 ID</h5>
+    <p>The ID property gives a View a unique identifier.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>android:id="@+id/btnLogin"</code></pre>
+    <p>Java can use this ID to find and control the button.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Button login = findViewById(R.id.btnLogin);</code></pre>
+
+    <div class="mini-grid">
+      <div class="mini"><h5>12.4.2 Layout Width</h5><p><code>layout_width</code> defines how wide a View should be. It commonly uses two values:</p><ul><li><b>match_parent:</b> take the available width of the parent</li><li><b>wrap_content:</b> take only the width required by the content</li></ul></div>
+      <div class="mini"><h5>12.4.3 Layout Height</h5><p><code>layout_height</code> defines the height of a View. It can also use <code>match_parent</code> and <code>wrap_content</code>.</p></div>
+    </div>
+
+    <h5 class="sub">12.4.4 Text</h5>
+    <p>The text property defines the text displayed inside a View.</p>
+<pre><code>android:text="Welcome"</code></pre>
+
+    <h5 class="sub">12.4.5 Text Size</h5>
+    <p>The textSize property controls the size of displayed text.</p>
+<pre><code>android:textSize="20sp"</code></pre>
+    <p><b>sp</b> stands for Scale-independent Pixels. It is the recommended unit for text sizes because it respects the user's font-size preferences.</p>
+
+    <h5 class="sub">12.4.6 Text Color</h5>
+    <p>The textColor property changes the color of text.</p>
+<pre><code>android:textColor="#0000FF"</code></pre>
+
+    <h5 class="sub">12.4.7 Background</h5>
+    <p>The background property sets the background color or drawable of a View.</p>
+<pre><code>android:background="#FFFFFF"</code></pre>
+
+    <h5 class="sub">12.4.8 Padding</h5>
+    <p>Padding is the space between the content of a View and its inner boundaries. For example, if a button has padding, its text does not sit directly against its edges.</p>
+<pre><code>android:padding="16dp"</code></pre>
+
+    <h5 class="sub">12.4.9 Visibility</h5>
+    <p>The visibility property controls whether a View appears on the screen. It has three important values:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Value</th><th>Meaning</th></tr>
+      <tr><td><code>visible</code></td><td>View is displayed</td></tr>
+      <tr><td><code>invisible</code></td><td>View is hidden but still occupies space</td></tr>
+      <tr><td><code>gone</code></td><td>View is hidden and does not occupy layout space</td></tr>
+    </table></div>
+<pre><code>android:visibility="gone"</code></pre>
+
+    <h4>12.5 Difference Between View and ViewGroup</h4>
+    <p>This is an important concept in Android application development.</p>
+    <div class="pc">
+      <div class="pro"><b>View</b><p>An individual UI element that displays information or receives user interaction.</p><p>Examples: TextView, Button, EditText, ImageView.</p></div>
+      <div class="con"><b>ViewGroup</b><p>A special type of View that acts as a container for other Views and ViewGroups. It controls how its child elements are arranged.</p><p>Examples: LinearLayout, ConstraintLayout, FrameLayout, RelativeLayout.</p></div>
+    </div>
+    <div class="example"><b>Example:</b> imagine a student login screen. A TextView displays the heading, an EditText accepts the username, another EditText accepts the password, a Button submits the login details, and a LinearLayout arranges all these elements. Here, TextView, EditText, and Button are Views, while LinearLayout is a ViewGroup.</div>
+    <figure><!-- <img src="../images/ui/view-vs-viewgroup.jpg" alt="View and ViewGroup"> --><figcaption>View and ViewGroup</figcaption></figure>
+
+    <h4>12.6 View Hierarchy in Android</h4>
+    <p>Android organizes Views in a tree-like structure called the <b>View Hierarchy</b>. A parent ViewGroup can contain multiple child Views or other ViewGroups.</p>
+<pre><code>LinearLayout (Parent)
+│
+├── TextView
+│
+├── EditText
+│
+├── EditText
+│
+└── Button</code></pre>
+    <p>In this structure, LinearLayout is the parent, and the TextView, both EditTexts and the Button are children. The parent controls the arrangement of its children. A ViewGroup can also contain another ViewGroup:</p>
+<pre><code>LinearLayout
+│
+├── TextView
+│
+├── LinearLayout
+│   │
+│   ├── EditText
+│   │
+│   └── Button
+│
+└── ImageView</code></pre>
+    <p>This is called a nested View hierarchy.</p>
+    <figure><!-- <img src="../images/ui/view-hierarchy.jpg" alt="View hierarchy tree"> --><figcaption>View hierarchy</figcaption></figure>
+
+    <h4>12.7 Handling User Interaction with Views</h4>
+    <p>Views can respond to different user actions. For example, a Button responds to clicks, an EditText receives keyboard input, a CheckBox responds to selection and a SeekBar responds to dragging. Android provides event listeners to handle these actions.</p>
+    <p><b>Example: Button Click Listener</b></p>
+    <p>XML:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;Button
+    android:id="@+id/btnClick"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Click Me" /&gt;</code></pre>
+    <p>Java:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Button button = findViewById(R.id.btnClick);
+
+button.setOnClickListener(v -&gt; {
+
+    Toast.makeText(
+        this,
+        "Button Clicked",
+        Toast.LENGTH_SHORT
+    ).show();
+
+});</code></pre>
+    <p><b>How does it work?</b></p>
+    <ol class="steps">
+      <li><code>findViewById()</code> finds the button.</li>
+      <li><code>setOnClickListener()</code> listens for a click.</li>
+      <li>When the user taps the button, the code inside the listener runs.</li>
+      <li>Toast displays the message.</li>
+    </ol>
+    <p>This is how Views interact with application logic.</p>
+
+    <h4>12.8 View Attributes and Layout Parameters</h4>
+    <p>There is an important difference between View attributes and layout parameters.</p>
+    <div class="pc">
+      <div class="pro"><b>View attributes</b><p>Control the View itself.</p><ul><li>Text color</li><li>Text size</li><li>Background</li><li>Visibility</li></ul></div>
+      <div class="con"><b>Layout parameters</b><p>Control how a View is arranged inside its parent.</p><ul><li>Width</li><li>Height</li><li>Margins</li><li>Positioning rules or constraints, depending on the parent layout</li></ul></div>
+    </div>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:padding="12dp"
+    android:text="Submit"
+    android:textSize="18sp" /&gt;</code></pre>
+    <p>Here:</p>
+    <ul>
+      <li><b>layout_width</b> and <b>layout_height</b> define the layout size.</li>
+      <li><b>layout_margin</b> defines the outside spacing.</li>
+      <li><b>padding</b> defines the inside spacing.</li>
+      <li><b>textSize</b> controls the text appearance.</li>
+    </ul>
+
+    <h4>12.9 Advantages of Android Views</h4>
+    <div class="pro"><ol>
+      <li><b>Reusability:</b> developers can reuse UI elements in different screens.</li>
+      <li><b>Customization:</b> Views can be customized using attributes and styles.</li>
+      <li><b>User Interaction:</b> Views allow users to interact with applications.</li>
+      <li><b>Flexibility:</b> different Views can be combined to create complex interfaces.</li>
+      <li><b>Organization:</b> ViewGroups arrange elements in a structured way.</li>
+      <li><b>Event Handling:</b> Views can respond to clicks, selections, and other actions.</li></ol></div>
+
+    <h4>12.10 Real-Life Example: Student Registration Form</h4>
+    <p>Consider a student registration screen.</p>
+    <div class="table-wrap"><table>
+      <tr><th>View</th><th>Function</th></tr>
+      <tr><td>TextView</td><td>Displays Registration Form heading</td></tr>
+      <tr><td>EditText</td><td>Accepts student name</td></tr>
+      <tr><td>EditText</td><td>Accepts email</td></tr>
+      <tr><td>RadioButton</td><td>Selects an option</td></tr>
+      <tr><td>CheckBox</td><td>Selects subjects</td></tr>
+      <tr><td>Spinner</td><td>Selects semester</td></tr>
+      <tr><td>ImageView</td><td>Displays student photo</td></tr>
+      <tr><td>Button</td><td>Submits the form</td></tr>
+      <tr><td>ProgressBar</td><td>Shows submission progress</td></tr>
+    </table></div>
+    <p>A ViewGroup such as ConstraintLayout or LinearLayout arranges these elements on the screen.</p>
+
+    <h4>12.11 Short Questions for Exams</h4>
+    <details class="exam"><summary>Short questions with answers</summary>
+      <p><b>Q1. What is a View in Android?</b><br>A View is a basic building block of the Android user interface that displays information or receives user interaction.</p>
+      <p><b>Q2. Give four examples of Android Views.</b><br>TextView, Button, EditText, and ImageView.</p>
+      <p><b>Q3. What is a ViewGroup?</b><br>A ViewGroup is a container that holds and arranges other Views or ViewGroups.</p>
+      <p><b>Q4. What is View Hierarchy?</b><br>View Hierarchy is the tree-like structure that represents the parent-child relationships between Views and ViewGroups.</p>
+      <p><b>Q5. What is the purpose of TextView?</b><br>TextView is used to display text on the screen.</p>
+      <p><b>Q6. What is the purpose of EditText?</b><br>EditText allows users to enter information.</p>
+      <p><b>Q7. What is the difference between invisible and gone?</b><br>Invisible hides a View but keeps its space, while gone hides it and removes its space from the layout.</p>
+    </details>
+
+    <h4>12.12 Long Questions for Exams</h4>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define Android View and explain its different types with examples.</li>
+      <li>Explain the important properties and attributes of Android Views.</li>
+      <li>Differentiate between View and ViewGroup with examples.</li>
+      <li>Explain View Hierarchy in Android with a diagram.</li>
+      <li>Explain how user interactions are handled using View event listeners.</li>
+      <li>Describe the role of Views in creating an Android user interface.</li></ol></details>
+
+    <h4>12.13 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Concept</th><th>Meaning</th></tr>
+      <tr><td>View</td><td>Basic UI element</td></tr>
+      <tr><td>ViewGroup</td><td>Container for other Views</td></tr>
+      <tr><td>TextView</td><td>Displays text</td></tr>
+      <tr><td>EditText</td><td>Accepts input</td></tr>
+      <tr><td>Button</td><td>Performs an action</td></tr>
+      <tr><td>ImageView</td><td>Displays images</td></tr>
+      <tr><td>CheckBox</td><td>Supports multiple independent selections</td></tr>
+      <tr><td>RadioButton</td><td>Supports one selection in a group</td></tr>
+      <tr><td>Spinner</td><td>Displays a drop-down list</td></tr>
+      <tr><td>ProgressBar</td><td>Displays progress</td></tr>
+      <tr><td>SeekBar</td><td>Selects a value using a slider</td></tr>
+      <tr><td>View Hierarchy</td><td>Parent-child structure of Views</td></tr>
+      <tr><td>Padding</td><td>Space inside a View</td></tr>
+      <tr><td>Margin</td><td>Space outside a View</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+<!-- ===== 13. DISPLAYING NOTIFICATIONS IN ANDROID ===== -->
+<section class="topic-card" id="displaying-notifications" data-group="User interface and screens">
+  <div class="banner">
+    <h3>Displaying Notifications in Android</h3>
+    <p>Channels, notification types and how to create them in Java</p>
+  </div>
+  <div class="body">
+
+    <h4>13.1 Introduction</h4>
+    <p>Notifications are an important feature of Android applications. They allow an application to send information or alerts to users even when the application is not currently open on the screen. For example:</p>
+    <ul>
+      <li>WhatsApp displays a notification when someone sends you a message.</li>
+      <li>YouTube displays a notification when a new video is available.</li>
+      <li>Banking applications notify users about transactions.</li>
+      <li>Shopping applications notify users about orders and deliveries.</li>
+      <li>Calendar applications remind users about upcoming events.</li>
+    </ul>
+    <p>You do not need to open an application every time to check for new information. Notifications bring important information directly to the user's device.</p>
+    <figure><!-- <img src="../images/ui/notification-intro.jpg" alt="Android notifications"> --><figcaption>Android notifications</figcaption></figure>
+
+    <h4>13.2 Definition of Notification</h4>
+    <div class="def">A <b>Notification</b> is a message or alert displayed by an Android application outside its normal application screen to inform the user about an event, update, reminder, or other important information.</div>
+    <p>In simple words, a notification is a message that an application sends to inform the user about something.</p>
+    <div class="example"><b>Example:</b> suppose you are using another application and someone sends you a WhatsApp message. WhatsApp can display a notification such as: <b>WhatsApp · Now · New message — You have received a new message.</b> You can see this notification without opening WhatsApp.</div>
+    <figure><!-- <img src="../images/ui/notification-example.jpg" alt="WhatsApp notification example"> --><figcaption>A WhatsApp notification</figcaption></figure>
+
+    <h4>13.3 Why Are Notifications Important?</h4>
+    <p>Notifications help applications communicate with users.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>Provide Important Information</h5><p>Applications can inform users about important events. For example, a banking application can notify a user when money is deposited or withdrawn.</p></div>
+      <div class="mini"><h5>Save Time</h5><p>Users do not need to open an application repeatedly to check for updates. For example, a student can receive an assignment reminder directly on their mobile phone.</p></div>
+      <div class="mini"><h5>Provide Reminders</h5><p>Applications can remind users about important activities:</p><ul><li>Class schedules</li><li>Meetings</li><li>Exams</li><li>Medicine reminders</li><li>Payment deadlines</li></ul></div>
+      <div class="mini"><h5>Improve Communication</h5><p>Messaging applications use notifications to inform users about incoming messages and calls.</p></div>
+      <div class="mini"><h5>Provide Real-Time Updates</h5><p>Applications can send information about events as they happen. For example, a food delivery application can notify a customer when an order is confirmed, prepared, or out for delivery.</p></div>
+    </div>
+
+    <h4>13.4 Where Do Android Notifications Appear?</h4>
+    <p>Android notifications can appear in different places depending on the device, Android version, notification settings, and application configuration.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>Notification Drawer</h5><p>The area where users can see their received notifications. Users normally open it by swiping down from the top of the screen. It can display notifications from WhatsApp, Gmail, YouTube, Facebook, banking applications and more.</p></div>
+      <div class="mini"><h5>Status Bar Notification Icon</h5><p>When an application generates a notification, Android may display a small icon in the status bar. For example, a messaging application may display its notification icon at the top of the screen. The user can pull down the notification drawer to read more information.</p></div>
+      <div class="mini"><h5>Heads-Up Notification</h5><p>A temporary notification that appears over the current screen. For example, while playing a game, a new message notification may appear at the top of the screen. It allows users to notice important information without leaving their current application. However, heads-up notifications depend on notification importance, device settings, and Android behavior.</p></div>
+      <div class="mini"><h5>Lock Screen Notification</h5><p>Notifications can also appear on the device's lock screen. Users can control whether notification content is visible, hidden, or completely disabled on the lock screen.</p></div>
+    </div>
+    <figure><!-- <img src="../images/ui/notification-drawer.jpg" alt="Notification drawer"> --><figcaption>Notification drawer</figcaption></figure>
+    <figure><!-- <img src="../images/ui/heads-up-notification.jpg" alt="Heads-up notification"> --><figcaption>Heads-up notification</figcaption></figure>
+
+    <h4>13.5 Main Components of an Android Notification</h4>
+    <p>A notification can contain several different elements. Let's understand them one by one.</p>
+    <figure><!-- <img src="../images/ui/notification-components.jpg" alt="Parts of a notification"> --><figcaption>Parts of a notification</figcaption></figure>
+    <div class="mini-grid">
+      <div class="mini"><h5>Application Icon</h5><p>Identifies which application generated the notification. For example, a WhatsApp notification displays the WhatsApp icon.</p></div>
+      <div class="mini"><h5>Application Name</h5><p>Identifies the application that sent the notification, such as WhatsApp, Gmail or YouTube.</p></div>
+      <div class="mini"><h5>Notification Title</h5><p>A short heading describing the notification. Example: <i>New Message</i></p></div>
+      <div class="mini"><h5>Notification Text</h5><p>Provides additional information. Example: <i>You have received a message from your teacher.</i></p></div>
+      <div class="mini"><h5>Timestamp</h5><p>Shows when the notification was received or generated. Example: <i>2 minutes ago</i></p></div>
+      <div class="mini"><h5>Notification Actions</h5><p>Allow users to perform tasks directly from the notification, for example Reply, Mark as read and Open application. The available actions depend on the application.</p></div>
+      <div class="mini"><h5>Large Icon or Image</h5><p>Some notifications can display a larger image or picture. For example, a messaging application may show the sender's profile picture, and a shopping application may show a product image.</p></div>
+    </div>
+
+    <h4>13.6 Types of Android Notifications</h4>
+    <p>Android supports different notification styles for different purposes.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>Basic Notification</h5><p>Displays a simple title and message. Suitable for simple alerts and reminders.</p><p><i>Title:</i> Assignment Reminder<br><i>Message:</i> Submit your database assignment tomorrow.</p></div>
+      <div class="mini"><h5>Big Text Notification</h5><p>Displays a longer message. Useful when the notification contains more information than can fit in a normal notification.</p><p><i>Title:</i> University Announcement<br><i>Message:</i> The final examination schedule has been uploaded. Students are requested to check their examination dates and prepare accordingly.</p></div>
+      <div class="mini"><h5>Big Picture Notification</h5><p>Displays a large image inside the expanded notification. Shopping applications can show product images, news applications can show news pictures, and social applications can show shared images.</p></div>
+      <div class="mini"><h5>Inbox Style Notification</h5><p>Displays multiple lines of related information. For example, an email application may show an email from the teacher, from the university and from administration. This is useful when an application wants to group multiple messages together.</p></div>
+      <div class="mini"><h5>Messaging Style Notification</h5><p>Displays conversations in a message-based format, such as the sender's name, message content, previous messages and a reply option. This makes it easier to understand conversations without opening the application.</p></div>
+      <div class="mini"><h5>Progress Notification</h5><p>Displays the progress of an operation. For example, when downloading a file: <i>Downloading file... 60%</i>. Useful for downloads, uploads, file transfers and other long-running operations.</p></div>
+    </div>
+    <figure><!-- <img src="../images/ui/big-picture-notification.jpg" alt="Big picture notification"> --><figcaption>Big picture notification</figcaption></figure>
+
+    <h4>13.7 Notification Channels</h4>
+    <p>Notification Channels are an important feature introduced in <b>Android 8.0 (API level 26)</b>.</p>
+    <div class="def">A <b>Notification Channel</b> is a category used to organize notifications from an application. It allows users to control different types of notifications separately.</div>
+    <div class="example"><b>Example:</b> imagine a university application that sends different notifications. It may create these channels: Exam Notifications, Assignment Notifications, General Announcements and Fee Reminders. A user may want to receive exam notifications but disable general announcements. Notification Channels allow this type of control.</div>
+    <figure><!-- <img src="../images/ui/notification-channels.jpg" alt="Notification channels in settings"> --><figcaption>Notification channels in the app settings</figcaption></figure>
+    <p><b>Why are Notification Channels needed?</b> Before Notification Channels, users had fewer options to manage different notification categories separately. Notification Channels provide:</p>
+    <ul><li>Better notification organization</li><li>User control over notification categories</li><li>Separate notification settings</li><li>Different importance levels</li><li>Better management of unwanted notifications</li></ul>
+    <p><b>Importance levels of Notification Channels.</b> When creating a channel, developers specify its importance. Some commonly used importance levels are:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Importance</th><th>Meaning</th></tr>
+      <tr><td><code>IMPORTANCE_HIGH</code></td><td>Important notifications that may appear as heads-up alerts</td></tr>
+      <tr><td><code>IMPORTANCE_DEFAULT</code></td><td>Normal notification importance</td></tr>
+      <tr><td><code>IMPORTANCE_LOW</code></td><td>Lower-priority notifications</td></tr>
+      <tr><td><code>IMPORTANCE_MIN</code></td><td>Very low-priority notifications</td></tr>
+    </table></div>
+    <p>There is also <code>IMPORTANCE_NONE</code>, which represents a channel with no notification importance.</p>
+    <div class="explain"><b>Important:</b> after a channel is created, its importance is generally controlled by the user. An application cannot freely change the channel's importance whenever it wants.</div>
+
+    <h4>13.8 How to Create and Display a Notification in Android</h4>
+    <p>Now let's understand how developers create notifications using Java. There are several steps involved.</p>
+
+    <h5 class="sub">Step 1: Create a Notification Channel</h5>
+    <p>For Android 8.0 and later, an application must create a Notification Channel before sending notifications through it.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>private void createNotificationChannel() {
+
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) {
+
+        CharSequence name = "Student Notifications";
+
+        String description = "Notifications about student activities";
+
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+        NotificationChannel channel =
+            new NotificationChannel(
+                "student_channel",
+                name,
+                importance
+            );
+
+        channel.setDescription(description);
+
+        NotificationManager manager =
+            getSystemService(NotificationManager.class);
+
+        manager.createNotificationChannel(channel);
+    }
+}</code></pre>
+    <p><b>Understand each part:</b></p>
+    <p><b>Check Android version</b> – this checks whether the device is running Android 8.0 or a newer version. Notification Channels are required for Android 8.0 and later.</p>
+<pre><code>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O)</code></pre>
+    <p><b>Channel name</b> – the name users can see in notification settings.</p>
+<pre><code>CharSequence name = "Student Notifications";</code></pre>
+    <p><b>Channel description</b> – explains the purpose of the channel.</p>
+<pre><code>String description = "Notifications about student activities";</code></pre>
+    <p><b>Importance</b> – sets the channel's initial importance.</p>
+<pre><code>int importance = NotificationManager.IMPORTANCE_DEFAULT;</code></pre>
+    <p><b>Create channel</b> – creates the channel with a unique channel ID, a channel name and an importance level.</p>
+<pre><code>NotificationChannel channel =
+    new NotificationChannel(
+        "student_channel",
+        name,
+        importance
+    );</code></pre>
+    <p><b>Register the channel</b> – registers the channel with Android.</p>
+<pre><code>manager.createNotificationChannel(channel);</code></pre>
+
+    <h5 class="sub">Step 2: Create a Notification</h5>
+    <p>After creating the channel, developers can build a notification. Android provides <code>NotificationCompat.Builder</code> through the AndroidX Core library.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>NotificationCompat.Builder builder =
+    new NotificationCompat.Builder(this, "student_channel")
+        .setSmallIcon(R.drawable.ic_notification)
+        .setContentTitle("Assignment Reminder")
+        .setContentText("Submit your assignment tomorrow.")
+        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        .setAutoCancel(true);</code></pre>
+    <p>Let's understand its methods.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Method</th><th>Purpose</th></tr>
+      <tr><td><code>NotificationCompat.Builder()</code></td><td>Starts creating a notification</td></tr>
+      <tr><td><code>setSmallIcon()</code></td><td>Sets the notification icon</td></tr>
+      <tr><td><code>setContentTitle()</code></td><td>Sets the notification title</td></tr>
+      <tr><td><code>setContentText()</code></td><td>Sets the notification message</td></tr>
+      <tr><td><code>setPriority()</code></td><td>Sets the priority for older Android versions</td></tr>
+      <tr><td><code>setAutoCancel(true)</code></td><td>Dismisses the notification when the user taps it</td></tr>
+    </table></div>
+    <div class="explain">Notice that <code>setPriority()</code> is mainly relevant to older Android versions. On Android 8.0 and later, the channel's importance controls notification behavior.</div>
+
+    <h5 class="sub">Step 3: Display the Notification</h5>
+    <p>After creating the notification, we need to send it to Android's notification system.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>NotificationManagerCompat manager =
+    NotificationManagerCompat.from(this);
+
+manager.notify(1, builder.build());</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><code>NotificationManagerCompat.from(this)</code> gets access to the notification manager.</li>
+      <li><code>notify()</code> sends the notification.</li>
+      <li><code>1</code> is the notification ID.</li>
+      <li><code>builder.build()</code> creates the final notification object.</li>
+    </ul>
+    <p>The notification ID helps identify a notification. Reusing the same ID can update an existing notification instead of creating a separate one.</p>
+
+    <h4>13.9 Complete Java Example</h4>
+    <p>Let's combine the steps into one example. This example creates a notification when the user clicks a button.</p>
+    <p><b>XML file:</b> <code>activity_main.xml</code></p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"&gt;
+
+    &lt;Button
+        android:id="@+id/btnNotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Notification" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    <p><b>Java file:</b> <code>MainActivity.java</code></p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>package com.example.studentapp;
+
+import android.os.Bundle;
+import android.os.Build;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final String CHANNEL_ID = "student_channel";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        createNotificationChannel();
+
+        Button button = findViewById(R.id.btnNotify);
+
+        button.setOnClickListener(v -&gt; {
+
+            showNotification();
+
+        });
+    }
+
+    private void createNotificationChannel() {
+
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) {
+
+            NotificationChannel channel =
+                new NotificationChannel(
+                    CHANNEL_ID,
+                    "Student Notifications",
+                    NotificationManager.IMPORTANCE_DEFAULT
+                );
+
+            NotificationManager manager =
+                getSystemService(NotificationManager.class);
+
+            manager.createNotificationChannel(channel);
+        }
+    }
+
+    private void showNotification() {
+
+        NotificationCompat.Builder builder =
+            new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("Assignment Reminder")
+                .setContentText("Submit your assignment tomorrow.")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat manager =
+            NotificationManagerCompat.from(this);
+
+        if (Build.VERSION.SDK_INT &lt; 33 ||
+            checkSelfPermission(
+                android.Manifest.permission.POST_NOTIFICATIONS
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+
+            manager.notify(1, builder.build());
+        }
+    }
+}</code></pre>
+    <p><b>What happens when this application runs?</b></p>
+    <ol class="steps">
+      <li>The application opens.</li>
+      <li>The <code>onCreate()</code> method runs.</li>
+      <li>The notification channel is created.</li>
+      <li>The user sees the Show Notification button.</li>
+      <li>The user taps the button.</li>
+      <li>The <code>showNotification()</code> method runs.</li>
+      <li>Android receives the notification.</li>
+      <li>The user can see the notification in the notification drawer.</li>
+    </ol>
+    <div class="explain"><b>Important requirements for this example:</b>
+      <ul>
+        <li>Add the AndroidX Core dependency to the project if it is not already included.</li>
+        <li>Add a valid small notification icon named <code>ic_notification</code> to the drawable resources.</li>
+        <li>For Android 13 (API 33) and later, declare and request notification permission before displaying notifications.</li>
+      </ul></div>
+
+    <h4>13.10 Notification Permission in Android</h4>
+    <p>Android 13 introduced a runtime notification permission called <code>POST_NOTIFICATIONS</code>. This means applications targeting Android 13 or later must request permission from the user before sending ordinary notifications.</p>
+    <p>Add this permission to <code>AndroidManifest.xml</code>:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;uses-permission
+    android:name="android.permission.POST_NOTIFICATIONS" /&gt;</code></pre>
+    <p>Then request permission in Java:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>if (Build.VERSION.SDK_INT &gt;= 33) {
+
+    requestPermissions(
+        new String[]{
+            android.Manifest.permission.POST_NOTIFICATIONS
+        },
+        100
+    );
+}</code></pre>
+    <p>The user can choose whether to allow notifications. Understand the difference:</p>
+    <ul>
+      <li><b>Manifest permission</b> declares that the application needs notification permission.</li>
+      <li><b>Runtime permission request</b> asks the user to grant that permission.</li>
+      <li><b>Notification Channel</b> organizes the notifications after the application has permission.</li>
+    </ul>
+    <div class="explain">These are three separate concepts.</div>
+
+    <h4>13.11 Notification Actions</h4>
+    <p>Notifications can also contain buttons that allow users to perform actions. For example, a messaging notification may contain a Reply button. A user can tap Reply and respond without opening the complete application. Android uses components such as <code>PendingIntent</code>, <code>NotificationCompat.Action</code> and <code>RemoteInput</code>.</p>
+    <div class="def"><b>What is PendingIntent?</b> A PendingIntent is a special object that allows Android or another application component to perform an action on behalf of your application at a later time. For example, it can open an Activity when a notification is tapped, start a Service, or perform a broadcast action.</div>
+    <p><b>Example:</b> when a user taps a notification, the application can open its MainActivity.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Intent intent = new Intent(this, MainActivity.class);
+
+PendingIntent pendingIntent =
+    PendingIntent.getActivity(
+        this,
+        0,
+        intent,
+        PendingIntent.FLAG_UPDATE_CURRENT |
+        PendingIntent.FLAG_IMMUTABLE
+    );</code></pre>
+    <p>Then attach it to the notification:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>builder.setContentIntent(pendingIntent);</code></pre>
+    <p>Now tapping the notification can open MainActivity.</p>
+
+    <h4>13.12 Notification vs Toast</h4>
+    <p>Both Notification and Toast display messages, but they have different purposes.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Notification</th><th>Toast</th></tr>
+      <tr><td>Used for important updates and alerts</td><td>Used for short temporary feedback</td></tr>
+      <tr><td>Appears in the notification area</td><td>Appears briefly over the current screen</td></tr>
+      <tr><td>Can remain until dismissed</td><td>Disappears automatically</td></tr>
+      <tr><td>Can contain actions</td><td>Normally does not contain interactive actions</td></tr>
+      <tr><td>Can be received when the app is not open</td><td>Usually appears while the app is active</td></tr>
+    </table></div>
+    <p><b>Example:</b> Notification: <i>Your teacher has sent a new assignment.</i> Toast: <i>Your information has been saved.</i></p>
+
+    <h4>13.13 Advantages and Disadvantages of Android Notifications</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Instant communication:</b> applications can inform users about important events.</li>
+        <li><b>Time-saving:</b> users do not need to open applications repeatedly.</li>
+        <li><b>Reminders:</b> notifications help users remember important activities.</li>
+        <li><b>User engagement:</b> they help users stay connected with applications.</li>
+        <li><b>Quick actions:</b> users can perform certain tasks directly from notifications.</li>
+        <li><b>Real-time information:</b> users can receive updates about messages, orders, and other activities.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li>Too many notifications can disturb users.</li>
+        <li>Unnecessary notifications can annoy users.</li>
+        <li>Notifications may affect battery consumption, depending on how they are generated.</li>
+        <li>Sensitive information may appear on the lock screen.</li>
+        <li>Users may disable notifications if an application sends too many alerts.</li></ol></div>
+    </div>
+    <div class="explain">Therefore, developers should send useful notifications and avoid unnecessary messages.</div>
+
+    <h4>13.14 Real-Life Example: University Management Application</h4>
+    <p>Imagine you are developing a University Management System. Your application can use different notifications:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Event</th><th>Notification</th></tr>
+      <tr><td>New assignment</td><td>New assignment has been uploaded</td></tr>
+      <tr><td>Examination</td><td>Your exam starts tomorrow</td></tr>
+      <tr><td>Attendance</td><td>Your attendance has been updated</td></tr>
+      <tr><td>Fee reminder</td><td>Your fee payment deadline is approaching</td></tr>
+      <tr><td>Result</td><td>Your semester result is available</td></tr>
+      <tr><td>Class schedule</td><td>Your class starts in 30 minutes</td></tr>
+    </table></div>
+    <p>You can create separate notification channels for examinations, assignments, attendance, and general announcements. This allows students to manage notifications according to their needs.</p>
+
+    <h4>13.15 Short Questions for Exams</h4>
+    <details class="exam"><summary>Short questions with answers</summary>
+      <p><b>Q1. What is a notification in Android?</b><br>A notification is a message or alert displayed by an application to inform users about an event or update.</p>
+      <p><b>Q2. What is a Notification Channel?</b><br>A Notification Channel is a category used to organize notifications and allow users to control their settings.</p>
+      <p><b>Q3. What is a Heads-Up Notification?</b><br>A Heads-Up Notification is a temporary alert that appears over the current screen.</p>
+      <p><b>Q4. What is NotificationManager?</b><br>NotificationManager is an Android system service used to manage and display notifications.</p>
+      <p><b>Q5. What is PendingIntent?</b><br>PendingIntent allows Android or another application component to perform a specified action on behalf of an application at a later time.</p>
+      <p><b>Q6. What is the purpose of setContentTitle()?</b><br>It sets the title of a notification.</p>
+      <p><b>Q7. What is the purpose of setContentText()?</b><br>It sets the message or main text of a notification.</p>
+      <p><b>Q8. What is the purpose of setSmallIcon()?</b><br>It sets the small icon displayed with a notification.</p>
+      <p><b>Q9. Which Android version introduced Notification Channels?</b><br>Android 8.0 (Oreo).</p>
+      <p><b>Q10. Which Android version introduced the POST_NOTIFICATIONS runtime permission?</b><br>Android 13.</p>
+    </details>
+
+    <h4>13.16 Long Questions for Exams</h4>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define Android Notifications and explain their importance.</li>
+      <li>Explain the different places where Android notifications appear.</li>
+      <li>Describe the main components of an Android notification.</li>
+      <li>Explain the different types of Android notifications with examples.</li>
+      <li>What are Notification Channels? Explain their importance and working.</li>
+      <li>Explain the complete procedure for creating and displaying notifications using Java.</li>
+      <li>Explain PendingIntent and its role in Android notifications.</li>
+      <li>Differentiate between Notification and Toast.</li></ol></details>
+
+  </div>
+</section>
+
+<!-- ===== 14. LISTENING FOR UI NOTIFICATIONS IN ANDROID ===== -->
+<section class="topic-card" id="listening-for-ui-events" data-group="User interface and screens">
+  <div class="banner">
+    <h3>Listening for UI Notifications in Android</h3>
+    <p>Handling user interface events with event listeners</p>
+  </div>
+  <div class="body">
+
+    <h4>14.1 Introduction</h4>
+    <p>In Android application development, users interact with an application by performing different actions. For example:</p>
+    <ul><li>Tapping a button</li><li>Typing text into an input field</li><li>Selecting a checkbox</li><li>Moving a slider</li><li>Touching or swiping the screen</li><li>Selecting an item from a list</li></ul>
+    <p>When a user performs one of these actions, Android generates an event. An application can listen for these events and perform an appropriate operation. This process is called <b>Listening for UI Events</b> or <b>Handling User Interface Events</b>.</p>
+    <p>For example, imagine a student login application. When a student enters a username and taps the Login button, the application listens for that click and checks the entered information. Without event listening, the application would not know when the user wants to perform an action.</p>
+    <figure><!-- <img src="../images/ui/ui-events-intro.jpg" alt="User actions generate events"> --><figcaption>User actions generate events</figcaption></figure>
+
+    <h4>14.2 Definition of Listening for UI Events</h4>
+    <div class="def"><b>Listening for UI Events</b> is the process of detecting user actions on interface elements and responding to those actions by executing specific code.</div>
+    <p>In simple words, it means that an application waits for the user to perform an action and then responds to it.</p>
+    <div class="example"><b>Example:</b> suppose an application contains a button called Submit.
+      <ol>
+        <li>The application displays the button.</li>
+        <li>The user taps the button.</li>
+        <li>Android detects the click event.</li>
+        <li>The application's event listener receives the event.</li>
+        <li>The application executes the required code.</li>
+        <li>A message appears on the screen.</li>
+      </ol>
+      This is how event listening works.</div>
+
+    <h4>14.3 What Is an Event?</h4>
+    <div class="def">An <b>Event</b> is an action or occurrence detected by an application. Events can be generated by users or by the system.</div>
+    <p><b>Examples of user events</b></p>
+    <div class="table-wrap"><table>
+      <tr><th>Event</th><th>Meaning</th></tr>
+      <tr><td>Click</td><td>User taps a button</td></tr>
+      <tr><td>Long Click</td><td>User presses and holds an element</td></tr>
+      <tr><td>Touch</td><td>User touches the screen</td></tr>
+      <tr><td>Text Change</td><td>User enters or removes text</td></tr>
+      <tr><td>Focus Change</td><td>An element gains or loses focus</td></tr>
+      <tr><td>Selection Change</td><td>User selects or changes an option</td></tr>
+      <tr><td>Scroll</td><td>User moves through scrollable content</td></tr>
+    </table></div>
+    <p><b>Examples of system events</b></p>
+    <ul><li>Screen orientation changes</li><li>Network connection changes</li><li>Battery level changes</li><li>Application receives certain system callbacks</li></ul>
+    <p>This topic mainly focuses on events generated through Android user interface elements.</p>
+
+    <h4>14.4 What Is an Event Listener?</h4>
+    <div class="def">An <b>Event Listener</b> is an object or mechanism that waits for a particular event and executes code when that event occurs.</div>
+    <p>For example, a Button can have a click listener. When the user clicks the button, the listener runs the code written inside it. Android provides different event listener interfaces for different types of user interactions. The general working process is:</p>
+    <ol class="steps">
+      <li><b>User performs an action:</b> for example, taps a button.</li>
+      <li><b>Android detects an event:</b> the click event occurs.</li>
+      <li><b>Event Listener receives the event:</b> the click listener runs.</li>
+      <li><b>Application executes code:</b> displays a message or performs an operation.</li>
+    </ol>
+    <figure><!-- <img src="../images/ui/event-listener-flow.jpg" alt="Event listener working process"> --><figcaption>How an event listener works</figcaption></figure>
+
+    <h4>14.5 Types of Event Listeners in Android</h4>
+    <p>Android provides different listeners to handle different user actions. Let's understand each one.</p>
+
+    <h5 class="sub">14.5.1 OnClickListener</h5>
+    <p>OnClickListener is used to detect when a user taps or clicks a View. It is commonly used with Buttons, ImageViews, TextViews and other clickable Views. For example, suppose we have a button called Click Me.</p>
+    <p>XML:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;Button
+    android:id="@+id/btnClick"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Click Me" /&gt;</code></pre>
+    <p>Java:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Button button = findViewById(R.id.btnClick);
+
+button.setOnClickListener(v -&gt; {
+
+    Toast.makeText(
+        this,
+        "Button Clicked",
+        Toast.LENGTH_SHORT
+    ).show();
+
+});</code></pre>
+    <p><b>Explanation:</b></p>
+    <ol class="steps">
+      <li><code>findViewById()</code> finds the button.</li>
+      <li><code>setOnClickListener()</code> attaches a click listener to it.</li>
+      <li>When the user taps the button, the listener executes.</li>
+      <li>Toast displays the message.</li>
+    </ol>
+    <div class="example"><b>Real-life example:</b> a Login button listens for a click and starts the login process.</div>
+
+    <h5 class="sub">14.5.2 OnLongClickListener</h5>
+    <p>OnLongClickListener detects when a user presses and holds a View for a period of time. It is commonly used for showing additional options, selecting items, displaying context menus, and deleting or managing items.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Button button = findViewById(R.id.btnClick);
+
+button.setOnLongClickListener(v -&gt; {
+
+    Toast.makeText(
+        this,
+        "Button Pressed for a Long Time",
+        Toast.LENGTH_SHORT
+    ).show();
+
+    return true;
+});</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><code>setOnLongClickListener()</code> registers a long-click listener.</li>
+      <li>The code runs when the user presses and holds the button.</li>
+      <li><code>return true</code> means the event has been handled.</li>
+    </ul>
+    <div class="pc">
+      <div class="pro"><b>Click</b><p>User taps an element.</p></div>
+      <div class="con"><b>Long Click</b><p>User presses and holds an element.</p></div>
+    </div>
+
+    <h5 class="sub">14.5.3 OnTouchListener</h5>
+    <p>OnTouchListener detects touch actions performed on a View. It is useful when developers need more control over touch interaction, for example detecting finger movement, dragging an object, detecting touch-down and touch-up actions, and creating drawing applications.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>View view = findViewById(R.id.myView);
+
+view.setOnTouchListener((v, event) -&gt; {
+
+    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+        Toast.makeText(
+            this,
+            "Screen Touched",
+            Toast.LENGTH_SHORT
+        ).show();
+    }
+
+    return true;
+});</code></pre>
+    <p><code>setOnTouchListener()</code> listens for touch events. Android provides different touch actions:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Action</th><th>Meaning</th></tr>
+      <tr><td><code>ACTION_DOWN</code></td><td>Finger touches the screen</td></tr>
+      <tr><td><code>ACTION_MOVE</code></td><td>Finger moves on the screen</td></tr>
+      <tr><td><code>ACTION_UP</code></td><td>Finger is lifted from the screen</td></tr>
+      <tr><td><code>ACTION_CANCEL</code></td><td>Current touch operation is cancelled</td></tr>
+    </table></div>
+    <div class="example"><b>Example in real life:</b> a drawing application uses touch events to detect where the user moves their finger.</div>
+
+    <h5 class="sub">14.5.4 OnFocusChangeListener</h5>
+    <p>OnFocusChangeListener detects when a View gains or loses focus. Focus means that a View is currently selected to receive keyboard input or interaction. It is commonly used with EditText.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>EditText editText = findViewById(R.id.edtName);
+
+editText.setOnFocusChangeListener((v, hasFocus) -&gt; {
+
+    if (hasFocus) {
+
+        Toast.makeText(
+            this,
+            "Name Field Selected",
+            Toast.LENGTH_SHORT
+        ).show();
+
+    } else {
+
+        Toast.makeText(
+            this,
+            "Name Field Unselected",
+            Toast.LENGTH_SHORT
+        ).show();
+    }
+});</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li>If <code>hasFocus</code> is true, the field has gained focus.</li>
+      <li>If <code>hasFocus</code> is false, the field has lost focus.</li>
+    </ul>
+    <div class="example"><b>Real-life example:</b> a registration form can check a field when the user moves away from it.</div>
+
+    <h5 class="sub">14.5.5 TextWatcher</h5>
+    <p>TextWatcher listens for changes in the text entered into an EditText. It is useful when an application needs to respond immediately as a user types, for example search suggestions, password validation, character counting, and checking whether an input field is empty.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>EditText editText = findViewById(R.id.edtName);
+
+editText.addTextChangedListener(new TextWatcher() {
+
+    @Override
+    public void beforeTextChanged(
+        CharSequence s,
+        int start,
+        int count,
+        int after
+    ) {
+    }
+
+    @Override
+    public void onTextChanged(
+        CharSequence s,
+        int start,
+        int before,
+        int count
+    ) {
+
+        Toast.makeText(
+            MainActivity.this,
+            "Text Changed",
+            Toast.LENGTH_SHORT
+        ).show();
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+    }
+});</code></pre>
+    <p>Understand its three methods:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Method</th><th>Purpose</th></tr>
+      <tr><td><code>beforeTextChanged()</code></td><td>Called before the text changes</td></tr>
+      <tr><td><code>onTextChanged()</code></td><td>Called when the text changes</td></tr>
+      <tr><td><code>afterTextChanged()</code></td><td>Called after the text has changed</td></tr>
+    </table></div>
+    <p>For example, if a user types Muhammad, these methods are called as the text is entered.</p>
+
+    <h5 class="sub">14.5.6 OnCheckedChangeListener</h5>
+    <p>This listener detects when a CheckBox or Switch changes its checked state. For example, a user can turn notifications ON or OFF.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>CheckBox checkBox = findViewById(R.id.chkTerms);
+
+checkBox.setOnCheckedChangeListener(
+    (buttonView, isChecked) -&gt; {
+
+        if (isChecked) {
+
+            Toast.makeText(
+                this,
+                "Terms Accepted",
+                Toast.LENGTH_SHORT
+            ).show();
+
+        } else {
+
+            Toast.makeText(
+                this,
+                "Terms Not Accepted",
+                Toast.LENGTH_SHORT
+            ).show();
+        }
+    }
+);</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><code>setOnCheckedChangeListener()</code> listens for selection changes.</li>
+      <li><code>isChecked</code> tells us whether the CheckBox is selected.</li>
+      <li>If true, the CheckBox is selected. If false, the CheckBox is unselected.</li>
+    </ul>
+
+    <h5 class="sub">14.5.7 OnItemSelectedListener</h5>
+    <p>This listener detects when a user selects an item from a Spinner or another suitable selection-based component. For example, a university application contains a semester selection list: Semester 1, Semester 2, Semester 3 and Semester 4. When the user selects Semester 4, the application can display the selected semester.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>Spinner spinner = findViewById(R.id.spinnerSemester);
+
+spinner.setOnItemSelectedListener(
+    new AdapterView.OnItemSelectedListener() {
+
+        @Override
+        public void onItemSelected(
+            AdapterView&lt;?&gt; parent,
+            View view,
+            int position,
+            long id
+        ) {
+
+            String selected =
+                parent.getItemAtPosition(position).toString();
+
+            Toast.makeText(
+                MainActivity.this,
+                selected,
+                Toast.LENGTH_SHORT
+            ).show();
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView&lt;?&gt; parent) {
+        }
+    }
+);</code></pre>
+    <p><b>Explanation:</b></p>
+    <ul>
+      <li><code>onItemSelected()</code> runs when an item is selected.</li>
+      <li><code>position</code> tells us the item's position in the list.</li>
+      <li><code>getItemAtPosition()</code> gets the selected item.</li>
+      <li><code>onNothingSelected()</code> handles the situation where no item is selected.</li>
+    </ul>
+    <div class="explain">Note that a Spinner can also trigger an initial selection callback when it is first populated, so developers should account for that when necessary.</div>
+
+    <h4>14.6 Difference Between Event and Event Listener</h4>
+    <p>These two terms are related, but they are not the same.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Event</th><th>Event Listener</th></tr>
+      <tr><td>An action or occurrence</td><td>Mechanism that detects and handles the action</td></tr>
+      <tr><td>Happens when the user interacts</td><td>Waits for the event</td></tr>
+      <tr><td>Example: Button click</td><td>Example: OnClickListener</td></tr>
+      <tr><td>Represents what happened</td><td>Defines what the application should do</td></tr>
+    </table></div>
+    <div class="example"><b>Simple example:</b> when you click a Login button, the click is the event, the OnClickListener is the listener, and the login code is the response.</div>
+
+    <h4>14.7 Difference Between Different Event Listeners</h4>
+    <p>This comparison is important for examinations.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Listener</th><th>Detects</th></tr>
+      <tr><td>OnClickListener</td><td>Normal click</td></tr>
+      <tr><td>OnLongClickListener</td><td>Press and hold</td></tr>
+      <tr><td>OnTouchListener</td><td>Touch and movement</td></tr>
+      <tr><td>OnFocusChangeListener</td><td>Focus gained or lost</td></tr>
+      <tr><td>TextWatcher</td><td>Text changes</td></tr>
+      <tr><td>OnCheckedChangeListener</td><td>Checked state changes</td></tr>
+      <tr><td>OnItemSelectedListener</td><td>Selection from a list</td></tr>
+    </table></div>
+
+    <h4>14.8 Practical Example: Student Registration Form</h4>
+    <p>Let's create a simple example that uses multiple event listeners together. Imagine a registration form containing a name field, a terms and conditions checkbox and a Submit button. The application should:</p>
+    <ol><li>Listen when the user enters a name.</li><li>Detect whether the user accepts the terms.</li><li>Listen when the user clicks Submit.</li><li>Display an appropriate message.</li></ol>
+    <figure><!-- <img src="../images/ui/registration-form-output.jpg" alt="Student registration form"> --><figcaption>Student registration form</figcaption></figure>
+
+    <h5 class="sub">Step 1: XML Layout</h5>
+    <p>Create <code>activity_main.xml</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"&gt;
+
+    &lt;EditText
+        android:id="@+id/edtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name" /&gt;
+
+    &lt;CheckBox
+        android:id="@+id/chkTerms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I accept the terms" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+
+    <h5 class="sub">Step 2: Java Code</h5>
+    <p>Create the event listeners inside <code>MainActivity.java</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>package com.example.studentapp;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText name;
+    CheckBox terms;
+    Button submit;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        name = findViewById(R.id.edtName);
+        terms = findViewById(R.id.chkTerms);
+        submit = findViewById(R.id.btnSubmit);
+
+        submit.setOnClickListener(v -&gt; {
+
+            String studentName =
+                name.getText().toString().trim();
+
+            if (studentName.isEmpty()) {
+
+                Toast.makeText(
+                    this,
+                    "Please enter your name",
+                    Toast.LENGTH_SHORT
+                ).show();
+
+            } else if (!terms.isChecked()) {
+
+                Toast.makeText(
+                    this,
+                    "Please accept the terms",
+                    Toast.LENGTH_SHORT
+                ).show();
+
+            } else {
+
+                Toast.makeText(
+                    this,
+                    "Registration Successful",
+                    Toast.LENGTH_SHORT
+                ).show();
+            }
+        });
+    }
+}</code></pre>
+
+    <h5 class="sub">Step 3: Understand the Working</h5>
+    <ol class="steps">
+      <li>Android displays the registration form.</li>
+      <li>The user enters their name.</li>
+      <li>The user selects the CheckBox.</li>
+      <li>The user clicks Submit.</li>
+      <li>The click listener checks the entered information.</li>
+    </ol>
+    <p>There are three possible results:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Condition</th><th>Result</th></tr>
+      <tr><td>Name is empty</td><td>Please enter your name</td></tr>
+      <tr><td>Terms are not accepted</td><td>Please accept the terms</td></tr>
+      <tr><td>Both conditions are satisfied</td><td>Registration Successful</td></tr>
+    </table></div>
+    <p>This example demonstrates how event listeners make an application interactive.</p>
+
+    <h4>14.9 Advantages of Event Listeners</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>14.9.1 Interactive Applications</h5><p>Event listeners allow applications to respond to user actions. Without them, buttons and other interactive elements would not perform their intended tasks.</p></div>
+      <div class="mini"><h5>14.9.2 Better User Experience</h5><p>Users receive immediate responses when they perform actions. For example, clicking a button may display a success message.</p></div>
+      <div class="mini"><h5>14.9.3 Real-Time Validation</h5><p>TextWatcher can check user input while the user is typing. For example, a registration form can check whether an email field is empty.</p></div>
+      <div class="mini"><h5>14.9.4 Flexible User Interaction</h5><p>Different listeners support different activities, such as clicking, touching, selecting, and typing.</p></div>
+      <div class="mini"><h5>14.9.5 Automatic Response</h5><p>The application can execute code automatically when an event occurs instead of requiring the user to perform additional steps.</p></div>
+    </div>
+
+    <h4>14.10 Disadvantages and Challenges</h4>
+    <div class="con"><ol>
+      <li>Too many listeners can make application code difficult to manage.</li>
+      <li>Incorrect event handling can produce unexpected results.</li>
+      <li>Poorly designed listeners can affect application performance.</li>
+      <li>Touch listeners can conflict with other touch-handling behavior if events are not handled correctly.</li>
+      <li>Developers must carefully manage repeated events and user input.</li></ol></div>
+
+    <h4>14.11 Important Points to Remember</h4>
+    <ul>
+      <li>An event is an action or occurrence.</li>
+      <li>An event listener detects and handles an event.</li>
+      <li>OnClickListener handles normal clicks.</li>
+      <li>OnLongClickListener handles long presses.</li>
+      <li>OnTouchListener handles touch actions.</li>
+      <li>TextWatcher monitors text changes.</li>
+      <li>OnFocusChangeListener detects focus changes.</li>
+      <li>OnCheckedChangeListener detects CheckBox or Switch state changes.</li>
+      <li>OnItemSelectedListener handles item selection.</li>
+      <li>Event listeners make Android applications interactive.</li>
+    </ul>
+
+    <h4>14.12 Short Questions for Exams</h4>
+    <details class="exam"><summary>Short questions with answers</summary>
+      <p><b>Q1. What is an event in Android?</b><br>An event is an action or occurrence detected by an application, such as a button click or text change.</p>
+      <p><b>Q2. What is an Event Listener?</b><br>An Event Listener is a mechanism that detects an event and executes code in response to it.</p>
+      <p><b>Q3. What is OnClickListener?</b><br>OnClickListener is used to detect when a user clicks or taps a View.</p>
+      <p><b>Q4. What is OnLongClickListener?</b><br>OnLongClickListener detects when a user presses and holds a View.</p>
+      <p><b>Q5. What is OnTouchListener?</b><br>OnTouchListener detects touch actions such as touching, moving, and releasing a finger.</p>
+      <p><b>Q6. What is TextWatcher?</b><br>TextWatcher is used to detect changes in text entered into an EditText.</p>
+      <p><b>Q7. What is OnFocusChangeListener?</b><br>It detects when a View gains or loses focus.</p>
+      <p><b>Q8. What is OnCheckedChangeListener?</b><br>It detects when the checked state of a CheckBox or Switch changes.</p>
+      <p><b>Q9. What is the purpose of OnItemSelectedListener?</b><br>It handles the selection of items from components such as Spinner.</p>
+    </details>
+
+    <h4>14.13 Long Questions for Exams</h4>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define Listening for UI Events and explain its importance in Android development.</li>
+      <li>What is an Event Listener? Explain its different types with examples.</li>
+      <li>Explain OnClickListener, OnLongClickListener, and OnTouchListener in detail.</li>
+      <li>Explain TextWatcher and OnFocusChangeListener with examples.</li>
+      <li>Differentiate between Event and Event Listener.</li>
+      <li>Explain how event listeners are used to handle user interactions in Android applications.</li>
+      <li>Develop a simple registration form using different event listeners.</li></ol></details>
+
+    <h4>14.14 Quick Revision Table</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>Event</td><td>Action performed by a user or system</td></tr>
+      <tr><td>Event Listener</td><td>Detects and handles an event</td></tr>
+      <tr><td>OnClickListener</td><td>Detects clicks</td></tr>
+      <tr><td>OnLongClickListener</td><td>Detects long presses</td></tr>
+      <tr><td>OnTouchListener</td><td>Detects touch actions</td></tr>
+      <tr><td>TextWatcher</td><td>Detects text changes</td></tr>
+      <tr><td>OnFocusChangeListener</td><td>Detects focus changes</td></tr>
+      <tr><td>OnCheckedChangeListener</td><td>Detects selection changes</td></tr>
+      <tr><td>OnItemSelectedListener</td><td>Detects selected items</td></tr>
+      <tr><td><code>ACTION_DOWN</code></td><td>Finger touches the screen</td></tr>
+      <tr><td><code>ACTION_MOVE</code></td><td>Finger moves</td></tr>
+      <tr><td><code>ACTION_UP</code></td><td>Finger is lifted</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+
+  </main>
+</div>
+
+<footer>IT-308 Mobile Application Development &middot; BS Information Technology
+<br>Copyright &copy; 2026 <a href="https://gcsmultan.edu.pk/">Govt. Graduate College of Science and Technology</a></footer>
+<script src="../js/script.js"></script>
+<script src="../js/outline.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!-- Paste this <section> inside <main> in outline.html, AFTER the html5-mobiles section. No new CSS needed. -->
+<section class="topic-card" id="android-os" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>Android OS: Architecture, Framework and Application Development</h3>
+    <p>Layers, system services and how Android apps are built</p>
+  </div>
+  <div class="body">
+
+    <h4>3.1 Introduction to Android</h4>
+    <div class="def"><b>Android</b> is an open-source, Linux-based operating system mainly designed for smartphones, tablets, smart TVs, smartwatches, and other electronic devices.</div>
+    <p>It is developed and maintained by Google and the Android Open Source Project (AOSP). Android provides an environment in which users can run applications and developers can create applications using programming languages and development tools.</p>
+    <p><b>Examples of Android devices:</b></p>
+    <div class="chips"><span>Samsung smartphones</span><span>Google Pixel smartphones</span><span>Xiaomi smartphones</span><span>Oppo smartphones</span><span>Vivo smartphones</span><span>Android tablets</span></div>
+    <figure><!-- <img src="../images/platforms/android-devices.jpg" alt="Android devices"> --></figure>
+    <p><b>Main Features of Android</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Open Source</h5><p>The core platform is available through AOSP, allowing developers and manufacturers to modify and customize it.</p></div>
+      <div class="mini"><h5>2. User-Friendly Interface</h5><p>Easy-to-use interface with icons, menus, buttons, and touch interactions.</p></div>
+      <div class="mini"><h5>3. Multitasking</h5><p>Users can switch between applications; background tasks are supported.</p></div>
+      <div class="mini"><h5>4. Connectivity</h5><p>Supports Wi-Fi, Bluetooth, mobile networks, NFC, and other communication technologies.</p></div>
+      <div class="mini"><h5>5. Application Support</h5><p>A large number of educational, business, entertainment, and social media applications.</p></div>
+      <div class="mini"><h5>6. Multimedia Support</h5><p>Images, audio, videos, and other multimedia formats.</p></div>
+      <div class="mini"><h5>7. Security</h5><p>Application sandboxing, permissions, encryption, and other security mechanisms.</p></div>
+      <div class="mini"><h5>8. Customization</h5><p>Users and manufacturers can customize home screens, themes, widgets, and other interface elements.</p></div>
+    </div>
+
+    <h4>Part 1: Android Architecture</h4>
+    <h4>3.2 What is Android Architecture?</h4>
+    <div class="def"><b>Definition:</b> Android Architecture is the layered structure of the Android operating system that explains how different software components work together to manage hardware, system services, applications, and user interactions.</div>
+    <p>In simple words, it explains how Android is organized internally and how its layers communicate with each other. Each layer has its own responsibilities and provides services to the layer above it.</p>
+
+    <h4>3.3 Layers of Android Architecture</h4>
+    <p>Android architecture is commonly represented through five major layers:</p>
+    <ol><li>Linux Kernel</li><li>Hardware Abstraction Layer (HAL)</li><li>Native Libraries and Android Runtime</li><li>Application Framework</li><li>Applications</li></ol>
+    <figure><!-- <img src="../images/platforms/android-layers.jpg" alt="Android architecture layers"> --><figcaption>Layers of Android architecture</figcaption></figure>
+
+    <h5 class="sub">1. Linux Kernel</h5>
+    <p>The lowest layer of Android Architecture. It acts as a bridge between the hardware and the software of the device, helping Android communicate with and control the physical components of a smartphone.</p>
+    <p><b>Main responsibilities:</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>A. Memory Management</h5><p>Controlling and distributing the device's RAM among applications and system processes.</p><p><i>Example:</i> WhatsApp and YouTube both need memory; the kernel helps manage it.</p></div>
+      <div class="mini"><h5>B. Process Management</h5><p>A process is a program that is currently running. The kernel manages running processes and helps allocate CPU time.</p><p><i>Example:</i> opening a browser creates processes whose execution the kernel helps manage.</p></div>
+      <div class="mini"><h5>C. Device Drivers</h5><p>Software components that allow the OS to communicate with hardware.</p><ul><li>Camera drivers</li><li>Audio drivers</li><li>Display drivers</li><li>USB drivers</li><li>Wi-Fi drivers</li></ul></div>
+      <div class="mini"><h5>D. Security</h5><p>Process isolation and access controls prevent applications from accessing resources they are not authorized to use.</p></div>
+      <div class="mini"><h5>E. Power Management</h5><p>Helps manage power consumption, for example by controlling hardware activity to reduce battery usage.</p></div>
+      <div class="mini"><h5>F. Networking</h5><p>Provides networking functionality for communicating over networks.</p><ul><li>Wi-Fi communication</li><li>Internet connections</li><li>Network data transmission</li></ul></div>
+    </div>
+    <div class="explain">In short: the Linux Kernel manages hardware resources, processes, memory, security, and power.</div>
+
+    <h5 class="sub">2. Hardware Abstraction Layer (HAL)</h5>
+    <div class="def"><b>Definition:</b> HAL is a layer that provides standard interfaces between Android's higher-level software and the device hardware. In simple words, it works like a communication bridge between Android software and different hardware components.</div>
+    <p><b>Why is HAL needed?</b> Different manufacturers use different hardware. For example, Samsung, Xiaomi and Google Pixel may each use a different camera sensor. Android applications should not need to understand the internal details of every manufacturer's hardware, so HAL provides standard interfaces for different hardware implementations.</p>
+    <p><b>Main components of HAL:</b></p>
+    <ol>
+      <li><b>Camera HAL:</b> interface for camera hardware.</li>
+      <li><b>Audio HAL:</b> interface for audio hardware.</li>
+      <li><b>Bluetooth HAL:</b> interface for Bluetooth hardware.</li>
+      <li><b>Wi-Fi HAL:</b> interface for Wi-Fi hardware.</li>
+      <li><b>GPS/GNSS HAL:</b> interface for location-related hardware.</li>
+    </ol>
+    <div class="example"><b>Example: opening the camera application</b>
+      <ol>
+        <li>The application requests access to the camera.</li>
+        <li>Android's camera services communicate with the camera HAL.</li>
+        <li>The HAL implementation communicates with the camera hardware.</li>
+        <li>The camera captures an image.</li>
+        <li>The captured image is made available to the application through Android's camera system.</li>
+      </ol></div>
+    <div class="explain">In short: HAL hides hardware-specific details and provides standard interfaces for Android software.</div>
+
+    <h5 class="sub">3. Native Libraries</h5>
+    <p>Pre-written software libraries that provide important functions to Android. Many are written in C or C++.</p>
+    <div class="def"><b>Definition:</b> Native Libraries are collections of pre-written code that provide services such as graphics processing, database management, multimedia playback, and security.</div>
+    <div class="mini-grid">
+      <div class="mini"><h5>A. SQLite</h5><p>A lightweight database engine used to store and manage structured data.</p><p><i>Example:</i> a notes app saves note titles, descriptions and creation dates.</p></div>
+      <div class="mini"><h5>B. OpenGL ES</h5><p>A graphics API used for rendering 2D and 3D graphics.</p><p><i>Example:</i> mobile games display objects, animations, and visual effects.</p></div>
+      <div class="mini"><h5>C. Media Framework</h5><p>Handles audio and video.</p><p><i>Example:</i> a video application plays video files.</p></div>
+      <div class="mini"><h5>D. SSL/TLS Libraries</h5><p>Security functionality for encrypted network communication.</p><p><i>Example:</i> with HTTPS, encryption helps protect the transmitted information.</p></div>
+      <div class="mini"><h5>E. Web Rendering Engine</h5><p>Chromium-based WebView technology displays web content inside applications.</p><p><i>Example:</i> a shopping app shows a web page without opening a separate browser.</p></div>
+    </div>
+    <div class="explain">In short: Native Libraries provide ready-made functions for graphics, multimedia, databases, and other system operations.</div>
+
+    <h5 class="sub">4. Android Runtime (ART)</h5>
+    <div class="def"><b>Definition:</b> Android Runtime is the execution environment responsible for running Android application code.</div>
+    <p>Android apps are commonly developed using Kotlin or Java. Their compiled code is packaged into DEX (Dalvik Executable) bytecode, which Android Runtime executes.</p>
+    <p><b>Main responsibilities of ART:</b></p>
+    <ol>
+      <li><b>Application Execution:</b> provides the environment required to run Android applications.</li>
+      <li><b>Memory Management:</b> helps manage memory used by applications.</li>
+      <li><b>Garbage Collection:</b> automatically reclaims memory occupied by objects that are no longer needed.</li>
+      <li><b>Code Optimization:</b> uses compilation techniques to improve performance.</li>
+      <li><b>Runtime Support:</b> provides essential services required while applications are running.</li>
+    </ol>
+    <div class="example"><b>Example:</b> when you open WhatsApp, ART provides the runtime environment needed to execute its application code.</div>
+    <div class="explain">Historical point: earlier Android versions used the Dalvik Virtual Machine (DVM). ART replaced Dalvik as the default runtime beginning with Android 5.0 Lollipop.</div>
+
+    <h5 class="sub">5. Application Framework</h5>
+    <p>Provides high-level services and APIs that developers use to build Android applications. It is studied separately in Part 2.</p>
+
+    <h5 class="sub">6. Applications</h5>
+    <p>The topmost layer of Android Architecture. It contains the applications that users interact with directly.</p>
+    <div class="chips"><span>Phone</span><span>Messages</span><span>Camera</span><span>Settings</span><span>Contacts</span><span>WhatsApp</span><span>YouTube</span><span>Google Maps</span></div>
+    <div class="example"><b>Example:</b> the Camera application uses services provided by the Application Framework, which communicates with lower Android layers to access the camera hardware.</div>
+
+    <h4>3.4 How Android Architecture Works: Real-Life Example</h4>
+    <p>Suppose you open the Camera application and capture a photograph. Different layers work together:</p>
+    <figure><!-- <img src="../images/platforms/android-camera-flow.jpg" alt="Camera request through Android layers"> --></figure>
+    <ol class="steps">
+      <li><b>Application Layer:</b> you open the Camera application and press the capture button.</li>
+      <li><b>Application Framework:</b> Android's camera services manage the camera request and provide the required APIs.</li>
+      <li><b>HAL:</b> the camera HAL communicates with the specific camera hardware implementation.</li>
+      <li><b>Linux Kernel:</b> device drivers and hardware-management facilities support communication with the camera device.</li>
+      <li><b>Native Libraries:</b> graphics and image-processing components help process and handle image data.</li>
+      <li><b>Android Runtime:</b> provides the execution environment for the application's code throughout the process.</li>
+      <li><b>Result:</b> the photograph is captured and saved on the device.</li>
+    </ol>
+    <div class="explain">Notice that these layers do not work independently. They cooperate to complete the task.</div>
+
+    <h4>Part 2: Android Framework</h4>
+    <h4>3.5 What is Android Framework?</h4>
+    <div class="def"><b>Definition:</b> Android Framework is a collection of APIs and system services that provides developers with the necessary tools and functionality to build Android applications.</div>
+    <p>In simple words, it provides ready-made services that developers can use instead of writing everything from the beginning.</p>
+    <div class="example"><b>Example:</b> to send notifications you do not need to create a complete notification system yourself. Android provides a Notification Manager that helps your application display notifications.</div>
+    <figure><!-- <img src="../images/platforms/android-framework.jpg" alt="Android framework"> --></figure>
+
+    <h4>3.6 Main Components of Android Framework</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Activity Manager</h5><p>Manages the lifecycle and execution of activities. An Activity generally represents a single screen.</p><p><i>Example:</i> a shopping app may have Login, Home, Product Details and Payment activities.</p></div>
+      <div class="mini"><h5>2. Window Manager</h5><p>Manages application windows and their display on the screen: position, size, arrangement and other display operations.</p><p><i>Example:</i> when you open an app, it helps manage how the window appears.</p></div>
+      <div class="mini"><h5>3. Content Providers</h5><p>Allow applications to share and access structured data through controlled interfaces.</p><p><i>Example:</i> a messaging app requests permission to access contacts; the Contacts Content Provider gives access to the permitted information.</p></div>
+      <div class="mini"><h5>4. Resource Manager</h5><p>Manages non-code resources: images, icons, strings, colors, layout files, animations.</p><p><i>Example:</i> an app logo stored as an image resource can be used on different screens.</p></div>
+      <div class="mini"><h5>5. Notification Manager</h5><p>Allows applications to display notifications.</p><p><i>Example:</i> WhatsApp message, email, banking transaction and reminder notifications.</p></div>
+      <div class="mini"><h5>6. Location Manager</h5><p>Provides access to location-related services through supported location providers, subject to permissions.</p><p><i>Example:</i> a navigation app determines the user's position.</p></div>
+      <div class="mini"><h5>7. Package Manager</h5><p>Manages information about installed applications and their packages. It helps Android:</p><ul><li>Identify installed applications</li><li>Retrieve package information</li><li>Manage installation-related information</li><li>Check application permissions</li></ul></div>
+      <div class="mini"><h5>8. Telephony Manager</h5><p>Provides information about telephony services and the device's cellular network capabilities.</p><p><i>Example:</i> an app may use supported telephony APIs to get certain mobile network information, subject to permission and privacy restrictions.</p></div>
+    </div>
+
+    <h4>3.7 Difference Between Android Architecture and Android Framework</h4>
+    <p>These two terms are related, but they do not mean the same thing.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Android Architecture</th><th>Android Framework</th></tr>
+      <tr><td>Overall structure of Android OS</td><td>One major layer of Android</td></tr>
+      <tr><td>Contains multiple layers</td><td>Contains APIs and system services</td></tr>
+      <tr><td>Explains how Android components work together</td><td>Explains services available to applications</td></tr>
+      <tr><td>Includes kernel, HAL, runtime, libraries, etc.</td><td>Includes Activity Manager, Resource Manager, etc.</td></tr>
+      <tr><td>Broader concept</td><td>Part of Android Architecture</td></tr>
+    </table></div>
+
+    <h4>Part 3: Android Application Development</h4>
+    <h4>3.8 What is Android Application Development?</h4>
+    <div class="def"><b>Definition:</b> Android Application Development is the process of designing, coding, testing, and deploying applications that run on devices powered by the Android operating system.</div>
+    <p>In simple words, it means creating mobile applications for Android smartphones and tablets.</p>
+    <div class="chips"><span>Calculator applications</span><span>Banking applications</span><span>Shopping applications</span><span>Educational applications</span><span>Social media applications</span></div>
+    <figure><!-- <img src="../images/platforms/android-development.jpg" alt="Android development"> --></figure>
+
+    <h4>3.9 Programming Languages Used for Android Development</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Kotlin</h5><p>A modern programming language officially recommended by Google for Android development. It works with Java and helps developers write concise and safer code.</p></div>
+      <div class="mini"><h5>2. Java</h5><p>An object-oriented language widely used for Android development. Many existing Android applications and projects use Java.</p></div>
+      <div class="mini"><h5>3. C and C++</h5><p>Used for performance-intensive components and native development through the Android NDK.</p><ul><li>Game engines</li><li>Audio processing</li><li>Image processing</li><li>High-performance libraries</li></ul></div>
+    </div>
+
+    <h4>3.10 Tools Required for Android Application Development</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Android Studio</h5><p>The official IDE for Android development. It provides tools for:</p><ul><li>Writing code</li><li>Designing user interfaces</li><li>Debugging applications</li><li>Testing applications</li><li>Building application packages</li></ul></div>
+      <div class="mini"><h5>2. Android SDK</h5><p>Provides tools, libraries, APIs, and other resources required to develop Android applications.</p></div>
+      <div class="mini"><h5>3. Android Emulator</h5><p>Lets developers run and test Android applications on a computer without a physical smartphone.</p></div>
+      <div class="mini"><h5>4. Gradle</h5><p>A build automation system. It helps:</p><ul><li>Compile source code</li><li>Manage dependencies</li><li>Build application packages</li><li>Configure different application versions</li></ul></div>
+      <div class="mini"><h5>5. Android Debug Bridge (ADB)</h5><p>A command-line tool to communicate with Android devices and emulators. It can:</p><ul><li>Install applications</li><li>Run shell commands</li><li>View device logs</li><li>Debug applications</li></ul></div>
+    </div>
+    <figure><!-- <img src="../images/platforms/android-studio.jpg" alt="Android Studio"> --></figure>
+
+    <h4>3.11 Steps Involved in Android Application Development</h4>
+    <ol class="steps">
+      <li><b>Requirement Analysis:</b> identify the purpose of the application and the features it should provide. <i>Example: a student attendance application.</i></li>
+      <li><b>UI/UX Design:</b> design the application's screens, buttons, navigation, and layout.</li>
+      <li><b>Environment Setup:</b> install Android Studio, SDK, and the required development tools.</li>
+      <li><b>Coding:</b> write application code using Kotlin or Java.</li>
+      <li><b>Database Integration:</b> connect the application to a database or backend service when required.</li>
+      <li><b>Testing and Debugging:</b> test application functionality and correct programming errors.</li>
+      <li><b>Building:</b> generate an APK or Android App Bundle (AAB).</li>
+      <li><b>Deployment:</b> publish through Google Play or distribute through another supported method.</li>
+      <li><b>Maintenance:</b> fix bugs, improve security, and release updates.</li>
+    </ol>
+
+    <h4>3.12 Important Android Application Components</h4>
+    <p>Android applications commonly use four fundamental application components.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Activity</h5><p>Represents a screen with which the user can interact.</p><p><i>Example:</i> a login screen or home screen.</p></div>
+      <div class="mini"><h5>2. Service</h5><p>A component used for operations that do not require a user interface.</p><p><i>Example:</i> playing music while the user interacts with another application.</p><p>Modern Android versions restrict background services, so developers must follow the appropriate background-work rules.</p></div>
+      <div class="mini"><h5>3. Broadcast Receiver</h5><p>Allows an application to respond to broadcast messages from Android or other applications.</p><p><i>Example:</i> responding to a system broadcast that the device has finished booting.</p></div>
+      <div class="mini"><h5>4. Content Provider</h5><p>Manages and shares application data through a defined interface.</p><p><i>Example:</i> accessing contacts through the Android Contacts Provider.</p></div>
+    </div>
+
+    <h4>3.13 Advantages and 3.14 Disadvantages of Android</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li>Open-source platform through AOSP</li><li>Large application ecosystem</li><li>Supports multiple hardware manufacturers</li><li>Flexible customization</li>
+        <li>Strong development tools</li><li>Supports multitasking</li><li>Supports many connectivity technologies</li><li>Large developer community</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Fragmentation:</b> different manufacturers use different devices and Android versions.</li>
+        <li><b>Compatibility Issues:</b> applications may behave differently across devices.</li>
+        <li><b>Security Risks:</b> installing applications from untrusted sources can introduce security threats.</li>
+        <li><b>Hardware Differences:</b> developers must consider different screen sizes, processors, and device capabilities.</li>
+        <li><b>Software Updates:</b> updates may reach devices at different times depending on the manufacturer and model.</li></ol></div>
+    </div>
+
+    <h4>3.15 Complete Revision: Android OS</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Topic</th><th>Main idea</th></tr>
+      <tr><td>Android</td><td>Linux-based mobile operating system</td></tr>
+      <tr><td>Linux Kernel</td><td>Manages hardware, memory and processes</td></tr>
+      <tr><td>HAL</td><td>Connects Android software with hardware</td></tr>
+      <tr><td>Native Libraries</td><td>Provide graphics, database and multimedia functions</td></tr>
+      <tr><td>ART</td><td>Executes Android application code</td></tr>
+      <tr><td>Application Framework</td><td>Provides APIs and system services</td></tr>
+      <tr><td>Applications</td><td>Apps used directly by users</td></tr>
+      <tr><td>Activity Manager</td><td>Manages activity-related operations</td></tr>
+      <tr><td>Window Manager</td><td>Manages application windows</td></tr>
+      <tr><td>Content Provider</td><td>Shares structured data</td></tr>
+      <tr><td>Resource Manager</td><td>Manages application resources</td></tr>
+      <tr><td>Notification Manager</td><td>Displays notifications</td></tr>
+      <tr><td>Android Studio</td><td>Official Android development IDE</td></tr>
+      <tr><td>Android SDK</td><td>Development tools and APIs</td></tr>
+      <tr><td>Emulator</td><td>Runs Android virtually on a computer</td></tr>
+      <tr><td>Kotlin</td><td>Modern language for Android development</td></tr>
+      <tr><td>Java</td><td>Widely used Android programming language</td></tr>
+    </table></div>
+
+    <h4>3.16 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is Android OS?</li><li>Define Android Architecture.</li><li>What is Linux Kernel?</li><li>What is HAL?</li>
+      <li>What are Native Libraries?</li><li>What is Android Runtime (ART)?</li><li>What is Android Framework?</li>
+      <li>Define Activity Manager.</li><li>What is Content Provider?</li><li>What is Android Studio?</li>
+      <li>What is Android SDK?</li><li>What is an Android Emulator?</li><li>Define Activity.</li>
+      <li>What is a Broadcast Receiver?</li><li>What is a Service?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain Android Architecture with a diagram.</li>
+      <li>Explain the functions of the Linux Kernel in Android.</li>
+      <li>Discuss the different layers of Android Architecture.</li>
+      <li>Explain Android Framework and its main components.</li>
+      <li>Explain the complete process of Android Application Development.</li>
+      <li>Discuss the advantages and disadvantages of Android OS.</li></ol></details>
+
+  </div>
+</section>

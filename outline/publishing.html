@@ -1,0 +1,2782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publishing | IT-308 Mobile Application Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/outline.css">
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">IT-308</a>
+  <a href="../index.html">Home</a>
+  <a href="index.html" class="active">Outline</a>
+  <a href="../practice.html">Practice</a>
+  <a href="../programs.html">Programs</a>
+  <a href="../papers/index.html">Past Papers</a>
+  <a href="../references.html">References</a>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Contents</h2>
+    <input type="search" id="side-search" placeholder="Search topics">
+    <div class="progress">
+      <div class="row"><span id="prog-text">Progress: 0/0</span><span id="prog-pct">0%</span></div>
+      <div class="bar"><span id="prog-bar"></span></div>
+    </div>
+    <div id="sidebar-list"></div>   <!-- filled automatically by outline.js -->
+  </aside>
+
+  <main style="padding:0;margin:0;max-width:none">
+    <div class="group-tabs"><a href="index.html">&larr; All groups</a><a href="platforms.html">Platforms</a><a href="ui-screens.html">UI & Screens</a><a href="data-storage.html">Data & Storage</a><a href="communication.html">Communication</a><a href="publishing.html" class="current">Publishing</a><a href="advanced.html">Advanced</a></div>
+    <h1>Publishing</h1>
+    <section class="topic-card" id="publishing-android-applications" data-group="Publishing">
+
+    <div class="banner">
+        <h3>Publishing Android Applications</h3>
+        <p>Learn how to prepare, test, package, sign, and distribute Android applications so that users can install and use them.</p>
+    </div>
+
+    <div class="body">
+
+        <h4>24.1 Introduction to Android Application Publishing</h4>
+
+        <p>Android application development does not end when the developer finishes writing code.</p>
+
+        <p>After developing an application, the developer must prepare it so that other people can install and use it on their Android devices.</p>
+
+        <p>This complete process is called Android application publishing.</p>
+
+        <div class="def">
+            <strong>Definition:</strong>
+            <p>Android application publishing is the process of preparing, testing, packaging, signing, and distributing an Android application so that users can install and use it.</p>
+        </div>
+
+        <div class="example">
+            <strong>Example</strong>
+            <p>Suppose you develop a student management application.</p>
+            <p>Your application contains:</p>
+            <ul>
+                <li>Student registration.</li>
+                <li>Login and logout.</li>
+                <li>Student records.</li>
+                <li>Attendance management.</li>
+                <li>Examination results.</li>
+                <li>Teacher information.</li>
+            </ul>
+            <p>You have completed the application in Android Studio. However, other students cannot automatically install it just because you have written the code.</p>
+            <p>You must prepare a release version, generate an application package, sign it, and distribute it.</p>
+            <p>You can distribute the application through:</p>
+            <ul>
+                <li>Google Play Store.</li>
+                <li>Other Android application stores.</li>
+                <li>Your university website.</li>
+                <li>Your own website.</li>
+                <li>Direct APK sharing.</li>
+            </ul>
+        </div>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Android application project structure and Google Play Store interface</p>
+            </div>
+            <figcaption>Suggested images: Android project structure and Google Play Store application listing</figcaption>
+        </figure>
+
+        <h5 class="sub">24.1.1 Why Is Application Publishing Important?</h5>
+
+        <p>Application publishing is important for several reasons:</p>
+
+        <ol>
+            <li><strong>Application distribution:</strong> It makes an application available to users.</li>
+            <li><strong>User access:</strong> Users can download and install the application on their devices.</li>
+            <li><strong>Business opportunities:</strong> Developers can sell applications or earn money through advertisements and in-app purchases.</li>
+            <li><strong>Public availability:</strong> An application can reach users in different countries.</li>
+            <li><strong>Updates:</strong> Developers can release new versions to fix problems and introduce features.</li>
+            <li><strong>Professional development:</strong> Publishing an application provides practical experience of real-world software development.</li>
+        </ol>
+
+        <h4>24.2 Development Version vs Release Version</h4>
+
+        <p>During Android application development, developers generally work with two important versions:</p>
+
+        <ol>
+            <li>Development version (Debug version).</li>
+            <li>Release version.</li>
+        </ol>
+
+        <p>Both versions contain the application, but they are prepared for different purposes.</p>
+
+        <h5 class="sub">24.2.1 Development Version (Debug Version)</h5>
+
+        <p>A development or debug version is used while developing and testing an application.</p>
+
+        <p>Developers use it to find programming errors, test features, and check whether the application works correctly.</p>
+
+        <div class="example">
+            <strong>Example</strong>
+            <p>For example, while developing a login application, you may need to check:</p>
+            <ul>
+                <li>Whether the login button works.</li>
+                <li>Whether the password is correct.</li>
+                <li>Whether data is saved.</li>
+                <li>Whether the application connects to the database.</li>
+                <li>Whether errors occur.</li>
+            </ul>
+            <p>A debug version helps developers perform these activities.</p>
+        </div>
+
+        <p><strong>Characteristics:</strong></p>
+        <ul>
+            <li>Mainly used during development.</li>
+            <li>Contains debugging support.</li>
+            <li>Can include additional debugging information.</li>
+            <li>Usually signed automatically with a debug certificate by Android Studio.</li>
+            <li>Not intended as the final public release.</li>
+        </ul>
+
+        <h5 class="sub">24.2.2 Release Version</h5>
+
+        <p>A release version is the final prepared version of an application that is intended for distribution to users.</p>
+
+        <p>Before generating it, developers check the application, configure its release settings, and prepare its signing credentials.</p>
+
+        <div class="example">
+            <strong>Example</strong>
+            <p>For example, after completing and testing your student management application, you generate its release version so students and teachers can install it.</p>
+        </div>
+
+        <p><strong>Characteristics:</strong></p>
+        <ul>
+            <li>Prepared for distribution.</li>
+            <li>Signed using a release signing key.</li>
+            <li>Usually optimized for production.</li>
+            <li>Should not expose debugging information or development credentials.</li>
+            <li>Can be uploaded to an app store.</li>
+        </ul>
+
+        <h5 class="sub">24.2.3 Difference Between Debug and Release Versions</h5>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Debug Version</th>
+                        <th>Release Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Used during development.</td>
+                        <td>Used for distribution.</td>
+                    </tr>
+                    <tr>
+                        <td>Helps developers find errors.</td>
+                        <td>Intended for actual users.</td>
+                    </tr>
+                    <tr>
+                        <td>Usually signed with a debug certificate.</td>
+                        <td>Signed with a release signing key.</td>
+                    </tr>
+                    <tr>
+                        <td>May contain debugging support.</td>
+                        <td>Debugging support should be disabled as appropriate.</td>
+                    </tr>
+                    <tr>
+                        <td>Not intended for public production use.</td>
+                        <td>Prepared for production use.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:200px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Android Studio debug and release signing configuration</p>
+            </div>
+            <figcaption>Suggested image: Debug and release build signing options</figcaption>
+        </figure>
+
+        <h4>24.3 Preparing an Application for Publishing</h4>
+
+        <p>Before publishing an Android application, developers must prepare it carefully.</p>
+
+        <p>An application should not be published immediately after writing its code.</p>
+
+        <p>It must be checked to ensure that it works correctly, provides a good user experience, and follows Android security requirements.</p>
+
+        <h5 class="sub">24.3.1 Important Preparation Steps</h5>
+
+        <h5 class="sub">24.3.2 Complete Application Development</h5>
+
+        <p>First, developers must complete all the required features.</p>
+
+        <div class="example">
+            <strong>Example</strong>
+            <p>For example, a student management application may require:</p>
+            <ul>
+                <li>Login system.</li>
+                <li>Student registration.</li>
+                <li>Student dashboard.</li>
+                <li>Attendance records.</li>
+                <li>Examination results.</li>
+                <li>Database connection.</li>
+            </ul>
+            <p>All essential features should be implemented before release.</p>
+        </div>
+
+        <h5 class="sub">24.3.3 Remove Unnecessary Code</h5>
+
+        <p>During development, programmers may write temporary code for testing.</p>
+
+        <p>For example:</p>
+
+        <pre><code>System.out.println("Testing application");</code></pre>
+
+        <p>They may also create temporary buttons, test screens, or sample records.</p>
+
+        <p>Before publishing, developers should remove unnecessary development code and testing components.</p>
+
+        <h5 class="sub">24.3.4 Check Application Permissions</h5>
+
+        <p>Android applications request permissions when they need access to protected device features.</p>
+
+        <p>Examples include:</p>
+
+        <ul>
+            <li>Camera.</li>
+            <li>Location.</li>
+            <li>Contacts.</li>
+            <li>Microphone.</li>
+            <li>Notifications.</li>
+        </ul>
+
+        <p>Developers should request only the permissions that their application actually needs.</p>
+
+        <div class="example">
+            <strong>Example</strong>
+            <p>For example, a calculator application does not normally need access to the user's contacts or location.</p>
+        </div>
+
+        <h5 class="sub">24.3.5 Check Application Name and Icon</h5>
+
+        <p>The application should have a meaningful name and a professional icon.</p>
+
+        <p>For example:</p>
+
+        <ul>
+            <li>Application name: Student Manager.</li>
+            <li>Icon: A suitable student or education-related design.</li>
+        </ul>
+
+        <p>The name and icon help users recognize the application.</p>
+
+        <h5 class="sub">24.3.6 Configure Application Settings</h5>
+
+        <p>Developers should check important configuration settings, including:</p>
+
+        <ul>
+            <li>Application ID (package name).</li>
+            <li>Minimum Android version.</li>
+            <li>Target Android version.</li>
+            <li>Version code.</li>
+            <li>Version name.</li>
+            <li>Release signing configuration.</li>
+        </ul>
+
+        <p>We will explain these settings in detail in the following sections.</p>
+
+        <h5 class="sub">24.3.7 Check Internet and Database Connections</h5>
+
+        <p>If the application uses online services, developers should verify that:</p>
+
+        <ul>
+            <li>API URLs are correct.</li>
+            <li>Server connections work.</li>
+            <li>Database operations work.</li>
+            <li>Error messages are handled properly.</li>
+            <li>Sensitive information is protected.</li>
+        </ul>
+
+        <div class="explain">
+            <strong>Important:</strong>
+            <p>Never include secret API keys, passwords, or database administrator credentials directly in an application package.</p>
+        </div>
+
+        <h4>24.4 Application Testing and Debugging</h4>
+
+        <p>Before publishing, an application must be tested to ensure that it works correctly.</p>
+
+        <div class="def">
+            <strong>Application Testing:</strong>
+            <p>Application testing is the process of checking an application to identify errors, verify features, and ensure that it behaves as expected.</p>
+        </div>
+
+        <div class="def">
+            <strong>Debugging:</strong>
+            <p>Debugging is the process of finding and correcting errors in an application.</p>
+        </div>
+
+        <h5 class="sub">24.4.1 Types of Application Testing</h5>
+
+        <h5 class="sub">24.4.2 Functional Testing</h5>
+
+        <p>Functional testing checks whether application features work according to their requirements.</p>
+
+        <div class="example">
+            <strong>Example</strong>
+            <p>In a student management application:</p>
+            <ul>
+                <li>Does registration work?</li>
+                <li>Does login work?</li>
+                <li>Can students view their results?</li>
+                <li>Can teachers update attendance?</li>
+            </ul>
+            <p>If a feature does not work correctly, the developer must fix it.</p>
+        </div>
+
+        <h5 class="sub">24.4.3 UI Testing</h5>
+
+        <p>UI stands for User Interface.</p>
+
+        <p>UI testing checks whether the application's screens and controls work correctly.</p>
+
+        <p>It includes:</p>
+
+        <ul>
+            <li>Buttons.</li>
+            <li>Text fields.</li>
+            <li>Images.</li>
+            <li>Menus.</li>
+            <li>Navigation.</li>
+            <li>Screen layouts.</li>
+        </ul>
+
+        <p>For example, developers check whether buttons are visible and whether text fits properly on different screen sizes.</p>
+
+        <h5 class="sub">24.4.4 Compatibility Testing</h5>
+
+        <p>Compatibility testing checks whether an application works on different Android devices and versions.</p>
+
+        <p>For example:</p>
+
+        <ul>
+            <li>Android 12.</li>
+            <li>Android 13.</li>
+            <li>Android 14.</li>
+            <li>Android 15.</li>
+        </ul>
+
+        <p>Developers should also consider different screen sizes, device manufacturers, and hardware capabilities.</p>
+
+        <h5 class="sub">24.4.5 Performance Testing</h5>
+
+        <p>Performance testing checks how efficiently an application operates.</p>
+
+        <p>It includes checking:</p>
+
+        <ul>
+            <li>Application loading speed.</li>
+            <li>Memory consumption.</li>
+            <li>CPU usage.</li>
+            <li>Battery consumption.</li>
+            <li>Network performance.</li>
+        </ul>
+
+        <h5 class="sub">24.4.6 Security Testing</h5>
+
+        <p>Security testing checks whether an application protects user information and prevents unauthorized access.</p>
+
+        <p>For example:</p>
+
+        <ul>
+            <li>Is user information protected?</li>
+            <li>Is communication encrypted using HTTPS?</li>
+            <li>Are passwords handled securely?</li>
+            <li>Can unauthorized users access restricted features?</li>
+        </ul>
+
+        <h5 class="sub">24.4.7 Testing Tools</h5>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Android Emulator</td>
+                        <td>Tests applications on virtual Android devices.</td>
+                    </tr>
+                    <tr>
+                        <td>Physical Android Device</td>
+                        <td>Tests applications on real hardware.</td>
+                    </tr>
+                    <tr>
+                        <td>Logcat</td>
+                        <td>Displays application logs and error messages.</td>
+                    </tr>
+                    <tr>
+                        <td>Android Studio Debugger</td>
+                        <td>Helps find and investigate programming errors.</td>
+                    </tr>
+                    <tr>
+                        <td>JUnit</td>
+                        <td>Supports unit testing.</td>
+                    </tr>
+                    <tr>
+                        <td>Espresso</td>
+                        <td>Supports Android UI testing.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Android Studio Logcat, Android Emulator, and UI testing interface</p>
+            </div>
+            <figcaption>Suggested images: Logcat output, Android Emulator, and UI testing tools</figcaption>
+        </figure>
+
+        <h5 class="sub">24.4.8 Why Is Testing Necessary Before Publishing?</h5>
+
+        <p>Testing is necessary because an application may contain errors that were not noticed during development.</p>
+
+        <p>If an application is published without proper testing:</p>
+
+        <ul>
+            <li>It may crash.</li>
+            <li>Buttons may not work.</li>
+            <li>User information may be lost.</li>
+            <li>It may not work on some devices.</li>
+            <li>Users may uninstall it because of poor performance.</li>
+        </ul>
+
+        <p>Therefore, proper testing is an essential part of application publishing.</p>
+
+        <h4>24.5 Application Versioning</h4>
+
+        <p>Application versioning means assigning version information to different releases of an application.</p>
+
+        <p>It helps developers identify application versions and manage updates.</p>
+
+        <p>Android mainly uses two important version properties:</p>
+
+        <ol>
+            <li><code>versionCode</code></li>
+            <li><code>versionName</code></li>
+        </ol>
+
+        <h5 class="sub">24.5.1 versionCode</h5>
+
+        <p><code>versionCode</code> is an integer value used internally by Android to identify application versions.</p>
+
+        <p>It helps Android determine whether an installed application can be updated with a new version.</p>
+
+        <p>Example:</p>
+
+        <pre><code>versionCode 1</code></pre>
+
+        <p>When you release a new version, you increase the value:</p>
+
+        <pre><code>versionCode 2</code></pre>
+
+        <p>Then:</p>
+
+        <pre><code>versionCode 3</code></pre>
+
+        <div class="explain">
+            <strong>Important:</strong>
+            <p>A new update must have a higher version code than the previously published version. Google Play also applies version-code requirements and limits.</p>
+        </div>
+
+        <h5 class="sub">24.5.2 versionName</h5>
+
+        <p><code>versionName</code> is a human-readable version number displayed to users or used by developers.</p>
+
+        <p>Example:</p>
+
+        <pre><code>versionName "1.0"</code></pre>
+
+        <p>A later version might be:</p>
+
+        <pre><code>versionName "1.1"</code></pre>
+
+        <p>Another version might be:</p>
+
+        <pre><code>versionName "2.0"</code></pre>
+
+        <h5 class="sub">24.5.3 Example of Versioning</h5>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Application Release</th>
+                        <th>versionCode</th>
+                        <th>versionName</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>First release</td>
+                        <td>1</td>
+                        <td>1.0</td>
+                    </tr>
+                    <tr>
+                        <td>Second release</td>
+                        <td>2</td>
+                        <td>1.1</td>
+                    </tr>
+                    <tr>
+                        <td>Third release</td>
+                        <td>3</td>
+                        <td>1.2</td>
+                    </tr>
+                    <tr>
+                        <td>Major update</td>
+                        <td>4</td>
+                        <td>2.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h5 class="sub">24.5.4 Difference Between versionCode and versionName</h5>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>versionCode</th>
+                        <th>versionName</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Integer value.</td>
+                        <td>Human-readable version string.</td>
+                    </tr>
+                    <tr>
+                        <td>Used internally for version comparison.</td>
+                        <td>Used to identify the version for people.</td>
+                    </tr>
+                    <tr>
+                        <td>Must increase for a new update.</td>
+                        <td>Can follow a developer-defined naming scheme.</td>
+                    </tr>
+                    <tr>
+                        <td>Not normally displayed to users.</td>
+                        <td>Can be displayed to users.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h5 class="sub">24.5.5 Where Are These Settings Configured?</h5>
+
+        <p>In a modern Android project, these values are generally configured in the app module's <code>build.gradle</code> or <code>build.gradle.kts</code> file.</p>
+
+        <p>Groovy example:</p>
+
+        <pre><code>android {
+
+    defaultConfig {
+
+        applicationId "com.example.studentmanager"
+
+        minSdk 23
+
+        targetSdk 35
+
+        versionCode 1
+
+        versionName "1.0"
+
+    }
+}</code></pre>
+
+        <p>This is an illustrative configuration. The appropriate SDK versions depend on the project's requirements and current publishing policies.</p>
+
+        <h4>24.6 Android Application Package Formats: APK and AAB</h4>
+
+        <p>After developing and testing an application, developers must package it into a format that can be distributed.</p>
+
+        <p>Android provides two important package formats:</p>
+
+        <ol>
+            <li>APK (Android Package Kit).</li>
+            <li>AAB (Android App Bundle).</li>
+        </ol>
+
+        <h5 class="sub">24.6.1 APK (Android Package Kit)</h5>
+
+        <p>An APK is an Android application package that contains the files required to install and run an Android application.</p>
+
+        <p>It is an installable file.</p>
+
+        <p>For example:</p>
+
+        <pre><code>StudentManager.apk</code></pre>
+
+        <p>When a user installs this APK, Android uses the package to install the application on the device.</p>
+
+        <p>An APK can contain:</p>
+
+        <ul>
+            <li>Compiled application code.</li>
+            <li>Application resources.</li>
+            <li>Images and icons.</li>
+            <li>XML files.</li>
+            <li>Application manifest.</li>
+            <li>Other required application files.</li>
+        </ul>
+
+        <p><strong>Advantages of APK:</strong></p>
+
+        <ol>
+            <li>Can be installed directly on compatible Android devices.</li>
+            <li>Can be shared through websites or other distribution methods.</li>
+            <li>Useful for testing and manual distribution.</li>
+            <li>Can be generated for different release configurations.</li>
+        </ol>
+
+        <h5 class="sub">24.6.2 AAB (Android App Bundle)</h5>
+
+        <p>An Android App Bundle is a publishing format that contains the compiled code and resources of an Android application.</p>
+
+        <p>Its file extension is:</p>
+
+        <pre><code>.aab</code></pre>
+
+        <p>For example:</p>
+
+        <pre><code>StudentManager.aab</code></pre>
+
+        <p>Unlike an APK, an AAB is not normally installed directly by the user.</p>
+
+        <p>Instead, developers upload the AAB to Google Play. Google Play uses it to generate optimized APKs suitable for different devices.</p>
+
+        <p>For example, different devices may require different:</p>
+
+        <ul>
+            <li>Screen-density resources.</li>
+            <li>Language resources.</li>
+            <li>Device-specific configuration resources.</li>
+        </ul>
+
+        <p>Google Play can deliver the appropriate components to each device.</p>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Android App Bundle uploaded to Google Play and optimized APKs delivered to different devices</p>
+            </div>
+            <figcaption>Suggested image: AAB publishing and device-specific APK delivery process</figcaption>
+        </figure>
+
+        <h5 class="sub">24.6.3 Difference Between APK and AAB</h5>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>APK</th>
+                        <th>AAB</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Installable Android package.</td>
+                        <td>Publishing package format.</td>
+                    </tr>
+                    <tr>
+                        <td>Can be installed directly on a device.</td>
+                        <td>Normally uploaded to Google Play for processing.</td>
+                    </tr>
+                    <tr>
+                        <td>Contains resources and code packaged for installation.</td>
+                        <td>Contains code and resources from which optimized APKs can be generated.</td>
+                    </tr>
+                    <tr>
+                        <td>Can be shared for direct installation.</td>
+                        <td>Not normally installed directly by users.</td>
+                    </tr>
+                    <tr>
+                        <td>Commonly used for testing and direct distribution.</td>
+                        <td>Used for Google Play publishing.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="explain">
+            <strong>Important:</strong>
+            <p>Google Play requires new applications to be published using the Android App Bundle format, subject to applicable platform requirements. Developers can still generate APKs for testing and other distribution methods.</p>
+        </div>
+
+        <h4>24.7 Generating a Signed APK or Android App Bundle</h4>
+
+        <p>After preparing and testing an application, developers generate a release package.</p>
+
+        <p>In Android Studio, this can be done through the Generate Signed Bundle / APK option.</p>
+
+        <h5 class="sub">24.7.1 Steps</h5>
+
+        <div class="steps">
+            <div class="step">
+                <strong>Step 1: Open Android Studio</strong>
+                <p>Open your completed Android project.</p>
+            </div>
+
+            <div class="step">
+                <strong>Step 2: Open the Build menu</strong>
+                <p>From the top menu, select:</p>
+                <pre><code>Build → Generate Signed Bundle / APK</code></pre>
+            </div>
+
+            <div class="step">
+                <strong>Step 3: Select the package format</strong>
+                <p>Android Studio displays two options:</p>
+                <ul>
+                    <li>Android App Bundle.</li>
+                    <li>APK.</li>
+                </ul>
+                <p>Select the required format.</p>
+                <p>For Google Play publishing, Android App Bundle is generally the preferred option.</p>
+            </div>
+
+            <div class="step">
+                <strong>Step 4: Create or select a keystore</strong>
+                <p>Android Studio asks you to provide signing information.</p>
+                <p>A keystore is a file that stores the key information used to sign your application.</p>
+                <p>If you are publishing for the first time, you may need to create a new keystore.</p>
+            </div>
+
+            <div class="step">
+                <strong>Step 5: Enter signing information</strong>
+                <p>Provide the required details, such as:</p>
+                <ul>
+                    <li>Keystore path.</li>
+                    <li>Keystore password.</li>
+                    <li>Key alias.</li>
+                    <li>Key password.</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <strong>Step 6: Select the release build variant</strong>
+                <p>Choose:</p>
+                <pre><code>release</code></pre>
+                <p>This generates a production release package rather than a debug build.</p>
+            </div>
+
+            <div class="step">
+                <strong>Step 7: Generate the package</strong>
+                <p>Click Finish or Generate.</p>
+                <p>Android Studio builds the signed application package.</p>
+            </div>
+        </div>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:240px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Android Studio Generate Signed Bundle / APK wizard with keystore and release options</p>
+            </div>
+            <figcaption>Suggested image: Generating a signed APK or Android App Bundle in Android Studio</figcaption>
+        </figure>
+
+        <h5 class="sub">24.7.2 Output</h5>
+
+        <p>Depending on your selection, Android Studio generates:</p>
+
+        <pre><code>app-release.apk</code></pre>
+
+        <p>or:</p>
+
+        <pre><code>app-release.aab</code></pre>
+
+        <p>The exact output location depends on your Android Studio project configuration.</p>
+
+        <div class="explain">
+            <strong>Important:</strong>
+            <p>Keep your release signing credentials secure. Losing access to the signing key can create serious problems when releasing future updates, depending on your signing arrangement.</p>
+        </div>
+
+        <h4>24.8 Application Signing and Digital Certificates</h4>
+
+        <p>Application signing is an important security step in Android application publishing.</p>
+
+        <div class="def">
+            <strong>Definition:</strong>
+            <p>Application signing is the process of using a digital signing key to establish the authenticity and integrity of an application package.</p>
+        </div>
+
+        <p>In simple words, signing helps establish that an application update comes from the expected developer and that the signed package has not been modified after signing.</p>
+
+        <h5 class="sub">24.8.1 Why Is Application Signing Important?</h5>
+
+        <ol>
+            <li><strong>Application authenticity:</strong> Helps identify the developer or signing identity associated with an application.</li>
+            <li><strong>Application integrity:</strong> Helps detect changes made to a signed package.</li>
+            <li><strong>Update management:</strong> Android uses signing identity to enforce application update compatibility.</li>
+            <li><strong>Security:</strong> Helps prevent unauthorized replacement of an application with a differently signed package.</li>
+        </ol>
+
+        <h5 class="sub">24.8.2 What Is a Keystore?</h5>
+
+        <p>A keystore is a file that stores cryptographic keys and related certificates.</p>
+
+        <p>Developers use it to sign Android applications.</p>
+
+        <p>For example:</p>
+
+        <pre><code>my-release-key.jks</code></pre>
+
+        <p>This file may contain a signing key and its associated certificate.</p>
+
+        <h5 class="sub">24.8.3 Important Signing Terms</h5>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Keystore</td>
+                        <td>File that stores signing keys and certificates.</td>
+                    </tr>
+                    <tr>
+                        <td>Key</td>
+                        <td>Cryptographic material used for signing.</td>
+                    </tr>
+                    <tr>
+                        <td>Key Alias</td>
+                        <td>Name used to identify a particular key in a keystore.</td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>Protects access to the keystore or key.</td>
+                    </tr>
+                    <tr>
+                        <td>Digital Certificate</td>
+                        <td>Contains information associated with the signing identity.</td>
+                    </tr>
+                    <tr>
+                        <td>Digital Signature</td>
+                        <td>Cryptographic proof used to verify package integrity and signing identity.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h5 class="sub">24.8.4 What Is Google Play App Signing?</h5>
+
+        <p>Google Play App Signing is a service that helps manage application signing for Google Play distribution.</p>
+
+        <p>Under this system:</p>
+
+        <ul>
+            <li>The developer uploads an app bundle or APK signed with an upload key.</li>
+            <li>Google Play verifies the upload.</li>
+            <li>Google Play uses the app-signing key to sign the APKs delivered to users.</li>
+        </ul>
+
+        <p>The upload key and app-signing key serve different purposes.</p>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Google Play App Signing showing upload key and app-signing key</p>
+            </div>
+            <figcaption>Suggested image: Relationship between upload key and app-signing key</figcaption>
+        </figure>
+
+        <div class="explain">
+            <strong>Important:</strong>
+            <p>Never share your private signing keys or passwords publicly, and always maintain secure backups.</p>
+        </div>
+
+        <h4>24.9 Release Configuration</h4>
+
+        <p>Before generating the final release package, developers configure the application for production.</p>
+
+        <p>This process is called release configuration.</p>
+
+        <p>It ensures that the application is prepared for real users rather than development testing.</p>
+
+        <h5 class="sub">24.9.1 Important Release Settings</h5>
+
+        <p><strong>1. Application ID</strong></p>
+
+        <p>The application ID uniquely identifies an Android application on the device and in app distribution systems.</p>
+
+        <p>Example:</p>
+
+        <pre><code>applicationId "com.example.studentmanager"</code></pre>
+
+        <p>Once an application is published, changing its application ID generally means it is treated as a different application.</p>
+
+        <p><strong>2. Minimum SDK</strong></p>
+
+        <p>The minimum SDK determines the oldest Android API level supported by the application.</p>
+
+        <p>For example:</p>
+
+        <pre><code>minSdk 23</code></pre>
+
+        <p>This means the application requires at least Android API level 23.</p>
+
+        <p><strong>3. Target SDK</strong></p>
+
+        <p>The target SDK indicates the Android API level against which the application is designed and tested.</p>
+
+        <p>It also affects certain Android compatibility behaviors.</p>
+
+        <p>Example:</p>
+
+        <pre><code>targetSdk 35</code></pre>
+
+        <p>Developers must keep this setting aligned with current Google Play requirements.</p>
+
+        <p><strong>4. Version Information</strong></p>
+
+        <p>Developers configure:</p>
+
+        <pre><code>versionCode 1
+versionName "1.0"</code></pre>
+
+        <p><strong>5. Release Signing</strong></p>
+
+        <p>The application must be signed using the appropriate release signing arrangement.</p>
+
+        <p><strong>6. Debugging Configuration</strong></p>
+
+        <p>Development-only debugging features and sensitive test information should not be exposed in the production release.</p>
+
+        <h4>24.10 Security and Performance Checks</h4>
+
+        <p>Before publishing an application, developers should perform final security and performance checks.</p>
+
+        <h5 class="sub">24.10.1 Security Checks</h5>
+
+        <ul>
+            <li>Use HTTPS for secure network communication.</li>
+            <li>Do not store passwords in plain text.</li>
+            <li>Do not hardcode sensitive credentials in application code.</li>
+            <li>Request only necessary permissions.</li>
+            <li>Validate user input.</li>
+            <li>Protect private user information.</li>
+            <li>Use secure authentication and authorization methods.</li>
+        </ul>
+
+        <h5 class="sub">24.10.2 Performance Checks</h5>
+
+        <ul>
+            <li>Reduce unnecessary application size.</li>
+            <li>Optimize images and other resources.</li>
+            <li>Avoid unnecessary background processing.</li>
+            <li>Check memory consumption.</li>
+            <li>Reduce unnecessary network requests.</li>
+            <li>Check application startup time.</li>
+            <li>Test on different devices.</li>
+        </ul>
+
+        <div class="example">
+            <strong>Example</strong>
+            <p>Suppose your application contains 20 large images, but only five are actually required.</p>
+            <p>You should remove unnecessary resources and optimize the remaining images.</p>
+            <p>This can reduce the application size and improve performance.</p>
+        </div>
+
+        <h4>24.11 Preparing Application Information and Resources</h4>
+
+        <p>A professional application requires more than its executable package.</p>
+
+        <p>Developers should also prepare the information and resources needed to present the application to users.</p>
+
+        <p>Common resources include:</p>
+
+        <ol>
+            <li>Application name.</li>
+            <li>Application icon.</li>
+            <li>Short description.</li>
+            <li>Full description.</li>
+            <li>Screenshots.</li>
+            <li>Feature graphic, where required.</li>
+            <li>Privacy policy, where applicable.</li>
+            <li>Contact information.</li>
+            <li>Support website or email.</li>
+            <li>App category.</li>
+        </ol>
+
+        <div class="example">
+            <strong>Example</strong>
+            <p>For example, a student management application might have:</p>
+            <ul>
+                <li>Name: Student Manager.</li>
+                <li>Category: Education.</li>
+                <li>Description: Manage student records, attendance, and examination results.</li>
+                <li>Screenshots: Login page, dashboard, attendance screen, and result screen.</li>
+            </ul>
+        </div>
+
+        <p>These resources will be used when creating the application listing on an app store.</p>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Example Google Play Store listing with app icon, description, screenshots, and category</p>
+            </div>
+            <figcaption>Suggested image: Application store listing and its presentation resources</figcaption>
+        </figure>
+
+        <h4>24.12 Publishing Process and Post-Release Updates</h4>
+
+        <p>After completing the preparation steps, the application is ready for distribution.</p>
+
+        <p>The general publishing process is:</p>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Android application publishing workflow from development to release</p>
+            </div>
+            <figcaption>Suggested image: Complete Android application publishing workflow</figcaption>
+        </figure>
+
+        <ol>
+            <li>Complete application development.</li>
+            <li>Test the application.</li>
+            <li>Configure release settings.</li>
+            <li>Generate a signed release package.</li>
+            <li>Prepare application information and resources.</li>
+            <li>Upload the application to the selected distribution platform.</li>
+            <li>Complete the platform's required declarations and checks.</li>
+            <li>Submit for review if required.</li>
+            <li>Release the application.</li>
+            <li>Monitor feedback and fix problems.</li>
+        </ol>
+
+        <h5 class="sub">24.12.1 What Happens After Publishing?</h5>
+
+        <p>Publishing does not mean that the developer's work is finished.</p>
+
+        <p>Developers must continue maintaining the application.</p>
+
+        <p>Post-release activities include:</p>
+
+        <ul>
+            <li>Fixing bugs.</li>
+            <li>Improving performance.</li>
+            <li>Adding new features.</li>
+            <li>Updating security.</li>
+            <li>Supporting newer Android versions.</li>
+            <li>Responding to user feedback.</li>
+            <li>Releasing new application versions.</li>
+        </ul>
+
+        <h5 class="sub">24.12.2 Example</h5>
+
+        <p>Suppose you publish Student Manager version 1.0.</p>
+
+        <p>Users report that the attendance screen sometimes crashes.</p>
+
+        <p>You fix the problem and prepare version 1.1.</p>
+
+        <p>You increase the version code and publish the update.</p>
+
+        <p>Users can then receive the updated application through the distribution platform.</p>
+
+        <h4>24.13 Advantages and Challenges of Android Application Publishing</h4>
+
+        <h5 class="sub">24.13.1 Advantages</h5>
+
+        <ol>
+            <li><strong>Wider reach:</strong> Applications can reach users around the world.</li>
+            <li><strong>Business opportunities:</strong> Developers can generate revenue.</li>
+            <li><strong>Easy distribution:</strong> Users can install applications through supported distribution platforms.</li>
+            <li><strong>Professional experience:</strong> Developers gain practical software-release experience.</li>
+            <li><strong>Application updates:</strong> Developers can improve their applications after release.</li>
+            <li><strong>User feedback:</strong> Developers can receive reviews and suggestions.</li>
+        </ol>
+
+        <h5 class="sub">24.13.2 Challenges</h5>
+
+        <ol>
+            <li><strong>Testing requirements:</strong> Applications need extensive testing before release.</li>
+            <li><strong>Security requirements:</strong> Developers must protect application and user data.</li>
+            <li><strong>Store policies:</strong> Applications must follow distribution-platform policies.</li>
+            <li><strong>Device compatibility:</strong> Applications may behave differently on different devices.</li>
+            <li><strong>Maintenance:</strong> Developers must regularly fix bugs and provide updates.</li>
+            <li><strong>Review process:</strong> App stores may reject applications that violate their requirements.</li>
+        </ol>
+
+        <h4>24.14 Short Questions for Exams</h4>
+
+        <details class="exam">
+            <summary>Short questions and answers</summary>
+
+            <ol>
+                <li>
+                    <strong>What is Android application publishing?</strong>
+                    <p>It is the process of preparing, testing, packaging, signing, and distributing an Android application to users.</p>
+                </li>
+
+                <li>
+                    <strong>What is a release version?</strong>
+                    <p>A release version is the production-ready version of an application prepared for distribution.</p>
+                </li>
+
+                <li>
+                    <strong>What is a debug version?</strong>
+                    <p>A debug version is an application build used during development to identify and correct programming errors.</p>
+                </li>
+
+                <li>
+                    <strong>What is an APK?</strong>
+                    <p>APK is an installable Android application package containing the files required to install and run an application.</p>
+                </li>
+
+                <li>
+                    <strong>What is an AAB?</strong>
+                    <p>Android App Bundle is a publishing format uploaded to Google Play, which can generate optimized APKs for different devices.</p>
+                </li>
+
+                <li>
+                    <strong>What is application signing?</strong>
+                    <p>Application signing is the process of using a digital signing key to establish an application's authenticity and integrity.</p>
+                </li>
+
+                <li>
+                    <strong>What is a keystore?</strong>
+                    <p>A keystore is a file that stores cryptographic keys and certificates used for application signing.</p>
+                </li>
+
+                <li>
+                    <strong>What is versionCode?</strong>
+                    <p>versionCode is an integer used internally by Android to identify application versions and manage updates.</p>
+                </li>
+
+                <li>
+                    <strong>What is versionName?</strong>
+                    <p>versionName is a human-readable version identifier, such as 1.0 or 2.0.</p>
+                </li>
+
+                <li>
+                    <strong>What is application testing?</strong>
+                    <p>Application testing is the process of checking an application to identify errors and verify that its features work correctly.</p>
+                </li>
+
+                <li>
+                    <strong>What is debugging?</strong>
+                    <p>Debugging is the process of finding and correcting errors in an application.</p>
+                </li>
+
+                <li>
+                    <strong>What is release configuration?</strong>
+                    <p>Release configuration is the process of setting up an application for production distribution.</p>
+                </li>
+            </ol>
+        </details>
+
+        <h4>24.15 Long Questions for Exams</h4>
+
+        <details class="exam">
+            <summary>Long questions</summary>
+            <ol>
+                <li>Define Android application publishing and explain its complete process.</li>
+                <li>Differentiate between debug and release versions of an Android application.</li>
+                <li>Explain the steps required to prepare an Android application for publishing.</li>
+                <li>What is application testing? Explain its different types and importance.</li>
+                <li>Explain Android application versioning, including versionCode and versionName.</li>
+                <li>Differentiate between APK and Android App Bundle (AAB).</li>
+                <li>Explain the process of generating a signed APK or Android App Bundle in Android Studio.</li>
+                <li>What is application signing? Explain keystore, digital certificates, and digital signatures.</li>
+                <li>Explain the importance of release configuration, security, and performance checks.</li>
+                <li>Discuss the advantages and challenges of Android application publishing.</li>
+            </ol>
+        </details>
+
+        <h4>24.16 Quick Revision</h4>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Simple Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Publishing</td>
+                        <td>Preparing and distributing an application</td>
+                    </tr>
+                    <tr>
+                        <td>Debug Version</td>
+                        <td>Application build used during development</td>
+                    </tr>
+                    <tr>
+                        <td>Release Version</td>
+                        <td>Application build prepared for users</td>
+                    </tr>
+                    <tr>
+                        <td>APK</td>
+                        <td>Installable Android package</td>
+                    </tr>
+                    <tr>
+                        <td>AAB</td>
+                        <td>Android App Bundle publishing format</td>
+                    </tr>
+                    <tr>
+                        <td>Keystore</td>
+                        <td>Stores signing keys and certificates</td>
+                    </tr>
+                    <tr>
+                        <td>Digital Signature</td>
+                        <td>Helps verify package integrity and signing identity</td>
+                    </tr>
+                    <tr>
+                        <td>versionCode</td>
+                        <td>Internal integer version number</td>
+                    </tr>
+                    <tr>
+                        <td>versionName</td>
+                        <td>Human-readable version number</td>
+                    </tr>
+                    <tr>
+                        <td>Application ID</td>
+                        <td>Unique identifier of an Android application</td>
+                    </tr>
+                    <tr>
+                        <td>minSdk</td>
+                        <td>Minimum supported Android API level</td>
+                    </tr>
+                    <tr>
+                        <td>targetSdk</td>
+                        <td>Android API level targeted by the application</td>
+                    </tr>
+                    <tr>
+                        <td>Testing</td>
+                        <td>Checking whether the application works correctly</td>
+                    </tr>
+                    <tr>
+                        <td>Debugging</td>
+                        <td>Finding and fixing errors</td>
+                    </tr>
+                    <tr>
+                        <td>Release Configuration</td>
+                        <td>Preparing application settings for production</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="topic-card" id="deployment-app-stores" data-group="Publishing">
+
+    <div class="banner">
+        <h3>Deployment on App Stores</h3>
+        <p>Understand how Android applications are prepared, uploaded, tested, reviewed, and released through Google Play and other application distribution platforms.</p>
+    </div>
+
+    <div class="body">
+
+        <h4>21.1 Introduction to App Store Deployment</h4>
+
+        <p>After developing and publishing an Android application package, the next step is to make the application available to users.</p>
+
+        <p>This process is called app store deployment.</p>
+
+        <div class="def">
+            <strong>Definition:</strong>
+            <p>App store deployment is the process of uploading, configuring, reviewing, and releasing a mobile application through an application distribution platform so that users can download and install it.</p>
+        </div>
+
+        <p>An app store acts as a platform between application developers and users.</p>
+
+        <p>Developers upload their applications to the store, and users can search for, download, install, and update them.</p>
+
+        <h5 class="sub">Examples of Android App Stores</h5>
+
+        <ol>
+            <li>Google Play Store.</li>
+            <li>Samsung Galaxy Store.</li>
+            <li>Amazon Appstore.</li>
+            <li>Huawei AppGallery.</li>
+            <li>Xiaomi GetApps.</li>
+        </ol>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Logos of Google Play, Samsung Galaxy Store, Amazon Appstore, and Huawei AppGallery</p>
+            </div>
+            <figcaption>Suggested image: Different Android application distribution platforms</figcaption>
+        </figure>
+
+        <h5 class="sub">How does app store deployment work?</h5>
+
+        <p>Suppose you develop a student management application.</p>
+
+        <p>The general process is:</p>
+
+        <ol>
+            <li>Complete application development.</li>
+            <li>Test the application.</li>
+            <li>Generate a signed Android App Bundle.</li>
+            <li>Create a developer account on an app store.</li>
+            <li>Create an application listing.</li>
+            <li>Upload the application package.</li>
+            <li>Complete the required declarations.</li>
+            <li>Submit the application for review.</li>
+            <li>Release the approved application.</li>
+            <li>Users download and install it.</li>
+        </ol>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: App store deployment workflow from application development to public installation</p>
+            </div>
+            <figcaption>Suggested image: Complete application deployment process</figcaption>
+        </figure>
+
+        <h5 class="sub">Why is app store deployment important?</h5>
+
+        <ul>
+            <li>It makes applications accessible to users.</li>
+            <li>It provides a centralized application distribution platform.</li>
+            <li>It allows users to discover applications through search.</li>
+            <li>It helps developers distribute updates.</li>
+            <li>It provides application ratings and reviews.</li>
+            <li>It supports different application monetization methods.</li>
+        </ul>
+
+        <h4>21.2 Google Play Store</h4>
+
+        <p>The Google Play Store is the official application distribution platform for most Android devices that include Google Play services.</p>
+
+        <p>It allows users to discover, download, install, and update Android applications.</p>
+
+        <p>Developers use the Google Play Store to distribute their applications to Android users.</p>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Google Play Store logo and application home screen</p>
+            </div>
+            <figcaption>Suggested image: Google Play Store interface</figcaption>
+        </figure>
+
+        <h5 class="sub">Main features of Google Play Store</h5>
+
+        <h5 class="sub">21.2.1 Application Distribution</h5>
+
+        <p>Developers can upload their applications and make them available to users.</p>
+
+        <p>For example, a developer can publish a student management application so that students and teachers can install it.</p>
+
+        <h5 class="sub">21.2.2 Application Search</h5>
+
+        <p>Users can search for applications by entering names or keywords.</p>
+
+        <p>For example:</p>
+
+        <ul>
+            <li>Student Management.</li>
+            <li>Education Apps.</li>
+            <li>Calculator.</li>
+            <li>Weather Application.</li>
+        </ul>
+
+        <h5 class="sub">21.2.3 Application Updates</h5>
+
+        <p>Developers can release new versions to fix errors, improve performance, and add features.</p>
+
+        <p>Users can receive these updates through Google Play.</p>
+
+        <h5 class="sub">21.2.4 Ratings and Reviews</h5>
+
+        <p>Users can rate applications and write reviews about their experiences.</p>
+
+        <p>For example, a user may give an application five stars and write that it is easy to use.</p>
+
+        <p>Developers can use this feedback to improve their applications.</p>
+
+        <h5 class="sub">21.2.5 Categories</h5>
+
+        <p>Google Play organizes applications into categories, such as:</p>
+
+        <ul>
+            <li>Education.</li>
+            <li>Business.</li>
+            <li>Entertainment.</li>
+            <li>Finance.</li>
+            <li>Health and Fitness.</li>
+            <li>Games.</li>
+            <li>Productivity.</li>
+        </ul>
+
+        <h5 class="sub">21.2.6 Monetization</h5>
+
+        <p>Developers can generate revenue through supported methods, including:</p>
+
+        <ul>
+            <li>Paid applications.</li>
+            <li>In-app purchases.</li>
+            <li>Subscriptions.</li>
+            <li>Advertisements.</li>
+        </ul>
+
+        <h5 class="sub">Advantages of Google Play Store</h5>
+
+        <ol>
+            <li>Large Android user base.</li>
+            <li>Centralized application distribution.</li>
+            <li>Application updates.</li>
+            <li>User ratings and reviews.</li>
+            <li>Application discovery through search and recommendations.</li>
+            <li>Testing and release-management tools.</li>
+            <li>Security checks and policy enforcement.</li>
+        </ol>
+
+        <h4>21.3 Google Play Console</h4>
+
+        <p>Google Play Console is the platform developers use to manage and publish Android applications on Google Play.</p>
+
+        <div class="explain">
+            <p>In simple words, Google Play Store is where users find applications, while Google Play Console is where developers manage those applications.</p>
+        </div>
+
+        <p>Official website: <a href="https://play.google.com/console/" target="_blank" rel="noopener noreferrer">Google Play Console</a></p>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Google Play Console developer dashboard</p>
+            </div>
+            <figcaption>Suggested image: Google Play Console interface</figcaption>
+        </figure>
+
+        <h5 class="sub">Main functions of Google Play Console</h5>
+
+        <h5 class="sub">21.3.1 Create Applications</h5>
+
+        <p>Developers can create a new application entry in their Play Console account.</p>
+
+        <p>They provide basic information such as:</p>
+
+        <ul>
+            <li>Application name.</li>
+            <li>Default language.</li>
+            <li>Application type.</li>
+            <li>Free or paid status.</li>
+            <li>Required declarations.</li>
+        </ul>
+
+        <h5 class="sub">21.3.2 Upload Application Packages</h5>
+
+        <p>Developers upload their signed Android App Bundle (AAB) or supported APK packages to a release track.</p>
+
+        <p>For new Google Play applications, AAB is generally the required publishing format.</p>
+
+        <h5 class="sub">21.3.3 Manage Releases</h5>
+
+        <p>Developers can manage different release stages, such as:</p>
+
+        <ul>
+            <li>Internal testing.</li>
+            <li>Closed testing.</li>
+            <li>Open testing.</li>
+            <li>Production.</li>
+        </ul>
+
+        <p>We will explain these tracks later.</p>
+
+        <h5 class="sub">21.3.4 Monitor Application Performance</h5>
+
+        <p>Google Play Console provides information about application performance, including supported quality and Android vitals information.</p>
+
+        <p>Developers can investigate:</p>
+
+        <ul>
+            <li>Crashes.</li>
+            <li>Application not responding (ANR) issues.</li>
+            <li>Installation problems.</li>
+            <li>User feedback.</li>
+            <li>Application performance.</li>
+        </ul>
+
+        <h5 class="sub">21.3.5 Manage Store Listing</h5>
+
+        <p>Developers can add or update:</p>
+
+        <ul>
+            <li>Application descriptions.</li>
+            <li>Screenshots.</li>
+            <li>Application icons.</li>
+            <li>Feature graphics.</li>
+            <li>Contact information.</li>
+            <li>Category information.</li>
+        </ul>
+
+        <h5 class="sub">21.3.6 Manage Application Updates</h5>
+
+        <p>Developers can upload new application versions and manage their releases.</p>
+
+        <h5 class="sub">Difference Between Google Play Store and Google Play Console</h5>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Google Play Store</th>
+                        <th>Google Play Console</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Used by application users.</td>
+                        <td>Used by application developers.</td>
+                    </tr>
+                    <tr>
+                        <td>Allows users to find applications.</td>
+                        <td>Allows developers to upload applications.</td>
+                    </tr>
+                    <tr>
+                        <td>Supports downloading and installing.</td>
+                        <td>Supports publishing and release management.</td>
+                    </tr>
+                    <tr>
+                        <td>Displays ratings and reviews.</td>
+                        <td>Provides developer tools and performance information.</td>
+                    </tr>
+                    <tr>
+                        <td>Provides application updates to users.</td>
+                        <td>Allows developers to submit updates.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>21.4 Creating a Google Play Console Developer Account</h4>
+
+        <p>Before publishing an application on Google Play, a developer needs a Google Play Console developer account.</p>
+
+        <div class="def">
+            <strong>Definition:</strong>
+            <p>A developer account is an account that allows an individual or organization to manage applications, upload releases, and publish applications through Google Play.</p>
+        </div>
+
+        <h5 class="sub">Steps to create an account</h5>
+
+        <div class="steps">
+            <p><strong>Step 1: Open Google Play Console</strong></p>
+            <p>Visit:</p>
+            <p><a href="https://play.google.com/console/" target="_blank" rel="noopener noreferrer">Google Play Console</a></p>
+
+            <p><strong>Step 2: Sign in</strong></p>
+            <p>Sign in using your Google account.</p>
+
+            <p><strong>Step 3: Register as a developer</strong></p>
+            <p>Follow the registration instructions and select the appropriate account type.</p>
+
+            <p>The available account types include:</p>
+            <ul>
+                <li>Personal account: For an individual developer.</li>
+                <li>Organization account: For a business, company, or other organization.</li>
+            </ul>
+
+            <p><strong>Step 4: Provide required information</strong></p>
+            <p>Google may request information such as:</p>
+            <ul>
+                <li>Developer name.</li>
+                <li>Contact email address.</li>
+                <li>Contact phone number.</li>
+                <li>Country or region.</li>
+                <li>Identity verification information.</li>
+                <li>Organization details, when applicable.</li>
+            </ul>
+
+            <p><strong>Step 5: Pay the registration fee</strong></p>
+            <p>Google Play Console currently requires a one-time registration fee for a developer account. The amount and payment requirements should be checked during registration.</p>
+
+            <p><strong>Step 6: Complete verification</strong></p>
+            <p>Complete the identity and other verification steps required for your account type.</p>
+
+            <p><strong>Step 7: Access the dashboard</strong></p>
+            <p>After registration and the required verification, you can access the Play Console dashboard and manage your applications.</p>
+        </div>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Google Play Console developer registration screen</p>
+            </div>
+            <figcaption>Suggested image: Developer account registration process</figcaption>
+        </figure>
+
+        <h5 class="sub">Important points</h5>
+
+        <ul>
+            <li>A developer account is required to publish applications on Google Play.</li>
+            <li>Developers must provide accurate information.</li>
+            <li>Google may require additional verification.</li>
+            <li>Personal and organization accounts can have different testing and verification requirements.</li>
+            <li>Creating an account does not automatically approve an application for publication.</li>
+        </ul>
+
+        <h4>21.5 Creating an Application in Google Play Console</h4>
+
+        <p>After creating a developer account, the next step is to create an application entry.</p>
+
+        <p>This entry represents your application inside Google Play Console.</p>
+
+        <h5 class="sub">Steps</h5>
+
+        <div class="steps">
+            <p><strong>Step 1: Open the Play Console dashboard</strong></p>
+            <p>Sign in to your developer account.</p>
+
+            <p><strong>Step 2: Select Create app</strong></p>
+            <p>Choose the option to create a new application.</p>
+
+            <p><strong>Step 3: Enter the application name</strong></p>
+            <p>For example:</p>
+            <pre><code>Student Manager</code></pre>
+
+            <p><strong>Step 4: Select the default language</strong></p>
+            <p>Choose the language that will be used as the default for your application listing.</p>
+            <p>For example:</p>
+            <pre><code>English</code></pre>
+
+            <p><strong>Step 5: Select the application type</strong></p>
+            <p>Choose whether your application will be an:</p>
+            <ul>
+                <li>App.</li>
+                <li>Game.</li>
+            </ul>
+
+            <p><strong>Step 6: Select the pricing option</strong></p>
+            <p>Choose whether the application will be:</p>
+            <ul>
+                <li>Free.</li>
+                <li>Paid.</li>
+            </ul>
+
+            <p><strong>Step 7: Accept the required declarations</strong></p>
+            <p>Read and accept the applicable developer declarations and terms.</p>
+
+            <p><strong>Step 8: Create the application</strong></p>
+            <p>After completing the required information, create the application entry.</p>
+        </div>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Create app form in Google Play Console</p>
+            </div>
+            <figcaption>Suggested image: Creating a new application entry</figcaption>
+        </figure>
+
+        <h5 class="sub">Example</h5>
+
+        <p>Suppose you want to publish a student management application.</p>
+
+        <p>You may enter:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>App name</td>
+                        <td>Student Manager</td>
+                    </tr>
+                    <tr>
+                        <td>Default language</td>
+                        <td>English</td>
+                    </tr>
+                    <tr>
+                        <td>App type</td>
+                        <td>App</td>
+                    </tr>
+                    <tr>
+                        <td>Pricing</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
+                        <td>Education</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="explain">
+            <strong>Important:</strong>
+            <p>The application name shown in the store listing is not necessarily the same as its application ID. The application ID is configured in the Android project and uniquely identifies the application.</p>
+        </div>
+
+        <h4>21.6 Preparing a Store Listing</h4>
+
+        <p>A store listing is the information page that users see when they open an application on Google Play.</p>
+
+        <p>It explains what the application does and helps users decide whether they want to install it.</p>
+
+        <p>A good store listing should provide clear, accurate, and useful information.</p>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Example Google Play application store listing with icon, description, screenshots, and ratings</p>
+            </div>
+            <figcaption>Suggested image: Main components of a store listing</figcaption>
+        </figure>
+
+        <h5 class="sub">Main elements of a store listing</h5>
+
+        <h5 class="sub">21.6.1 Application Name</h5>
+
+        <p>The application name is the name displayed to users.</p>
+
+        <p>Example:</p>
+        <pre><code>Student Manager</code></pre>
+
+        <p>It should be meaningful and easy to recognize.</p>
+
+        <h5 class="sub">21.6.2 Short Description</h5>
+
+        <p>A short description briefly explains the application's main purpose.</p>
+
+        <p>Example:</p>
+        <pre><code>Manage student records, attendance, and examination results easily.</code></pre>
+
+        <p>It helps users quickly understand what the application offers.</p>
+
+        <h5 class="sub">21.6.3 Full Description</h5>
+
+        <p>The full description explains the application's features and functionality in more detail.</p>
+
+        <p>Example:</p>
+
+        <div class="example">
+            <strong>Student Manager</strong>
+            <p>Student Manager is an application designed to help educational institutions manage student information.</p>
+
+            <p><strong>Main features:</strong></p>
+            <ul>
+                <li>Student registration.</li>
+                <li>Attendance management.</li>
+                <li>Examination results.</li>
+                <li>Student profiles.</li>
+                <li>Teacher information.</li>
+                <li>Academic records.</li>
+            </ul>
+        </div>
+
+        <h5 class="sub">21.6.4 Application Icon</h5>
+
+        <p>The application icon is the visual symbol that represents the application.</p>
+
+        <p>It appears in search results, application listings, and on users' devices.</p>
+
+        <h5 class="sub">21.6.5 Screenshots</h5>
+
+        <p>Screenshots show users what the application looks like.</p>
+
+        <p>For example, you might provide screenshots of:</p>
+
+        <ul>
+            <li>Login screen.</li>
+            <li>Dashboard.</li>
+            <li>Student registration page.</li>
+            <li>Attendance screen.</li>
+            <li>Result screen.</li>
+        </ul>
+
+        <h5 class="sub">21.6.6 Feature Graphic</h5>
+
+        <p>A feature graphic is a promotional image used in supported Google Play placements.</p>
+
+        <p>It visually represents the application and its purpose.</p>
+
+        <h5 class="sub">21.6.7 Category</h5>
+
+        <p>The category identifies the type of application.</p>
+
+        <p>For example:</p>
+
+        <ul>
+            <li>Education.</li>
+            <li>Business.</li>
+            <li>Productivity.</li>
+            <li>Finance.</li>
+            <li>Entertainment.</li>
+        </ul>
+
+        <h5 class="sub">21.6.8 Contact Information</h5>
+
+        <p>Developers provide appropriate contact details so users can reach them for support.</p>
+
+        <p>This may include:</p>
+
+        <ul>
+            <li>Support email.</li>
+            <li>Website.</li>
+            <li>Other required contact details.</li>
+        </ul>
+
+        <h5 class="sub">Why is a store listing important?</h5>
+
+        <p>A store listing is important because it:</p>
+
+        <ol>
+            <li>Introduces the application to users.</li>
+            <li>Explains its features.</li>
+            <li>Shows its user interface.</li>
+            <li>Helps users understand its purpose.</li>
+            <li>Improves application discoverability.</li>
+            <li>Provides support information.</li>
+        </ol>
+
+        <h4>21.7 Uploading an Application to Google Play Console</h4>
+
+        <p>After preparing the application and store listing, the developer must upload the release package.</p>
+
+        <p>For a new Google Play application, the normal publishing workflow uses an Android App Bundle (<code>.aab</code>).</p>
+
+        <h5 class="sub">Steps to upload an application</h5>
+
+        <div class="steps">
+            <p><strong>Step 1: Open your Android Studio project</strong></p>
+            <p>Make sure that your application is ready for release.</p>
+
+            <p><strong>Step 2: Generate a signed Android App Bundle</strong></p>
+            <p>In Android Studio, select:</p>
+            <pre><code>Build → Generate Signed Bundle / APK</code></pre>
+
+            <p>Choose:</p>
+            <pre><code>Android App Bundle</code></pre>
+
+            <p>Then select the release build variant and complete the signing process.</p>
+
+            <p><strong>Step 3: Locate the generated file</strong></p>
+            <p>For example:</p>
+            <pre><code>app-release.aab</code></pre>
+
+            <p><strong>Step 4: Open Google Play Console</strong></p>
+            <p>Select your application from the dashboard.</p>
+
+            <p><strong>Step 5: Open a release track</strong></p>
+            <p>For example:</p>
+            <pre><code>Testing → Internal testing</code></pre>
+            <p>Or select another appropriate track.</p>
+
+            <p><strong>Step 6: Create a new release</strong></p>
+            <p>Choose the option to create a release.</p>
+
+            <p><strong>Step 7: Upload the AAB file</strong></p>
+            <p>Select the generated <code>.aab</code> file and upload it.</p>
+
+            <p><strong>Step 8: Add release information</strong></p>
+            <p>Provide the required release notes.</p>
+
+            <p>Example:</p>
+            <pre><code>Version 1.0
+
+- Initial application release.
+- Added student registration.
+- Added attendance management.
+- Added examination results.</code></pre>
+
+            <p><strong>Step 9: Review the release</strong></p>
+            <p>Check the uploaded package and resolve any errors or warnings that must be addressed.</p>
+
+            <p><strong>Step 10: Save and submit</strong></p>
+            <p>Follow the console instructions to save the release and submit it for the applicable testing or review process.</p>
+        </div>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Android Studio Generate Signed Bundle / APK screen and AAB upload in Google Play Console</p>
+            </div>
+            <figcaption>Suggested image: Generating and uploading an Android App Bundle</figcaption>
+        </figure>
+
+        <h5 class="sub">What happens after uploading?</h5>
+
+        <p>Google Play processes the uploaded application bundle.</p>
+
+        <p>It checks the package and generates device-appropriate APKs for distribution.</p>
+
+        <p>The developer may also need to complete additional setup, declarations, testing requirements, and review steps before production availability.</p>
+
+        <h4>21.8 App Content and Policy Declarations</h4>
+
+        <p>Before Google Play makes an application available, developers must provide information about the application's content, permissions, privacy practices, and other relevant details.</p>
+
+        <p>These declarations help Google evaluate whether the application follows its policies and legal requirements.</p>
+
+        <p>They are managed through the App content section of Play Console.</p>
+
+        <h5 class="sub">21.8.1 Privacy Policy</h5>
+
+        <div class="def">
+            <strong>Definition:</strong>
+            <p>A privacy policy is a document explaining how an application collects, uses, stores, and shares users' information.</p>
+        </div>
+
+        <p>For example, a student management application may collect:</p>
+
+        <ul>
+            <li>Student names.</li>
+            <li>Email addresses.</li>
+            <li>Profile pictures.</li>
+            <li>Attendance records.</li>
+        </ul>
+
+        <p>Its privacy policy should explain how this information is handled.</p>
+
+        <p>Google Play requires privacy-policy information for relevant applications, including applications targeting children and applications handling personal or sensitive user data. Check the current requirements for your application's situation.</p>
+
+        <h5 class="sub">21.8.2 Data Safety Section</h5>
+
+        <p>The Data safety section explains how an application handles user data.</p>
+
+        <p>Developers must accurately declare:</p>
+
+        <ul>
+            <li>What data the application collects.</li>
+            <li>Whether data is shared with other parties.</li>
+            <li>How collected data is used.</li>
+            <li>Whether data is encrypted in transit.</li>
+            <li>Whether users can request data deletion, where applicable.</li>
+        </ul>
+
+        <p>For example, if an application collects a user's email address and shares it with a service provider, its declaration must accurately reflect that practice.</p>
+
+        <p>Even applications that do not collect or share user data may still need to complete the Data safety form and provide a privacy policy, subject to applicable exemptions.</p>
+
+        <h5 class="sub">21.8.3 Advertisement Declaration</h5>
+
+        <p>Developers must declare whether their application contains advertisements.</p>
+
+        <p>For example:</p>
+
+        <ul>
+            <li>Banner advertisements.</li>
+            <li>Video advertisements.</li>
+            <li>Advertisements displayed through third-party advertising SDKs.</li>
+            <li>Native advertisements.</li>
+        </ul>
+
+        <p>If the application contains ads, Google Play can display a relevant advertisement label on its listing.</p>
+
+        <h5 class="sub">21.8.4 Content Rating</h5>
+
+        <p>Content rating describes the suitability of an application for different age groups.</p>
+
+        <p>For example, an educational application for children should accurately describe its content and intended audience.</p>
+
+        <p>Developers answer the required questionnaire, and the application receives the applicable content rating.</p>
+
+        <h5 class="sub">21.8.5 Target Audience</h5>
+
+        <p>Developers must declare the intended audience of their application.</p>
+
+        <p>For example:</p>
+
+        <ul>
+            <li>Children.</li>
+            <li>Teenagers.</li>
+            <li>Adults.</li>
+            <li>General audience.</li>
+        </ul>
+
+        <p>This information is important because applications intended for children may have additional policy requirements.</p>
+
+        <h5 class="sub">21.8.6 App Access Instructions</h5>
+
+        <p>Some applications require users to log in before accessing their features.</p>
+
+        <p>If Google reviewers cannot access the application without an account, developers may need to provide valid testing credentials and instructions.</p>
+
+        <p>For example:</p>
+
+        <pre><code>Username: reviewer@example.com
+Password: [securely provided test password]</code></pre>
+
+        <p>The credentials should belong to a test account, not a real user's personal account.</p>
+
+        <h5 class="sub">Why are these declarations important?</h5>
+
+        <p>They help Google:</p>
+
+        <ol>
+            <li>Understand the application's functionality.</li>
+            <li>Evaluate its privacy practices.</li>
+            <li>Check whether it follows developer policies.</li>
+            <li>Determine its intended audience.</li>
+            <li>Review its use of sensitive permissions.</li>
+            <li>Protect users from misleading or unsafe applications.</li>
+        </ol>
+
+        <p>Google explains these declarations in its official <a href="https://support.google.com/googleplay/android-developer/answer/9859455" target="_blank" rel="noopener noreferrer">Prepare your app for review</a> guidance.</p>
+
+        <h4>21.9 Testing Tracks in Google Play Console</h4>
+
+        <p>Before making an application available to everyone, developers can distribute it to selected users for testing.</p>
+
+        <p>Google Play Console provides different testing tracks.</p>
+
+        <div class="def">
+            <strong>Definition:</strong>
+            <p>A testing track is a distribution channel that allows developers to share application versions with testers before or during wider release.</p>
+        </div>
+
+        <p>There are four important tracks:</p>
+
+        <ol>
+            <li>Internal testing.</li>
+            <li>Closed testing.</li>
+            <li>Open testing.</li>
+            <li>Production.</li>
+        </ol>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Google Play Console testing tracks showing Internal testing, Closed testing, Open testing, and Production</p>
+            </div>
+            <figcaption>Suggested image: Different application testing and release tracks</figcaption>
+        </figure>
+
+        <h5 class="sub">21.9.1 Internal Testing</h5>
+
+        <p>Internal testing is used to share an application with a small group of trusted testers.</p>
+
+        <p>For example, a developer may share an application with:</p>
+
+        <ul>
+            <li>Project team members.</li>
+            <li>Friends.</li>
+            <li>Teachers.</li>
+            <li>Classmates.</li>
+        </ul>
+
+        <p>They can install the application and report problems.</p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            <p>You develop a student management application. Before sharing it publicly, you want your five team members to test the login and attendance features.</p>
+            <p>You can use internal testing.</p>
+        </div>
+
+        <p><strong>Main purposes:</strong></p>
+
+        <ul>
+            <li>Find early errors.</li>
+            <li>Test basic functionality.</li>
+            <li>Check installation.</li>
+            <li>Get quick feedback.</li>
+            <li>Verify application behavior.</li>
+        </ul>
+
+        <h5 class="sub">21.9.2 Closed Testing</h5>
+
+        <p>Closed testing allows developers to share an application with a selected group of testers.</p>
+
+        <p>The developer controls who can participate.</p>
+
+        <p>For example, you may invite 30 university students to test your application.</p>
+
+        <p>They can:</p>
+
+        <ul>
+            <li>Install the application.</li>
+            <li>Use its features.</li>
+            <li>Report errors.</li>
+            <li>Suggest improvements.</li>
+            <li>Provide private feedback.</li>
+        </ul>
+
+        <p>Closed testing is especially important for new personal developer accounts because Google currently requires eligible accounts created after November 13, 2023, to complete a specific closed-testing requirement before applying for production access.</p>
+
+        <p>That requirement is at least 12 testers continuously opted in for 14 days. Meeting it allows the developer to apply for production access; it does not automatically guarantee approval.</p>
+
+        <h5 class="sub">21.9.3 Open Testing</h5>
+
+        <p>Open testing allows a wider group of users to participate in testing.</p>
+
+        <p>Users can join the testing program through its Google Play testing page, subject to the developer's testing configuration.</p>
+
+        <p>For example, if you want hundreds of interested students to test your application, you may use open testing when it is available to your account.</p>
+
+        <p><strong>Main purposes:</strong></p>
+
+        <ul>
+            <li>Collect feedback from more users.</li>
+            <li>Identify problems on different devices.</li>
+            <li>Test application performance.</li>
+            <li>Improve the user experience.</li>
+        </ul>
+
+        <p>For eligible new personal developer accounts, open testing becomes available after production access is granted.</p>
+
+        <h5 class="sub">21.9.4 Production</h5>
+
+        <p>Production is the track used to release an application to the general public.</p>
+
+        <p>After the required setup, testing, and review processes, developers can make their applications available to users.</p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            <p>When your student management application is ready for public use, you release it through the production track.</p>
+            <p>Users can then find and install it according to its country, device, and availability settings.</p>
+        </div>
+
+        <h5 class="sub">Difference Between Testing Tracks</h5>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Track</th>
+                        <th>Purpose</th>
+                        <th>Audience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Internal testing</td>
+                        <td>Quick initial testing</td>
+                        <td>Small trusted group</td>
+                    </tr>
+                    <tr>
+                        <td>Closed testing</td>
+                        <td>Controlled testing</td>
+                        <td>Selected testers</td>
+                    </tr>
+                    <tr>
+                        <td>Open testing</td>
+                        <td>Wider testing</td>
+                        <td>Users who join the test</td>
+                    </tr>
+                    <tr>
+                        <td>Production</td>
+                        <td>Public release</td>
+                        <td>General users</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="explain">
+            <strong>Important:</strong>
+            <p>These tracks are not simply four mandatory steps for every developer. Their availability and requirements depend on the developer account and the application's publishing situation.</p>
+        </div>
+
+        <p>For more information, see Google's official <a href="https://support.google.com/googleplay/android-developer/answer/9845334" target="_blank" rel="noopener noreferrer">Testing tracks guide</a>.</p>
+
+        <h4>21.10 Application Review and Approval</h4>
+
+        <p>After submitting an application, Google Play reviews it before making it available through the selected release process.</p>
+
+        <div class="def">
+            <strong>Definition:</strong>
+            <p>Application review is the process of checking an application to determine whether it follows the platform's requirements and policies.</p>
+        </div>
+
+        <p>Google may evaluate:</p>
+
+        <ul>
+            <li>Application functionality.</li>
+            <li>Security.</li>
+            <li>User data handling.</li>
+            <li>Privacy policy.</li>
+            <li>Store listing information.</li>
+            <li>Content rating.</li>
+            <li>Permissions.</li>
+            <li>Target audience.</li>
+            <li>Developer policy compliance.</li>
+        </ul>
+
+        <h5 class="sub">What happens during the review?</h5>
+
+        <div class="steps">
+            <p><strong>Step 1: Application submission</strong></p>
+            <p>The developer submits the application or release through Play Console.</p>
+
+            <p><strong>Step 2: Automated checks</strong></p>
+            <p>Google's systems perform checks on the submitted package and related information.</p>
+
+            <p><strong>Step 3: Policy review</strong></p>
+            <p>The application may be reviewed for compliance with Google Play policies.</p>
+
+            <p><strong>Step 4: Review result</strong></p>
+            <p>The application may receive different outcomes.</p>
+
+            <ul>
+                <li>Approved: The release can proceed according to its release settings.</li>
+                <li>Rejected: The application does not meet one or more requirements.</li>
+                <li>More information required: The developer may need to provide additional information or correct issues.</li>
+            </ul>
+        </div>
+
+        <h5 class="sub">Why can an application be rejected?</h5>
+
+        <p>Some common reasons include:</p>
+
+        <ol>
+            <li>Violating Google Play policies.</li>
+            <li>Misleading application descriptions.</li>
+            <li>Incorrect privacy declarations.</li>
+            <li>Unnecessary or improperly used permissions.</li>
+            <li>Inappropriate content.</li>
+            <li>Broken application functionality.</li>
+            <li>Incomplete reviewer access instructions.</li>
+        </ol>
+
+        <h5 class="sub">What should developers do after rejection?</h5>
+
+        <p>If an application is rejected:</p>
+
+        <ol>
+            <li>Read the rejection explanation.</li>
+            <li>Identify the specific problem.</li>
+            <li>Correct the application or its listing.</li>
+            <li>Update the required declarations.</li>
+            <li>Upload a corrected release if necessary.</li>
+            <li>Submit it again for review.</li>
+        </ol>
+
+        <div class="explain">
+            <strong>Important:</strong>
+            <p>App approval is not guaranteed simply because an AAB file uploads successfully. Uploading and policy approval are separate steps.</p>
+        </div>
+
+        <h4>21.11 Releasing an Application on Google Play</h4>
+
+        <p>After completing the necessary testing, setup, and review requirements, the developer can release the application through the production track.</p>
+
+        <h5 class="sub">Steps</h5>
+
+        <div class="steps">
+            <p><strong>Step 1: Open Google Play Console</strong></p>
+            <p>Sign in and select your application.</p>
+
+            <p><strong>Step 2: Open Production</strong></p>
+            <p>Navigate to:</p>
+            <pre><code>Test and release → Production</code></pre>
+
+            <p><strong>Step 3: Create a production release</strong></p>
+            <p>Select the option to create a new release.</p>
+
+            <p><strong>Step 4: Upload the release package</strong></p>
+            <p>Upload the signed AAB file if required for the application.</p>
+
+            <p><strong>Step 5: Add release notes</strong></p>
+            <p>Explain what is included in the release.</p>
+
+            <p>Example:</p>
+            <pre><code>Version 1.0
+
+- Added student registration.
+- Added attendance management.
+- Added result checking.
+- Improved application performance.</code></pre>
+
+            <p><strong>Step 6: Review the release</strong></p>
+            <p>Check the package, release details, and any outstanding requirements.</p>
+
+            <p><strong>Step 7: Submit for review</strong></p>
+            <p>Submit the release for Google's required review process.</p>
+
+            <p><strong>Step 8: Make the release available</strong></p>
+            <p>After the required approval and release conditions are met, the application becomes available according to the configured rollout and availability settings.</p>
+        </div>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Production release page in Google Play Console</p>
+            </div>
+            <figcaption>Suggested image: Publishing an application through the production track</figcaption>
+        </figure>
+
+        <h5 class="sub">What is a staged rollout?</h5>
+
+        <div class="def">
+            <strong>Definition:</strong>
+            <p>A staged rollout is a release method in which an application update is distributed gradually to a percentage of eligible users instead of being made available to everyone immediately.</p>
+        </div>
+
+        <p>For example:</p>
+
+        <ul>
+            <li>First, release to 10% of users.</li>
+            <li>Monitor crashes and problems.</li>
+            <li>Increase the rollout if everything works correctly.</li>
+            <li>Eventually make it available to all eligible users.</li>
+        </ul>
+
+        <p>This reduces the risk of distributing a faulty update to the entire user base at once.</p>
+
+        <h4>21.12 Application Updates and Maintenance</h4>
+
+        <p>After publishing an application, developers must continue maintaining it.</p>
+
+        <div class="def">
+            <strong>Definition:</strong>
+            <p>Application maintenance is the process of improving an application, correcting errors, updating its features, and keeping it compatible with supported devices.</p>
+        </div>
+
+        <h5 class="sub">Why are application updates necessary?</h5>
+
+        <ol>
+            <li>Fix application errors.</li>
+            <li>Improve security.</li>
+            <li>Add new features.</li>
+            <li>Improve performance.</li>
+            <li>Support newer Android versions.</li>
+            <li>Improve user experience.</li>
+            <li>Respond to user feedback.</li>
+        </ol>
+
+        <h5 class="sub">Steps for publishing an update</h5>
+
+        <p>Suppose your application is currently at version 1.0.</p>
+
+        <p>You want to add a new attendance feature and fix a login problem.</p>
+
+        <p>The process is:</p>
+
+        <div class="steps">
+            <p><strong>Step 1:</strong> Modify the application code.</p>
+
+            <p><strong>Step 2:</strong> Test the updated application.</p>
+
+            <p><strong>Step 3:</strong> Increase the version code and update the version name.</p>
+
+            <p>For example:</p>
+            <pre><code>versionCode 2
+versionName "1.1"</code></pre>
+
+            <p><strong>Step 4:</strong> Generate a new signed Android App Bundle.</p>
+
+            <p><strong>Step 5:</strong> Upload the new bundle to Google Play Console.</p>
+
+            <p><strong>Step 6:</strong> Add release notes.</p>
+
+            <p><strong>Step 7:</strong> Submit the update for the required review.</p>
+
+            <p><strong>Step 8:</strong> Release the update.</p>
+        </div>
+
+        <p>Users can receive the new version through Google Play.</p>
+
+        <h5 class="sub">Example of application version updates</h5>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Version</th>
+                        <th>Changes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.0</td>
+                        <td>Initial application release</td>
+                    </tr>
+                    <tr>
+                        <td>1.1</td>
+                        <td>Fixed login errors</td>
+                    </tr>
+                    <tr>
+                        <td>1.2</td>
+                        <td>Added attendance management</td>
+                    </tr>
+                    <tr>
+                        <td>2.0</td>
+                        <td>Introduced a redesigned interface and new features</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h5 class="sub">What is application maintenance?</h5>
+
+        <p>Application maintenance is not limited to releasing new features. It also includes monitoring application quality, handling user complaints, fixing security problems, and ensuring compatibility with new devices.</p>
+
+        <h4>21.13 Alternative Android App Stores</h4>
+
+        <p>Google Play Store is not the only platform for distributing Android applications.</p>
+
+        <p>Developers can also use alternative app stores.</p>
+
+        <div class="def">
+            <strong>Definition:</strong>
+            <p>An alternative app store is an application distribution platform other than Google Play Store.</p>
+        </div>
+
+        <h5 class="sub">21.13.1 Samsung Galaxy Store</h5>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:180px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Samsung Galaxy Store logo</p>
+            </div>
+            <figcaption>Suggested image: Samsung Galaxy Store</figcaption>
+        </figure>
+
+        <p><strong>Samsung Galaxy Store</strong></p>
+
+        <p>An application store developed by Samsung. It distributes applications, games, themes, and other digital content, particularly for Samsung devices.</p>
+
+        <p>Official website: <a href="https://galaxystore.samsung.com/" target="_blank" rel="noopener noreferrer">Galaxy Store</a></p>
+
+        <h5 class="sub">21.13.2 Amazon Appstore</h5>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:180px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Amazon Appstore logo</p>
+            </div>
+            <figcaption>Suggested image: Amazon Appstore</figcaption>
+        </figure>
+
+        <p><strong>Amazon Appstore</strong></p>
+
+        <p>An application distribution platform operated by Amazon. Developers can distribute supported Android applications through its ecosystem.</p>
+
+        <p>Official website: <a href="https://www.amazon.com/gp/mas/get/android" target="_blank" rel="noopener noreferrer">Amazon Appstore</a></p>
+
+        <h5 class="sub">21.13.3 Huawei AppGallery</h5>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:180px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Huawei AppGallery logo</p>
+            </div>
+            <figcaption>Suggested image: Huawei AppGallery</figcaption>
+        </figure>
+
+        <p><strong>Huawei AppGallery</strong></p>
+
+        <p>Huawei's application distribution platform. It is used to discover and install applications on supported Huawei devices and other supported environments.</p>
+
+        <p>Official website: <a href="https://appgallery.huawei.com/" target="_blank" rel="noopener noreferrer">Huawei AppGallery</a></p>
+
+        <h5 class="sub">21.13.4 Xiaomi GetApps</h5>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:180px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Xiaomi GetApps logo</p>
+            </div>
+            <figcaption>Suggested image: Xiaomi GetApps</figcaption>
+        </figure>
+
+        <p><strong>Xiaomi GetApps</strong></p>
+
+        <p>An application distribution platform available on supported Xiaomi devices and in supported markets.</p>
+
+        <h5 class="sub">Why do developers use alternative app stores?</h5>
+
+        <ul>
+            <li>Reach users outside Google Play.</li>
+            <li>Distribute applications to specific device users.</li>
+            <li>Reach additional markets.</li>
+            <li>Use different distribution opportunities.</li>
+            <li>Support devices that do not include Google Play services.</li>
+        </ul>
+
+        <h5 class="sub">Limitations of alternative app stores</h5>
+
+        <ul>
+            <li>They may have smaller user audiences.</li>
+            <li>Their publishing processes differ.</li>
+            <li>Their policies and technical requirements may differ.</li>
+            <li>Developers may need to manage multiple store listings.</li>
+            <li>Application updates may need separate management.</li>
+        </ul>
+
+        <h4>21.14 Important Google Play Publishing Requirements</h4>
+
+        <p>Google Play publishing requirements can change over time. Developers should check the current requirements before submitting an application.</p>
+
+        <p>Some important requirements include:</p>
+
+        <h5 class="sub">21.14.1 Target API Level</h5>
+
+        <p>An Android application specifies a target API level to indicate the Android version and behavior requirements it is designed for.</p>
+
+        <p>As of November 2026, Google Play requires new applications and updates to target Android 16 (API level 36) or higher, with specified exceptions for certain device categories.</p>
+
+        <h5 class="sub">21.14.2 Privacy and Data Safety</h5>
+
+        <p>Developers must accurately disclose the application's data collection and sharing practices.</p>
+
+        <h5 class="sub">21.14.3 Application Permissions</h5>
+
+        <p>Applications must follow the rules for sensitive permissions, such as:</p>
+
+        <ul>
+            <li>Camera.</li>
+            <li>Location.</li>
+            <li>SMS.</li>
+            <li>Contacts.</li>
+            <li>Microphone.</li>
+        </ul>
+
+        <h5 class="sub">21.14.4 Testing Requirements</h5>
+
+        <p>Eligible new personal developer accounts must complete the required closed-testing process before applying for production access.</p>
+
+        <p>For the applicable accounts, this means at least 12 testers must remain opted in continuously for 14 days.</p>
+
+        <h5 class="sub">21.14.5 Developer Policies</h5>
+
+        <p>Applications must comply with Google's requirements for security, user data, content, advertisements, and application functionality.</p>
+
+        <div class="explain">
+            <strong>Important:</strong>
+            <p>These are platform requirements, not optional recommendations. Always consult the official documentation because requirements can change.</p>
+        </div>
+
+        <h4>21.15 Advantages and Disadvantages of App Store Deployment</h4>
+
+        <h5 class="sub">Advantages</h5>
+
+        <div class="pro">
+            <p><strong>1. Wider Audience</strong></p>
+            <p>Applications can reach a large number of users through app stores.</p>
+
+            <p><strong>2. Easy Installation</strong></p>
+            <p>Users can find and install applications through a familiar platform.</p>
+
+            <p><strong>3. Application Updates</strong></p>
+            <p>Developers can distribute new versions to existing users.</p>
+
+            <p><strong>4. User Reviews</strong></p>
+            <p>Developers can receive ratings, suggestions, and complaints.</p>
+
+            <p><strong>5. Application Discovery</strong></p>
+            <p>Users can discover applications through search, categories, and recommendations.</p>
+
+            <p><strong>6. Monetization</strong></p>
+            <p>Developers can earn revenue through supported paid downloads, subscriptions, and in-app purchases.</p>
+
+            <p><strong>7. Centralized Distribution</strong></p>
+            <p>Developers can manage application releases through one platform.</p>
+        </div>
+
+        <h5 class="sub">Disadvantages</h5>
+
+        <div class="con">
+            <p><strong>1. Review Process</strong></p>
+            <p>Applications may require review before release, which can delay publication.</p>
+
+            <p><strong>2. Store Policies</strong></p>
+            <p>Developers must follow the platform's rules.</p>
+
+            <p><strong>3. Competition</strong></p>
+            <p>Many applications compete for users' attention.</p>
+
+            <p><strong>4. Developer Costs</strong></p>
+            <p>Some app stores require registration fees or impose other commercial requirements.</p>
+
+            <p><strong>5. Application Rejection</strong></p>
+            <p>Applications may be rejected if they violate store policies.</p>
+
+            <p><strong>6. Maintenance</strong></p>
+            <p>Developers must regularly update their applications.</p>
+        </div>
+
+        <h4>21.16 Complete App Store Deployment Workflow</h4>
+
+        <p>Let's connect everything into one practical example.</p>
+
+        <p>Suppose you have developed a student management application in Android Studio.</p>
+
+        <figure class="image-placeholder">
+            <div class="image-space" style="min-height:220px; border:2px dashed #aaa; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; padding:15px;">
+                <p>Image Placeholder: Complete Android application publishing workflow</p>
+            </div>
+            <figcaption>Suggested image: From Android Studio development to Google Play public release</figcaption>
+        </figure>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Step</th>
+                        <th>Activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Complete application development</td></tr>
+                    <tr><td>2</td><td>Test and debug the application</td></tr>
+                    <tr><td>3</td><td>Generate a signed AAB file</td></tr>
+                    <tr><td>4</td><td>Create a Google Play Console developer account</td></tr>
+                    <tr><td>5</td><td>Create the application entry</td></tr>
+                    <tr><td>6</td><td>Prepare the store listing</td></tr>
+                    <tr><td>7</td><td>Complete privacy and policy declarations</td></tr>
+                    <tr><td>8</td><td>Upload the application package</td></tr>
+                    <tr><td>9</td><td>Perform internal or other required testing</td></tr>
+                    <tr><td>10</td><td>Complete applicable testing requirements</td></tr>
+                    <tr><td>11</td><td>Submit the production release for review</td></tr>
+                    <tr><td>12</td><td>Release the approved application</td></tr>
+                    <tr><td>13</td><td>Monitor user feedback and performance</td></tr>
+                    <tr><td>14</td><td>Publish updates when required</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>This is the general process used to distribute an Android application through Google Play.</p>
+
+        <h4>21.17 Short Questions for Exams</h4>
+
+        <details class="exam">
+            <summary>Short questions and answers</summary>
+
+            <ol>
+                <li>
+                    <strong>What is app store deployment?</strong>
+                    <p>App store deployment is the process of uploading, reviewing, and releasing an application through an application distribution platform.</p>
+                </li>
+                <li>
+                    <strong>What is Google Play Store?</strong>
+                    <p>Google Play Store is an application distribution platform that allows users to discover, download, install, and update Android applications.</p>
+                </li>
+                <li>
+                    <strong>What is Google Play Console?</strong>
+                    <p>Google Play Console is a developer platform used to upload, manage, test, and publish Android applications on Google Play.</p>
+                </li>
+                <li>
+                    <strong>What is a developer account?</strong>
+                    <p>A developer account is an account that allows an individual or organization to manage and publish applications through an app store.</p>
+                </li>
+                <li>
+                    <strong>What is a store listing?</strong>
+                    <p>A store listing is the information page of an application that displays its name, description, icon, screenshots, and other details.</p>
+                </li>
+                <li>
+                    <strong>What is application review?</strong>
+                    <p>Application review is the process of checking an application to determine whether it follows the app store's requirements and policies.</p>
+                </li>
+                <li>
+                    <strong>What is internal testing?</strong>
+                    <p>Internal testing is a testing method used to distribute an application to a small group of trusted testers.</p>
+                </li>
+                <li>
+                    <strong>What is closed testing?</strong>
+                    <p>Closed testing allows developers to share an application with a selected group of testers.</p>
+                </li>
+                <li>
+                    <strong>What is open testing?</strong>
+                    <p>Open testing allows a wider group of users to participate in testing an application.</p>
+                </li>
+                <li>
+                    <strong>What is production release?</strong>
+                    <p>Production release is the process of making an approved application available to the general public.</p>
+                </li>
+                <li>
+                    <strong>What is a privacy policy?</strong>
+                    <p>A privacy policy explains how an application collects, uses, stores, and shares users' information.</p>
+                </li>
+                <li>
+                    <strong>What is the Data Safety section?</strong>
+                    <p>The Data Safety section provides information about an application's collection, use, and sharing of user data.</p>
+                </li>
+                <li>
+                    <strong>What is a staged rollout?</strong>
+                    <p>A staged rollout gradually distributes an application update to a percentage of eligible users.</p>
+                </li>
+                <li>
+                    <strong>Name four Android application stores.</strong>
+                    <ul>
+                        <li>Google Play Store.</li>
+                        <li>Samsung Galaxy Store.</li>
+                        <li>Amazon Appstore.</li>
+                        <li>Huawei AppGallery.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>What is application maintenance?</strong>
+                    <p>Application maintenance is the process of fixing errors, improving performance, updating features, and maintaining application compatibility.</p>
+                </li>
+            </ol>
+        </details>
+
+        <h4>21.18 Long Questions for Exams</h4>
+
+        <details class="exam">
+            <summary>Long questions</summary>
+            <ol>
+                <li>Define app store deployment and explain its complete process.</li>
+                <li>Explain Google Play Store and its important features.</li>
+                <li>What is Google Play Console? Explain its functions and importance.</li>
+                <li>Explain the procedure for creating a Google Play Console developer account.</li>
+                <li>Describe the steps involved in creating an application in Google Play Console.</li>
+                <li>What is a store listing? Explain its different components.</li>
+                <li>Explain the procedure for uploading an Android application to Google Play Console.</li>
+                <li>What are app content and policy declarations? Explain privacy policy, Data Safety, advertisements, and content rating.</li>
+                <li>Explain internal, closed, open, and production testing tracks.</li>
+                <li>Describe the application review and approval process.</li>
+                <li>Explain how to release an Android application on Google Play Store.</li>
+                <li>What is application maintenance? Explain the process of publishing application updates.</li>
+                <li>Discuss alternative Android application stores and their advantages.</li>
+                <li>Explain the advantages and disadvantages of app store deployment.</li>
+            </ol>
+        </details>
+
+        <h4>21.19 Quick Revision</h4>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Simple meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>App Store Deployment</td><td>Distributing an application through an app store</td></tr>
+                    <tr><td>Google Play Store</td><td>Android application distribution platform</td></tr>
+                    <tr><td>Google Play Console</td><td>Developer management and publishing platform</td></tr>
+                    <tr><td>Developer Account</td><td>Account used to manage and publish applications</td></tr>
+                    <tr><td>Store Listing</td><td>Application information page</td></tr>
+                    <tr><td>Privacy Policy</td><td>Explanation of how user information is handled</td></tr>
+                    <tr><td>Data Safety</td><td>Declaration of data collection and sharing practices</td></tr>
+                    <tr><td>Internal Testing</td><td>Testing with a small trusted group</td></tr>
+                    <tr><td>Closed Testing</td><td>Testing with selected users</td></tr>
+                    <tr><td>Open Testing</td><td>Testing with a wider group</td></tr>
+                    <tr><td>Production</td><td>Public application release</td></tr>
+                    <tr><td>Application Review</td><td>Checking an application against store requirements</td></tr>
+                    <tr><td>Staged Rollout</td><td>Gradually distributing an application update</td></tr>
+                    <tr><td>Maintenance</td><td>Fixing and improving an application</td></tr>
+                    <tr><td>Alternative App Store</td><td>Application store other than Google Play</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
+  </main>
+</div>
+
+<footer>IT-308 Mobile Application Development &middot; BS Information Technology
+<br>Copyright &copy; 2026 <a href="https://gcsmultan.edu.pk/">Govt. Graduate College of Science and Technology</a></footer>
+<script src="../js/script.js"></script>
+<script src="../js/outline.js"></script>
+</body>
+</html>

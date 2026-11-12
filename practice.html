@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Practice | IT-308 Mobile Application Development</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* PRACTICE PAGE IMPROVEMENTS */
+
+.topic-group {
+    margin: 35px 0;
+}
+
+.topic-heading {
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.topic-heading h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.topic-heading p {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.practice-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.practice-card h3 {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.practice-card p {
+    line-height: 1.7;
+    color: #64748b;
+}
+
+.practice-card a {
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.new-tag {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 3px 7px;
+    border-radius: 5px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 10px;
+    font-weight: 800;
+    vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+
+    .topic-heading h2 {
+        font-size: 19px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a class="brand" href="index.html">IT-308</a>
+
+    <a href="index.html">Home</a>
+
+    <a href="outline/index.html">Outline</a>
+
+    <a href="practice.html" class="active">Practice</a>
+
+    <a href="programs.html">Programs</a>
+
+    <a href="papers/index.html">Past Papers</a>
+
+    <a href="references.html">References</a>
+
+</nav>
+
+
+
+<main>
+
+    <h1>Practice</h1>
+
+    <p class="lead">
+        Practice each Android program yourself, understand its
+        working, and then check the complete solution with
+        Java code, XML code, and explanations.
+    </p>
+
+
+    <!-- SEARCH -->
+
+    <input
+        type="search"
+        id="search"
+        placeholder="Search programs..."
+    >
+
+
+
+    <!-- =====================================
+         TOPIC 1: PLATFORMS AND ARCHITECTURE
+    ====================================== -->
+
+    <section class="topic-group">
+
+        <div class="topic-heading">
+
+            <h2>Platforms and Architecture</h2>
+
+            <p>
+                Basic Android application development and
+                understanding the structure of an Android app.
+            </p>
+
+        </div>
+
+
+        <div class="grid">
+
+
+            <!-- PROGRAM 1 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Beginner</span>
+
+                    <h3>1. Hello World App</h3>
+
+                    <p>
+                        Create your first Android application
+                        that displays a Hello World message
+                        on the screen.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#hello-world">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- =====================================
+         TOPIC 2: USER INTERFACE AND SCREENS
+    ====================================== -->
+
+    <section class="topic-group">
+
+        <div class="topic-heading">
+
+            <h2>User Interface and Screens</h2>
+
+            <p>
+                Practice creating Android screens, layouts,
+                views, buttons, and user interaction.
+            </p>
+
+        </div>
+
+
+        <div class="grid">
+
+
+            <!-- PROGRAM 2 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Beginner</span>
+
+                    <h3>2. Registration Form with the Main Views</h3>
+
+                    <p>
+                        Create a registration form using
+                        common Android views such as TextView,
+                        EditText, Button, and other UI components.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#registration-form">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 3 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Intermediate</span>
+
+                    <h3>3. Two Screens with Fragments</h3>
+
+                    <p>
+                        Create two different screens using
+                        Android Fragments and switch between them.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#fragments">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 4 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Beginner</span>
+
+                    <h3>4. UI Events Demo</h3>
+
+                    <p>
+                        Demonstrate user interface events such
+                        as button clicks, text changes, and
+                        other user interactions.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#ui-events">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 5 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Beginner</span>
+
+                    <h3>5. Toast and AlertDialog</h3>
+
+                    <p>
+                        Display short messages using Toast
+                        and show confirmation or information
+                        dialogs using AlertDialog.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#toast-alertdialog">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 6 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Beginner</span>
+
+                    <h3>6. Button with an Icon, Padding, Margin and Border</h3>
+
+                    <p>
+                        Design a customized Android button
+                        using an icon, padding, margin,
+                        and border styling.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#custom-button">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- =====================================
+         TOPIC 3: DATA AND STORAGE
+    ====================================== -->
+
+    <section class="topic-group">
+
+        <div class="topic-heading">
+
+            <h2>Data and Storage</h2>
+
+            <p>
+                Learn how Android applications save, share,
+                and access data on a device.
+            </p>
+
+        </div>
+
+
+        <div class="grid">
+
+
+            <!-- PROGRAM 7 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Intermediate</span>
+
+                    <h3>7. Remember Name and Email with Save and Clear (SharedPreferences)</h3>
+
+                    <p>
+                        Save a user's name and email using
+                        SharedPreferences and provide Save
+                        and Clear functionality.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#shared-preferences">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 8 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Intermediate</span>
+
+                    <h3>8. Share a PDF or Image with FileProvider</h3>
+
+                    <p>
+                        Share a PDF document or image from
+                        your Android application using
+                        FileProvider.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#file-provider">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 9 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Intermediate</span>
+
+                    <h3>9. Read Device Contacts (ContentProvider)</h3>
+
+                    <p>
+                        Access and display contacts stored
+                        on the Android device using
+                        ContentProvider.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#content-provider">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- =====================================
+         TOPIC 4: COMMUNICATION AND SERVICES
+    ====================================== -->
+
+    <section class="topic-group">
+
+        <div class="topic-heading">
+
+            <h2>Communication and Services</h2>
+
+            <p>
+                Practice Intents, communication features,
+                web services, background processing,
+                and multimedia operations.
+            </p>
+
+        </div>
+
+
+        <div class="grid">
+
+
+            <!-- PROGRAM 10 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Beginner</span>
+
+                    <h3>10. Open a Second Activity and Pass Data (Explicit Intent)</h3>
+
+                    <p>
+                        Open another Activity using an
+                        explicit Intent and transfer data
+                        between the two Activities.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#explicit-intent">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 11 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Intermediate</span>
+
+                    <h3>
+                        11. Login Screen: Admin or Operator
+                        <span class="new-tag">NEW</span>
+                    </h3>
+
+                    <p>
+                        Create a login screen that opens
+                        either the Admin or Operator screen
+                        using explicit Intents, conditions,
+                        and putExtra().
+                    </p>
+
+                </div>
+
+                <a href="programs.html#login-admin-operator">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 12 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Intermediate</span>
+
+                    <h3>
+                        12. Get a Result Back from the Second Activity
+                        <span class="new-tag">NEW</span>
+                    </h3>
+
+                    <p>
+                        Send a request to a second Activity
+                        and receive its result using the
+                        Activity Result API.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#activity-result">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 13 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Beginner</span>
+
+                    <h3>13. Implicit Intents: Website, Dialer and Map</h3>
+
+                    <p>
+                        Open a website, dial a phone number,
+                        and display a location on a map
+                        using implicit Intents and geo: URI.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#implicit-intents">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 14 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Intermediate</span>
+
+                    <h3>
+                        14. Open Camera and Show Photo in ImageView
+                        <span class="new-tag">NEW</span>
+                    </h3>
+
+                    <p>
+                        Open the device camera using an
+                        implicit Intent and display the
+                        captured photo inside an ImageView.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#camera-imageview">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 15 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Advanced</span>
+
+                    <h3>
+                        15. Receive Text Shared from Another App
+                        <span class="new-tag">NEW</span>
+                    </h3>
+
+                    <p>
+                        Receive shared text from another
+                        application using an intent-filter
+                        and ACTION_SEND.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#receive-shared-text">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 16 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Intermediate</span>
+
+                    <h3>16. Send an SMS</h3>
+
+                    <p>
+                        Create an Android application that
+                        allows users to send SMS messages.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#send-sms">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 17 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Beginner</span>
+
+                    <h3>17. Send an Email</h3>
+
+                    <p>
+                        Open an email application and prepare
+                        an email with recipient, subject,
+                        and message content.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#send-email">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 18 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Advanced</span>
+
+                    <h3>18. Fetch Data from an API and Show It in a List</h3>
+
+                    <p>
+                        Connect to a web API, retrieve
+                        information, and display the
+                        received data in a list.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#fetch-api">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 19 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Advanced</span>
+
+                    <h3>19. Background Thread with a Progress Counter</h3>
+
+                    <p>
+                        Perform a task on a background
+                        thread and update a progress
+                        counter on the user interface.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#background-thread">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 20 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Intermediate</span>
+
+                    <h3>20. Play Audio with MediaPlayer</h3>
+
+                    <p>
+                        Build a simple audio player that
+                        plays an audio file using
+                        Android MediaPlayer.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#mediaplayer">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- =====================================
+         TOPIC 5: PUBLISHING
+    ====================================== -->
+
+    <section class="topic-group">
+
+        <div class="topic-heading">
+
+            <h2>Publishing</h2>
+
+            <p>
+                Learn how to customize Android application
+                details before publishing.
+            </p>
+
+        </div>
+
+
+        <div class="grid">
+
+
+            <!-- PROGRAM 21 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Beginner</span>
+
+                    <h3>21. Change App Name, Icon and Version</h3>
+
+                    <p>
+                        Customize the application name,
+                        launcher icon, and version information
+                        through a step-by-step guide.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#app-details">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- =====================================
+         TOPIC 6: ADVANCED TOPICS
+    ====================================== -->
+
+    <section class="topic-group">
+
+        <div class="topic-heading">
+
+            <h2>Advanced Topics</h2>
+
+            <p>
+                Practice device location, runtime permissions,
+                and background services in Android.
+            </p>
+
+        </div>
+
+
+        <div class="grid">
+
+
+            <!-- PROGRAM 22 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Advanced</span>
+
+                    <h3>22. Get Current Location (with Permissions)</h3>
+
+                    <p>
+                        Access the device's current location
+                        by using Android location services
+                        and the required permissions.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#current-location">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 23 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Intermediate</span>
+
+                    <h3>23. Runtime Permission Request</h3>
+
+                    <p>
+                        Request permission from the user
+                        while the application is running
+                        and handle the permission result.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#runtime-permission">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+
+            <!-- PROGRAM 24 -->
+
+            <div class="card practice-card" data-item>
+
+                <div>
+
+                    <span class="tag">Advanced</span>
+
+                    <h3>24. Simple Service (A Timer in the Background)</h3>
+
+                    <p>
+                        Create a simple Android Service
+                        that runs a timer task in the
+                        background.
+                    </p>
+
+                </div>
+
+                <a href="programs.html#simple-service">
+                    See the solution →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    IT-308 Mobile Application Development
+    &middot; BS Information Technology
+
+    <br>
+
+    Copyright &copy; 2026
+
+    <a href="https://gcsmultan.edu.pk/">
+        Govt. Graduate College of Science and Technology
+    </a>
+
+</footer>
+
+
+<script src="js/script.js"></script>
+<script>
+    const availablePrograms = new Set([
+        'hello-world',
+        'registration-form',
+        'fragments',
+        'shared-preferences',
+        'explicit-intent',
+    ]);
+
+    document.querySelectorAll('a[href^="programs.html#"]').forEach((link) => {
+        const programId = new URL(link.href, window.location.href).hash.slice(1);
+
+        if (!availablePrograms.has(programId)) {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                window.alert('This program has not been added yet.');
+            });
+        }
+    });
+</script>
+
+</body>
+
+</html>

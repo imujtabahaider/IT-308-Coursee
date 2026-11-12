@@ -1,0 +1,301 @@
+<!-- Paste this <section> inside <main> in outline.html, AFTER the eclipse section. No new CSS needed (needs the updated outline.css and outline.js). -->
+<!-- IMAGES: every <figure> below is an image slot. Save your picture in the images/ folder with the file name shown in src. Until then the page shows a dashed "Add image here" box. -->
+<section class="topic-card" id="fragments" data-group="User interface and screens">
+  <div class="banner">
+    <h3>Fragments in Android</h3>
+    <p>Reusable parts of an Android screen</p>
+  </div>
+  <div class="body">
+
+    <h4>7.1 Introduction to Fragments</h4>
+    <div class="def">A <b>Fragment</b> is a reusable part of an Android application's user interface (UI). It represents a portion of an Activity's screen and has its own layout and lifecycle.</div>
+    <p>In simple words, a Fragment is a small section of an application screen that can be added, removed, or replaced without creating a completely new Activity.</p>
+    <div class="example"><b>Example:</b> imagine a shopping application with one screen containing product categories on the left and product details on the right. Each section can be designed as a separate Fragment.</div>
+    <figure><!-- <img src="../images/ui/fragment-intro.jpg" alt="Fragments on one screen"> --><figcaption>Fragments on one screen</figcaption></figure>
+
+    <h4>7.2 What is an Activity?</h4>
+    <p>Before understanding Fragments, you should understand Activities.</p>
+    <div class="def">An <b>Activity</b> is an Android application component that provides a screen with which users can interact.</div>
+    <p>For example, a shopping application may have Login, Home, Product and Profile activities. An Activity acts as a container for the user interface. A Fragment can be placed inside an Activity to divide its screen into smaller reusable sections.</p>
+    <p><b>Relationship between Activity and Fragment</b></p>
+    <ul>
+      <li>An Activity can contain one Fragment.</li>
+      <li>An Activity can contain multiple Fragments.</li>
+      <li>A Fragment cannot exist independently; it must be hosted by an Activity.</li>
+      <li>Multiple Activities can reuse the same Fragment.</li>
+    </ul>
+    <figure><!-- <img src="../images/ui/activity-fragment.jpg" alt="Activity hosting fragments"> --><figcaption>Activity and Fragments</figcaption></figure>
+    <div class="example"><b>Example:</b> in a student management application, the main Activity can contain three Fragments: Student Information, Attendance and Result. When a user selects Attendance, the application can replace the Student Information Fragment with the Attendance Fragment while keeping the same Activity.</div>
+
+    <h4>7.3 Why Do We Use Fragments?</h4>
+    <p>Fragments make Android applications more organized, flexible, and reusable.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Reusability</h5><p>A Fragment can be used in different Activities. For example, a Profile Fragment can be used in both a Home Activity and a Settings Activity.</p></div>
+      <div class="mini"><h5>2. Flexible User Interface</h5><p>Fragments divide one screen into multiple sections. A phone may display one section at a time, while a tablet may display two or more together.</p></div>
+      <div class="mini"><h5>3. Better Code Organization</h5><p>Instead of one large Activity, divide the application into smaller components: Login Fragment (login UI), Profile Fragment (profile UI), Settings Fragment (settings UI).</p></div>
+      <div class="mini"><h5>4. Dynamic Screen Changes</h5><p>Fragments can be added, removed, and replaced while an Activity is running. For example, clicking the Profile button can display the Profile Fragment without opening another Activity.</p></div>
+      <div class="mini"><h5>5. Support for Different Screen Sizes</h5><p>Fragments help developers create flexible layouts for mobile phones and tablets.</p></div>
+    </div>
+
+    <h4>7.4 Lifecycle of a Fragment</h4>
+    <p>A Fragment has its own lifecycle. The Fragment lifecycle describes the stages a Fragment passes through from creation to destruction. Understanding it is important because developers need to know when to create the interface, initialize components, save data, and release resources.</p>
+    <figure><!-- <img src="../images/ui/fragment-lifecycle.jpg" alt="Fragment lifecycle diagram"> --><figcaption>Fragment lifecycle</figcaption></figure>
+    <p><b>Important Fragment lifecycle methods</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. onAttach()</h5><p>Called when the Fragment becomes attached to its hosting Activity. It establishes the connection between the Fragment and the Activity.</p></div>
+      <div class="mini"><h5>2. onCreate()</h5><p>Called when the Fragment is being created. Generally used to initialize data and other non-UI components.</p></div>
+      <div class="mini"><h5>3. onCreateView()</h5><p>Responsible for creating the Fragment's user interface. For example, it loads an XML layout file containing buttons, text fields, and images.</p></div>
+      <div class="mini"><h5>4. onViewCreated()</h5><p>Called after the Fragment's view has been created. Used to initialize UI components and set click listeners.</p></div>
+      <div class="mini"><h5>5. onStart()</h5><p>The Fragment becomes visible to the user.</p></div>
+      <div class="mini"><h5>6. onResume()</h5><p>The Fragment becomes active and the user can interact with it.</p></div>
+      <div class="mini"><h5>7. onPause()</h5><p>The Fragment is losing its active state, for example because another screen is coming in front of it.</p></div>
+      <div class="mini"><h5>8. onStop()</h5><p>The Fragment is no longer visible to the user.</p></div>
+      <div class="mini"><h5>9. onDestroyView()</h5><p>The Fragment's view is destroyed, but the Fragment object itself may still exist. The view can be destroyed while the Fragment remains in memory.</p></div>
+      <div class="mini"><h5>10. onDestroy()</h5><p>The Fragment itself is being destroyed.</p></div>
+      <div class="mini"><h5>11. onDetach()</h5><p>The Fragment is disconnected from its hosting Activity.</p></div>
+    </div>
+    <p><b>Lifecycle order (simplified)</b> when a Fragment is created and then completely removed:</p>
+<pre><code>onAttach()
+    ↓
+onCreate()
+    ↓
+onCreateView()
+    ↓
+onViewCreated()
+    ↓
+onStart()
+    ↓
+onResume()
+    ↓
+User interacts with Fragment
+    ↓
+onPause()
+    ↓
+onStop()
+    ↓
+onDestroyView()
+    ↓
+onDestroy()
+    ↓
+onDetach()</code></pre>
+    <div class="explain"><b>Important:</b> not every lifecycle callback is necessarily called in every situation. For example, a Fragment's view can be destroyed while the Fragment itself is retained.</div>
+
+    <h4>7.5 Types of Fragments</h4>
+    <p>Fragments are not limited to one specific type. Developers can create different Fragments according to the application's requirements.</p>
+    <figure><!-- <img src="../images/ui/fragment-types.jpg" alt="Types of fragments"> --><figcaption>Types of Fragments</figcaption></figure>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Static Fragment</h5><p>Declared directly inside an Activity's XML layout. Suitable when a Fragment should remain in a fixed position and does not need to be dynamically replaced.</p></div>
+      <div class="mini"><h5>2. Dynamic Fragment</h5><p>Added, removed, or replaced programmatically while the application is running. Useful when the interface needs to change according to user actions.</p><p><i>Example:</i> clicking the Settings button replaces the Home Fragment with the Settings Fragment.</p></div>
+      <div class="mini"><h5>3. Dialog Fragment</h5><p>A DialogFragment is designed to display a dialog window.</p><ul><li>Confirmation dialog</li><li>Delete warning</li><li>Date picker</li><li>Information message</li></ul></div>
+      <div class="mini"><h5>4. List Fragment</h5><p>A ListFragment is an older Android framework class designed to display a list of items. Modern applications commonly use a regular Fragment with a RecyclerView instead.</p></div>
+    </div>
+    <figure><!-- <img src="../images/ui/dialog-fragment.jpg" alt="DialogFragment example"> --><figcaption>DialogFragment example</figcaption></figure>
+
+    <h4>7.6 How to Create a Fragment in Android</h4>
+    <p>Suppose we are developing a student application and want to display student information inside a Fragment. We will use Java and XML.</p>
+
+    <h5 class="sub">Step 1: Create an XML layout</h5>
+    <p>Create a file named <code>fragment_student.xml</code>. This file defines the Fragment's user interface.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"&gt;
+
+    &lt;TextView
+        android:id="@+id/studentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Muhammad"
+        android:textSize="24sp" /&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BS Information Technology"
+        android:textSize="18sp" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    <p><b>Understanding the code:</b></p>
+    <ul>
+      <li><b>LinearLayout:</b> organizes UI elements vertically.</li>
+      <li><b>TextView:</b> displays text.</li>
+      <li><b>layout_width:</b> defines the width of an element.</li>
+      <li><b>layout_height:</b> defines the height of an element.</li>
+      <li><b>orientation:</b> determines the direction of elements.</li>
+      <li><b>textSize:</b> controls the text size.</li>
+    </ul>
+
+    <h5 class="sub">Step 2: Create the Fragment Java class</h5>
+    <p>Create a Java class named <code>StudentFragment.java</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+public class StudentFragment extends Fragment {
+
+    public StudentFragment() {
+        // Required empty public constructor
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
+
+        return inflater.inflate(
+            R.layout.fragment_student,
+            container,
+            false
+        );
+    }
+}</code></pre>
+    <p><b>Understanding the important parts:</b></p>
+    <ul>
+      <li><b>StudentFragment:</b> defines our Fragment class.</li>
+      <li><b>extends Fragment:</b> makes this class an Android Fragment.</li>
+      <li><b>onCreateView():</b> creates the Fragment's interface.</li>
+      <li><b>LayoutInflater:</b> converts the XML layout into actual View objects.</li>
+      <li><b>R.layout.fragment_student:</b> identifies the XML layout.</li>
+      <li><b>container:</b> the parent ViewGroup where the Fragment's view will be placed.</li>
+      <li><b>false:</b> prevents the layout from being attached to the container immediately. The FragmentManager handles attachment.</li>
+    </ul>
+
+    <h5 class="sub">Step 3: Add a Fragment container to the Activity</h5>
+    <p>Open your Activity's XML layout and add a <code>FragmentContainerView</code>.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;androidx.fragment.app.FragmentContainerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragmentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" /&gt;</code></pre>
+    <p>This container provides an area where Fragments can be displayed.</p>
+
+    <h5 class="sub">Step 4: Add the Fragment to the Activity</h5>
+    <p>Inside <code>MainActivity.java</code>, use FragmentManager to display the Fragment.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        if (savedInstanceState == null) {
+
+            getSupportFragmentManager()
+                .beginTransaction()
+                .replace(
+                    R.id.fragmentContainer,
+                    new StudentFragment()
+                )
+                .commit();
+        }
+    }
+}</code></pre>
+    <p><b>Understanding the process:</b></p>
+    <ol class="steps">
+      <li><code>getSupportFragmentManager()</code> gets the FragmentManager.</li>
+      <li><code>beginTransaction()</code> starts a Fragment transaction.</li>
+      <li><code>replace()</code> places the StudentFragment inside the container.</li>
+      <li><code>commit()</code> applies the transaction.</li>
+    </ol>
+    <p>The <code>savedInstanceState == null</code> condition prevents unnecessarily adding the same initial Fragment again after an Activity recreation.</p>
+    <p><b>Result:</b> the Activity will display the Student Fragment containing the student's name and degree.</p>
+    <figure><!-- <img src="../images/ui/fragment-output.jpg" alt="Output of the student fragment"> --><figcaption>Output of the example</figcaption></figure>
+
+    <h4>7.7 Fragment Transactions</h4>
+    <p>A Fragment Transaction is a process used to perform changes to Fragments inside an Activity. Developers use FragmentManager to manage these transactions.</p>
+    <p><b>Important transaction methods</b></p>
+    <div class="table-wrap"><table>
+      <tr><th>Method</th><th>Purpose</th></tr>
+      <tr><td><code>add()</code></td><td>Adds a Fragment</td></tr>
+      <tr><td><code>replace()</code></td><td>Replaces an existing Fragment</td></tr>
+      <tr><td><code>remove()</code></td><td>Removes a Fragment</td></tr>
+      <tr><td><code>hide()</code></td><td>Hides a Fragment's view</td></tr>
+      <tr><td><code>show()</code></td><td>Shows a hidden Fragment</td></tr>
+      <tr><td><code>addToBackStack()</code></td><td>Allows a transaction to be reversed using Back navigation</td></tr>
+      <tr><td><code>commit()</code></td><td>Submits the transaction</td></tr>
+    </table></div>
+    <p><b>Example:</b> replacing Home Fragment with Profile Fragment</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>getSupportFragmentManager()
+    .beginTransaction()
+    .replace(R.id.fragmentContainer, new ProfileFragment())
+    .addToBackStack(null)
+    .commit();</code></pre>
+    <p>Here, <code>addToBackStack(null)</code> allows the user to return to the previous Fragment using the Back button.</p>
+
+    <h4>7.8 Difference Between Activity and Fragment</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Activity</th><th>Fragment</th></tr>
+      <tr><td>Represents a complete application screen or window</td><td>Represents a reusable part of a screen</td></tr>
+      <tr><td>Can exist independently</td><td>Must be hosted by an Activity</td></tr>
+      <tr><td>Has its own lifecycle</td><td>Has its own lifecycle and a separate view lifecycle</td></tr>
+      <tr><td>Declared in the Android manifest</td><td>Usually managed through FragmentManager</td></tr>
+      <tr><td>Can contain multiple Fragments</td><td>Can be hosted inside an Activity</td></tr>
+      <tr><td>Used to manage application screens</td><td>Used to organize screen sections</td></tr>
+    </table></div>
+
+    <h4>7.9 Advantages and 7.10 Disadvantages of Fragments</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Reusability:</b> the same Fragment can be used in different Activities.</li>
+        <li><b>Flexibility:</b> change screen content dynamically.</li>
+        <li><b>Better Organization:</b> application code becomes easier to manage.</li>
+        <li><b>Multiple Screen Support:</b> helps create interfaces for phones and tablets.</li>
+        <li><b>Independent Lifecycle:</b> lifecycle callbacks for managing its operations.</li>
+        <li><b>Easy Navigation:</b> Fragments can be replaced to move between sections.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Complex Lifecycle:</b> managing Fragment and view lifecycles can be difficult for beginners.</li>
+        <li><b>Communication Challenges:</b> sharing data between Activities and Fragments requires proper communication methods.</li>
+        <li><b>Management Complexity:</b> multiple Fragments can make navigation and back-stack management complicated.</li>
+        <li><b>Debugging Difficulty:</b> lifecycle-related errors can be difficult to identify.</li></ol></div>
+    </div>
+
+    <h4>7.11 Real-Life Example</h4>
+    <p>Consider a student management application containing a Home Fragment, Profile Fragment, Attendance Fragment and Result Fragment.</p>
+    <figure><!-- <img src="../images/ui/fragment-real-life.jpg" alt="Student management app with fragments"> --><figcaption>Student management application</figcaption></figure>
+    <p>When the user clicks the Attendance button:</p>
+    <ol class="steps">
+      <li>The application receives the click event.</li>
+      <li>The current Fragment is replaced with the Attendance Fragment.</li>
+      <li>The Attendance Fragment displays attendance records.</li>
+      <li>The Activity remains the host of the Fragment.</li>
+    </ol>
+    <p>This is how Fragments help organize an application into reusable sections.</p>
+
+    <h4>7.12 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is a Fragment in Android?</li><li>Define Fragment lifecycle.</li><li>What is the purpose of onCreateView()?</li>
+      <li>What is FragmentManager?</li><li>What is a Fragment Transaction?</li><li>What is a DialogFragment?</li>
+      <li>What is the purpose of addToBackStack()?</li><li>Can a Fragment exist independently?</li>
+      <li>What is the difference between onDestroy() and onDestroyView()?</li><li>What is FragmentContainerView?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define Fragments and explain their importance in Android application development.</li>
+      <li>Explain the complete lifecycle of a Fragment with a diagram.</li>
+      <li>Explain the different types of Fragments.</li>
+      <li>Describe the procedure for creating and using a Fragment in Android.</li>
+      <li>Differentiate between Activity and Fragment.</li>
+      <li>Explain Fragment Transactions and their important methods.</li></ol></details>
+
+  </div>
+</section>

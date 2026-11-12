@@ -1,0 +1,332 @@
+<!-- Paste this <section> inside <main> in outline.html, AFTER the android-os section. No new CSS needed. -->
+<section class="topic-card" id="ios" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>iOS: Architecture, Framework and Application Development</h3>
+    <p>Apple's layers, frameworks, languages and tools</p>
+  </div>
+  <div class="body">
+
+    <h4>4.1 Introduction to iOS</h4>
+    <div class="def"><b>Simple definition:</b> iOS is Apple's mobile operating system that provides a platform for running applications and managing the hardware and software of iPhone devices.</div>
+    <p>iOS is a mobile operating system developed by Apple Inc. for its iPhone devices. It manages the hardware and software of an iPhone and provides an environment in which users can run mobile applications.</p>
+    <p><b>iOS controls different functions of an iPhone:</b></p>
+    <div class="chips"><span>Touchscreen operations</span><span>Camera functionality</span><span>Internet connectivity</span><span>Memory management</span><span>Application execution</span><span>Security</span><span>Notifications</span><span>Multimedia operations</span></div>
+    <figure><!-- <img src="../images/platforms/ios-devices.jpg" alt="iOS devices and applications"> --></figure>
+    <p><b>Examples of applications available on iOS:</b></p>
+    <div class="chips"><span>WhatsApp</span><span>Instagram</span><span>YouTube</span><span>Safari</span><span>Apple Maps</span><span>FaceTime</span><span>Apple Music</span></div>
+
+    <h4>4.2 History of iOS</h4>
+    <ol class="steps">
+      <li><b>2007:</b> Apple introduced the first iPhone with an operating system initially called iPhone OS.</li>
+      <li><b>2008:</b> Apple introduced the App Store, allowing users to download third-party applications.</li>
+      <li><b>2010:</b> The operating system was renamed iOS.</li>
+      <li><b>2013:</b> iOS 7 introduced a major redesign of the user interface.</li>
+      <li><b>Later versions:</b> improvements in security, performance, multitasking, widgets, and application development.</li>
+      <li><b>Modern iOS:</b> advanced features such as improved privacy controls, powerful frameworks, and modern development tools.</li>
+    </ol>
+
+    <h4>4.3 Main Features of iOS</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. User-Friendly Interface</h5><p>Simple and easy to use through touch gestures, icons, buttons, menus and notifications.</p></div>
+      <div class="mini"><h5>2. Security</h5><p>Mechanisms to protect devices and user information:</p><ul><li>Application sandboxing</li><li>Code signing</li><li>Data encryption</li><li>Face ID and Touch ID</li><li>Permission controls</li></ul></div>
+      <div class="mini"><h5>3. Multitasking</h5><p>Users can switch between applications and perform supported background operations, for example listening to music while browsing the internet.</p></div>
+      <div class="mini"><h5>4. App Store</h5><p>A platform where users can discover, download, and update applications.</p></div>
+      <div class="mini"><h5>5. Siri</h5><p>Apple's virtual assistant. Users interact through voice commands to perform supported tasks.</p></div>
+      <div class="mini"><h5>6. iCloud Integration</h5><p>Apple's cloud service to synchronize and store supported information across Apple devices: photos, contacts, documents, backups.</p></div>
+      <div class="mini"><h5>7. Regular Software Updates</h5><p>New features, security improvements, and bug fixes.</p></div>
+      <div class="mini"><h5>8. Hardware and Software Integration</h5><p>Apple designs both its devices and operating systems. This close integration helps optimize performance and provides a consistent user experience.</p></div>
+    </div>
+
+    <h4>Part 1: iOS Architecture</h4>
+    <h4>4.4 What is iOS Architecture?</h4>
+    <div class="def"><b>Definition:</b> iOS Architecture is the layered structure of the iOS operating system that explains how hardware, system services, frameworks, and applications work together.</div>
+    <p>In simple words, it explains how an iPhone works internally and how different software layers communicate with each other. iOS uses four major architectural layers, and each layer provides specific services to the layer above it:</p>
+    <ol><li>Cocoa Touch Layer</li><li>Media Layer</li><li>Core Services Layer</li><li>Core OS Layer</li></ol>
+    <figure><!-- <img src="../images/platforms/ios-layers.jpg" alt="iOS architecture layers"> --><figcaption>Layers of iOS architecture</figcaption></figure>
+
+    <h5 class="sub">1. Cocoa Touch Layer</h5>
+    <p>The highest layer of iOS Architecture. It provides the frameworks and technologies required to develop the user interface and handle user interactions. This layer helps developers create screens, buttons, menus, and other interactive elements.</p>
+    <p><b>Main responsibilities:</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>A. User Interface Management</h5><p>Tools for creating application interfaces: buttons, text fields, navigation bars, tables, images, menus.</p></div>
+      <div class="mini"><h5>B. Touch Event Handling</h5><p>Handles user interactions with the touchscreen: tapping, swiping, scrolling, pinching, touching buttons.</p></div>
+      <div class="mini"><h5>C. Application Lifecycle Management</h5><p>Manages the states of an application: launching, becoming active, moving into the background, termination.</p></div>
+      <div class="mini"><h5>D. Notifications</h5><p>Facilities for managing application notifications and user interactions with them.</p></div>
+    </div>
+    <p><b>Important frameworks:</b> UIKit, SwiftUI, UserNotifications.</p>
+    <div class="example"><b>Example:</b> when you open Instagram, the interface you see, including buttons, menus, and navigation elements, uses technologies provided by the higher-level iOS frameworks.</div>
+
+    <h5 class="sub">2. Media Layer</h5>
+    <p>Provides technologies for handling graphics, animations, audio, and video. It helps applications display visual content and play multimedia.</p>
+    <ul>
+      <li><b>A. Graphics:</b> displaying images, shapes, and other visual elements.</li>
+      <li><b>B. Animation:</b> smooth animations and visual transitions.</li>
+      <li><b>C. Audio:</b> recording and playing audio.</li>
+      <li><b>D. Video:</b> playing, recording, and processing video.</li>
+    </ul>
+    <p><b>Important frameworks:</b> Core Graphics, Core Animation, AVFoundation, Core Audio, Metal.</p>
+    <div class="example"><b>Example:</b> when you play a video on an iPhone, the Media Layer provides technologies that help process and display it.</div>
+
+    <h5 class="sub">3. Core Services Layer</h5>
+    <p>Provides essential system services used by applications: important background functionality that applications need to operate.</p>
+    <ul>
+      <li><b>A. Data Management:</b> storing and managing application information.</li>
+      <li><b>B. Networking:</b> allows applications to communicate over the internet.</li>
+      <li><b>C. Location Services:</b> geographical location information, subject to user permission.</li>
+      <li><b>D. Database Support:</b> store and retrieve data.</li>
+      <li><b>E. Cloud Services:</b> communicating with cloud-based services.</li>
+    </ul>
+    <p><b>Important frameworks:</b> Core Data, Core Location, Core Foundation, Foundation, CloudKit.</p>
+    <div class="example"><b>Example:</b> when you use Apple Maps, Core Services technologies help the application work with location information and network data.</div>
+
+    <h5 class="sub">4. Core OS Layer</h5>
+    <p>The lowest layer of iOS Architecture. It provides low-level operating system functionality and communicates with the device hardware. It handles important internal operations that allow the iPhone to function.</p>
+    <ul>
+      <li><b>A. Memory Management:</b> memory used by the operating system and applications.</li>
+      <li><b>B. File System Management:</b> storing and accessing files.</li>
+      <li><b>C. Security:</b> low-level security mechanisms, including encryption and system protection.</li>
+      <li><b>D. Process Management:</b> execution and management of system processes.</li>
+      <li><b>E. Device Communication:</b> low-level interfaces and drivers for hardware.</li>
+      <li><b>F. Networking:</b> low-level networking functionality.</li>
+    </ul>
+    <p><b>Important technologies:</b> Darwin kernel, BSD components, Security, File System, Networking, Device drivers.</p>
+    <div class="example"><b>Example:</b> when you save a photograph, lower-level operating system services help manage the storage and file operations.</div>
+
+    <h4>4.5 How iOS Architecture Works: Real-Life Example</h4>
+    <p>Suppose you open the Camera application on your iPhone and capture a photograph. All four layers work together:</p>
+    <figure><!-- <img src="../images/platforms/ios-camera-flow.jpg" alt="Camera request through iOS layers"> --></figure>
+    <ol class="steps">
+      <li><b>Cocoa Touch Layer:</b> handles your interaction when you open the camera and press the capture button.</li>
+      <li><b>Media Layer:</b> provides image-processing and graphics-related technologies.</li>
+      <li><b>Core Services Layer:</b> provides supporting services such as data management.</li>
+      <li><b>Core OS Layer:</b> supports low-level hardware communication, device drivers, and file storage.</li>
+    </ol>
+    <p><b>Result:</b> the photograph is captured and saved on your iPhone.</p>
+    <div class="explain">The important point is that all four layers cooperate to perform a single task.</div>
+
+    <h4>Part 2: iOS Framework</h4>
+    <h4>4.6 What is an iOS Framework?</h4>
+    <div class="def"><b>Definition:</b> An iOS Framework is a collection of pre-written code, APIs, libraries, and services that developers use to build applications for Apple devices.</div>
+    <p>Frameworks provide ready-made functionality so developers do not have to create every feature from the beginning.</p>
+    <div class="example"><b>Example:</b> to use the iPhone camera you do not write all the camera hardware management code yourself. Apple provides the <b>AVFoundation</b> framework, which offers APIs for camera and media functionality.</div>
+    <figure><!-- <img src="../images/platforms/ios-frameworks.jpg" alt="iOS frameworks"> --></figure>
+
+    <h4>4.7 Important iOS Frameworks</h4>
+
+    <h5 class="sub">1. UIKit Framework</h5>
+    <div class="def">UIKit stands for User Interface Kit. It is a framework used to create and manage the user interface of iOS applications, with ready-made components for building application screens.</div>
+    <p><b>Main functions:</b> creating buttons, creating text fields, displaying images, managing navigation, handling touch interactions, managing view controllers.</p>
+    <div class="example"><b>Example:</b> a login application needs an email text field, a password text field, a login button and a registration link. UIKit provides components to create these elements.</div>
+    <figure><!-- <img src="../images/platforms/uikit.jpg" alt="UIKit"> --></figure>
+
+    <h5 class="sub">2. SwiftUI Framework</h5>
+    <div class="def">SwiftUI is Apple's modern declarative framework for building user interfaces across Apple platforms. Developers describe what the interface should look like, and SwiftUI manages much of the process of updating it when data changes.</div>
+    <p><b>Main functions:</b> creating application interfaces, designing buttons and forms, building navigation, creating animations, updating interfaces when data changes.</p>
+    <p><b>Example:</b> a button created with SwiftUI:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        Button("Click Me") {
+            print("Button clicked")
+        }
+    }
+}</code></pre>
+    <p>This code creates a button with the text "Click Me".</p>
+
+    <h5 class="sub">3. Foundation Framework</h5>
+    <p>Provides essential programming features used by iOS applications.</p>
+    <p><b>Main functions:</b> managing strings, working with dates and times, handling collections, managing URLs, working with files, supporting networking-related operations.</p>
+    <div class="example"><b>Example:</b> a student application stores the student name, registration date, email address and course information. Foundation provides basic data types and utilities to manage this information.</div>
+
+    <h5 class="sub">4. Core Data Framework</h5>
+    <p>Used to manage an application's model data. It helps developers store, retrieve, and manage structured information.</p>
+    <p><b>Main functions:</b> saving application data, retrieving records, updating information, deleting records, managing relationships between data objects.</p>
+    <div class="example"><b>Example:</b> a notes application can use Core Data to store note titles, descriptions, creation dates and categories.</div>
+
+    <h5 class="sub">5. Core Location Framework</h5>
+    <p>Provides services for obtaining geographical location information.</p>
+    <p><b>Main functions:</b> accessing location information, getting latitude and longitude, monitoring location changes, supporting location-based features.</p>
+    <div class="example"><b>Example:</b> a food delivery application can use Core Location to help identify the user's delivery location. Location access requires appropriate authorization from the user.</div>
+
+    <h5 class="sub">6. AVFoundation Framework</h5>
+    <p>AVFoundation stands for Audio Video Foundation. It provides technologies for working with audio and video.</p>
+    <p><b>Main functions:</b> recording audio, playing audio, capturing video, playing video, accessing camera functionality, processing audiovisual media.</p>
+    <div class="example"><b>Example:</b> a video recording application can use AVFoundation to access the camera and record videos.</div>
+
+    <h5 class="sub">7. Core Graphics Framework</h5>
+    <p>A graphics framework used for creating and rendering two-dimensional graphics.</p>
+    <p><b>Main functions:</b> drawing shapes, creating paths, rendering images, drawing text, working with colors.</p>
+    <div class="example"><b>Example:</b> a drawing application can use Core Graphics to draw lines, circles, rectangles, and other shapes.</div>
+
+    <h5 class="sub">8. CloudKit Framework</h5>
+    <p>Allows applications to store and synchronize data using Apple's iCloud infrastructure.</p>
+    <p><b>Main functions:</b> storing data in iCloud, synchronizing supported information, managing cloud records, supporting data sharing.</p>
+    <div class="example"><b>Example:</b> a notes application can use CloudKit to synchronize notes across supported Apple devices.</div>
+
+    <h4>4.8 Difference Between UIKit and SwiftUI</h4>
+    <p>Both are used to create iOS user interfaces, but they use different development approaches.</p>
+    <div class="table-wrap"><table>
+      <tr><th>UIKit</th><th>SwiftUI</th></tr>
+      <tr><td>Traditional iOS UI framework</td><td>Modern declarative UI framework</td></tr>
+      <tr><td>Uses an imperative approach</td><td>Uses a declarative approach</td></tr>
+      <tr><td>Commonly uses Swift or Objective-C</td><td>Uses Swift</td></tr>
+      <tr><td>Uses views and view controllers</td><td>Uses views and state-driven updates</td></tr>
+      <tr><td>Offers extensive control over traditional UI components</td><td>Makes interface development more concise</td></tr>
+      <tr><td>Widely used in existing iOS applications</td><td>Commonly used in modern iOS applications</td></tr>
+    </table></div>
+
+    <h4>Part 3: iOS Application Development</h4>
+    <h4>4.9 What is iOS Application Development?</h4>
+    <div class="def"><b>Definition:</b> iOS Application Development is the process of designing, programming, testing, and deploying applications that run on Apple's iOS operating system.</div>
+    <p>In simple words, it means creating mobile applications for iPhones.</p>
+    <div class="chips"><span>Banking applications</span><span>Educational applications</span><span>Shopping applications</span><span>Social media applications</span><span>Games</span><span>Healthcare applications</span></div>
+    <figure><!-- <img src="../images/platforms/ios-development.jpg" alt="iOS development"> --></figure>
+
+    <h4>4.10 Programming Languages Used for iOS Development</h4>
+    <h5 class="sub">1. Swift</h5>
+    <p>A modern programming language developed by Apple. It is the primary language recommended for modern iOS application development.</p>
+    <p><b>Features of Swift:</b></p>
+    <ul><li>Easy-to-read syntax</li><li>Strong type system</li><li>Memory safety features</li><li>High performance</li><li>Support for object-oriented and protocol-oriented programming</li><li>Compatibility with Apple's development frameworks</li></ul>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>import Foundation
+
+let name = "Muhammad"
+
+print("Hello, \(name)")   // Output: Hello, Muhammad</code></pre>
+    <p>This program stores a name in a constant and displays a greeting.</p>
+
+    <h5 class="sub">2. Objective-C</h5>
+    <p>An object-oriented programming language historically used for Apple application development. It was widely used before Swift was introduced.</p>
+    <p><b>Main features:</b> object-oriented programming, dynamic runtime, integration with Apple's frameworks, compatibility with existing iOS projects.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+int main() {
+    @autoreleasepool {
+        NSString *name = @"Ali";
+
+        NSLog(@"Hello, %@", name);
+    }
+
+    return 0;
+}</code></pre>
+    <p>Objective-C is still supported and is found in many existing Apple applications and codebases.</p>
+
+    <h4>4.11 Tools Required for iOS Application Development</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Xcode</h5><p>Apple's official IDE for developing applications for Apple platforms. Tools for:</p><ul><li>Writing Swift and Objective-C code</li><li>Designing user interfaces</li><li>Testing applications</li><li>Debugging errors</li><li>Running simulators</li><li>Building applications</li></ul></div>
+      <div class="mini"><h5>2. iOS SDK</h5><p>Provides the tools, APIs, libraries, and resources needed to develop iOS applications. It includes:</p><ul><li>Apple frameworks</li><li>Development APIs</li><li>System libraries</li><li>Simulator support</li><li>Development resources</li></ul></div>
+      <div class="mini"><h5>3. iOS Simulator</h5><p>Runs and tests iOS applications on a Mac without a physical iPhone for every test.</p><p><i>Example:</i> test an application on simulated iPhone devices with different screen sizes.</p></div>
+      <div class="mini"><h5>4. Interface Builder</h5><p>A visual interface-design tool integrated into Xcode. Design interfaces visually with buttons, labels, text fields, images and navigation elements.</p></div>
+      <div class="mini"><h5>5. Swift Package Manager</h5><p>Manages external Swift packages and dependencies.</p><p><i>Example:</i> add an external library to a project instead of manually writing all its functionality.</p></div>
+    </div>
+    <figure><!-- <img src="../images/platforms/xcode.jpg" alt="Xcode"> --></figure>
+
+    <h4>4.12 Steps Involved in iOS Application Development</h4>
+    <ol class="steps">
+      <li><b>Requirement Analysis:</b> identify the purpose of the application and its required features. <i>Example: a student management application.</i></li>
+      <li><b>UI/UX Design:</b> design application screens, buttons, navigation, and layouts.</li>
+      <li><b>Environment Setup:</b> install Xcode and configure the required iOS SDK and development tools.</li>
+      <li><b>Programming:</b> write application code using Swift or Objective-C.</li>
+      <li><b>Framework Integration:</b> use frameworks such as UIKit, SwiftUI, Core Data, and AVFoundation when needed.</li>
+      <li><b>Testing and Debugging:</b> test using the iOS Simulator and supported physical devices.</li>
+      <li><b>Building:</b> compile the application and prepare it for distribution.</li>
+      <li><b>Deployment:</b> submit to Apple's App Store review process or distribute through another supported method.</li>
+      <li><b>Maintenance:</b> fix bugs, improve performance, and release updates.</li>
+    </ol>
+
+    <h4>4.13 Important Components of an iOS Application</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. App Delegate</h5><p>An application lifecycle-related component. It handles certain application-level events and responsibilities:</p><ul><li>Application launch events</li><li>Lifecycle transitions in traditional UIKit applications</li><li>Application-level configuration</li></ul></div>
+      <div class="mini"><h5>2. Scene Delegate</h5><p>Manages the lifecycle and behavior of an individual application scene in UIKit-based applications that use the scene lifecycle. A scene generally represents an instance of an application's user interface.</p></div>
+      <div class="mini"><h5>3. View Controller</h5><p>Manages a screen or part of an application's user interface in UIKit.</p><p><i>Example:</i> a shopping app may have Login, Home, Product and Payment view controllers.</p></div>
+      <div class="mini"><h5>4. Model</h5><p>Represents the application's data and business logic.</p><p><i>Example:</i> a Student Model containing student ID, name, email and course.</p></div>
+      <div class="mini"><h5>5. View</h5><p>Represents the user interface displayed to the user: buttons, text fields, images, labels, tables.</p></div>
+      <div class="mini"><h5>6. Controller</h5><p>In the traditional Model-View-Controller (MVC) pattern, the Controller coordinates interactions between the Model and the View.</p><p><i>Example:</i> when a user presses a login button, the controller processes the input and communicates with the model or authentication service.</p></div>
+    </div>
+
+    <h4>4.14 Advantages and 4.15 Disadvantages of iOS</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Strong Security:</b> application sandboxing, encryption, and code signing.</li>
+        <li><b>User-Friendly Interface:</b> a simple and consistent user experience.</li>
+        <li><b>High Performance:</b> hardware and software integration helps optimize performance.</li>
+        <li><b>Regular Updates:</b> security improvements and new features.</li>
+        <li><b>Quality Control:</b> the App Store review process helps enforce quality and security requirements.</li>
+        <li><b>Excellent Hardware Integration:</b> apps can use Apple hardware features through supported frameworks and APIs.</li>
+        <li><b>Developer Support:</b> Xcode, SDKs, documentation, and frameworks.</li>
+        <li><b>Privacy Protection:</b> permission controls for location, camera, microphone, and contacts.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Limited Device Support:</b> designed primarily for Apple's iPhone hardware.</li>
+        <li><b>Development Cost:</b> generally requires access to a Mac and Apple's development tools.</li>
+        <li><b>Strict App Store Policies:</b> apps must follow Apple's distribution and review requirements.</li>
+        <li><b>Limited Customization:</b> less freedom to customize certain system-level features compared with Android.</li>
+        <li><b>Closed Ecosystem:</b> unlike AOSP, iOS is not an open-source operating system.</li>
+        <li><b>Development Learning Curve:</b> developers need to learn Swift or Objective-C and Apple's frameworks.</li>
+        <li><b>Hardware Restrictions:</b> less freedom to modify or directly control certain hardware and system-level functions.</li></ol></div>
+    </div>
+
+    <h4>4.16 Difference Between Android and iOS</h4>
+    <p>Both allow users to run mobile applications, but they differ in architecture, development tools, customization, and device support.</p>
+    <figure><!-- <img src="../images/platforms/android-vs-ios.jpg" alt="Android vs iOS"> --></figure>
+    <div class="table-wrap"><table>
+      <tr><th>Android</th><th>iOS</th></tr>
+      <tr><td>Developed by Google and AOSP contributors</td><td>Developed by Apple</td></tr>
+      <tr><td>Linux-based</td><td>Based on Darwin and XNU</td></tr>
+      <tr><td>Used by many manufacturers</td><td>Used on iPhones</td></tr>
+      <tr><td>Kotlin and Java commonly used</td><td>Swift and Objective-C used</td></tr>
+      <tr><td>Android Studio</td><td>Xcode</td></tr>
+      <tr><td>Android SDK</td><td>iOS SDK</td></tr>
+      <tr><td>Google Play Store</td><td>Apple App Store</td></tr>
+      <tr><td>More manufacturer customization</td><td>More controlled ecosystem</td></tr>
+      <tr><td>Supports many hardware configurations</td><td>Optimized for Apple hardware</td></tr>
+    </table></div>
+
+    <h4>4.17 Complete Revision: iOS</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Topic</th><th>Simple meaning</th></tr>
+      <tr><td>iOS</td><td>Apple's mobile operating system</td></tr>
+      <tr><td>Cocoa Touch</td><td>User interface and interaction layer</td></tr>
+      <tr><td>Media Layer</td><td>Graphics, audio, video and animation</td></tr>
+      <tr><td>Core Services</td><td>Essential application services</td></tr>
+      <tr><td>Core OS</td><td>Low-level operating system functionality</td></tr>
+      <tr><td>UIKit</td><td>Framework for building user interfaces</td></tr>
+      <tr><td>SwiftUI</td><td>Declarative UI framework</td></tr>
+      <tr><td>Foundation</td><td>Basic programming utilities</td></tr>
+      <tr><td>Core Data</td><td>Framework for managing model data</td></tr>
+      <tr><td>Core Location</td><td>Location-related services</td></tr>
+      <tr><td>AVFoundation</td><td>Audio and video functionality</td></tr>
+      <tr><td>Core Graphics</td><td>2D graphics</td></tr>
+      <tr><td>CloudKit</td><td>iCloud-based data services</td></tr>
+      <tr><td>Swift</td><td>Modern Apple programming language</td></tr>
+      <tr><td>Objective-C</td><td>Traditional Apple programming language</td></tr>
+      <tr><td>Xcode</td><td>Official Apple development IDE</td></tr>
+      <tr><td>iOS SDK</td><td>Tools and APIs for iOS development</td></tr>
+      <tr><td>Simulator</td><td>Runs iOS applications virtually</td></tr>
+      <tr><td>App Delegate</td><td>Handles application-level lifecycle events</td></tr>
+      <tr><td>View Controller</td><td>Manages a UIKit screen</td></tr>
+      <tr><td>Model</td><td>Represents application data and logic</td></tr>
+      <tr><td>View</td><td>Represents the user interface</td></tr>
+      <tr><td>Controller</td><td>Coordinates Model and View</td></tr>
+    </table></div>
+
+    <h4>4.18 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is iOS?</li><li>Define iOS Architecture.</li><li>Name the four layers of iOS Architecture.</li><li>What is Cocoa Touch?</li>
+      <li>What is the Media Layer?</li><li>Define Core Services.</li><li>What is Core OS?</li><li>What is UIKit?</li>
+      <li>What is SwiftUI?</li><li>Define Core Data.</li><li>What is Core Location?</li><li>What is AVFoundation?</li>
+      <li>What is Xcode?</li><li>What is iOS SDK?</li><li>Define Swift.</li><li>What is Objective-C?</li>
+      <li>What is App Delegate?</li><li>What is View Controller?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain iOS Architecture with a suitable diagram.</li>
+      <li>Discuss the four layers of iOS Architecture in detail.</li>
+      <li>Explain the major frameworks used in iOS application development.</li>
+      <li>Discuss the complete process of iOS Application Development.</li>
+      <li>Explain the advantages and disadvantages of iOS.</li>
+      <li>Differentiate between Android and iOS.</li>
+      <li>Explain the role of Swift and Xcode in iOS application development.</li></ol></details>
+
+  </div>
+</section>

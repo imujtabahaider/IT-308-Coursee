@@ -1,0 +1,280 @@
+<!-- Paste this <section> inside <main> in outline.html, AFTER the madp section. No new CSS needed. -->
+<section class="topic-card" id="html5-mobiles" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>HTML5 for Mobiles</h3>
+    <p>Features, PWAs and mobile web development</p>
+  </div>
+  <div class="body">
+
+    <h4>2.1 Introduction to HTML5</h4>
+    <p>Before understanding HTML5 for mobile devices, we need to understand HTML.</p>
+    <div class="def"><b>HTML</b> stands for HyperText Markup Language. It is a markup language used to create the structure of web pages. It tells a web browser how to display elements such as headings, paragraphs, images, videos, links, buttons, and forms.</div>
+    <p><b>HTML5</b> is the fifth major version of HTML. It introduced new elements, features, and APIs that make it easier to develop modern websites and mobile-friendly web applications.</p>
+    <p>In simple words: HTML5 allows developers to create websites and web applications that can work on computers, tablets, and smartphones.</p>
+    <p><b>Examples of HTML5-based mobile applications:</b></p>
+    <div class="chips"><span>Online shopping websites</span><span>Mobile banking websites</span><span>Educational web applications</span><span>Social media websites</span><span>Online video platforms</span></div>
+    <figure><!-- <img src="../images/platforms/html5-intro.jpg" alt="HTML5"> --></figure>
+
+    <h4>2.2 What is HTML5 for Mobiles?</h4>
+    <div class="def"><b>Definition:</b> HTML5 for mobiles refers to the use of HTML5 technologies to develop mobile-friendly websites and web applications that can run on smartphones and tablets through mobile web browsers.</div>
+    <p>In simple words, HTML5 allows developers to create applications that users can access through a mobile browser without necessarily installing a separate application from an app store.</p>
+    <div class="example"><b>Example:</b> You create an online shopping website using HTML5, CSS, and JavaScript. A user can open it on Android smartphones, iPhones, tablets and desktop computers. The website automatically adjusts its layout to the screen size when it is designed responsively.</div>
+
+    <h4>2.3 Why is HTML5 Used for Mobile Development?</h4>
+    <p>HTML5 provides features that help developers create interactive, responsive, and user-friendly web applications.</p>
+
+    <h5 class="sub">1. Cross-Platform Compatibility</h5>
+    <p>HTML5 applications run on different operating systems through compatible browsers. The same website can work on Android, iOS, Windows and macOS, so developers do not need a completely separate website for every operating system.</p>
+
+    <h5 class="sub">2. Responsive Web Design</h5>
+    <p>Creating websites that automatically adjust their layout according to the screen size and device.</p>
+    <div class="example"><b>Example:</b> a website may display three product columns on a computer, but only one column on a mobile phone.</div>
+    <p><b>Technologies used:</b> HTML5, CSS3, CSS Media Queries, flexible layouts, Flexbox and Grid.</p>
+
+    <h5 class="sub">3. Multimedia Support</h5>
+    <p>HTML5 provides built-in support for audio and video. Previously, developers often needed external plugins. HTML5 introduced <code>&lt;audio&gt;</code> (adds audio) and <code>&lt;video&gt;</code> (adds video).</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;video controls width="300"&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+    <p>This code displays a video player on a web page.</p>
+
+    <h5 class="sub">4. Offline Storage</h5>
+    <p>HTML5 introduced technologies that let web applications store certain information on a user's device. For example, a shopping application can temporarily save some information so it remains available even when the internet connection is lost.</p>
+    <ul>
+      <li><b>Local Storage:</b> stores data in the browser with no automatic expiration.</li>
+      <li><b>Session Storage:</b> stores data for the duration of a browser page session.</li>
+      <li><b>IndexedDB:</b> stores larger amounts of structured data in the browser.</li>
+    </ul>
+    <div class="explain">Note: HTML5's old Web SQL and Application Cache technologies are obsolete; modern applications generally use IndexedDB and service workers.</div>
+
+    <h5 class="sub">5. Touchscreen Support</h5>
+    <p>Mobile devices mainly use touchscreens instead of a mouse and keyboard. HTML5 works with JavaScript and browser events to handle: touching buttons, tapping links, scrolling pages, selecting options, and filling forms.</p>
+
+    <h5 class="sub">6. Geolocation Support</h5>
+    <p>The Geolocation API allows a website to request the user's geographical location. For example, a food delivery website can use it to help identify the user's delivery area.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>navigator.geolocation.getCurrentPosition(
+    function(position) {
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
+    }
+);</code></pre>
+    <p>The browser normally asks the user for permission before sharing location information.</p>
+
+    <h5 class="sub">7. Better Form Support</h5>
+    <p>HTML5 introduced new input types that make forms easier to use, especially on mobile devices.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;form&gt;
+    &lt;input type="email" placeholder="Enter email"&gt;
+    &lt;input type="tel" placeholder="Phone number"&gt;
+    &lt;input type="date"&gt;
+    &lt;input type="number" placeholder="Age"&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+    <p>These input types can display suitable mobile keyboards and built-in validation.</p>
+
+    <h4>2.4 Important HTML5 Features for Mobile Applications</h4>
+
+    <h5 class="sub">1. Semantic Elements</h5>
+    <p>Semantic elements clearly describe the meaning and purpose of different parts of a web page.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Element</th><th>Purpose</th></tr>
+      <tr><td><code>&lt;header&gt;</code></td><td>Defines the header</td></tr>
+      <tr><td><code>&lt;nav&gt;</code></td><td>Defines navigation links</td></tr>
+      <tr><td><code>&lt;main&gt;</code></td><td>Defines the main content</td></tr>
+      <tr><td><code>&lt;section&gt;</code></td><td>Defines a section</td></tr>
+      <tr><td><code>&lt;article&gt;</code></td><td>Defines independent content</td></tr>
+      <tr><td><code>&lt;footer&gt;</code></td><td>Defines the footer</td></tr>
+    </table></div>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;header&gt;
+    &lt;h1&gt;My Mobile Website&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;About&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Welcome&lt;/h2&gt;
+        &lt;p&gt;This is my website.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    Copyright 2026
+&lt;/footer&gt;</code></pre>
+    <p>These elements make the structure of a website clearer and easier to maintain.</p>
+
+    <h5 class="sub">2. Canvas Element</h5>
+    <p>The Canvas element provides an area where developers can draw graphics using JavaScript. It can be used for games, charts, animations, drawing applications and data visualization.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;canvas id="myCanvas" width="300" height="150"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "blue";
+ctx.fillRect(20, 20, 150, 80);
+&lt;/script&gt;</code></pre>
+    <p>This code draws a blue rectangle inside the canvas.</p>
+    <figure><!-- <img src="../images/platforms/html5-canvas.jpg" alt="Canvas example"> --></figure>
+
+    <h5 class="sub">3. Audio and Video Elements</h5>
+    <p>HTML5 provides audio and video elements for playing multimedia content without external browser plugins.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;audio controls&gt;
+    &lt;source src="music.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+
+&lt;video controls width="300"&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+    <p>The <code>controls</code> attribute displays playback controls such as play, pause, and volume.</p>
+
+    <h5 class="sub">4. Local Storage</h5>
+    <p>Local Storage allows developers to save small amounts of data in the user's browser.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>localStorage.setItem("username", "Ali");
+
+let user = localStorage.getItem("username");
+
+console.log(user);   // Output: Ali</code></pre>
+    <p>Even after closing and reopening the browser, the stored value normally remains available until it is removed or cleared.</p>
+    <div class="example"><b>Mobile application example:</b> a mobile shopping website can remember a user's preferred theme or certain settings using Local Storage.</div>
+
+    <h5 class="sub">5. Web Workers</h5>
+    <p>Web Workers allow JavaScript to perform certain tasks in the background without blocking the main user interface thread.</p>
+    <p>For example, if a mobile application processes a large amount of data on the main thread, the interface may become slow or unresponsive. A Web Worker can handle suitable background calculations separately.</p>
+    <p><b>Benefits:</b></p>
+    <ul><li>Keeps the interface responsive</li><li>Performs background processing</li><li>Helps handle computationally intensive tasks</li></ul>
+
+    <h5 class="sub">6. Geolocation API</h5>
+    <p>Allows a web application to request the geographical position of a user.</p>
+    <p><b>It can provide:</b> latitude, longitude, accuracy, altitude (when available), speed (when available).</p>
+    <p><b>Example applications:</b></p>
+    <div class="chips"><span>Google Maps</span><span>Food delivery services</span><span>Location-based services</span><span>Navigation applications</span></div>
+
+    <h5 class="sub">7. Drag and Drop</h5>
+    <p>The Drag and Drop API allows users to move elements or files from one location to another. For example, a user can drag a file into an upload area.</p>
+    <p><b>Used in:</b> file upload applications, image editors, task management applications, online design tools.</p>
+
+    <h4>2.5 Mobile Web Applications vs Native Mobile Applications</h4>
+    <p>HTML5 is commonly used to develop mobile web applications. However, mobile web applications and native applications are not exactly the same.</p>
+    <figure><!-- <img src="../images/platforms/web-vs-native.jpg" alt="Web app vs native app"> --></figure>
+    <div class="pc">
+      <div class="pro"><b>Mobile Web Application</b>
+        <p>Runs inside a mobile web browser. Generally developed using HTML5, CSS and JavaScript. Examples: mobile-friendly online shopping and banking websites.</p></div>
+      <div class="con"><b>Native Mobile Application</b>
+        <p>Developed specifically for a particular operating system (Android: Kotlin or Java; iOS: Swift or Objective-C). Normally installed through an app store or another supported distribution method.</p></div>
+    </div>
+    <p><b>Main Differences</b></p>
+    <div class="table-wrap"><table>
+      <tr><th>Mobile Web Application</th><th>Native Mobile Application</th></tr>
+      <tr><td>Runs in a web browser</td><td>Runs as an installed application</td></tr>
+      <tr><td>Uses HTML, CSS and JavaScript</td><td>Uses platform-specific technologies</td></tr>
+      <tr><td>Usually accessed through a URL</td><td>Usually installed on the device</td></tr>
+      <tr><td>Works across compatible browsers</td><td>Developed for a particular platform</td></tr>
+      <tr><td>Device access may be limited by browser APIs</td><td>Can access many native device features</td></tr>
+      <tr><td>Updates are usually made on the server</td><td>Updates may require app releases</td></tr>
+    </table></div>
+
+    <h4>2.6 Progressive Web Applications (PWA)</h4>
+    <div class="def">A <b>Progressive Web Application (PWA)</b> is a web application that uses modern browser technologies to provide an experience similar to an installed mobile application. PWAs combine the accessibility of websites with several useful application-like features.</div>
+    <figure><!-- <img src="../images/platforms/pwa.jpg" alt="Progressive Web App"> --></figure>
+    <p><b>Main Features of PWA</b></p>
+    <ol>
+      <li><b>Installability:</b> users can install supported PWAs on their devices.</li>
+      <li><b>Offline Support:</b> service workers can cache resources and support selected offline functionality.</li>
+      <li><b>Responsive Design:</b> PWAs adjust to different screen sizes.</li>
+      <li><b>Push Notifications:</b> supported browsers and operating systems can deliver notifications with user permission.</li>
+      <li><b>Fast Loading:</b> caching can improve loading speed.</li>
+      <li><b>App-Like Experience:</b> a PWA can open in a standalone window without the usual browser interface when installed and configured appropriately.</li>
+    </ol>
+    <p><b>Main Technologies Used in PWA</b></p>
+    <ul>
+      <li><b>HTML:</b> creates the structure.</li>
+      <li><b>CSS:</b> designs the interface.</li>
+      <li><b>JavaScript:</b> adds functionality.</li>
+      <li><b>Service Worker:</b> handles background tasks and caching.</li>
+      <li><b>Web App Manifest:</b> provides application information such as name and icons.</li>
+    </ul>
+
+    <h4>2.7 Advantages and 2.8 Disadvantages of HTML5 for Mobile Development</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Cross-Platform Compatibility:</b> works on different operating systems through compatible browsers.</li>
+        <li><b>Reduced Development Cost:</b> same web technologies for different devices.</li>
+        <li><b>Easy Maintenance:</b> changes are deployed on the server without users installing a new native version.</li>
+        <li><b>Multimedia Support:</b> audio and video integrate directly into web pages.</li>
+        <li><b>Responsive Design:</b> adjusts to different screen sizes.</li>
+        <li><b>Offline Capabilities:</b> modern browser technologies allow selected offline features.</li>
+        <li><b>Easy Learning:</b> common web technologies, widely taught and documented.</li>
+        <li><b>No Mandatory App Store Installation:</b> users access ordinary mobile web apps directly through a browser.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Performance Limitations:</b> demanding apps, especially graphics-intensive games, may perform better natively.</li>
+        <li><b>Browser Dependency:</b> depends on the browser's capabilities and compatibility.</li>
+        <li><b>Limited Device Access:</b> some hardware and OS features may not be available through standard web APIs.</li>
+        <li><b>Internet Dependency:</b> many web apps need an internet connection, although offline functionality can be implemented.</li>
+        <li><b>Different Browser Behavior:</b> features may behave differently across browsers and operating systems.</li>
+        <li><b>User Experience:</b> some web apps may not feel as smooth or integrated as native apps.</li>
+        <li><b>Security Concerns:</b> developers must protect stored information, validate user input, and use secure connections.</li></ol></div>
+    </div>
+
+    <h4>2.9 Real-Life Example: Creating a Mobile Student Portal</h4>
+    <p>Suppose you want to create a student portal using HTML5. Students can view their marks, check attendance, download notes, view examination schedules, and check announcements.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Technology</th><th>Use in Student Portal</th></tr>
+      <tr><td>HTML5</td><td>Creates the page structure</td></tr>
+      <tr><td>CSS3</td><td>Designs the interface</td></tr>
+      <tr><td>JavaScript</td><td>Adds interactive functionality</td></tr>
+      <tr><td>Local Storage</td><td>Saves selected settings</td></tr>
+      <tr><td>Geolocation API</td><td>Can provide location-based features</td></tr>
+      <tr><td>Audio/Video</td><td>Plays educational lectures</td></tr>
+      <tr><td>Service Worker</td><td>Supports caching and offline access</td></tr>
+    </table></div>
+    <figure><!-- <img src="../images/platforms/student-portal.jpg" alt="Student portal"> --></figure>
+    <p>When a student opens the portal on a smartphone:</p>
+    <ol class="steps">
+      <li>The browser loads the HTML structure.</li>
+      <li>CSS adjusts the layout to the mobile screen.</li>
+      <li>JavaScript handles buttons and user interactions.</li>
+      <li>The application retrieves student information from a server.</li>
+      <li>The browser displays the student's marks and attendance.</li>
+    </ol>
+    <p>This is an example of how HTML5 technologies contribute to mobile web application development.</p>
+
+    <h4>2.10 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is HTML5?</li><li>Define HTML5 for mobile development.</li><li>What is responsive web design?</li>
+      <li>What is Local Storage?</li><li>What is Session Storage?</li><li>Define Geolocation API.</li>
+      <li>What is the Canvas element?</li><li>What are Web Workers?</li>
+      <li>What is a Progressive Web Application?</li><li>What is the purpose of the Audio and Video elements?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain HTML5 for mobile application development in detail.</li>
+      <li>Discuss the major features of HTML5 for mobile devices.</li>
+      <li>Explain the advantages and disadvantages of HTML5 in mobile development.</li>
+      <li>Differentiate between mobile web applications and native mobile applications.</li>
+      <li>Explain Progressive Web Applications and their main features.</li></ol></details>
+
+    <h4>2.11 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>HTML5</td><td>Markup language used to structure modern web pages</td></tr>
+      <tr><td>Responsive Design</td><td>Website adjusts to screen size</td></tr>
+      <tr><td>Canvas</td><td>Area for drawing graphics using JavaScript</td></tr>
+      <tr><td>Local Storage</td><td>Stores browser data without automatic expiration</td></tr>
+      <tr><td>Session Storage</td><td>Stores data for a browser page session</td></tr>
+      <tr><td>Web Workers</td><td>Run JavaScript tasks in the background</td></tr>
+      <tr><td>Geolocation</td><td>Provides geographical location with permission</td></tr>
+      <tr><td>PWA</td><td>Web application with app-like features</td></tr>
+      <tr><td>Service Worker</td><td>Handles background browser tasks and caching</td></tr>
+      <tr><td>Web App Manifest</td><td>Provides installation and display information</td></tr>
+    </table></div>
+
+  </div>
+</section>

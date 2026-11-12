@@ -1,0 +1,203 @@
+<!-- Paste this <section> inside <main> in outline.html, AFTER the ios section. No new CSS needed. -->
+<section class="topic-card" id="windows-mobile" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>Windows Mobile</h3>
+    <p>History, architecture and application development</p>
+  </div>
+  <div class="body">
+
+    <h4>5.1 Introduction to Windows Mobile</h4>
+    <div class="def"><b>Windows Mobile</b> was a mobile operating system developed by Microsoft for smartphones and Pocket PCs. It was designed to bring some of the features of Microsoft Windows computers to mobile devices.</div>
+    <p>Windows Mobile allowed users to perform different tasks, such as:</p>
+    <ul>
+      <li>Making phone calls</li><li>Sending text messages</li><li>Sending and receiving emails</li><li>Browsing the internet</li>
+      <li>Managing contacts</li><li>Creating and editing documents</li><li>Running mobile applications</li><li>Managing calendars and appointments</li>
+    </ul>
+    <p>In simple words, Windows Mobile was Microsoft's operating system for mobile devices that allowed users to perform communication, business, and personal tasks.</p>
+    <figure><!-- <img src="../images/platforms/windows-mobile.jpg" alt="Windows Mobile devices"> --></figure>
+    <div class="explain"><b>Important:</b> Windows Mobile is a discontinued platform. Microsoft later introduced Windows Phone, followed by Windows 10 Mobile. These are related but separate operating system generations.</div>
+
+    <h4>5.2 History of Windows Mobile</h4>
+    <p>Understanding its history helps us understand how Microsoft introduced and improved mobile operating systems.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Windows CE (1996)</h5><p>A compact operating system developed by Microsoft for embedded devices and small computers. It provided the technological foundation for several early Microsoft mobile operating systems.</p></div>
+      <div class="mini"><h5>2. Pocket PC (2000)</h5><p>A platform for personal digital assistants (PDAs), with:</p><ul><li>Contact management</li><li>Calendar</li><li>Email</li><li>Document management</li><li>Personal information management</li></ul></div>
+      <div class="mini"><h5>3. Windows Mobile 2003</h5><p>Improved mobile communication and multimedia functionality:</p><ul><li>Bluetooth</li><li>Improved wireless connectivity</li><li>Multimedia applications</li><li>Better device management</li></ul></div>
+      <div class="mini"><h5>4. Windows Mobile 5.0 (2005)</h5><p>Improvements in memory management and application functionality, with better support for business users.</p></div>
+      <div class="mini"><h5>5. Windows Mobile 6 (2007)</h5><p>Improved user interface and productivity features, with better support for:</p><ul><li>Email</li><li>Office documents</li><li>Business applications</li><li>Internet browsing</li></ul></div>
+      <div class="mini"><h5>6. Windows Mobile 6.5 (2009)</h5><p>A more touch-friendly interface and an updated Start screen. One of the last major releases under the Windows Mobile name.</p></div>
+      <div class="mini"><h5>7. Windows Phone (2010)</h5><p>A new mobile operating system with a redesigned interface. It used a different application platform and user experience from Windows Mobile.</p></div>
+    </div>
+    <figure><!-- <img src="../images/platforms/windows-mobile-history.jpg" alt="Windows Mobile history"> --></figure>
+
+    <h4>5.3 Main Features of Windows Mobile</h4>
+    <p>Windows Mobile provided several features to make smartphones useful for communication, productivity, and business activities.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. User-Friendly Interface</h5><p>Menus, icons, buttons, and a Start menu. Users could access different applications and system settings.</p></div>
+      <div class="mini"><h5>2. Microsoft Office Support</h5><p>Users could work with documents, spreadsheets, and presentations through compatible mobile applications.</p><ul><li>Word documents</li><li>Excel spreadsheets</li><li>PowerPoint presentations</li></ul></div>
+      <div class="mini"><h5>3. Email Support</h5><p>Users could send emails, receive emails, read messages, and manage email accounts. Particularly useful for business professionals.</p></div>
+      <div class="mini"><h5>4. Internet Browsing</h5><p>Mobile internet browsing through compatible web browsers, to visit websites and access online information.</p></div>
+      <div class="mini"><h5>5. Contact Management</h5><p>Save and organize names, phone numbers, email addresses and other contact details.</p></div>
+      <div class="mini"><h5>6. Calendar and Scheduling</h5><p>Create appointments, schedule meetings, set reminders, and manage daily activities.</p></div>
+      <div class="mini"><h5>7. Multimedia Support</h5><p>Playing music, watching videos, viewing photographs, recording audio.</p></div>
+      <div class="mini"><h5>8. Wireless Connectivity</h5><p>Depending on the hardware: Wi-Fi, Bluetooth, cellular networks, USB connections.</p></div>
+      <div class="mini"><h5>9. Application Support</h5><p>Applications developed for its platform, many using Microsoft technologies such as the .NET Compact Framework.</p></div>
+      <div class="mini"><h5>10. Synchronization</h5><p>Synchronization with computers and other services: contacts, calendars, emails, files.</p></div>
+    </div>
+
+    <h4>5.4 Windows Mobile Architecture</h4>
+    <div class="def"><b>Definition:</b> Windows Mobile Architecture is the internal structure of the Windows Mobile operating system that explains how hardware, system services, application frameworks, and applications work together.</div>
+    <p>In simple words, it explains how different software components communicate with mobile device hardware and execute applications. Windows Mobile was built on Windows CE technology and used a layered software architecture.</p>
+    <figure><!-- <img src="../images/platforms/windows-mobile-architecture.jpg" alt="Windows Mobile architecture"> --><figcaption>Simplified Windows Mobile architecture</figcaption></figure>
+
+    <h5 class="sub">1. Hardware Layer</h5>
+    <p>Contains the physical components of a mobile device, which provide the physical resources needed by the operating system.</p>
+    <div class="chips"><span>Processor</span><span>RAM</span><span>Internal storage</span><span>Touchscreen</span><span>Camera</span><span>Speaker</span><span>Microphone</span><span>Network components</span></div>
+
+    <h5 class="sub">2. Kernel and Hardware Abstraction</h5>
+    <p>The kernel is the core part of the operating system. It manages the device's hardware resources and provides essential operating system functions.</p>
+    <ul>
+      <li><b>A. Memory Management:</b> manages available memory and allocates it to running applications.</li>
+      <li><b>B. Process Management:</b> helps manage running programs and their execution.</li>
+      <li><b>C. Device Management:</b> supports communication between software and hardware through device drivers.</li>
+      <li><b>D. Security:</b> basic operating system protection mechanisms.</li>
+      <li><b>E. Power Management:</b> helps control device power consumption.</li>
+    </ul>
+    <div class="explain">Windows CE provided the underlying kernel and operating system services for Windows Mobile.</div>
+
+    <h5 class="sub">3. Operating System Services</h5>
+    <p>Provides important system services required by applications, so applications can perform operations without directly controlling all hardware components.</p>
+    <div class="chips"><span>File management</span><span>Networking</span><span>Communication</span><span>Input and output</span><span>Graphics</span><span>Multimedia</span></div>
+
+    <h5 class="sub">4. Application Framework and Libraries</h5>
+    <p>Provides programming interfaces and reusable libraries that developers use to create applications.</p>
+    <div class="chips"><span>.NET Compact Framework</span><span>Windows Mobile APIs</span><span>User interface libraries</span><span>Database-related libraries</span></div>
+
+    <h5 class="sub">5. Application Layer</h5>
+    <p>The topmost layer. It contains the applications that users interact with.</p>
+    <div class="chips"><span>Calendar</span><span>Contacts</span><span>Messaging</span><span>Email</span><span>Office applications</span><span>Web browsers</span></div>
+
+    <h4>5.5 How Windows Mobile Architecture Works</h4>
+    <p>Suppose a user opens a contact management application and saves a new contact. The architectural components work together:</p>
+    <figure><!-- <img src="../images/platforms/windows-mobile-flow.jpg" alt="Saving a contact through the layers"> --></figure>
+    <ol class="steps">
+      <li><b>Application Layer:</b> the user opens the Contacts application and enters a name and phone number.</li>
+      <li><b>Application Framework:</b> the application uses available APIs and libraries to process the information.</li>
+      <li><b>Operating System Services:</b> system services help manage the data and file operations.</li>
+      <li><b>Kernel:</b> manages the necessary memory and hardware operations.</li>
+      <li><b>Hardware Layer:</b> the device's storage hardware stores the required information.</li>
+    </ol>
+    <p><b>Result:</b> the contact is saved and can be accessed later.</p>
+
+    <h4>5.6 Application Development in Windows Mobile</h4>
+    <div class="def"><b>Definition:</b> Windows Mobile Application Development is the process of designing, programming, testing, and deploying applications that run on devices using the Windows Mobile operating system.</div>
+    <p>In simple words, it means creating software applications for Windows Mobile smartphones and Pocket PCs.</p>
+    <figure><!-- <img src="../images/platforms/windows-mobile-development.jpg" alt="Windows Mobile development"> --></figure>
+
+    <h4>5.7 Programming Languages Used for Windows Mobile Development</h4>
+    <p>Microsoft provided different programming technologies for Windows Mobile development.</p>
+    <h5 class="sub">1. C#</h5>
+    <p>An object-oriented programming language developed by Microsoft. It was commonly used for Windows Mobile applications through the .NET Compact Framework.</p>
+    <p><b>Features:</b></p>
+    <ul><li>Object-oriented programming</li><li>Easy-to-understand syntax</li><li>Reusable code</li><li>Integration with Microsoft development tools</li></ul>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        string name = "Ali";
+
+        Console.WriteLine("Hello " + name);
+    }
+}</code></pre>
+    <h5 class="sub">2. C and C++</h5>
+    <p>Used for developing native applications and system-level components. They provided greater control over memory and device resources.</p>
+    <h5 class="sub">3. Visual Basic .NET</h5>
+    <p>Another language used for developing applications through Microsoft's .NET technologies. It provided a relatively simple programming syntax.</p>
+
+    <h4>5.8 Tools Used for Windows Mobile Application Development</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Microsoft Visual Studio</h5><p>An IDE developed by Microsoft, used to write, manage, build, and debug Windows Mobile applications.</p><ul><li>Writing source code</li><li>Designing user interfaces</li><li>Debugging errors</li><li>Building applications</li><li>Managing project files</li></ul></div>
+      <div class="mini"><h5>2. Windows Mobile SDK</h5><p>Software Development Kit. Provides development tools, libraries, APIs, and resources required to create applications for Windows Mobile.</p></div>
+      <div class="mini"><h5>3. .NET Compact Framework</h5><p>A reduced version of the .NET Framework designed for resource-constrained devices. It allowed developers to use languages such as C# and Visual Basic .NET.</p></div>
+      <div class="mini"><h5>4. Windows Mobile Emulator</h5><p>Allowed developers to test applications on a virtual Windows Mobile device without always requiring a physical smartphone.</p></div>
+      <div class="mini"><h5>5. ActiveSync</h5><p>Microsoft's technology for synchronizing Windows Mobile devices with computers: contacts, calendars, emails, files.</p></div>
+    </div>
+    <figure><!-- <img src="../images/platforms/visual-studio.jpg" alt="Visual Studio"> --></figure>
+
+    <h4>5.9 Steps Involved in Windows Mobile Application Development</h4>
+    <ol class="steps">
+      <li><b>Requirement Analysis:</b> identify the purpose and required features of the application.</li>
+      <li><b>User Interface Design:</b> design screens, buttons, menus, and forms.</li>
+      <li><b>Environment Setup:</b> install Visual Studio, the appropriate SDK, and development tools.</li>
+      <li><b>Programming:</b> write code using C#, C++, or other supported technologies.</li>
+      <li><b>Testing:</b> test the application using an emulator or physical device.</li>
+      <li><b>Debugging:</b> identify and correct programming errors.</li>
+      <li><b>Deployment:</b> package and install the application on compatible Windows Mobile devices.</li>
+      <li><b>Maintenance:</b> fix bugs and improve application functionality.</li>
+    </ol>
+
+    <h4>5.10 Advantages and 5.11 Disadvantages of Windows Mobile</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Microsoft Office Integration:</b> support for productivity applications and Office documents.</li>
+        <li><b>Business Support:</b> useful for business communication, scheduling, and document management.</li>
+        <li><b>Microsoft Technology Integration:</b> C#, Visual Studio, and .NET Compact Framework.</li>
+        <li><b>Email Management:</b> business and personal emails.</li>
+        <li><b>Synchronization:</b> contacts, calendars, and other information with computers.</li>
+        <li><b>Application Development Tools:</b> development environments and SDKs from Microsoft.</li>
+        <li><b>Multitasking:</b> supported, although the exact behavior depended on the device and version.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Limited Application Ecosystem:</b> fewer applications than Android and iOS.</li>
+        <li><b>Declining Market Share:</b> struggled to compete with Android and iOS.</li>
+        <li><b>Limited Developer Support:</b> the developer ecosystem became smaller over time.</li>
+        <li><b>Outdated Technology:</b> discontinued, with no regular security updates.</li>
+        <li><b>Compatibility Issues:</b> applications designed for one version or device may not work on another.</li>
+        <li><b>Limited Modern Features:</b> lacks many modern mobile application capabilities and services.</li></ol></div>
+    </div>
+
+    <h4>5.12 Difference Between Windows Mobile, Android and iOS</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Windows Mobile</th><th>Android</th><th>iOS</th></tr>
+      <tr><td>Developed by Microsoft</td><td>Developed by Google and AOSP contributors</td><td>Developed by Apple</td></tr>
+      <tr><td>Based on Windows CE</td><td>Linux-based</td><td>Based on Darwin</td></tr>
+      <tr><td>C#, C++, VB.NET</td><td>Kotlin, Java</td><td>Swift, Objective-C</td></tr>
+      <tr><td>Visual Studio</td><td>Android Studio</td><td>Xcode</td></tr>
+      <tr><td>Discontinued</td><td>Actively developed</td><td>Actively developed</td></tr>
+      <tr><td>Microsoft mobile ecosystem</td><td>Google and manufacturer ecosystem</td><td>Apple ecosystem</td></tr>
+    </table></div>
+    <div class="explain"><b>Important distinction:</b> Windows Mobile, Windows Phone, and Windows 10 Mobile are not interchangeable names. They represent different generations of Microsoft's mobile platforms.</div>
+
+    <h4>5.13 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is Windows Mobile?</li><li>Who developed Windows Mobile?</li><li>What is Windows CE?</li>
+      <li>Define Windows Mobile Architecture.</li><li>What is .NET Compact Framework?</li>
+      <li>What is Microsoft Visual Studio?</li><li>What is Windows Mobile SDK?</li><li>What is ActiveSync?</li>
+      <li>Name two programming languages used for Windows Mobile development.</li>
+      <li>What is a Windows Mobile Emulator?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain Windows Mobile in detail.</li><li>Discuss the features of Windows Mobile.</li>
+      <li>Explain Windows Mobile Architecture with a diagram.</li>
+      <li>Explain the process of Windows Mobile Application Development.</li>
+      <li>Discuss the advantages and disadvantages of Windows Mobile.</li>
+      <li>Compare Windows Mobile with Android and iOS.</li></ol></details>
+
+    <h4>5.14 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>Windows Mobile</td><td>Microsoft's discontinued mobile operating system</td></tr>
+      <tr><td>Windows CE</td><td>Compact operating system underlying Windows Mobile</td></tr>
+      <tr><td>Kernel</td><td>Manages hardware and system resources</td></tr>
+      <tr><td>C#</td><td>Object-oriented programming language</td></tr>
+      <tr><td>C++</td><td>Programming language used for native development</td></tr>
+      <tr><td>Visual Studio</td><td>Microsoft's development environment</td></tr>
+      <tr><td>SDK</td><td>Collection of development tools and libraries</td></tr>
+      <tr><td>.NET Compact Framework</td><td>Framework for developing applications on resource-limited devices</td></tr>
+      <tr><td>Emulator</td><td>Simulates a mobile device</td></tr>
+      <tr><td>ActiveSync</td><td>Synchronization technology</td></tr>
+    </table></div>
+
+  </div>
+</section>

@@ -1,0 +1,2179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Programs | IT-308 Mobile Application Development</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* Program code styling */
+.program-code {
+  margin-top: 12px;
+}
+
+.program-code pre {
+  background: #172033;
+  color: #e5e7eb;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.program-code h4 {
+  margin-top: 25px;
+}
+
+.program-code .copy {
+  margin-top: 8px;
+}
+
+.program-section {
+  scroll-margin-top: 90px;
+  margin-bottom: 25px;
+}
+
+.program-section .explain {
+  margin: 15px 0;
+  line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+  .program-code pre {
+    font-size: 12px;
+    padding: 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a class="brand" href="index.html">IT-308</a>
+  <a href="index.html">Home</a>
+  <a href="outline/index.html">Outline</a>
+  <a href="practice.html">Practice</a>
+  <a href="programs.html" class="active">Programs</a>
+  <a href="papers/index.html">Past Papers</a>
+  <a href="references.html">References</a>
+</nav>
+
+<main>
+
+<h1>Programs</h1>
+<p class="lead">All Java and XML source codes for IT-308 Mobile Application Development practical programs.</p>
+
+<input type="search" id="search" placeholder="Search programs">
+
+
+<!-- ================================================== -->
+<!-- PLATFORMS AND ARCHITECTURE -->
+<!-- ================================================== -->
+
+
+<section class="card program-section" id="hello-world" data-item>
+
+  <h3>1. Hello World Application</h3>
+
+  <div class="explain">
+    Create a simple Android application that displays "Hello World"
+    in the center of the screen using a TextView and LinearLayout.
+  </div>
+
+  <!-- MainActivity.java -->
+  <div class="program-code">
+
+    <h4>MainActivity.java</h4>
+
+    <button class="btn alt copy">Copy code</button>
+
+    <pre><code>package com.example.helloworld;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}</code></pre>
+
+    <h4>Understanding MainActivity.java</h4>
+
+    <ol>
+      <li><strong>package com.example.helloworld;</strong> Defines the package name of the application.</li>
+      <li><strong>import android.os.Bundle;</strong> Imports the Bundle class used to handle saved Activity state.</li>
+      <li><strong>import androidx.appcompat.app.AppCompatActivity;</strong> Imports the AppCompatActivity class, which provides Activity functionality.</li>
+      <li><strong>public class MainActivity extends AppCompatActivity</strong> Creates the MainActivity class and inherits features from AppCompatActivity.</li>
+      <li><strong>@Override</strong> Indicates that the following method overrides a method from the parent class.</li>
+      <li><strong>onCreate(Bundle savedInstanceState)</strong> Runs when the Activity is created.</li>
+      <li><strong>super.onCreate(savedInstanceState);</strong> Calls the parent Activity's onCreate() method to perform its initialization.</li>
+      <li><strong>setContentView(R.layout.activity_main);</strong> Connects the Java Activity to the activity_main.xml layout file.</li>
+    </ol>
+
+  </div>
+
+
+  <!-- activity_main.xml -->
+  <div class="program-code">
+
+    <h4>activity_main.xml</h4>
+
+    <button class="btn alt copy">Copy code</button>
+
+    <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        android:textSize="30sp"
+        android:textColor="#000000" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+
+    <h4>Understanding activity_main.xml</h4>
+
+    <ol>
+      <li><strong>XML declaration:</strong> Specifies that the file is an XML document using UTF-8 encoding.</li>
+      <li><strong>LinearLayout:</strong> Creates the main layout container that holds other views.</li>
+      <li><strong>xmlns:android:</strong> Declares the Android XML namespace so Android attributes can be used.</li>
+      <li><strong>layout_width="match_parent":</strong> Makes the layout occupy the full available width.</li>
+      <li><strong>layout_height="match_parent":</strong> Makes the layout occupy the full available height.</li>
+      <li><strong>orientation="vertical":</strong> Arranges child views vertically.</li>
+      <li><strong>gravity="center":</strong> Places the child views in the center of the layout.</li>
+      <li><strong>TextView:</strong> Creates a view that displays text.</li>
+      <li><strong>layout_width="wrap_content":</strong> Makes the TextView width fit its content.</li>
+      <li><strong>layout_height="wrap_content":</strong> Makes the TextView height fit its content.</li>
+      <li><strong>text="Hello World":</strong> Sets the displayed message.</li>
+      <li><strong>textSize="30sp":</strong> Sets the text size to 30 scale-independent pixels.</li>
+      <li><strong>textColor="#000000":</strong> Sets the text color to black.</li>
+      <li><strong>Closing tags:</strong> Close the TextView and LinearLayout elements.</li>
+    </ol>
+
+  </div>
+
+
+  <h4>Expected Output</h4>
+
+  <div style="background:#f1f5f9; color:#000; border:1px solid #ddd; border-radius:10px; padding:35px; text-align:center;">
+    <span style="font-size:30px;">Hello World</span>
+    <p style="font-size:12px; margin-bottom:0;">Android Application Screen</p>
+  </div>
+
+</section>
+
+
+
+<!-- ================================================== -->
+<!-- USER INTERFACE AND SCREENS -->
+<!-- ================================================== -->
+
+
+<section class="card program-section" id="registration-form" data-item>
+
+  <h3>2. Registration Form with Main Views</h3>
+
+  <div class="explain">
+    This application creates a Student Registration Form using different
+    Android UI components, including TextView, EditText, RadioGroup,
+    RadioButton, Spinner, CheckBox and Button.
+
+    The user enters personal information, selects a gender and course,
+    accepts the terms and conditions, and clicks the Register button.
+    The application validates the entered information and displays
+    a Toast message.
+  </div>
+
+
+  <!-- MainActivity.java -->
+  <div class="program-code">
+
+    <h4>MainActivity.java</h4>
+
+    <button class="btn alt copy">Copy code</button>
+
+    <pre><code>package com.example.registrationform;
+
+import android.os.Bundle;
+import android.widget.*;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etName, etEmail, etPassword;
+    RadioGroup rgGender;
+    Spinner spCourse;
+    CheckBox cbTerms;
+    Button btnRegister;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etName = findViewById(R.id.etName);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+        rgGender = findViewById(R.id.rgGender);
+        spCourse = findViewById(R.id.spCourse);
+        cbTerms = findViewById(R.id.cbTerms);
+        btnRegister = findViewById(R.id.btnRegister);
+
+        String[] courses = {
+            "Select Course",
+            "BS Information Technology",
+            "BS Computer Science",
+            "BS Software Engineering"
+        };
+
+        ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;&gt;(
+            this,
+            android.R.layout.simple_spinner_item,
+            courses
+        );
+
+        adapter.setDropDownViewResource(
+            android.R.layout.simple_spinner_dropdown_item
+        );
+
+        spCourse.setAdapter(adapter);
+
+        btnRegister.setOnClickListener(v -&gt; {
+
+            String name = etName.getText().toString();
+            String email = etEmail.getText().toString();
+            String password = etPassword.getText().toString();
+
+            int selectedId = rgGender.getCheckedRadioButtonId();
+
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please fill all fields",
+                    Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (selectedId == -1) {
+                Toast.makeText(this, "Please select gender",
+                    Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (spCourse.getSelectedItemPosition() == 0) {
+                Toast.makeText(this, "Please select a course",
+                    Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!cbTerms.isChecked()) {
+                Toast.makeText(this, "Please accept terms and conditions",
+                    Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            RadioButton selectedGender = findViewById(selectedId);
+
+            String gender = selectedGender.getText().toString();
+            String course = spCourse.getSelectedItem().toString();
+
+            Toast.makeText(this,
+                "Registration Successful!",
+                Toast.LENGTH_LONG).show();
+        });
+    }
+}</code></pre>
+
+
+    <h4>Understanding MainActivity.java</h4>
+
+    <ol>
+      <li><strong>package com.example.registrationform;</strong> Defines the package name of the Android application.</li>
+
+      <li><strong>import android.os.Bundle;</strong> Imports the Bundle class, which is used to handle saved Activity state.</li>
+
+      <li><strong>import android.widget.*;</strong> Imports Android UI components such as EditText, Button, Spinner, CheckBox, RadioGroup and Toast.</li>
+
+      <li><strong>import androidx.appcompat.app.AppCompatActivity;</strong> Imports AppCompatActivity, the base class used to create this Activity.</li>
+
+      <li><strong>public class MainActivity extends AppCompatActivity</strong> Creates the MainActivity class and inherits Activity functionality.</li>
+
+      <li><strong>EditText etName, etEmail, etPassword;</strong> Declares three EditText variables for entering the student's name, email and password.</li>
+
+      <li><strong>RadioGroup rgGender;</strong> Declares a RadioGroup variable that manages the gender selection.</li>
+
+      <li><strong>Spinner spCourse;</strong> Declares a Spinner variable that displays a drop-down list of courses.</li>
+
+      <li><strong>CheckBox cbTerms;</strong> Declares a CheckBox variable used to accept the terms and conditions.</li>
+
+      <li><strong>Button btnRegister;</strong> Declares the Register button variable.</li>
+
+      <li><strong>@Override</strong> Indicates that the following method overrides a method from the parent class.</li>
+
+      <li><strong>onCreate(Bundle savedInstanceState)</strong> Runs when the Activity is created.</li>
+
+      <li><strong>super.onCreate(savedInstanceState);</strong> Calls the parent class's onCreate() method.</li>
+
+      <li><strong>setContentView(R.layout.activity_main);</strong> Connects the Java Activity with the activity_main.xml layout.</li>
+
+      <li><strong>findViewById()</strong> Connects Java variables with the UI components defined in the XML layout. Each R.id value identifies a particular component.</li>
+
+      <li><strong>String[] courses</strong> Creates a String array containing the available course names. The first item is the default instruction "Select Course".</li>
+
+      <li><strong>ArrayAdapter&lt;String&gt;</strong> Creates an adapter that connects the course names to the Spinner.</li>
+
+      <li><strong>this</strong> Refers to the current Activity and provides the context required by the adapter.</li>
+
+      <li><strong>android.R.layout.simple_spinner_item</strong> Specifies the default layout used to display the selected Spinner item.</li>
+
+      <li><strong>courses</strong> Supplies the array of course names to the adapter.</li>
+
+      <li><strong>setDropDownViewResource()</strong> Sets the layout used to display the items when the Spinner drop-down list opens.</li>
+
+      <li><strong>android.R.layout.simple_spinner_dropdown_item</strong> Provides the standard Android layout for Spinner drop-down items.</li>
+
+      <li><strong>spCourse.setAdapter(adapter);</strong> Attaches the adapter to the Spinner so that the course names appear in its drop-down list.</li>
+
+      <li><strong>btnRegister.setOnClickListener()</strong> Sets a click listener that executes the registration code when the user clicks Register.</li>
+
+      <li><strong>etName.getText().toString()</strong> Reads the name entered by the user and converts it into a String.</li>
+
+      <li><strong>etEmail.getText().toString()</strong> Reads the entered email address.</li>
+
+      <li><strong>etPassword.getText().toString()</strong> Reads the entered password.</li>
+
+      <li><strong>rgGender.getCheckedRadioButtonId()</strong> Returns the ID of the selected RadioButton. It returns -1 if no gender is selected.</li>
+
+      <li><strong>if (name.isEmpty() || email.isEmpty() || password.isEmpty())</strong> Checks whether any required text field is empty. The || operator means OR.</li>
+
+      <li><strong>Toast.makeText()</strong> Creates a short notification message when the user has not entered all required information.</li>
+
+      <li><strong>Toast.LENGTH_SHORT</strong> Displays the Toast message for a short duration.</li>
+
+      <li><strong>return;</strong> Stops the current click operation so the application does not continue with the remaining validation checks.</li>
+
+      <li><strong>if (selectedId == -1)</strong> Checks whether the user has selected a gender.</li>
+
+      <li><strong>spCourse.getSelectedItemPosition() == 0</strong> Checks whether the first default Spinner item, "Select Course", is still selected.</li>
+
+      <li><strong>if (!cbTerms.isChecked())</strong> Checks whether the terms checkbox is not selected. The ! operator means NOT.</li>
+
+      <li><strong>RadioButton selectedGender = findViewById(selectedId);</strong> Finds the RadioButton selected by the user.</li>
+
+      <li><strong>selectedGender.getText().toString()</strong> Gets the text of the selected RadioButton, such as Male or Female.</li>
+
+      <li><strong>spCourse.getSelectedItem().toString()</strong> Gets the course selected from the Spinner.</li>
+
+      <li><strong>Toast.LENGTH_LONG</strong> Displays the successful registration message for a longer duration.</li>
+
+      <li><strong>Closing braces</strong> Close the click listener, onCreate() method and MainActivity class.</li>
+    </ol>
+
+  </div>
+
+
+  <!-- activity_main.xml -->
+  <div class="program-code">
+
+    <h4>activity_main.xml</h4>
+
+    <button class="btn alt copy">Copy code</button>
+
+    <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"&gt;
+
+        &lt;TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student Registration Form"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp" /&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textSize="16sp" /&gt;
+
+        &lt;EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your name"
+            android:inputType="textPersonName" /&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email Address"
+            android:textSize="16sp" /&gt;
+
+        &lt;EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your email"
+            android:inputType="textEmailAddress" /&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textSize="16sp" /&gt;
+
+        &lt;EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your password"
+            android:inputType="textPassword" /&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="16sp" /&gt;
+
+        &lt;RadioGroup
+            android:id="@+id/rgGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"&gt;
+
+            &lt;RadioButton
+                android:id="@+id/rbMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male" /&gt;
+
+            &lt;RadioButton
+                android:id="@+id/rbFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female" /&gt;
+
+        &lt;/RadioGroup&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Course"
+            android:textSize="16sp" /&gt;
+
+        &lt;Spinner
+            android:id="@+id/spCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" /&gt;
+
+        &lt;CheckBox
+            android:id="@+id/cbTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I agree to the terms and conditions" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register" /&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;</code></pre>
+
+
+    <h4>Understanding activity_main.xml</h4>
+
+    <ol>
+      <li><strong>XML declaration:</strong> Specifies that the file is an XML document using UTF-8 encoding.</li>
+
+      <li><strong>ScrollView:</strong> Creates a scrollable container so the user can scroll through the registration form if it is taller than the screen.</li>
+
+      <li><strong>xmlns:android:</strong> Declares the Android XML namespace used by Android layout attributes.</li>
+
+      <li><strong>layout_width="match_parent":</strong> Makes the ScrollView occupy the full available screen width.</li>
+
+      <li><strong>layout_height="match_parent":</strong> Makes the ScrollView occupy the full available screen height.</li>
+
+      <li><strong>LinearLayout:</strong> Creates a container that arranges its child components in a straight line.</li>
+
+      <li><strong>orientation="vertical":</strong> Arranges the form components from top to bottom.</li>
+
+      <li><strong>padding="20dp":</strong> Adds 20 density-independent pixels of internal space around the form contents.</li>
+
+      <li><strong>TextView (Student Registration Form):</strong> Displays the heading of the registration form.</li>
+
+      <li><strong>layout_width="match_parent":</strong> Makes the heading occupy the available width.</li>
+
+      <li><strong>textSize="24sp":</strong> Sets the heading text size to 24 scale-independent pixels.</li>
+
+      <li><strong>textStyle="bold":</strong> Makes the heading bold.</li>
+
+      <li><strong>gravity="center":</strong> Centers the heading text horizontally.</li>
+
+      <li><strong>padding="10dp":</strong> Adds internal spacing around the heading.</li>
+
+      <li><strong>TextView (Full Name):</strong> Displays a label telling the user to enter their full name.</li>
+
+      <li><strong>EditText (etName):</strong> Creates an input field where the user enters their name.</li>
+
+      <li><strong>android:id="@+id/etName":</strong> Assigns a unique ID so the Java code can access this input field.</li>
+
+      <li><strong>hint="Enter your name":</strong> Displays instructional text inside the empty input field.</li>
+
+      <li><strong>inputType="textPersonName":</strong> Configures the keyboard for entering a person's name.</li>
+
+      <li><strong>TextView (Email Address):</strong> Displays the email field label.</li>
+
+      <li><strong>EditText (etEmail):</strong> Creates an input field for the user's email address.</li>
+
+      <li><strong>inputType="textEmailAddress":</strong> Configures the keyboard for entering an email address.</li>
+
+      <li><strong>TextView (Password):</strong> Displays the password field label.</li>
+
+      <li><strong>EditText (etPassword):</strong> Creates an input field for entering a password.</li>
+
+      <li><strong>inputType="textPassword":</strong> Hides the entered password characters for privacy.</li>
+
+      <li><strong>TextView (Gender):</strong> Displays the gender selection label.</li>
+
+      <li><strong>RadioGroup:</strong> Groups multiple RadioButtons so the user can select only one option from the group.</li>
+
+      <li><strong>orientation="horizontal":</strong> Places the gender options next to each other horizontally.</li>
+
+      <li><strong>RadioButton (rbMale):</strong> Creates the Male selection option.</li>
+
+      <li><strong>RadioButton (rbFemale):</strong> Creates the Female selection option.</li>
+
+      <li><strong>TextView (Select Course):</strong> Displays the course selection label.</li>
+
+      <li><strong>Spinner (spCourse):</strong> Creates a drop-down list where the user can select a course.</li>
+
+      <li><strong>CheckBox (cbTerms):</strong> Creates a checkbox for accepting the terms and conditions.</li>
+
+      <li><strong>Button (btnRegister):</strong> Creates the Register button that starts the validation process when clicked.</li>
+
+      <li><strong>Closing tags:</strong> Close the Button, LinearLayout and ScrollView elements.</li>
+    </ol>
+
+  </div>
+
+
+  <!-- EXPECTED OUTPUT -->
+  <h4>Expected Output</h4>
+
+  <div style="background:#e9edf2; padding:18px; border-radius:12px; display:flex; justify-content:center;">
+
+    <div style="background:#ffffff; color:#222; width:100%; max-width:340px; border:1px solid #d1d5db; border-radius:18px; padding:18px; box-shadow:0 3px 12px #00000015;">
+
+      <div style="text-align:center; font-size:19px; font-weight:700; margin-bottom:18px;">
+        Student Registration Form
+      </div>
+
+      <div style="font-size:13px; font-weight:600;">Full Name</div>
+      <div style="border-bottom:1px solid #9ca3af; padding:9px 2px; color:#888; font-size:14px;">Enter your name</div>
+
+      <div style="font-size:13px; font-weight:600; margin-top:13px;">Email Address</div>
+      <div style="border-bottom:1px solid #9ca3af; padding:9px 2px; color:#888; font-size:14px;">Enter your email</div>
+
+      <div style="font-size:13px; font-weight:600; margin-top:13px;">Password</div>
+      <div style="border-bottom:1px solid #9ca3af; padding:9px 2px; color:#888; font-size:14px;">Enter your password</div>
+
+      <div style="font-size:13px; font-weight:600; margin-top:15px;">Gender</div>
+      <div style="display:flex; gap:24px; padding:9px 0; font-size:14px;">
+        <span>◯ Male</span>
+        <span>◯ Female</span>
+      </div>
+
+      <div style="font-size:13px; font-weight:600; margin-top:10px;">Select Course</div>
+      <div style="border-bottom:1px solid #9ca3af; padding:12px 2px; font-size:14px;">Select Course　⌄</div>
+
+      <div style="font-size:12px; margin:17px 0;">☐ I agree to the terms and conditions</div>
+
+      <div style="background:#526bba; color:white; text-align:center; border-radius:5px; padding:12px; font-weight:600;">
+        REGISTER
+      </div>
+
+      <div style="font-size:10px; color:#888; text-align:center; margin-top:15px;">Illustrative Android screen preview</div>
+
+    </div>
+  </div>
+
+  <p><strong>Successful registration:</strong> When all fields are completed, a gender and course are selected, and the terms checkbox is checked, the application displays:</p>
+
+  <div style="background:#303030; color:white; padding:13px 17px; border-radius:8px; max-width:340px; font-size:14px;">
+    Registration Successful!
+  </div>
+
+  <p><strong>Validation messages:</strong> The application also displays a Toast message if required information is missing:</p>
+
+  <ul>
+    <li>Please fill all fields</li>
+    <li>Please select gender</li>
+    <li>Please select a course</li>
+    <li>Please accept terms and conditions</li>
+  </ul>
+
+</section>
+
+
+
+
+<section class="card program-section" id="fragments" data-item>
+    <h2>Program 3: Two Screens with Fragments</h2>
+
+    <p>
+        This program demonstrates how to create two different screens using
+        Android Fragments. The user can switch between the First Screen and
+        Second Screen by clicking the buttons in the main Activity.
+    </p>
+
+    <h3>1. Java Code</h3>
+
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>package com.example.fragmentsapp;
+
+import android.os.Bundle;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btnFirst, btnSecond;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnFirst = findViewById(R.id.btnFirst);
+        btnSecond = findViewById(R.id.btnSecond);
+
+        if (savedInstanceState == null) {
+            loadFragment(new FirstFragment());
+        }
+
+        btnFirst.setOnClickListener(v -> {
+            loadFragment(new FirstFragment());
+        });
+
+        btnSecond.setOnClickListener(v -> {
+            loadFragment(new SecondFragment());
+        });
+    }
+
+    private void loadFragment(Fragment fragment) {
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit();
+    }
+}</code></pre>
+    </div>
+
+    <h4>Understanding MainActivity.java</h4>
+    <ol>
+        <li><strong>package com.example.fragmentsapp;</strong> — Defines the package name of the application. It identifies the location of the Java classes in the project.</li>
+        <li><strong>import android.os.Bundle;</strong> — Imports the Bundle class, which stores information about the Activity's state.</li>
+        <li><strong>import android.widget.Button;</strong> — Imports the Button class so that buttons can be used in Java.</li>
+        <li><strong>import androidx.appcompat.app.AppCompatActivity;</strong> — Imports AppCompatActivity, the base class used to create this Activity.</li>
+        <li><strong>import androidx.fragment.app.Fragment;</strong> — Imports the Fragment class so that fragments can be managed in the Activity.</li>
+        <li><strong>public class MainActivity extends AppCompatActivity</strong> — Creates the MainActivity class and inherits the features of AppCompatActivity.</li>
+        <li><strong>Button btnFirst, btnSecond;</strong> — Declares two Button variables. They will refer to the First Screen and Second Screen buttons in the XML layout.</li>
+        <li><strong>@Override</strong> — Indicates that the following method overrides a method provided by the parent class.</li>
+        <li><strong>protected void onCreate(Bundle savedInstanceState)</strong> — The onCreate() method runs when the Activity is created. It is used to initialize the screen and its components.</li>
+        <li><strong>super.onCreate(savedInstanceState);</strong> — Calls the parent class's onCreate() method to perform the required Activity initialization.</li>
+        <li><strong>setContentView(R.layout.activity_main);</strong> — Connects MainActivity with the activity_main.xml layout file.</li>
+        <li><strong>btnFirst = findViewById(R.id.btnFirst);</strong> — Finds the First Screen button from the XML layout and connects it to the btnFirst variable.</li>
+        <li><strong>btnSecond = findViewById(R.id.btnSecond);</strong> — Finds the Second Screen button and connects it to the btnSecond variable.</li>
+        <li><strong>if (savedInstanceState == null)</strong> — Checks whether the Activity is being created for the first time. A null value means there is no previously saved Activity state.</li>
+        <li><strong>loadFragment(new FirstFragment());</strong> — Loads the FirstFragment when the Activity is initially opened.</li>
+        <li><strong>btnFirst.setOnClickListener(...)</strong> — Sets a click listener on the First Screen button. The code inside it runs when the user clicks that button.</li>
+        <li><strong>loadFragment(new FirstFragment());</strong> — Creates and displays a new FirstFragment when the First Screen button is clicked.</li>
+        <li><strong>btnSecond.setOnClickListener(...)</strong> — Sets a click listener on the Second Screen button.</li>
+        <li><strong>loadFragment(new SecondFragment());</strong> — Creates and displays a new SecondFragment when the Second Screen button is clicked.</li>
+        <li><strong>private void loadFragment(Fragment fragment)</strong> — Defines a private method that accepts a Fragment object. This method is responsible for displaying the selected fragment.</li>
+        <li><strong>getSupportFragmentManager()</strong> — Gets the FragmentManager, which manages fragments inside the Activity.</li>
+        <li><strong>.beginTransaction()</strong> — Starts a FragmentTransaction. A transaction is a group of operations used to add, remove, or replace fragments.</li>
+        <li><strong>.replace(R.id.fragmentContainer, fragment)</strong> — Replaces the current fragment inside the FrameLayout named fragmentContainer with the fragment passed to the method.</li>
+        <li><strong>.commit();</strong> — Submits the fragment transaction so Android can perform the replacement.</li>
+    </ol>
+
+    <h4>FirstFragment.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>package com.example.fragmentsapp;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+public class FirstFragment extends Fragment {
+
+    @Nullable
+    @Override
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
+
+        return inflater.inflate(
+                R.layout.fragment_first,
+                container,
+                false
+        );
+    }
+}</code></pre>
+    </div>
+
+    <h4>Understanding FirstFragment.java</h4>
+    <ol>
+        <li><strong>package com.example.fragmentsapp;</strong> — Defines the package containing this fragment class.</li>
+        <li><strong>import android.os.Bundle;</strong> — Imports Bundle for receiving saved state information.</li>
+        <li><strong>import android.view.LayoutInflater;</strong> — Imports LayoutInflater, which converts an XML layout into actual Android View objects.</li>
+        <li><strong>import android.view.View;</strong> — Imports the View class, which represents a user-interface element or screen view.</li>
+        <li><strong>import android.view.ViewGroup;</strong> — Imports ViewGroup, a container that can hold other views.</li>
+        <li><strong>import androidx.annotation.NonNull;</strong> — Imports the NonNull annotation, which indicates that a parameter should not be null.</li>
+        <li><strong>import androidx.annotation.Nullable;</strong> — Imports the Nullable annotation, which indicates that a value may be null.</li>
+        <li><strong>import androidx.fragment.app.Fragment;</strong> — Imports the Fragment class required to create a Fragment.</li>
+        <li><strong>public class FirstFragment extends Fragment</strong> — Creates FirstFragment and inherits the functionality of the AndroidX Fragment class.</li>
+        <li><strong>@Nullable</strong> — Indicates that the method may return a null value.</li>
+        <li><strong>@Override</strong> — Indicates that this method overrides the onCreateView() method of the Fragment class.</li>
+        <li><strong>public View onCreateView(...)</strong> — This Fragment lifecycle method creates and returns the user interface of the fragment.</li>
+        <li><strong>@NonNull LayoutInflater inflater</strong> — Provides the LayoutInflater object used to convert the fragment's XML layout into a View.</li>
+        <li><strong>@Nullable ViewGroup container</strong> — Represents the parent container where the fragment's layout will be placed. It may be null.</li>
+        <li><strong>@Nullable Bundle savedInstanceState</strong> — Contains previously saved state information, if available.</li>
+        <li><strong>return inflater.inflate(...)</strong> — Inflates the XML layout and returns the resulting View to Android.</li>
+        <li><strong>R.layout.fragment_first</strong> — Specifies that the fragment_first.xml file should be loaded.</li>
+        <li><strong>container</strong> — Provides the parent container for the fragment's layout.</li>
+        <li><strong>false</strong> — Tells Android not to attach the inflated layout to the container immediately. The FragmentManager handles attaching it.</li>
+    </ol>
+
+    <h4>SecondFragment.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>package com.example.fragmentsapp;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+public class SecondFragment extends Fragment {
+
+    @Nullable
+    @Override
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
+
+        return inflater.inflate(
+                R.layout.fragment_second,
+                container,
+                false
+        );
+    }
+}</code></pre>
+    </div>
+
+    <h4>Understanding SecondFragment.java</h4>
+    <ol>
+        <li><strong>package com.example.fragmentsapp;</strong> — Defines the package containing this fragment class.</li>
+        <li><strong>import android.os.Bundle;</strong> — Imports Bundle for handling saved state information.</li>
+        <li><strong>import android.view.LayoutInflater;</strong> — Imports LayoutInflater to convert the XML layout into a View.</li>
+        <li><strong>import android.view.View;</strong> — Imports the View class used to represent the fragment's user interface.</li>
+        <li><strong>import android.view.ViewGroup;</strong> — Imports ViewGroup, which represents a container for other views.</li>
+        <li><strong>import androidx.annotation.NonNull;</strong> — Indicates that a parameter should not be null.</li>
+        <li><strong>import androidx.annotation.Nullable;</strong> — Indicates that a value may be null.</li>
+        <li><strong>import androidx.fragment.app.Fragment;</strong> — Imports the Fragment class required to create a fragment.</li>
+        <li><strong>public class SecondFragment extends Fragment</strong> — Creates SecondFragment by inheriting the functionality of the Fragment class.</li>
+        <li><strong>@Nullable</strong> — Indicates that the method may return null.</li>
+        <li><strong>@Override</strong> — Indicates that the following method overrides the parent Fragment method.</li>
+        <li><strong>public View onCreateView(...)</strong> — Creates the user interface for the SecondFragment.</li>
+        <li><strong>LayoutInflater inflater</strong> — Provides the object that converts the XML layout into a View.</li>
+        <li><strong>ViewGroup container</strong> — Represents the parent layout that will contain the fragment's user interface.</li>
+        <li><strong>Bundle savedInstanceState</strong> — Contains previously saved state information, if available.</li>
+        <li><strong>inflater.inflate(...)</strong> — Converts the fragment's XML layout into a View object.</li>
+        <li><strong>R.layout.fragment_second</strong> — Specifies the fragment_second.xml layout file.</li>
+        <li><strong>container</strong> — Identifies the parent container where the layout will be placed.</li>
+        <li><strong>false</strong> — Prevents immediate attachment to the parent container because the FragmentManager handles the attachment.</li>
+    </ol>
+
+    <h3>2. XML Code</h3>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"&gt;
+
+    &lt;Button
+        android:id="@+id/btnFirst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="First Screen" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnSecond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Second Screen" /&gt;
+
+    &lt;FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    </div>
+
+    <h4>Understanding activity_main.xml</h4>
+    <ol>
+        <li><strong>XML declaration</strong> — Specifies that this file uses XML version 1.0 and UTF-8 character encoding.</li>
+        <li><strong>LinearLayout</strong> — Creates the main layout that arranges its child views in a single direction.</li>
+        <li><strong>xmlns:android</strong> — Declares the Android XML namespace, allowing the use of Android layout attributes.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the main layout occupy the full available width.</li>
+        <li><strong>android:layout_height="match_parent"</strong> — Makes the main layout occupy the full available height.</li>
+        <li><strong>android:orientation="vertical"</strong> — Arranges the buttons and fragment container vertically.</li>
+        <li><strong>android:padding="16dp"</strong> — Adds 16 density-independent pixels of inner spacing around the layout's contents.</li>
+        <li><strong>Button</strong> — Creates the first button in the application.</li>
+        <li><strong>android:id="@+id/btnFirst"</strong> — Assigns the ID btnFirst so Java code can access this button.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the first button use the full available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the button's height fit its content.</li>
+        <li><strong>android:text="First Screen"</strong> — Displays First Screen as the button's text.</li>
+        <li><strong>Second Button</strong> — Creates another button for displaying the second fragment.</li>
+        <li><strong>android:id="@+id/btnSecond"</strong> — Assigns the ID btnSecond so Java can identify this button.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the second button occupy the available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Adjusts the button's height according to its content.</li>
+        <li><strong>android:text="Second Screen"</strong> — Sets the text displayed on the second button.</li>
+        <li><strong>FrameLayout</strong> — Creates an empty container where Android will display the selected fragment.</li>
+        <li><strong>android:id="@+id/fragmentContainer"</strong> — Assigns an ID that Java uses when replacing fragments.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the fragment container occupy the full available width.</li>
+        <li><strong>android:layout_height="0dp"</strong> — Sets the container's initial height to zero so its size can be controlled by layout_weight.</li>
+        <li><strong>android:layout_weight="1"</strong> — Makes the fragment container use the remaining available vertical space after the buttons are measured.</li>
+        <li><strong>Closing LinearLayout</strong> — Ends the main layout and completes the XML structure.</li>
+    </ol>
+
+    <h4>fragment_first.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#E3F2FD"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to First Screen"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#000000" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    </div>
+
+    <h4>Understanding fragment_first.xml</h4>
+    <ol>
+        <li><strong>XML declaration</strong> — Defines the XML version and character encoding.</li>
+        <li><strong>LinearLayout</strong> — Creates the layout that holds the first fragment's user-interface elements.</li>
+        <li><strong>xmlns:android</strong> — Declares the Android XML namespace.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the layout occupy the full available width of its container.</li>
+        <li><strong>android:layout_height="match_parent"</strong> — Makes the layout fill the available height of its container.</li>
+        <li><strong>android:orientation="vertical"</strong> — Arranges child views vertically.</li>
+        <li><strong>android:gravity="center"</strong> — Places the child views in the center of the layout.</li>
+        <li><strong>android:background="#E3F2FD"</strong> — Sets a light blue background color for the first screen.</li>
+        <li><strong>TextView</strong> — Creates a text element to display a message.</li>
+        <li><strong>android:layout_width="wrap_content"</strong> — Makes the TextView's width fit its text.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the TextView's height fit its content.</li>
+        <li><strong>android:text="Welcome to First Screen"</strong> — Displays the Welcome to First Screen message.</li>
+        <li><strong>android:textSize="24sp"</strong> — Sets the text size to 24 scale-independent pixels.</li>
+        <li><strong>android:textStyle="bold"</strong> — Makes the text bold.</li>
+        <li><strong>android:textColor="#000000"</strong> — Sets the text color to black.</li>
+        <li><strong>Closing LinearLayout</strong> — Ends the first fragment's layout.</li>
+    </ol>
+
+    <h4>fragment_second.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#E8F5E9"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Second Screen"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#000000" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    </div>
+
+    <h4>Understanding fragment_second.xml</h4>
+    <ol>
+        <li><strong>XML declaration</strong> — Specifies XML version 1.0 and UTF-8 encoding.</li>
+        <li><strong>LinearLayout</strong> — Creates the layout for the second fragment.</li>
+        <li><strong>xmlns:android</strong> — Declares the Android XML namespace.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the layout occupy the full available width.</li>
+        <li><strong>android:layout_height="match_parent"</strong> — Makes the layout occupy the full available height.</li>
+        <li><strong>android:orientation="vertical"</strong> — Arranges child views vertically.</li>
+        <li><strong>android:gravity="center"</strong> — Positions the child views in the center of the layout.</li>
+        <li><strong>android:background="#E8F5E9"</strong> — Sets a light green background for the second screen.</li>
+        <li><strong>TextView</strong> — Creates a text element to display the second screen's message.</li>
+        <li><strong>android:layout_width="wrap_content"</strong> — Makes the TextView's width fit its content.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the TextView's height fit its content.</li>
+        <li><strong>android:text="Welcome to Second Screen"</strong> — Displays the Welcome to Second Screen message.</li>
+        <li><strong>android:textSize="24sp"</strong> — Sets the text size to 24 scale-independent pixels.</li>
+        <li><strong>android:textStyle="bold"</strong> — Displays the text in bold style.</li>
+        <li><strong>android:textColor="#000000"</strong> — Sets the text color to black.</li>
+        <li><strong>Closing LinearLayout</strong> — Ends the second fragment's layout.</li>
+    </ol>
+
+    <h3>3. Expected Output</h3>
+    <p>
+        When the application starts, the main screen displays two buttons.
+        The First Screen fragment is loaded automatically. Clicking either
+        button replaces the content area with the corresponding fragment.
+    </p>
+
+    <div style="max-width:360px; margin:20px auto; padding:14px; background:#202124; border-radius:28px; box-shadow:0 5px 18px rgba(0,0,0,.2);">
+        <div style="background:#ffffff; border-radius:18px; overflow:hidden; min-height:440px;">
+            <div style="background:#f5f5f5; padding:12px; text-align:center; font-size:13px; color:#555;">
+                Android Application
+            </div>
+            <div style="padding:16px;">
+                <div style="background:#1976D2; color:white; text-align:center; padding:13px; border-radius:5px; margin-bottom:10px; font-weight:bold;">
+                    First Screen
+                </div>
+                <div style="background:#1976D2; color:white; text-align:center; padding:13px; border-radius:5px; margin-bottom:16px; font-weight:bold;">
+                    Second Screen
+                </div>
+                <div style="background:#E3F2FD; min-height:280px; display:flex; align-items:center; justify-content:center; text-align:center; padding:12px;">
+                    <strong style="font-size:21px; color:#000000;">Welcome to First Screen</strong>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center; color:#ffffff; font-size:12px; padding-top:10px;">Initial screen — First Fragment loaded</div>
+    </div>
+
+    <div style="max-width:360px; margin:20px auto; padding:14px; background:#202124; border-radius:28px; box-shadow:0 5px 18px rgba(0,0,0,.2);">
+        <div style="background:#ffffff; border-radius:18px; overflow:hidden; min-height:440px;">
+            <div style="background:#f5f5f5; padding:12px; text-align:center; font-size:13px; color:#555;">
+                Android Application
+            </div>
+            <div style="padding:16px;">
+                <div style="background:#1976D2; color:white; text-align:center; padding:13px; border-radius:5px; margin-bottom:10px; font-weight:bold;">
+                    First Screen
+                </div>
+                <div style="background:#1976D2; color:white; text-align:center; padding:13px; border-radius:5px; margin-bottom:16px; font-weight:bold;">
+                    Second Screen
+                </div>
+                <div style="background:#E8F5E9; min-height:280px; display:flex; align-items:center; justify-content:center; text-align:center; padding:12px;">
+                    <strong style="font-size:21px; color:#000000;">Welcome to Second Screen</strong>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center; color:#ffffff; font-size:12px; padding-top:10px;">After clicking Second Screen</div>
+    </div>
+
+    <h3>4. Important Concepts Used</h3>
+    <ul>
+        <li><strong>Activity:</strong> The main screen that hosts and manages the fragments.</li>
+        <li><strong>Fragment:</strong> A reusable part of an Activity's user interface.</li>
+        <li><strong>FrameLayout:</strong> The container where the selected fragment is displayed.</li>
+        <li><strong>FragmentManager:</strong> Manages fragments inside the Activity.</li>
+        <li><strong>FragmentTransaction:</strong> Performs operations such as adding, removing, or replacing fragments.</li>
+        <li><strong>LayoutInflater:</strong> Converts an XML layout into View objects.</li>
+        <li><strong>onCreateView():</strong> Creates the user interface of a fragment.</li>
+    </ul>
+
+    <h3>5. Project Files Required</h3>
+    <p>Place the files in the following locations in your Android project:</p>
+    <ul>
+        <li><strong>Java:</strong> MainActivity.java, FirstFragment.java, SecondFragment.java</li>
+        <li><strong>res/layout:</strong> activity_main.xml, fragment_first.xml, fragment_second.xml</li>
+    </ul>
+    <p>
+        <strong>Note:</strong> This program uses AndroidX Fragment classes and
+        AppCompatActivity. Ensure that the project includes the required AndroidX
+        AppCompat and Fragment dependencies. The code uses the support FragmentManager
+        through getSupportFragmentManager().
+    </p>
+</section>
+
+
+
+<section class="card program-section" id="ui-events" data-item>
+  <h3>4. User Interface Events Demo</h3>
+  <div class="explain">Demonstrate Android UI events such as button clicks, text changes and other user interactions.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="toast-alertdialog" data-item>
+  <h3>5. Toast and AlertDialog</h3>
+  <div class="explain">Create an application that displays Toast messages and AlertDialog boxes in response to user actions.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="custom-button" data-item>
+  <h3>6. Custom Button with Icon, Padding, Margin and Border</h3>
+  <div class="explain">Design a customized Android Button using an icon, padding, margin and border styling.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<!-- ================================================== -->
+<!-- DATA AND STORAGE -->
+<!-- ================================================== -->
+
+
+<section class="card program-section" id="shared-preferences" data-item>
+    <h2>Program 7: Remember Name and Email with Save and Clear (SharedPreferences)</h2>
+
+    <p>
+        This Android application demonstrates how to store and retrieve user information
+        using SharedPreferences. The user enters a name and email address and clicks
+        the Save button to store the information. Even after closing and reopening the
+        application, the saved information appears automatically. The Clear button
+        removes the saved information and empties both input fields.
+    </p>
+
+    <h3>1. Java Code</h3>
+
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>package com.example.sharedpreferencesapp;
+
+import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etName, etEmail;
+    Button btnSave, btnClear;
+
+    SharedPreferences sharedPreferences;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etName = findViewById(R.id.etName);
+        etEmail = findViewById(R.id.etEmail);
+        btnSave = findViewById(R.id.btnSave);
+        btnClear = findViewById(R.id.btnClear);
+
+        sharedPreferences = getSharedPreferences(
+            "UserData", MODE_PRIVATE
+        );
+
+        loadData();
+
+        btnSave.setOnClickListener(v -> {
+            saveData();
+        });
+
+        btnClear.setOnClickListener(v -> {
+            clearData();
+        });
+    }
+
+    private void saveData() {
+
+        String name = etName.getText().toString();
+        String email = etEmail.getText().toString();
+
+        SharedPreferences.Editor editor =
+            sharedPreferences.edit();
+
+        editor.putString("name", name);
+        editor.putString("email", email);
+
+        editor.apply();
+
+        Toast.makeText(this,
+            "Data Saved Successfully",
+            Toast.LENGTH_SHORT).show();
+    }
+
+    private void loadData() {
+
+        String name = sharedPreferences.getString("name", "");
+        String email = sharedPreferences.getString("email", "");
+
+        etName.setText(name);
+        etEmail.setText(email);
+    }
+
+    private void clearData() {
+
+        SharedPreferences.Editor editor =
+            sharedPreferences.edit();
+
+        editor.clear();
+        editor.apply();
+
+        etName.setText("");
+        etEmail.setText("");
+
+        Toast.makeText(this,
+            "Data Cleared Successfully",
+            Toast.LENGTH_SHORT).show();
+    }
+}</code></pre>
+    </div>
+
+    <h4>Understanding MainActivity.java</h4>
+    <ol>
+        <li><strong>package com.example.sharedpreferencesapp;</strong> — Defines the package name of the application. It identifies where the MainActivity class belongs in the project.</li>
+        <li><strong>import android.os.Bundle;</strong> — Imports the Bundle class, which is used to handle saved Activity state information.</li>
+        <li><strong>import android.content.SharedPreferences;</strong> — Imports SharedPreferences, an Android interface used to store and retrieve small amounts of data in key-value pairs.</li>
+        <li><strong>import android.widget.Button;</strong> — Imports the Button class so that buttons can be accessed and controlled using Java.</li>
+        <li><strong>import android.widget.EditText;</strong> — Imports EditText, which allows users to enter text such as their name and email.</li>
+        <li><strong>import android.widget.Toast;</strong> — Imports Toast, which displays short messages on the screen.</li>
+        <li><strong>import androidx.appcompat.app.AppCompatActivity;</strong> — Imports AppCompatActivity, the base class used to create the main Activity.</li>
+        <li><strong>public class MainActivity extends AppCompatActivity</strong> — Creates the MainActivity class and inherits the functionality of AppCompatActivity.</li>
+        <li><strong>EditText etName, etEmail;</strong> — Declares two EditText variables. They will store references to the name and email input fields.</li>
+        <li><strong>Button btnSave, btnClear;</strong> — Declares two Button variables for saving and clearing the information.</li>
+        <li><strong>SharedPreferences sharedPreferences;</strong> — Declares a SharedPreferences variable that will be used to access the application's saved data.</li>
+        <li><strong>@Override</strong> — Indicates that the following method overrides a method from the parent class.</li>
+        <li><strong>protected void onCreate(Bundle savedInstanceState)</strong> — The onCreate() method runs when the Activity is created. It is used to initialize the application screen and its components.</li>
+        <li><strong>super.onCreate(savedInstanceState);</strong> — Calls the parent class's onCreate() method to perform the required Activity initialization.</li>
+        <li><strong>setContentView(R.layout.activity_main);</strong> — Connects MainActivity with the activity_main.xml layout file.</li>
+        <li><strong>etName = findViewById(R.id.etName);</strong> — Finds the name input field in the XML layout and connects it to the etName variable.</li>
+        <li><strong>etEmail = findViewById(R.id.etEmail);</strong> — Finds the email input field and connects it to the etEmail variable.</li>
+        <li><strong>btnSave = findViewById(R.id.btnSave);</strong> — Finds the Save button and connects it to the btnSave variable.</li>
+        <li><strong>btnClear = findViewById(R.id.btnClear);</strong> — Finds the Clear button and connects it to the btnClear variable.</li>
+        <li><strong>sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);</strong> — Opens or creates a SharedPreferences file named UserData. MODE_PRIVATE means that this preference file is accessible only to the application under normal Android app sandbox rules.</li>
+        <li><strong>loadData();</strong> — Calls the loadData() method when the Activity starts. It retrieves previously saved information and displays it in the input fields.</li>
+        <li><strong>btnSave.setOnClickListener(v -&gt; { ... });</strong> — Sets a click listener on the Save button. The code inside the listener runs whenever the user clicks Save.</li>
+        <li><strong>saveData();</strong> — Calls the saveData() method to store the entered name and email.</li>
+        <li><strong>btnClear.setOnClickListener(v -&gt; { ... });</strong> — Sets a click listener on the Clear button.</li>
+        <li><strong>clearData();</strong> — Calls the clearData() method to remove the saved information and empty the input fields.</li>
+    </ol>
+
+    <h4>Understanding the saveData() Method</h4>
+    <ol>
+        <li><strong>private void saveData()</strong> — Defines a private method named saveData(). It performs the operation of saving user information.</li>
+        <li><strong>String name = etName.getText().toString();</strong> — Reads the text entered in the name field and converts it into a String.</li>
+        <li><strong>String email = etEmail.getText().toString();</strong> — Reads the text entered in the email field and converts it into a String.</li>
+        <li><strong>SharedPreferences.Editor editor = sharedPreferences.edit();</strong> — Creates an Editor object. The Editor is used to make changes to SharedPreferences.</li>
+        <li><strong>editor.putString("name", name);</strong> — Stores the name using the key "name". The entered name becomes the value associated with this key.</li>
+        <li><strong>editor.putString("email", email);</strong> — Stores the email address using the key "email".</li>
+        <li><strong>editor.apply();</strong> — Applies the changes to SharedPreferences asynchronously. This saves the updated values without blocking the main user-interface thread.</li>
+        <li><strong>Toast.makeText(this, "Data Saved Successfully", Toast.LENGTH_SHORT).show();</strong> — Displays a short confirmation message after the save operation is requested.</li>
+    </ol>
+
+    <h4>Understanding the loadData() Method</h4>
+    <ol>
+        <li><strong>private void loadData()</strong> — Defines a private method named loadData(). It retrieves previously saved information.</li>
+        <li><strong>sharedPreferences.getString("name", "");</strong> — Retrieves the value stored under the key "name". If no value exists, it returns an empty String.</li>
+        <li><strong>sharedPreferences.getString("email", "");</strong> — Retrieves the email stored under the key "email". If no value exists, it returns an empty String.</li>
+        <li><strong>etName.setText(name);</strong> — Places the retrieved name into the name input field.</li>
+        <li><strong>etEmail.setText(email);</strong> — Places the retrieved email address into the email input field.</li>
+    </ol>
+
+    <h4>Understanding the clearData() Method</h4>
+    <ol>
+        <li><strong>private void clearData()</strong> — Defines a private method named clearData(). It removes the stored information.</li>
+        <li><strong>SharedPreferences.Editor editor = sharedPreferences.edit();</strong> — Creates an Editor object to modify the saved preferences.</li>
+        <li><strong>editor.clear();</strong> — Removes all key-value entries from this UserData SharedPreferences file.</li>
+        <li><strong>editor.apply();</strong> — Applies the clearing operation asynchronously.</li>
+        <li><strong>etName.setText("");</strong> — Sets the name input field to an empty String.</li>
+        <li><strong>etEmail.setText("");</strong> — Sets the email input field to an empty String.</li>
+        <li><strong>Toast.makeText(this, "Data Cleared Successfully", Toast.LENGTH_SHORT).show();</strong> — Displays a confirmation message after the clear operation is requested.</li>
+    </ol>
+
+    <h3>2. XML Code</h3>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_vertical"&gt;
+
+    &lt;TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remember Name and Email"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="10dp" /&gt;
+
+    &lt;EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name"
+        android:inputType="textPersonName" /&gt;
+
+    &lt;EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your email"
+        android:inputType="textEmailAddress" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnClear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clear" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    </div>
+
+    <h4>Understanding activity_main.xml</h4>
+    <ol>
+        <li><strong>XML declaration</strong> — Specifies XML version 1.0 and UTF-8 character encoding.</li>
+        <li><strong>LinearLayout</strong> — Creates the main layout that arranges its child views in a single direction.</li>
+        <li><strong>xmlns:android</strong> — Declares the Android XML namespace so Android layout attributes can be used.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the layout occupy the full available width.</li>
+        <li><strong>android:layout_height="match_parent"</strong> — Makes the layout occupy the full available height.</li>
+        <li><strong>android:orientation="vertical"</strong> — Arranges the TextView, EditText fields, and buttons vertically.</li>
+        <li><strong>android:padding="20dp"</strong> — Adds 20 density-independent pixels of inner spacing around the layout's contents.</li>
+        <li><strong>android:gravity="center_vertical"</strong> — Vertically centers the group of child views within the available layout space.</li>
+        <li><strong>TextView</strong> — Creates a text element that displays the heading of the application.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the heading occupy the full available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the heading's height fit its content.</li>
+        <li><strong>android:text="Remember Name and Email"</strong> — Sets the heading text displayed on the screen.</li>
+        <li><strong>android:textSize="24sp"</strong> — Sets the heading's text size to 24 scale-independent pixels.</li>
+        <li><strong>android:textStyle="bold"</strong> — Displays the heading in bold style.</li>
+        <li><strong>android:gravity="center"</strong> — Centers the heading text horizontally and vertically inside its TextView.</li>
+        <li><strong>android:padding="10dp"</strong> — Adds 10dp of inner spacing around the heading text.</li>
+        <li><strong>EditText for Name</strong> — Creates an input field where the user enters their name.</li>
+        <li><strong>android:id="@+id/etName"</strong> — Assigns the ID etName so Java can access the name input field.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the name field occupy the available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the name field's height fit its content.</li>
+        <li><strong>android:hint="Enter your name"</strong> — Displays placeholder text until the user enters a name.</li>
+        <li><strong>android:inputType="textPersonName"</strong> — Configures the keyboard for entering a person's name.</li>
+        <li><strong>EditText for Email</strong> — Creates another input field for entering an email address.</li>
+        <li><strong>android:id="@+id/etEmail"</strong> — Assigns the ID etEmail so Java can access the email field.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the email field occupy the available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the email field's height fit its content.</li>
+        <li><strong>android:hint="Enter your email"</strong> — Displays placeholder text inside the email field.</li>
+        <li><strong>android:inputType="textEmailAddress"</strong> — Configures the keyboard for entering an email address, typically including convenient characters such as @.</li>
+        <li><strong>Button for Save</strong> — Creates the button used to save the entered information.</li>
+        <li><strong>android:id="@+id/btnSave"</strong> — Assigns the ID btnSave so Java can detect clicks on this button.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the Save button occupy the full available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the button's height fit its content.</li>
+        <li><strong>android:text="Save"</strong> — Displays Save as the button's text.</li>
+        <li><strong>Button for Clear</strong> — Creates the button used to remove saved information and clear the input fields.</li>
+        <li><strong>android:id="@+id/btnClear"</strong> — Assigns the ID btnClear so Java can access this button.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the Clear button occupy the full available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the button's height fit its content.</li>
+        <li><strong>android:text="Clear"</strong> — Displays Clear as the button's text.</li>
+        <li><strong>Closing LinearLayout</strong> — Ends the main layout and completes the XML structure.</li>
+    </ol>
+
+    <h3>3. Expected Output</h3>
+    <p>
+        When the application starts for the first time, both input fields are empty.
+        The user can enter a name and email address and click Save. The information
+        is stored in SharedPreferences and is automatically loaded the next time
+        the application opens.
+    </p>
+
+    <div style="max-width:360px; margin:20px auto; padding:14px; background:#202124; border-radius:28px; box-shadow:0 5px 18px rgba(0,0,0,.2);">
+        <div style="background:#ffffff; border-radius:18px; overflow:hidden; min-height:410px;">
+            <div style="background:#f5f5f5; padding:12px; text-align:center; font-size:13px; color:#555;">SharedPreferences App</div>
+            <div style="padding:22px 16px;">
+                <div style="text-align:center; font-size:22px; font-weight:bold; color:#202124; margin:12px 0 25px;">Remember Name and Email</div>
+                <div style="border:1px solid #aaa; border-radius:5px; padding:13px; color:#777; margin-bottom:14px;">Enter your name</div>
+                <div style="border:1px solid #aaa; border-radius:5px; padding:13px; color:#777; margin-bottom:22px;">Enter your email</div>
+                <div style="background:#1976D2; color:white; text-align:center; padding:13px; border-radius:5px; margin-bottom:10px; font-weight:bold;">SAVE</div>
+                <div style="background:#1976D2; color:white; text-align:center; padding:13px; border-radius:5px; font-weight:bold;">CLEAR</div>
+            </div>
+        </div>
+        <div style="text-align:center; color:#ffffff; font-size:12px; padding-top:10px;">Initial application screen</div>
+    </div>
+
+    <h4>After Saving Information</h4>
+    <div style="max-width:360px; margin:20px auto; padding:14px; background:#202124; border-radius:28px; box-shadow:0 5px 18px rgba(0,0,0,.2);">
+        <div style="background:#ffffff; border-radius:18px; overflow:hidden; min-height:410px;">
+            <div style="background:#f5f5f5; padding:12px; text-align:center; font-size:13px; color:#555;">SharedPreferences App</div>
+            <div style="padding:22px 16px;">
+                <div style="text-align:center; font-size:22px; font-weight:bold; color:#202124; margin:12px 0 25px;">Remember Name and Email</div>
+                <div style="border:1px solid #aaa; border-radius:5px; padding:13px; color:#202124; margin-bottom:14px;">Muhammad</div>
+                <div style="border:1px solid #aaa; border-radius:5px; padding:13px; color:#202124; margin-bottom:22px;">student@example.com</div>
+                <div style="background:#1976D2; color:white; text-align:center; padding:13px; border-radius:5px; margin-bottom:10px; font-weight:bold;">SAVE</div>
+                <div style="background:#1976D2; color:white; text-align:center; padding:13px; border-radius:5px; font-weight:bold;">CLEAR</div>
+                <div style="background:#333; color:white; text-align:center; border-radius:5px; padding:9px; margin:18px auto 0; font-size:12px;">Data Saved Successfully</div>
+            </div>
+        </div>
+        <div style="text-align:center; color:#ffffff; font-size:12px; padding-top:10px;">Saved information displayed in the fields</div>
+    </div>
+
+    <h4>After Clicking Clear</h4>
+    <div style="max-width:360px; margin:20px auto; padding:14px; background:#202124; border-radius:28px; box-shadow:0 5px 18px rgba(0,0,0,.2);">
+        <div style="background:#ffffff; border-radius:18px; overflow:hidden; min-height:410px;">
+            <div style="background:#f5f5f5; padding:12px; text-align:center; font-size:13px; color:#555;">SharedPreferences App</div>
+            <div style="padding:22px 16px;">
+                <div style="text-align:center; font-size:22px; font-weight:bold; color:#202124; margin:12px 0 25px;">Remember Name and Email</div>
+                <div style="border:1px solid #aaa; border-radius:5px; padding:13px; color:#777; margin-bottom:14px;">Enter your name</div>
+                <div style="border:1px solid #aaa; border-radius:5px; padding:13px; color:#777; margin-bottom:22px;">Enter your email</div>
+                <div style="background:#1976D2; color:white; text-align:center; padding:13px; border-radius:5px; margin-bottom:10px; font-weight:bold;">SAVE</div>
+                <div style="background:#1976D2; color:white; text-align:center; padding:13px; border-radius:5px; font-weight:bold;">CLEAR</div>
+                <div style="background:#333; color:white; text-align:center; border-radius:5px; padding:9px; margin:18px auto 0; font-size:12px;">Data Cleared Successfully</div>
+            </div>
+        </div>
+        <div style="text-align:center; color:#ffffff; font-size:12px; padding-top:10px;">Both fields are empty after clearing</div>
+    </div>
+
+    <h3>4. Important Concepts Used</h3>
+    <ul>
+        <li><strong>SharedPreferences:</strong> Stores small amounts of application data in key-value pairs.</li>
+        <li><strong>Key-value pair:</strong> A storage method in which each value is associated with a unique key, such as "name" and "email".</li>
+        <li><strong>getSharedPreferences():</strong> Opens or creates a named SharedPreferences file.</li>
+        <li><strong>MODE_PRIVATE:</strong> Restricts normal access to the preference file to the application.</li>
+        <li><strong>SharedPreferences.Editor:</strong> Used to add, update, or remove stored values.</li>
+        <li><strong>putString():</strong> Saves a String value using a specified key.</li>
+        <li><strong>getString():</strong> Retrieves a previously saved String value.</li>
+        <li><strong>apply():</strong> Applies preference changes asynchronously.</li>
+        <li><strong>clear():</strong> Removes all entries from the selected SharedPreferences file.</li>
+    </ul>
+
+    <h3>5. Project Files Required</h3>
+    <ul>
+        <li><strong>Java:</strong> MainActivity.java</li>
+        <li><strong>res/layout:</strong> activity_main.xml</li>
+    </ul>
+
+    <p>
+        <strong>Important:</strong> SharedPreferences stores the information locally
+        on the device. It does not upload the name or email to an online server.
+        This example also does not validate whether the entered name or email is
+        correct; it saves whatever text the user enters.
+    </p>
+</section>
+
+
+
+<section class="card program-section" id="file-provider" data-item>
+  <h3>8. Share PDF or Image Using FileProvider</h3>
+  <div class="explain">Create an application that shares a PDF document or image with other applications using FileProvider.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="content-provider" data-item>
+  <h3>9. Read Device Contacts Using ContentProvider</h3>
+  <div class="explain">Create an application that accesses and reads contact information from the device using ContentProvider.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<!-- ================================================== -->
+<!-- COMMUNICATION AND SERVICES -->
+<!-- ================================================== -->
+
+
+<section class="card program-section" id="explicit-intent" data-item>
+    <h2>Program 10: Open a Second Activity and Pass Data (Explicit Intent)</h2>
+
+    <p>
+        This Android application demonstrates how to open a second Activity
+        from the main Activity using an Explicit Intent. The user enters a
+        student's name and email address on the first screen and clicks Submit.
+        The application transfers both values to the second Activity, where
+        they are displayed using TextViews.
+    </p>
+
+    <h3>1. Java Code</h3>
+
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>package com.example.explicitintentapp;
+
+import android.os.Bundle;
+import android.content.Intent;
+import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etName, etEmail;
+    Button btnSubmit;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etName = findViewById(R.id.etName);
+        etEmail = findViewById(R.id.etEmail);
+        btnSubmit = findViewById(R.id.btnSubmit);
+
+        btnSubmit.setOnClickListener(v -> {
+
+            String name = etName.getText().toString();
+            String email = etEmail.getText().toString();
+
+            Intent intent = new Intent(
+                MainActivity.this,
+                SecondActivity.class
+            );
+
+            intent.putExtra("student_name", name);
+            intent.putExtra("student_email", email);
+
+            startActivity(intent);
+        });
+    }
+}</code></pre>
+    </div>
+
+    <h4>Understanding MainActivity.java</h4>
+    <ol>
+        <li><strong>package com.example.explicitintentapp;</strong> — Defines the package name of the application. It identifies the package in which the MainActivity class is located.</li>
+        <li><strong>import android.os.Bundle;</strong> — Imports the Bundle class, which is used to handle saved Activity state information.</li>
+        <li><strong>import android.content.Intent;</strong> — Imports the Intent class. An Intent is used to request an action from another Android component, such as opening another Activity.</li>
+        <li><strong>import android.widget.Button;</strong> — Imports the Button class so that the Submit button can be accessed in Java.</li>
+        <li><strong>import android.widget.EditText;</strong> — Imports EditText, which allows users to enter text.</li>
+        <li><strong>import androidx.appcompat.app.AppCompatActivity;</strong> — Imports AppCompatActivity, the base class used to create this Activity.</li>
+        <li><strong>public class MainActivity extends AppCompatActivity</strong> — Creates the MainActivity class and inherits the functionality of AppCompatActivity.</li>
+        <li><strong>EditText etName, etEmail;</strong> — Declares two EditText variables for accessing the student's name and email input fields.</li>
+        <li><strong>Button btnSubmit;</strong> — Declares a Button variable for accessing the Submit button.</li>
+        <li><strong>@Override</strong> — Indicates that the following method overrides a method provided by the parent class.</li>
+        <li><strong>protected void onCreate(Bundle savedInstanceState)</strong> — The onCreate() method runs when the Activity is created. It is used to initialize the screen and its components.</li>
+        <li><strong>super.onCreate(savedInstanceState);</strong> — Calls the parent class's onCreate() method to perform the required Activity initialization.</li>
+        <li><strong>setContentView(R.layout.activity_main);</strong> — Connects MainActivity with the activity_main.xml layout file.</li>
+        <li><strong>etName = findViewById(R.id.etName);</strong> — Finds the name input field in the XML layout and connects it to the etName variable.</li>
+        <li><strong>etEmail = findViewById(R.id.etEmail);</strong> — Finds the email input field and connects it to the etEmail variable.</li>
+        <li><strong>btnSubmit = findViewById(R.id.btnSubmit);</strong> — Finds the Submit button and connects it to the btnSubmit variable.</li>
+        <li><strong>btnSubmit.setOnClickListener(v -&gt; { ... });</strong> — Sets a click listener on the Submit button. The code inside this listener executes when the user clicks Submit.</li>
+        <li><strong>String name = etName.getText().toString();</strong> — Reads the text entered in the name field and converts it into a String.</li>
+        <li><strong>String email = etEmail.getText().toString();</strong> — Reads the text entered in the email field and converts it into a String.</li>
+        <li><strong>Intent intent = new Intent(...);</strong> — Creates an Explicit Intent that identifies exactly which Activity should be opened.</li>
+        <li><strong>MainActivity.this</strong> — Provides the current Activity as the context from which the Intent is created.</li>
+        <li><strong>SecondActivity.class</strong> — Specifies SecondActivity as the destination Activity.</li>
+        <li><strong>intent.putExtra("student_name", name);</strong> — Adds the student's name to the Intent using the key student_name. The value stored under this key is the name entered by the user.</li>
+        <li><strong>intent.putExtra("student_email", email);</strong> — Adds the student's email address to the Intent using the key student_email.</li>
+        <li><strong>startActivity(intent);</strong> — Starts SecondActivity and sends the Intent containing the student's name and email.</li>
+    </ol>
+
+    <h4>SecondActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>package com.example.explicitintentapp;
+
+import android.os.Bundle;
+import android.content.Intent;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondActivity extends AppCompatActivity {
+
+    TextView tvName, tvEmail;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        tvName = findViewById(R.id.tvName);
+        tvEmail = findViewById(R.id.tvEmail);
+
+        Intent intent = getIntent();
+
+        String name = intent.getStringExtra("student_name");
+        String email = intent.getStringExtra("student_email");
+
+        tvName.setText("Name: " + name);
+        tvEmail.setText("Email: " + email);
+    }
+}</code></pre>
+    </div>
+
+    <h4>Understanding SecondActivity.java</h4>
+    <ol>
+        <li><strong>package com.example.explicitintentapp;</strong> — Defines the package containing the SecondActivity class.</li>
+        <li><strong>import android.os.Bundle;</strong> — Imports Bundle for handling saved Activity state information.</li>
+        <li><strong>import android.content.Intent;</strong> — Imports Intent so the second Activity can receive the data sent by the first Activity.</li>
+        <li><strong>import android.widget.TextView;</strong> — Imports TextView, which is used to display the received name and email.</li>
+        <li><strong>import androidx.appcompat.app.AppCompatActivity;</strong> — Imports AppCompatActivity, the base class used to create this Activity.</li>
+        <li><strong>public class SecondActivity extends AppCompatActivity</strong> — Creates the SecondActivity class and inherits the functionality of AppCompatActivity.</li>
+        <li><strong>TextView tvName, tvEmail;</strong> — Declares two TextView variables for displaying the student's name and email address.</li>
+        <li><strong>@Override</strong> — Indicates that the following method overrides a method from the parent class.</li>
+        <li><strong>protected void onCreate(Bundle savedInstanceState)</strong> — Runs when SecondActivity is created. It initializes the second screen and receives the transferred information.</li>
+        <li><strong>super.onCreate(savedInstanceState);</strong> — Calls the parent class's onCreate() method.</li>
+        <li><strong>setContentView(R.layout.activity_second);</strong> — Connects SecondActivity with the activity_second.xml layout file.</li>
+        <li><strong>tvName = findViewById(R.id.tvName);</strong> — Finds the name TextView in the second layout and connects it to the tvName variable.</li>
+        <li><strong>tvEmail = findViewById(R.id.tvEmail);</strong> — Finds the email TextView and connects it to the tvEmail variable.</li>
+        <li><strong>Intent intent = getIntent();</strong> — Retrieves the Intent that was used to start SecondActivity. This Intent contains the data sent by MainActivity.</li>
+        <li><strong>intent.getStringExtra("student_name");</strong> — Retrieves the student's name from the Intent using the same key that was used when sending it.</li>
+        <li><strong>intent.getStringExtra("student_email");</strong> — Retrieves the student's email address using the student_email key.</li>
+        <li><strong>tvName.setText("Name: " + name);</strong> — Displays the received name in the first TextView with the label Name.</li>
+        <li><strong>tvEmail.setText("Email: " + email);</strong> — Displays the received email address in the second TextView with the label Email.</li>
+    </ol>
+
+    <h3>2. XML Code</h3>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_vertical"&gt;
+
+    &lt;TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Student Information"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="10dp" /&gt;
+
+    &lt;EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name"
+        android:inputType="textPersonName" /&gt;
+
+    &lt;EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your email"
+        android:inputType="textEmailAddress" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    </div>
+
+    <h4>Understanding activity_main.xml</h4>
+    <ol>
+        <li><strong>XML declaration</strong> — Specifies XML version 1.0 and UTF-8 character encoding.</li>
+        <li><strong>LinearLayout</strong> — Creates the main layout that arranges its child views in a single direction.</li>
+        <li><strong>xmlns:android</strong> — Declares the Android XML namespace so Android layout attributes can be used.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the layout occupy the full available width.</li>
+        <li><strong>android:layout_height="match_parent"</strong> — Makes the layout occupy the full available height.</li>
+        <li><strong>android:orientation="vertical"</strong> — Arranges the TextView, EditText fields, and button vertically.</li>
+        <li><strong>android:padding="20dp"</strong> — Adds 20dp of inner spacing around the layout's contents.</li>
+        <li><strong>android:gravity="center_vertical"</strong> — Vertically centers the group of child views within the available layout space.</li>
+        <li><strong>TextView</strong> — Creates the heading displayed at the top of the first screen.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the heading occupy the full available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the heading's height fit its content.</li>
+        <li><strong>android:text="Student Information"</strong> — Sets the heading text displayed on the screen.</li>
+        <li><strong>android:textSize="24sp"</strong> — Sets the heading's text size to 24 scale-independent pixels.</li>
+        <li><strong>android:textStyle="bold"</strong> — Displays the heading in bold style.</li>
+        <li><strong>android:gravity="center"</strong> — Centers the heading text inside its TextView.</li>
+        <li><strong>android:padding="10dp"</strong> — Adds 10dp of inner spacing around the heading text.</li>
+        <li><strong>First EditText</strong> — Creates the input field where the user enters the student's name.</li>
+        <li><strong>android:id="@+id/etName"</strong> — Assigns the ID etName so Java can access the name field.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the name field occupy the available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the field's height fit its content.</li>
+        <li><strong>android:hint="Enter your name"</strong> — Displays placeholder text until the user enters a name.</li>
+        <li><strong>android:inputType="textPersonName"</strong> — Configures the keyboard for entering a person's name.</li>
+        <li><strong>Second EditText</strong> — Creates the input field where the user enters the student's email address.</li>
+        <li><strong>android:id="@+id/etEmail"</strong> — Assigns the ID etEmail so Java can access the email field.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the email field occupy the available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the field's height fit its content.</li>
+        <li><strong>android:hint="Enter your email"</strong> — Displays placeholder text inside the email field.</li>
+        <li><strong>android:inputType="textEmailAddress"</strong> — Configures the keyboard for entering an email address.</li>
+        <li><strong>Button</strong> — Creates the Submit button that transfers the entered information to the second Activity.</li>
+        <li><strong>android:id="@+id/btnSubmit"</strong> — Assigns the ID btnSubmit so Java can detect button clicks.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the Submit button occupy the full available width.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the button's height fit its content.</li>
+        <li><strong>android:text="Submit"</strong> — Displays Submit as the button's text.</li>
+        <li><strong>Closing LinearLayout</strong> — Ends the first screen's layout.</li>
+    </ol>
+
+    <h4>activity_second.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Received Information"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="10dp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="20sp"
+        android:padding="10dp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="20sp"
+        android:padding="10dp" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+    </div>
+
+    <h4>Understanding activity_second.xml</h4>
+    <ol>
+        <li><strong>XML declaration</strong> — Specifies XML version 1.0 and UTF-8 character encoding.</li>
+        <li><strong>LinearLayout</strong> — Creates the layout that holds the second Activity's user-interface elements.</li>
+        <li><strong>xmlns:android</strong> — Declares the Android XML namespace.</li>
+        <li><strong>android:layout_width="match_parent"</strong> — Makes the layout occupy the full available width.</li>
+        <li><strong>android:layout_height="match_parent"</strong> — Makes the layout occupy the full available height.</li>
+        <li><strong>android:orientation="vertical"</strong> — Arranges the TextViews vertically.</li>
+        <li><strong>android:gravity="center"</strong> — Centers the child views horizontally and vertically inside the layout.</li>
+        <li><strong>android:padding="20dp"</strong> — Adds 20dp of inner spacing around the layout's contents.</li>
+        <li><strong>First TextView</strong> — Creates the heading that identifies the second screen.</li>
+        <li><strong>android:layout_width="wrap_content"</strong> — Makes the heading's width fit its text.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes the heading's height fit its content.</li>
+        <li><strong>android:text="Received Information"</strong> — Displays the heading Received Information.</li>
+        <li><strong>android:textSize="24sp"</strong> — Sets the heading's text size to 24sp.</li>
+        <li><strong>android:textStyle="bold"</strong> — Makes the heading bold.</li>
+        <li><strong>android:padding="10dp"</strong> — Adds inner spacing around the heading.</li>
+        <li><strong>Second TextView</strong> — Creates the TextView where the received student's name will be displayed.</li>
+        <li><strong>android:id="@+id/tvName"</strong> — Assigns the ID tvName so Java can find and update this TextView.</li>
+        <li><strong>android:layout_width="wrap_content"</strong> — Makes the TextView's width fit its content.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes its height fit its content.</li>
+        <li><strong>android:text="Name"</strong> — Sets the initial placeholder text to Name. Java replaces it with the received name.</li>
+        <li><strong>android:textSize="20sp"</strong> — Sets the displayed name's text size to 20sp.</li>
+        <li><strong>android:padding="10dp"</strong> — Adds inner spacing around the TextView.</li>
+        <li><strong>Third TextView</strong> — Creates the TextView where the received email address will be displayed.</li>
+        <li><strong>android:id="@+id/tvEmail"</strong> — Assigns the ID tvEmail so Java can find and update this TextView.</li>
+        <li><strong>android:layout_width="wrap_content"</strong> — Makes the TextView's width fit its content.</li>
+        <li><strong>android:layout_height="wrap_content"</strong> — Makes its height fit its content.</li>
+        <li><strong>android:text="Email"</strong> — Sets the initial placeholder text to Email. Java replaces it with the received email.</li>
+        <li><strong>android:textSize="20sp"</strong> — Sets the email text size to 20sp.</li>
+        <li><strong>android:padding="10dp"</strong> — Adds inner spacing around the email TextView.</li>
+        <li><strong>Closing LinearLayout</strong> — Ends the second screen's layout.</li>
+    </ol>
+
+    <h3>3. AndroidManifest.xml Configuration</h3>
+    <p>
+        Both Activities must be registered in AndroidManifest.xml.
+        MainActivity is the launcher Activity, while SecondActivity is
+        the destination Activity opened by the Explicit Intent.
+    </p>
+
+    <button class="btn alt copy">Copy code</button>
+    <div class="program-code">
+        <pre><code>&lt;application
+    ... &gt;
+
+    &lt;activity
+        android:name=".SecondActivity"
+        android:exported="false" /&gt;
+
+    &lt;activity
+        android:name=".MainActivity"
+        android:exported="true"&gt;
+
+        &lt;intent-filter&gt;
+            &lt;action android:name="android.intent.action.MAIN" /&gt;
+            &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+        &lt;/intent-filter&gt;
+
+    &lt;/activity&gt;
+
+&lt;/application&gt;</code></pre>
+    </div>
+
+    <h4>Understanding AndroidManifest.xml</h4>
+    <ol>
+        <li><strong>&lt;application&gt;</strong> — Contains the configuration and declarations for the application.</li>
+        <li><strong>&lt;activity android:name=".SecondActivity"&gt;</strong> — Registers SecondActivity so Android knows that the application contains this screen.</li>
+        <li><strong>android:exported="false"</strong> — Prevents other applications from launching SecondActivity directly. The application itself can still open it.</li>
+        <li><strong>&lt;activity android:name=".MainActivity"&gt;</strong> — Registers MainActivity as an Activity in the application.</li>
+        <li><strong>android:exported="true"</strong> — Allows the system launcher to start MainActivity because it has a launcher intent filter.</li>
+        <li><strong>&lt;intent-filter&gt;</strong> — Declares the types of Intent that can launch MainActivity.</li>
+        <li><strong>android.intent.action.MAIN</strong> — Identifies MainActivity as the main entry point of the application.</li>
+        <li><strong>android.intent.category.LAUNCHER</strong> — Makes MainActivity available as the application's launch screen from the device launcher.</li>
+    </ol>
+    <p>
+        <strong>Note:</strong> The three dots in the application opening tag represent
+        other existing manifest attributes. Do not paste the dots literally.
+        Add the two Activity declarations inside your existing application element.
+        If Android Studio has already registered MainActivity, avoid adding it twice.
+    </p>
+
+    <h3>4. Expected Output</h3>
+    <p>
+        When the application starts, the first screen displays the Student
+        Information heading, two input fields, and a Submit button.
+        After entering the student's name and email and clicking Submit,
+        the second Activity opens and displays the received information.
+    </p>
+
+    <h4>First Screen — Enter Student Information</h4>
+    <div style="max-width:360px; margin:20px auto; padding:14px; background:#202124; border-radius:28px; box-shadow:0 5px 18px rgba(0,0,0,.2);">
+        <div style="background:#ffffff; border-radius:18px; overflow:hidden; min-height:410px;">
+            <div style="background:#f5f5f5; padding:12px; text-align:center; font-size:13px; color:#555;">Explicit Intent App</div>
+            <div style="padding:25px 16px;">
+                <div style="text-align:center; font-size:23px; font-weight:bold; color:#202124; margin:12px 0 28px;">Student Information</div>
+                <div style="border:1px solid #aaa; border-radius:5px; padding:14px; color:#777; margin-bottom:16px;">Enter your name</div>
+                <div style="border:1px solid #aaa; border-radius:5px; padding:14px; color:#777; margin-bottom:25px;">Enter your email</div>
+                <div style="background:#1976D2; color:white; text-align:center; padding:14px; border-radius:5px; font-weight:bold;">SUBMIT</div>
+            </div>
+        </div>
+        <div style="text-align:center; color:#ffffff; font-size:12px; padding-top:10px;">MainActivity — First Screen</div>
+    </div>
+
+    <h4>Second Screen — Received Information</h4>
+    <div style="max-width:360px; margin:20px auto; padding:14px; background:#202124; border-radius:28px; box-shadow:0 5px 18px rgba(0,0,0,.2);">
+        <div style="background:#ffffff; border-radius:18px; overflow:hidden; min-height:410px;">
+            <div style="background:#f5f5f5; padding:12px; text-align:center; font-size:13px; color:#555;">Explicit Intent App</div>
+            <div style="min-height:350px; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:20px; color:#202124;">
+                <div style="font-size:23px; font-weight:bold; margin-bottom:24px; text-align:center;">Received Information</div>
+                <div style="font-size:19px; padding:10px;">Name: Muhammad</div>
+                <div style="font-size:19px; padding:10px;">Email: student@example.com</div>
+            </div>
+        </div>
+        <div style="text-align:center; color:#ffffff; font-size:12px; padding-top:10px;">SecondActivity — Received Data</div>
+    </div>
+
+    <h3>5. Important Concepts Used</h3>
+    <ul>
+        <li><strong>Activity:</strong> An Android application component that represents a screen with a user interface.</li>
+        <li><strong>Intent:</strong> An object used to request an action from another Android component.</li>
+        <li><strong>Explicit Intent:</strong> An Intent that identifies a specific destination component, such as SecondActivity.</li>
+        <li><strong>putExtra():</strong> Adds data to an Intent using a key-value pair.</li>
+        <li><strong>getIntent():</strong> Retrieves the Intent that started the current Activity.</li>
+        <li><strong>getStringExtra():</strong> Retrieves a String value from an Intent using its key.</li>
+        <li><strong>startActivity():</strong> Starts another Activity using the supplied Intent.</li>
+        <li><strong>TextView:</strong> Displays the received information on the second screen.</li>
+    </ul>
+
+    <h3>6. Project Files Required</h3>
+    <ul>
+        <li><strong>Java:</strong> MainActivity.java, SecondActivity.java</li>
+        <li><strong>res/layout:</strong> activity_main.xml, activity_second.xml</li>
+        <li><strong>Manifest:</strong> AndroidManifest.xml</li>
+    </ul>
+
+    <p>
+        <strong>Important:</strong> The keys used with putExtra() and getStringExtra()
+        must match exactly. For example, student_name must be used when both
+        sending and receiving the name. This program transfers data between
+        Activities within the same application; it does not save the information
+        permanently.
+    </p>
+</section>
+
+
+<section class="card program-section" id="login-admin-operator" data-item>
+  <h3>11. Login Screen for Admin and Operator</h3>
+  <div class="explain">Create a login screen that checks the entered credentials and opens the Admin or Operator screen using explicit Intents, conditions and putExtra().</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>AdminActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>OperatorActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="activity-result" data-item>
+  <h3>12. Get Result Back from Second Activity</h3>
+  <div class="explain">Create two Activities and use the Activity Result API to send a result from the second Activity back to the first Activity.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>SecondActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="implicit-intents" data-item>
+  <h3>13. Implicit Intents: Website, Dialer and Map</h3>
+  <div class="explain">Use implicit Intents to open a website, dial a phone number and display a location on a map using a geo URI.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="camera-imageview" data-item>
+  <h3>14. Open Camera and Display Photo in ImageView</h3>
+  <div class="explain">Create an application that opens the device camera using an implicit Intent and displays the captured photo in an ImageView.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="receive-shared-text" data-item>
+  <h3>15. Receive Text Shared from Another Application</h3>
+  <div class="explain">Create an application that receives text shared from another application using an intent-filter and ACTION_SEND.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+
+    <h4>AndroidManifest.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your manifest code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="send-sms" data-item>
+  <h3>16. Send SMS Messages</h3>
+  <div class="explain">Create an application that allows the user to enter a phone number and message and send an SMS.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="send-email" data-item>
+  <h3>17. Send Email</h3>
+  <div class="explain">Create an application that allows the user to enter an email address, subject and message and send an email using an email application.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="fetch-api" data-item>
+  <h3>18. Fetch Data from API and Display in a List</h3>
+  <div class="explain">Create an application that fetches data from an online API and displays the retrieved information in a list.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="background-thread" data-item>
+  <h3>19. Background Thread with Progress Counter</h3>
+  <div class="explain">Create an application that performs a counting task in a background thread and displays its progress on the user interface.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="mediaplayer" data-item>
+  <h3>20. Play Audio Using MediaPlayer</h3>
+  <div class="explain">Create an application that plays an audio file using Android's MediaPlayer class.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<!-- ================================================== -->
+<!-- PUBLISHING -->
+<!-- ================================================== -->
+
+<section class="card program-section" id="app-details" data-item>
+  <h3>21. Change App Name, Icon and Version</h3>
+  <div class="explain">Learn how to change an Android application's name, launcher icon and version information through Android Studio project files and settings.</div>
+
+  <div class="program-code">
+    <h4>AndroidManifest.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your manifest code here --&gt;</code></pre>
+
+    <h4>build.gradle</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Gradle configuration here</code></pre>
+  </div>
+</section>
+
+
+<!-- ================================================== -->
+<!-- ADVANCED TOPICS -->
+<!-- ================================================== -->
+
+<section class="card program-section" id="current-location" data-item>
+  <h3>22. Get Current Device Location</h3>
+  <div class="explain">Create an application that obtains the device's current location using location services and the required permissions.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+
+    <h4>AndroidManifest.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your manifest code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="runtime-permission" data-item>
+  <h3>23. Request Runtime Permission</h3>
+  <div class="explain">Create an application that requests a dangerous permission from the user at runtime and handles the permission result.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+
+    <h4>AndroidManifest.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your manifest code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+<section class="card program-section" id="simple-service" data-item>
+  <h3>24. Simple Android Service with Background Timer</h3>
+  <div class="explain">Create a simple Android Service that performs a timer task in the background.</div>
+
+  <div class="program-code">
+    <h4>MainActivity.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>TimerService.java</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>// Paste your Java code here</code></pre>
+
+    <h4>activity_main.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your XML code here --&gt;</code></pre>
+
+    <h4>AndroidManifest.xml</h4>
+    <button class="btn alt copy">Copy code</button>
+    <pre><code>&lt;!-- Paste your manifest code here --&gt;</code></pre>
+  </div>
+</section>
+
+
+</main>
+
+<footer>
+IT-308 Mobile Application Development &middot; BS Information Technology
+<br>
+Copyright &copy; 2026
+<a href="https://gcsmultan.edu.pk/">Govt. Graduate College of Science and Technology</a>
+</footer>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

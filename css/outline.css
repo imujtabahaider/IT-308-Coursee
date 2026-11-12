@@ -1,0 +1,68 @@
+/* Sidebar + topic cards layout (Moodle-style). Link this AFTER style.css */
+.layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(1rem,2.5vw,2rem);width:min(100% - 3rem,1600px);margin:0 auto;padding:2rem 0;min-width:0}
+.layout>*{min-width:0}
+.layout main{width:100%;min-width:0;min-height:0}
+.sidebar{position:sticky;top:4.5rem;align-self:start;max-height:calc(100vh - 5.5rem);overflow-y:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem}
+.sidebar h2{font-size:1rem;margin:0 0 .75rem}
+.sidebar input[type=search]{max-width:none;margin-bottom:.8rem;padding:.5rem .7rem}
+.progress{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem;margin-bottom:1rem;font-weight:700;font-size:.9rem}
+.progress .row{display:flex;justify-content:space-between}
+.bar{height:8px;background:var(--line);border-radius:99px;margin-top:.5rem;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:var(--hi);transition:width .3s}
+.sidebar details{margin-bottom:.4rem}
+.sidebar summary{cursor:pointer;font-weight:700;padding:.5rem .7rem;border-radius:8px;background:var(--accent);color:#fff;list-style:none}
+.sidebar summary::-webkit-details-marker{display:none}
+.sidebar summary::before{content:"\25B8  "}
+.sidebar details[open] summary::before{content:"\25BE  "}
+.sidebar a{display:flex;gap:.5rem;align-items:center;padding:.35rem .7rem .35rem 1rem;text-decoration:none;color:var(--ink);font-size:.92rem;border-radius:6px}
+.sidebar a:hover,.sidebar a.current{background:var(--paper);color:var(--accent);font-weight:700}
+.dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--line);flex:none}
+.sidebar a.done .dot{background:#2e9e5b;border-color:#2e9e5b}
+.topic-card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:1.5rem;scroll-margin-top:5rem}
+.topic-card .banner{background:linear-gradient(135deg,var(--accent),#14213d);color:#fff;padding:1.4rem 1.5rem}
+.topic-card .banner h3{margin:0;font-size:1.5rem}
+.topic-card .banner p{margin:.3rem 0 0;font-style:italic;opacity:.9}
+.topic-card .body{padding:1.2rem 1.5rem}
+.topic-card .body h4{color:var(--accent);font-size:1.15rem;margin:1rem 0 .4rem}
+.topic-card .body h4:first-child{margin-top:0}
+.topic-card .foot{display:flex;gap:.6rem;flex-wrap:wrap;padding:0 1.5rem 1.2rem}
+@media (max-width:850px){.layout{grid-template-columns:minmax(0,1fr)}.sidebar{position:static;max-height:none}}
+@media (max-width:640px){.layout{width:calc(100% - 2rem);padding:1.25rem 0}.sidebar{padding:.8rem}.topic-card .banner{padding:1.1rem}.topic-card .body{padding:1rem}.topic-card .foot{padding:0 1rem 1rem}.group-tabs a{max-width:100%;overflow-wrap:anywhere}}
+
+/* ---- Extra styles for long topic explanations ---- */
+.def{background:var(--paper);border-left:4px solid var(--accent);padding:.8rem 1rem;border-radius:0 8px 8px 0;margin:.8rem 0}
+.example{background:var(--paper);border-left:4px solid var(--hi);padding:.8rem 1rem;border-radius:0 8px 8px 0;margin:.8rem 0}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0 1rem}
+.chips span{background:var(--paper);border:1px solid var(--line);padding:.2rem .8rem;border-radius:99px;font-weight:600;font-size:.9rem}
+.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:.8rem 0}
+.mini{border:1px solid var(--line);border-radius:10px;padding:1rem;background:var(--paper)}
+.mini h5,.sub{margin:0 0 .4rem;font-size:1.02rem;color:var(--ink)}
+.sub{margin-top:1.2rem;color:var(--accent)}
+.mini p{margin:.3rem 0}
+.pc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:.6rem 0}
+.pro,.con{border-radius:10px;padding:1rem;border:1px solid var(--line)}
+.pro{border-top:4px solid #2e9e5b}.con{border-top:4px solid #d9534f}
+.pro ul,.con ul,.pro ol,.con ol{margin:.4rem 0 0;padding-left:1.2rem}
+figure{margin:1rem 0;text-align:center}
+figure img{max-width:100%;border-radius:10px;border:1px solid var(--line)}
+figcaption{color:var(--muted);font-size:.85rem;margin-top:.3rem}
+.steps li{margin-bottom:.4rem}
+details.exam{border:1px solid var(--line);border-radius:8px;padding:.6rem 1rem;margin:.5rem 0}
+details.exam summary{cursor:pointer;font-weight:700}
+.table-wrap{overflow-x:auto}
+
+/* One topic at a time */
+.topic-card[hidden]{display:none}
+.topic-card .foot a.btn{margin:0}
+
+/* Group tabs (top of every group page) and landing cards */
+.group-tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem}
+.group-tabs a{padding:.3rem .8rem;border:1px solid var(--line);border-radius:99px;text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:600;background:var(--card)}
+.group-tabs a.current,.group-tabs a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.group-card:hover{border-color:var(--accent)}
+.group-card h3 a{color:var(--ink);text-decoration:none}
+.group-card h3 a:hover{color:var(--accent);text-decoration:underline}
+.group-card .tag{display:inline-block;margin:0 0 .4rem}
+.group-card ul{margin:.6rem 0 0;font-size:.92rem}
+.group-card li a{color:var(--muted)}
+.group-card li a:hover{color:var(--accent)}

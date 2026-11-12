@@ -1,0 +1,145 @@
+<!-- Paste this <section> inside <main> in outline.html, AFTER the windows-mobile section. No new CSS needed. -->
+<section class="topic-card" id="eclipse" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>Eclipse</h3>
+    <p>The IDE behind early Android development</p>
+  </div>
+  <div class="body">
+
+    <h4>6.1 Introduction to Eclipse</h4>
+    <p>Eclipse is an Integrated Development Environment (IDE) used by programmers to write, edit, compile, run, test, and debug computer programs.</p>
+    <p>It provides a complete environment where developers can manage their programming projects and write code in different programming languages. Eclipse is especially known for Java development, but it can also support other languages through plugins.</p>
+    <div class="def"><b>Simple definition:</b> Eclipse is an open-source IDE that provides tools for developing, testing, debugging, and managing software applications.</div>
+    <figure><!-- <img src="../images/platforms/eclipse.jpg" alt="Eclipse IDE"> --></figure>
+
+    <h4>6.2 What is an IDE?</h4>
+    <div class="def">IDE stands for <b>Integrated Development Environment</b>. It is software that combines different programming tools in one application.</div>
+    <p>Instead of using separate programs for writing code, compiling, running, and debugging, an IDE provides these facilities together.</p>
+    <p><b>Main components of an IDE</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Code Editor</h5><p>Allows programmers to write and edit source code.</p><p><i>Example:</i> writing Java code inside Eclipse.</p></div>
+      <div class="mini"><h5>2. Compiler</h5><p>Translates source code into a form that the computer can execute. For Java, Eclipse works with the Java compiler to compile Java source files.</p></div>
+      <div class="mini"><h5>3. Debugger</h5><p>Helps programmers find and correct errors.</p><p><i>Example:</i> if a calculator produces the wrong answer, the programmer can use debugging tools to examine the program step by step.</p></div>
+      <div class="mini"><h5>4. Project Explorer</h5><p>Displays the files and folders of a programming project.</p></div>
+      <div class="mini"><h5>5. Run Tools</h5><p>Allow programmers to execute their applications and see the output.</p></div>
+    </div>
+
+    <h4>6.3 History of Eclipse</h4>
+    <ol class="steps">
+      <li>Eclipse was originally developed by IBM.</li>
+      <li>It was released as an open-source project in 2001.</li>
+      <li>It became popular for Java application development.</li>
+      <li>The Eclipse Foundation was established in 2004 to support the Eclipse ecosystem.</li>
+      <li>Later, Eclipse expanded to support many programming languages and development tools.</li>
+    </ol>
+    <p>Today, Eclipse is commonly used for Java and other software development tasks.</p>
+
+    <h4>6.4 Main Features of Eclipse</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Open-Source Software</h5><p>Developers can use it without purchasing a commercial license and can contribute to its development.</p></div>
+      <div class="mini"><h5>2. Code Editor</h5><p>An advanced code editor with:</p><ul><li>Syntax highlighting</li><li>Automatic indentation</li><li>Code completion</li><li>Error highlighting</li><li>Code formatting</li></ul><p><i>Example:</i> in Java code, Eclipse highlights keywords such as <code>class</code>, <code>public</code>, and <code>static</code> in different colors.</p></div>
+      <div class="mini"><h5>3. Code Completion</h5><p>Suggests keywords, methods, and variables while the programmer is writing code. This saves time and reduces typing mistakes.</p><p><i>Example:</i> after typing <code>System.out.</code> Eclipse can suggest methods such as <code>println()</code>.</p></div>
+      <div class="mini"><h5>4. Debugging</h5><p>Tools to find errors in programs:</p><ul><li>Breakpoints</li><li>Step Into</li><li>Step Over</li><li>Step Return</li><li>Variable inspection</li></ul><p>A breakpoint temporarily pauses program execution at a selected line so the programmer can examine what is happening.</p></div>
+      <div class="mini"><h5>5. Plugin Support</h5><p>Plugins are additional software components that extend Eclipse's functionality:</p><ul><li>Java development tools</li><li>C/C++ development tools</li><li>Git integration</li><li>Database development tools</li></ul><p>Developers can add tools according to their requirements.</p></div>
+      <div class="mini"><h5>6. Project Management</h5><p>Organizes code into projects. Each project can contain:</p><ul><li>Source code files</li><li>Libraries</li><li>Resources</li><li>Configuration files</li><li>Other project-related files</li></ul></div>
+      <div class="mini"><h5>7. Multiple Programming Languages</h5><p>Through suitable tools and plugins, for example Java, C, C++, Python, PHP. Support depends on the Eclipse package and installed plugins.</p></div>
+    </div>
+
+    <h4>6.5 Architecture of Eclipse</h4>
+    <p>Eclipse uses a <b>modular architecture</b>. This means its functionality is divided into separate components that work together.</p>
+    <figure><!-- <img src="../images/platforms/eclipse-architecture.jpg" alt="Eclipse architecture"> --><figcaption>Eclipse architecture</figcaption></figure>
+    <p><b>Main components</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Eclipse Platform</h5><p>Provides the basic environment required to run Eclipse. It manages the user interface, workbench, workspace, and plugins.</p></div>
+      <div class="mini"><h5>2. Workbench</h5><p>The graphical user interface of Eclipse, containing the areas where programmers work:</p><ul><li>Code editor</li><li>Project Explorer</li><li>Console</li><li>Debug view</li></ul></div>
+      <div class="mini"><h5>3. Workspace</h5><p>A directory that stores and manages Eclipse projects and related settings. A programmer can create multiple projects inside one workspace.</p></div>
+      <div class="mini"><h5>4. Plugin System</h5><p>Allows developers to add new features to Eclipse. For example, a Java Development Tools plugin provides tools for Java programming.</p></div>
+      <div class="mini"><h5>5. Java Development Tools (JDT)</h5><p>A collection of tools that supports Java development inside Eclipse:</p><ul><li>Java code editing</li><li>Code completion</li><li>Compilation</li><li>Debugging</li><li>Java project management</li></ul></div>
+    </div>
+
+    <h4>6.6 Eclipse in Mobile Application Development</h4>
+    <p>Eclipse was historically used for Android application development. In earlier versions of Android development, programmers used Eclipse with the Android Development Tools (ADT) plugin.</p>
+    <p><b>Important tools</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Eclipse IDE</h5><p>Used to write and manage Android application code.</p></div>
+      <div class="mini"><h5>2. Android Development Tools (ADT)</h5><p>A plugin that added Android development features to Eclipse. It helped developers create Android projects, manage resources, and debug applications.</p></div>
+      <div class="mini"><h5>3. Android SDK</h5><p>Provides the libraries, APIs, and development tools needed to build Android applications.</p></div>
+      <div class="mini"><h5>4. Android Emulator</h5><p>Lets developers test Android applications on a virtual Android device without requiring a physical phone.</p></div>
+    </div>
+    <figure><!-- <img src="../images/platforms/eclipse-adt.jpg" alt="Eclipse with ADT"> --></figure>
+    <p><b>How Eclipse was used for Android development</b></p>
+    <ol class="steps">
+      <li>Install Eclipse IDE.</li><li>Install the Android SDK.</li><li>Install the ADT plugin.</li>
+      <li>Create an Android project.</li><li>Write Java code.</li><li>Design the application interface.</li>
+      <li>Run the application using an emulator or physical device.</li><li>Debug and fix errors.</li><li>Build the application package.</li>
+    </ol>
+    <div class="explain"><b>Important modern note:</b> Eclipse is no longer the official Android development IDE. Google replaced the Eclipse-based Android development workflow with Android Studio. The old ADT plugin is deprecated. Modern Android development generally uses Android Studio with Kotlin or Java.</div>
+
+    <h4>6.7 How to Create a Java Project in Eclipse</h4>
+    <p>A basic example of creating and running a Java program:</p>
+    <ol class="steps">
+      <li>Open Eclipse IDE.</li>
+      <li>Select or create a workspace.</li>
+      <li>Click <b>File → New → Java Project</b>.</li>
+      <li>Enter a project name, such as <code>MyFirstProject</code>.</li>
+      <li>Click Finish.</li>
+      <li>Create a Java class inside the source folder.</li>
+      <li>Write the following code:</li>
+    </ol>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println("Hello World!");
+
+    }
+}</code></pre>
+    <ol class="steps" start="8"><li>Click the Run button.</li></ol>
+    <p><b>Output:</b> <code>Hello World!</code></p>
+    <p>This demonstrates how Eclipse helps programmers write and execute Java programs.</p>
+
+    <h4>6.8 Advantages and 6.9 Disadvantages of Eclipse</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Free and Open Source:</b> no commercial license needed.</li>
+        <li><b>Multiple Languages:</b> different programming languages through plugins.</li>
+        <li><b>Code Completion:</b> suggests code while programmers type.</li>
+        <li><b>Debugging Tools:</b> identify and correct programming errors.</li>
+        <li><b>Plugin Support:</b> add additional functionality.</li>
+        <li><b>Project Management:</b> organizes programming files and projects.</li>
+        <li><b>Cross-Platform:</b> available for major desktop operating systems.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Resource Usage:</b> can consume considerable memory and processing resources.</li>
+        <li><b>Complex Interface:</b> beginners may find it difficult initially.</li>
+        <li><b>Plugin Problems:</b> some plugins may cause compatibility issues.</li>
+        <li><b>Configuration:</b> setting up development environments can require additional configuration.</li>
+        <li><b>Android Development:</b> its old Android development tools are deprecated and not suitable for modern Android development.</li></ol></div>
+    </div>
+
+    <h4>6.10 Difference Between Eclipse and Android Studio</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Eclipse</th><th>Android Studio</th></tr>
+      <tr><td>General-purpose IDE</td><td>IDE focused on Android development</td></tr>
+      <tr><td>Originally developed by IBM</td><td>Developed by Google</td></tr>
+      <tr><td>Uses plugins for different languages</td><td>Includes dedicated Android development tools</td></tr>
+      <tr><td>Historically supported Android through ADT</td><td>Modern official Android development environment</td></tr>
+      <tr><td>Commonly used for Java development</td><td>Supports Kotlin and Java Android development</td></tr>
+    </table></div>
+
+    <h4>6.11 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is Eclipse?</li><li>Define IDE.</li><li>What is the full form of IDE?</li>
+      <li>What is a workspace in Eclipse?</li><li>What is a plugin?</li>
+      <li>What is the purpose of the Eclipse debugger?</li><li>What is JDT?</li>
+      <li>What was the purpose of the ADT plugin?</li><li>Name any four features of Eclipse.</li>
+      <li>Is Eclipse still the official IDE for Android development?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define Eclipse and explain its important features.</li>
+      <li>Explain the architecture of Eclipse.</li>
+      <li>Explain the role of Eclipse in mobile application development.</li>
+      <li>Describe the steps for developing an Android application using the historical Eclipse and ADT environment.</li>
+      <li>Explain the advantages and disadvantages of Eclipse.</li></ol></details>
+
+  </div>
+</section>

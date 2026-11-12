@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Final Paper 3 | IT-308 Mobile Application Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/outline.css">
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">IT-308</a>
+  <a href="../index.html">Home</a>
+  <a href="../outline/index.html">Outline</a>
+  <a href="../practice.html">Practice</a>
+  <a href="../programs.html">Programs</a>
+  <a href="index.html" class="active">Past Papers</a>
+  <a href="../assessment.html">Assessment</a>
+  <a href="../references.html">References</a>
+</nav>
+
+<main>
+  <p><a href="index.html">&larr; All past papers</a></p>
+  <h1>Final Term Examination 2024</h1>
+  <p class="lead">Bahauddin Zakariya University, Multan &middot; Program: BS-4 Years (IT) &middot; Mobile Application Development (IT-403)</p>
+
+  <div class="table-wrap"><table>
+    <tr><th>Paper code</th><th>Session</th><th>Semester</th><th>Time allowed</th><th>Max marks</th></tr>
+    <tr><td>BS-596-20-24</td><td>2020&ndash;2024</td><td>7th</td><td>2 hrs</td><td>60</td></tr>
+  </table></div>
+
+  <details class="exam">
+    <summary>Show the original paper</summary>
+    <figure><img src="../images/papers/final-paper-3.jpg" alt="Original paper" onerror="this.outerHTML='&lt;div class=img-missing&gt;Add the paper photo here: images/papers/final-paper-3.jpg&lt;/div&gt;'"></figure>
+    <p><a href="../files/papers/final-paper-3.pdf" download>Download the original paper (PDF)</a></p>
+  </details>
+
+  <h2>Section III <span class="badge">Q.3 &middot; 3 &times; 8 = 24 marks</span></h2>
+  <div class="card"><h3>Q.3 <span class="badge">24</span></h3>
+    <p>Write code to do the following tasks in an Android app:</p></div>
+  <br>
+  <div class="card"><h3>i. <span class="badge">8</span></h3>
+    <p>Display any message in a toast for long duration.</p>
+    <details class="exam"><summary>Show solution</summary>
+<p>A Toast shows a small temporary message. <code>Toast.LENGTH_LONG</code> keeps it on the screen longer than <code>Toast.LENGTH_SHORT</code>.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>Toast.makeText(
+    MainActivity.this,
+    "Welcome to my application",
+    Toast.LENGTH_LONG
+).show();</code></pre>
+    </details>
+    <p class="chips"><span><a href="../outline/ui-screens.html#listening-for-ui-events">Topic: Listening for UI Notifications</a></span><span><a href="../outline/ui-screens.html#components-of-a-screen">Topic: Components of a Screen</a></span></p></div>
+  <br>
+  <div class="card"><h3>ii. <span class="badge">8</span></h3>
+    <p>Show Alert Dialog with title, message and 1 button.</p>
+    <details class="exam"><summary>Show solution</summary>
+<p>Use <code>AlertDialog.Builder</code> to set the title, the message and one button. Passing <code>null</code> to the button means no action on click.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>new AlertDialog.Builder(this)
+    .setTitle("Alert")
+    .setMessage("This is an alert dialog message.")
+    .setPositiveButton("OK", null)
+    .show();</code></pre>
+<p>Import <code>androidx.appcompat.app.AlertDialog</code>.</p>
+    </details>
+    <p class="chips"><span><a href="../outline/ui-screens.html#creating-the-ui">Topic: Creating the User Interface</a></span></p></div>
+  <br>
+  <div class="card"><h3>iii. <span class="badge">8</span></h3>
+    <p>Store a String value in SharedPreferences and retrieve the value as well.</p>
+    <details class="exam"><summary>Show solution</summary>
+<p>SharedPreferences stores small key-value data. Use an Editor to save and <code>apply()</code> to write the change; read it back with the matching <code>get</code> method and a default value.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>SharedPreferences prefs =
+    getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
+// Store a String value
+SharedPreferences.Editor editor = prefs.edit();
+editor.putString("username", "Muhammad");
+editor.apply();
+
+// Retrieve the value
+String username = prefs.getString("username", "Guest");</code></pre>
+    </details>
+    <p class="chips"><span><a href="../outline/data-storage.html#user-preferences">Topic: User Preferences</a></span></p></div>
+  <br>
+  <div class="card"><h3>iv. <span class="badge">8</span></h3>
+    <p>Write Java code to get current location of the device. Mention required permissions.</p>
+    <details class="exam"><summary>Show solution</summary>
+<p><b>Required permissions</b> (<code>AndroidManifest.xml</code>). On Android 6.0 and later, the app must also ask the user at runtime.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt;</code></pre>
+<p><b>Gradle dependency</b> (Google Play services location):</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>implementation 'com.google.android.gms:play-services-location:21.0.1'</code></pre>
+<p><b>Java code:</b></p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>FusedLocationProviderClient client =
+    LocationServices.getFusedLocationProviderClient(this);
+
+if (ActivityCompat.checkSelfPermission(this,
+        Manifest.permission.ACCESS_FINE_LOCATION)
+        != PackageManager.PERMISSION_GRANTED) {
+
+    ActivityCompat.requestPermissions(this,
+        new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+    return;
+}
+
+client.getLastLocation().addOnSuccessListener(location -&gt; {
+    if (location != null) {
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+        Toast.makeText(this,
+            "Lat: " + latitude + ", Lng: " + longitude,
+            Toast.LENGTH_LONG).show();
+    }
+});</code></pre>
+<p>The code checks the permission first, asks for it if needed, and then reads the last known location. The location can be <code>null</code> if the device has no recent location.</p>
+    </details>
+    <p class="chips"><span><a href="../outline/advanced.html">Topic: Location-aware Applications</a></span><span><a href="../outline/platforms.html#android-os">Topic: Android OS (manifest and permissions)</a></span></p></div>
+  <br>
+  <div class="card"><h3>v. <span class="badge">8</span></h3>
+    <p>Start DetailActivity from MainActivity and pass along some dummy data.</p>
+    <details class="exam"><summary>Show solution</summary>
+<p>Use an explicit Intent and send data with <code>putExtra()</code>.</p>
+<p><b>MainActivity</b> (sender):</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+intent.putExtra("name", "Muhammad");
+intent.putExtra("age", 22);
+startActivity(intent);</code></pre>
+<p><b>DetailActivity</b> (receiver), inside <code>onCreate()</code>:</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>String name = getIntent().getStringExtra("name");
+int age = getIntent().getIntExtra("age", 0);</code></pre>
+<p>DetailActivity must also be declared in <code>AndroidManifest.xml</code>.</p>
+    </details>
+    <p class="chips"><span><a href="../outline/data-storage.html#sharing-data">Topic: Sharing Data</a></span></p></div>
+  <br>
+  <div class="card"><h3>vi. <span class="badge">8</span></h3>
+    <p>Create an options menu in XML to show a single item menu on the Toolbar.</p>
+    <details class="exam"><summary>Show solution</summary>
+<p><b>Menu file:</b> <code>res/menu/main_menu.xml</code> with a single item.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"&gt;
+
+    &lt;item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        app:showAsAction="ifRoom" /&gt;
+
+&lt;/menu&gt;</code></pre>
+<p><b>Toolbar</b> in the activity layout:</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>&lt;androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize" /&gt;</code></pre>
+<p><b>Java:</b> set the Toolbar as the action bar, then inflate the menu.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>// in onCreate()
+Toolbar toolbar = findViewById(R.id.toolbar);
+setSupportActionBar(toolbar);
+
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.main_menu, menu);
+    return true;
+}
+
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+    if (item.getItemId() == R.id.action_settings) {
+        Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show();
+        return true;
+    }
+    return super.onOptionsItemSelected(item);
+}</code></pre>
+    </details>
+    <p class="chips"><span><a href="../outline/ui-screens.html">Topic: Utilizing the Action Bar</a></span></p></div>
+  <br>
+  <div class="card"><h3>vii. <span class="badge">8</span></h3>
+    <p>Parse/Convert JSON object to a Java Object.</p>
+    <details class="exam"><summary>Show solution</summary>
+<p>Create a Java class that matches the JSON, then read each field from a <code>JSONObject</code>.</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>// JSON: {"id": 1, "name": "Ali", "marks": 85}
+
+public class Student {
+    int id;
+    String name;
+    int marks;
+
+    Student(int id, String name, int marks) {
+        this.id = id;
+        this.name = name;
+        this.marks = marks;
+    }
+}
+
+String json = "{\"id\":1,\"name\":\"Ali\",\"marks\":85}";
+
+try {
+    JSONObject obj = new JSONObject(json);
+
+    Student student = new Student(
+        obj.getInt("id"),
+        obj.getString("name"),
+        obj.getInt("marks")
+    );
+
+} catch (JSONException e) {
+    e.printStackTrace();
+}</code></pre>
+<p><b>Alternative with the Gson library</b> (one line, needs the Gson dependency): <code>Student student = new Gson().fromJson(json, Student.class);</code></p>
+    </details>
+    <p class="chips"><span><a href="../outline/communication.html">Topic: Web Services</a></span></p></div>
+  <br>
+  <div class="card"><h3>viii. <span class="badge">8</span></h3>
+    <p>XML code to create drawable for background of a button that should look like this: a &ldquo;GET DATA&rdquo; button with a rounded border.</p>
+    <figure><img src="../images/papers/final-paper-3-q3-viii.jpg" alt="Button shape" onerror="this.outerHTML='&lt;div class=img-missing&gt;Add the button picture: images/papers/final-paper-3-q3-viii.jpg&lt;/div&gt;'"></figure>
+    <details class="exam"><summary>Show solution</summary>
+<p>The button in the picture is a white rounded rectangle with a dark border and bold text. Create <code>res/drawable/get_data_button.xml</code>:</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"&gt;
+
+    &lt;solid android:color="#FFFFFF" /&gt;
+    &lt;stroke android:width="2dp" android:color="#000000" /&gt;
+    &lt;corners android:radius="10dp" /&gt;
+
+&lt;/shape&gt;</code></pre>
+<p>Use it as the button background:</p>
+<button class="btn alt copy">Copy code</button>
+<pre><code>&lt;Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="GET DATA"
+    android:textStyle="bold"
+    android:textColor="#000000"
+    android:backgroundTint="@null"
+    android:background="@drawable/get_data_button" /&gt;</code></pre>
+    </details>
+    <p class="chips"><span><a href="../outline/ui-screens.html#views">Topic: Views</a></span></p></div>
+  <br>
+
+  <h2>Marks summary</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Question</th><th>Marks</th><th>Details</th></tr>
+    <tr><td>Q.3 (i&ndash;viii)</td><td>24</td><td>8 coding tasks of 3 marks</td></tr>
+  </table></div>
+  <div class="explain">Only the <b>Section III</b> page of this paper was available. Sections I and II are not included. The paper prints <b>Max. Marks: 60</b>.</div>
+</main>
+
+<footer>IT-308 Mobile Application Development &middot; BS Information Technology
+<br>Copyright &copy; 2026 <a href="https://gcsmultan.edu.pk/">Govt. Graduate College of Science and Technology</a></footer>
+<script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platforms | IT-308 Mobile Application Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/outline.css">
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">IT-308</a>
+  <a href="../index.html">Home</a>
+  <a href="index.html" class="active">Outline</a>
+  <a href="../practice.html">Practice</a>
+  <a href="../programs.html">Programs</a>
+  <a href="../papers/index.html">Past Papers</a>
+  <a href="../references.html">References</a>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Contents</h2>
+    <input type="search" id="side-search" placeholder="Search topics">
+    <div class="progress">
+      <div class="row"><span id="prog-text">Progress: 0/0</span><span id="prog-pct">0%</span></div>
+      <div class="bar"><span id="prog-bar"></span></div>
+    </div>
+    <div id="sidebar-list"></div>   <!-- filled automatically by outline.js -->
+  </aside>
+
+  <main style="padding:0;margin:0;max-width:none">
+    <div class="group-tabs"><a href="index.html">&larr; All groups</a><a href="platforms.html" class="current">Platforms</a><a href="ui-screens.html">UI & Screens</a><a href="data-storage.html">Data & Storage</a><a href="communication.html">Communication</a><a href="publishing.html">Publishing</a><a href="advanced.html">Advanced</a></div>
+    <h1>Platforms and architecture</h1>
+    <p class="lead"><!-- YOUR EXPLANATION HERE --></p>
+
+    <!-- ===== PASTE NEW TOPICS BELOW, IN OUTLINE ORDER. One <section class="topic-card"> per topic. ===== -->
+
+<!-- ===== 1. MOBILE APPLICATION DEVELOPMENT PLATFORM ===== -->
+
+<section class="topic-card" id="madp" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>Mobile Application Development Platform</h3>
+    <p>Tools, components, types and examples</p>
+  </div>
+  <div class="body">
+
+    <h4>1.1 Introduction to Mobile Application Development</h4>
+    <p>Before understanding a Mobile Application Development Platform, we first need to understand what mobile application development means.</p>
+    <div class="def"><b>Mobile Application Development</b> is the process of creating software applications that run on mobile devices such as smartphones and tablets.</div>
+    <p>These applications help users perform different tasks, such as:</p>
+    <ul>
+      <li>Sending messages</li><li>Making phone calls</li><li>Watching videos</li><li>Shopping online</li>
+      <li>Using banking services</li><li>Playing games</li><li>Learning through educational applications</li><li>Booking tickets and ordering food</li>
+    </ul>
+    <p><b>Examples of mobile applications:</b></p>
+    <div class="chips"><span>WhatsApp</span><span>Facebook</span><span>Instagram</span><span>YouTube</span><span>Google Maps</span><span>Daraz</span><span>Snapchat</span></div>
+    <p>In simple words, mobile application development means designing, developing, testing, and maintaining applications for mobile devices.</p>
+
+    <h4>1.2 What is a Mobile Application Development Platform?</h4>
+    <div class="def"><b>Definition:</b> A Mobile Application Development Platform (MADP) is a collection of software tools, technologies, frameworks, libraries, and services that developers use to create, test, deploy, and maintain mobile applications.</div>
+    <p>In simple words, it is an environment that provides developers with the necessary tools to build mobile applications without creating everything from the beginning.</p>
+    <div class="example"><b>Example:</b> Suppose you want to develop a mobile application like WhatsApp. You need:
+      <ol>
+        <li>A programming language to write the application.</li>
+        <li>A development environment to write and manage code.</li>
+        <li>A framework to build the user interface.</li>
+        <li>Tools to connect the application with a server.</li>
+        <li>Tools to test the application.</li>
+        <li>Tools to publish the application.</li>
+      </ol>
+      A MADP provides many of these tools and services in one development environment.
+    </div>
+    <figure><!-- <img src="../images/platforms/madp-overview.jpg" alt="MADP overview"> --><figcaption>Mobile Application Development Platform</figcaption></figure>
+
+    <h4>1.3 Why Do We Need Mobile Application Development Platforms?</h4>
+    <p>Developing a mobile application is not just about writing code. Developers need to manage designing, programming, testing, security, and deployment. These platforms make these activities easier.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Easy Application Development</h5><p>Ready-made tools, libraries and frameworks mean developers do not write every feature from scratch.</p><p><i>Example:</i> a login screen can use ready-made text fields, password fields, buttons and checkboxes.</p></div>
+      <div class="mini"><h5>2. Faster Development</h5><p>Reusable components and tools reduce development time.</p><p><i>Example:</i> use an existing camera library instead of writing all camera code.</p></div>
+      <div class="mini"><h5>3. Cross-Platform Development</h5><p>Some platforms let developers build for several operating systems using a shared codebase (Android and iOS), for example with Flutter or React Native.</p></div>
+      <div class="mini"><h5>4. Easy Testing and Debugging</h5><p>Testing checks whether the application works correctly. Debugging means finding and fixing errors.</p><p><i>Example:</i> if a login button does not work, debugging tools help find the problem.</p></div>
+      <div class="mini"><h5>5. Better User Interface Design</h5><p>Ready-made elements: buttons, menus, navigation bars, images, forms, dialog boxes.</p></div>
+      <div class="mini"><h5>6. Application Deployment</h5><p>Deployment means making an application available for users.</p><ul><li>Android apps: Google Play Store</li><li>iOS apps: Apple App Store</li></ul></div>
+      <div class="mini"><h5>7. Application Maintenance</h5><p>After publishing, developers fix bugs, improve performance, add features and provide security updates.</p></div>
+    </div>
+
+    <h4>1.4 Main Components of a MADP</h4>
+    <figure><!-- <img src="../images/platforms/madp-components.jpg" alt="Components of a MADP"> --><figcaption>Components of a MADP</figcaption></figure>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Integrated Development Environment (IDE)</h5>
+        <p>Software that provides tools to write, edit, manage, and debug program code.</p>
+        <p><b>Examples:</b> Android Studio, Eclipse, Xcode, Visual Studio.</p>
+        <p><b>Main functions:</b></p><ul><li>Writing program code</li><li>Finding programming errors</li><li>Managing project files</li><li>Running applications</li><li>Debugging applications</li></ul></div>
+      <div class="mini"><h5>2. Software Development Kit (SDK)</h5>
+        <p>A collection of tools, libraries, documentation, and other resources used to develop applications for a particular platform.</p>
+        <p><i>Example:</i> the Android SDK includes:</p><ul><li>Development tools</li><li>Android APIs</li><li>Debugging tools</li><li>Emulator support</li><li>Platform libraries</li></ul></div>
+      <div class="mini"><h5>3. Framework</h5>
+        <p>A collection of pre-written code, tools, and rules that provides a structure for developing applications.</p>
+        <p><b>Examples:</b> Flutter, React Native, .NET MAUI, Ionic.</p>
+        <p><i>Example:</i> React Native provides components for building mobile interfaces.</p></div>
+      <div class="mini"><h5>4. Application Programming Interface (API)</h5>
+        <p>Allows different software components to communicate and exchange information. It works like a bridge between two software systems.</p>
+        <p><i>Example:</i> a weather app sends a request to a weather API, which returns temperature, weather conditions, humidity and wind speed. The app then displays them.</p></div>
+      <div class="mini"><h5>5. Testing Tools</h5>
+        <p>Check whether an application works correctly before release.</p>
+        <ul><li>Functional testing</li><li>Performance testing</li><li>Security testing</li><li>Compatibility testing</li><li>User interface testing</li></ul></div>
+      <div class="mini"><h5>6. Emulator and Simulator</h5>
+        <p>Let developers test apps without always using a physical device.</p>
+        <p><b>Emulator:</b> reproduces the hardware and software behavior of a target device.</p>
+        <p><b>Simulator:</b> imitates the behavior of a device or environment, generally without reproducing all its hardware.</p>
+        <p><i>Example:</i> Android Emulator runs Android apps on a computer.</p></div>
+    </div>
+
+    <h4>1.5 Types of Mobile Application Development Platforms</h4>
+    <figure><!-- <img src="../images/platforms/madp-types.jpg" alt="Types of MADP"> --><figcaption>Types of platforms</figcaption></figure>
+
+    <h5 class="sub">1. Native Application Development</h5>
+    <p>Creating applications specifically for one operating system. Android apps use Kotlin or Java; iOS apps use Swift or Objective-C.</p>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ul><li>High performance</li><li>Better access to device hardware</li><li>Better integration with the operating system</li><li>Smooth user experience</li></ul></div>
+      <div class="con"><b>Disadvantages</b><ul><li>Separate development for Android and iOS</li><li>Can take more time</li><li>Maintenance may be more expensive</li></ul></div>
+    </div>
+
+    <h5 class="sub">2. Cross-Platform Application Development</h5>
+    <p>Creating applications that run on multiple operating systems using a shared codebase, for example with Flutter or React Native.</p>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ul><li>Code can be reused</li><li>Less development time</li><li>Reduced development cost</li><li>Easier maintenance of shared features</li></ul></div>
+      <div class="con"><b>Disadvantages</b><ul><li>Some platform-specific features need additional code</li><li>Performance may vary by framework and app</li><li>Native integration can be more complicated</li></ul></div>
+    </div>
+
+    <h5 class="sub">3. Hybrid Application Development</h5>
+    <p>Combines web technologies (HTML, CSS, JavaScript) with mobile application packaging. The interface runs inside a native container or WebView.</p>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ul><li>Uses common web technologies</li><li>Code can be reused</li><li>Development can be less expensive</li><li>Easier for web developers to learn</li></ul></div>
+      <div class="con"><b>Disadvantages</b><ul><li>Lower performance for graphics-intensive apps</li><li>Some device features require plugins</li><li>User experience may differ from fully native apps</li></ul></div>
+    </div>
+
+    <h4>1.6 Examples of Popular Platforms</h4>
+    <figure><!-- <img src="../images/platforms/madp-logos.jpg" alt="Popular platforms"> --></figure>
+    <div class="mini-grid">
+      <div class="mini"><h5>Android Studio</h5><p>Google's official IDE for Android application development. Supports Kotlin and Java.</p></div>
+      <div class="mini"><h5>Xcode</h5><p>Apple's IDE used to develop applications for iOS and other Apple platforms.</p></div>
+      <div class="mini"><h5>Flutter</h5><p>Google's UI framework used to build applications for multiple platforms.</p></div>
+      <div class="mini"><h5>React Native</h5><p>A framework for developing mobile applications using JavaScript or TypeScript and React.</p></div>
+      <div class="mini"><h5>Eclipse</h5><p>An IDE historically used for Android development with the Android Development Tools (ADT) plugin.</p></div>
+    </div>
+
+    <h4>1.7 Advantages and 1.8 Disadvantages</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Reduced Development Time:</b> ready-made tools and components.</li>
+        <li><b>Cost Reduction:</b> reusable code and resources.</li>
+        <li><b>Easy Development:</b> tools simplify the process.</li>
+        <li><b>Code Reusability:</b> reuse code and components.</li>
+        <li><b>Easy Testing:</b> testing and debugging tools.</li>
+        <li><b>Better User Experience:</b> components for attractive interfaces.</li>
+        <li><b>Easy Maintenance:</b> update, fix bugs, add features.</li>
+        <li><b>Multiple Platform Support:</b> Android, iOS and others.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Learning Complexity:</b> different languages and tools.</li>
+        <li><b>Platform Limitations:</b> may not support every device feature directly.</li>
+        <li><b>Performance Issues:</b> cross-platform and hybrid apps may be slower than optimized native apps.</li>
+        <li><b>Dependency on Tools:</b> third-party frameworks, libraries and updates.</li>
+        <li><b>Compatibility Problems:</b> apps may behave differently on different devices and OS versions.</li>
+        <li><b>Security Risks:</b> poorly configured libraries and tools can add vulnerabilities.</li></ol></div>
+    </div>
+
+    <h4>1.9 Complete Example: Developing a Mobile Application</h4>
+    <p>Suppose a developer wants to create a simple <b>student attendance application</b>. Teachers can log in, view student lists, mark attendance, save attendance records and view attendance reports.</p>
+    <figure><!-- <img src="../images/platforms/madp-workflow.jpg" alt="Mobile application development workflow"> --><figcaption>Mobile application development workflow</figcaption></figure>
+    <ol class="steps">
+      <li><b>Planning:</b> decide what features the attendance application will provide.</li>
+      <li><b>UI/UX Design:</b> design login screens, student lists, buttons, and attendance pages.</li>
+      <li><b>Development:</b> use an IDE, programming language, SDK, and framework to write the code.</li>
+      <li><b>Database and API Integration:</b> connect the application to a database to save student and attendance records.</li>
+      <li><b>Testing:</b> check login, attendance marking, data saving, and other features.</li>
+      <li><b>Deployment:</b> prepare and publish the application for users.</li>
+      <li><b>Maintenance:</b> fix errors, improve performance, and introduce new features.</li>
+    </ol>
+
+    <h4>1.10 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is a Mobile Application Development Platform?</li><li>Define mobile application development.</li>
+      <li>What is an IDE?</li><li>What is an SDK?</li><li>Define a framework.</li><li>What is an API?</li>
+      <li>What is an emulator?</li><li>What is native application development?</li>
+      <li>What is cross-platform development?</li><li>What is hybrid application development?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain Mobile Application Development Platforms in detail.</li>
+      <li>Discuss the main components of a Mobile Application Development Platform.</li>
+      <li>Explain the types of mobile application development platforms with advantages and disadvantages.</li>
+      <li>Discuss the advantages and disadvantages of Mobile Application Development Platforms.</li></ol></details>
+
+    <h4>1.11 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>MADP</td><td>Tools and environment for developing mobile apps</td></tr>
+      <tr><td>IDE</td><td>Software for writing and managing code</td></tr>
+      <tr><td>SDK</td><td>Collection of development tools and libraries</td></tr>
+      <tr><td>Framework</td><td>Ready-made structure for application development</td></tr>
+      <tr><td>API</td><td>Bridge for communication between software</td></tr>
+      <tr><td>Emulator</td><td>Imitates a target device</td></tr>
+      <tr><td>Native</td><td>Application developed for one operating system</td></tr>
+      <tr><td>Cross-platform</td><td>Shared code for multiple platforms</td></tr>
+      <tr><td>Hybrid</td><td>Web technologies inside a mobile application container</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+<section class="topic-card" id="html5-mobiles" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>HTML5 for Mobiles</h3>
+    <p>Features, PWAs and mobile web development</p>
+  </div>
+  <div class="body">
+
+    <h4>2.1 Introduction to HTML5</h4>
+    <p>Before understanding HTML5 for mobile devices, we need to understand HTML.</p>
+    <div class="def"><b>HTML</b> stands for HyperText Markup Language. It is a markup language used to create the structure of web pages. It tells a web browser how to display elements such as headings, paragraphs, images, videos, links, buttons, and forms.</div>
+    <p><b>HTML5</b> is the fifth major version of HTML. It introduced new elements, features, and APIs that make it easier to develop modern websites and mobile-friendly web applications.</p>
+    <p>In simple words: HTML5 allows developers to create websites and web applications that can work on computers, tablets, and smartphones.</p>
+    <p><b>Examples of HTML5-based mobile applications:</b></p>
+    <div class="chips"><span>Online shopping websites</span><span>Mobile banking websites</span><span>Educational web applications</span><span>Social media websites</span><span>Online video platforms</span></div>
+    <figure><!-- <img src="../images/platforms/html5-intro.jpg" alt="HTML5"> --></figure>
+
+    <h4>2.2 What is HTML5 for Mobiles?</h4>
+    <div class="def"><b>Definition:</b> HTML5 for mobiles refers to the use of HTML5 technologies to develop mobile-friendly websites and web applications that can run on smartphones and tablets through mobile web browsers.</div>
+    <p>In simple words, HTML5 allows developers to create applications that users can access through a mobile browser without necessarily installing a separate application from an app store.</p>
+    <div class="example"><b>Example:</b> You create an online shopping website using HTML5, CSS, and JavaScript. A user can open it on Android smartphones, iPhones, tablets and desktop computers. The website automatically adjusts its layout to the screen size when it is designed responsively.</div>
+
+    <h4>2.3 Why is HTML5 Used for Mobile Development?</h4>
+    <p>HTML5 provides features that help developers create interactive, responsive, and user-friendly web applications.</p>
+
+    <h5 class="sub">1. Cross-Platform Compatibility</h5>
+    <p>HTML5 applications run on different operating systems through compatible browsers. The same website can work on Android, iOS, Windows and macOS, so developers do not need a completely separate website for every operating system.</p>
+
+    <h5 class="sub">2. Responsive Web Design</h5>
+    <p>Creating websites that automatically adjust their layout according to the screen size and device.</p>
+    <div class="example"><b>Example:</b> a website may display three product columns on a computer, but only one column on a mobile phone.</div>
+    <p><b>Technologies used:</b> HTML5, CSS3, CSS Media Queries, flexible layouts, Flexbox and Grid.</p>
+
+    <h5 class="sub">3. Multimedia Support</h5>
+    <p>HTML5 provides built-in support for audio and video. Previously, developers often needed external plugins. HTML5 introduced <code>&lt;audio&gt;</code> (adds audio) and <code>&lt;video&gt;</code> (adds video).</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;video controls width="300"&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+    <p>This code displays a video player on a web page.</p>
+
+    <h5 class="sub">4. Offline Storage</h5>
+    <p>HTML5 introduced technologies that let web applications store certain information on a user's device. For example, a shopping application can temporarily save some information so it remains available even when the internet connection is lost.</p>
+    <ul>
+      <li><b>Local Storage:</b> stores data in the browser with no automatic expiration.</li>
+      <li><b>Session Storage:</b> stores data for the duration of a browser page session.</li>
+      <li><b>IndexedDB:</b> stores larger amounts of structured data in the browser.</li>
+    </ul>
+    <div class="explain">Note: HTML5's old Web SQL and Application Cache technologies are obsolete; modern applications generally use IndexedDB and service workers.</div>
+
+    <h5 class="sub">5. Touchscreen Support</h5>
+    <p>Mobile devices mainly use touchscreens instead of a mouse and keyboard. HTML5 works with JavaScript and browser events to handle: touching buttons, tapping links, scrolling pages, selecting options, and filling forms.</p>
+
+    <h5 class="sub">6. Geolocation Support</h5>
+    <p>The Geolocation API allows a website to request the user's geographical location. For example, a food delivery website can use it to help identify the user's delivery area.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>navigator.geolocation.getCurrentPosition(
+    function(position) {
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
+    }
+);</code></pre>
+    <p>The browser normally asks the user for permission before sharing location information.</p>
+
+    <h5 class="sub">7. Better Form Support</h5>
+    <p>HTML5 introduced new input types that make forms easier to use, especially on mobile devices.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;form&gt;
+    &lt;input type="email" placeholder="Enter email"&gt;
+    &lt;input type="tel" placeholder="Phone number"&gt;
+    &lt;input type="date"&gt;
+    &lt;input type="number" placeholder="Age"&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+    <p>These input types can display suitable mobile keyboards and built-in validation.</p>
+
+    <h4>2.4 Important HTML5 Features for Mobile Applications</h4>
+
+    <h5 class="sub">1. Semantic Elements</h5>
+    <p>Semantic elements clearly describe the meaning and purpose of different parts of a web page.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Element</th><th>Purpose</th></tr>
+      <tr><td><code>&lt;header&gt;</code></td><td>Defines the header</td></tr>
+      <tr><td><code>&lt;nav&gt;</code></td><td>Defines navigation links</td></tr>
+      <tr><td><code>&lt;main&gt;</code></td><td>Defines the main content</td></tr>
+      <tr><td><code>&lt;section&gt;</code></td><td>Defines a section</td></tr>
+      <tr><td><code>&lt;article&gt;</code></td><td>Defines independent content</td></tr>
+      <tr><td><code>&lt;footer&gt;</code></td><td>Defines the footer</td></tr>
+    </table></div>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;header&gt;
+    &lt;h1&gt;My Mobile Website&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;About&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Welcome&lt;/h2&gt;
+        &lt;p&gt;This is my website.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    Copyright 2026
+&lt;/footer&gt;</code></pre>
+    <p>These elements make the structure of a website clearer and easier to maintain.</p>
+
+    <h5 class="sub">2. Canvas Element</h5>
+    <p>The Canvas element provides an area where developers can draw graphics using JavaScript. It can be used for games, charts, animations, drawing applications and data visualization.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;canvas id="myCanvas" width="300" height="150"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "blue";
+ctx.fillRect(20, 20, 150, 80);
+&lt;/script&gt;</code></pre>
+    <p>This code draws a blue rectangle inside the canvas.</p>
+    <figure><!-- <img src="../images/platforms/html5-canvas.jpg" alt="Canvas example"> --></figure>
+
+    <h5 class="sub">3. Audio and Video Elements</h5>
+    <p>HTML5 provides audio and video elements for playing multimedia content without external browser plugins.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>&lt;audio controls&gt;
+    &lt;source src="music.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+
+&lt;video controls width="300"&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+    <p>The <code>controls</code> attribute displays playback controls such as play, pause, and volume.</p>
+
+    <h5 class="sub">4. Local Storage</h5>
+    <p>Local Storage allows developers to save small amounts of data in the user's browser.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>localStorage.setItem("username", "Ali");
+
+let user = localStorage.getItem("username");
+
+console.log(user);   // Output: Ali</code></pre>
+    <p>Even after closing and reopening the browser, the stored value normally remains available until it is removed or cleared.</p>
+    <div class="example"><b>Mobile application example:</b> a mobile shopping website can remember a user's preferred theme or certain settings using Local Storage.</div>
+
+    <h5 class="sub">5. Web Workers</h5>
+    <p>Web Workers allow JavaScript to perform certain tasks in the background without blocking the main user interface thread.</p>
+    <p>For example, if a mobile application processes a large amount of data on the main thread, the interface may become slow or unresponsive. A Web Worker can handle suitable background calculations separately.</p>
+    <p><b>Benefits:</b></p>
+    <ul><li>Keeps the interface responsive</li><li>Performs background processing</li><li>Helps handle computationally intensive tasks</li></ul>
+
+    <h5 class="sub">6. Geolocation API</h5>
+    <p>Allows a web application to request the geographical position of a user.</p>
+    <p><b>It can provide:</b> latitude, longitude, accuracy, altitude (when available), speed (when available).</p>
+    <p><b>Example applications:</b></p>
+    <div class="chips"><span>Google Maps</span><span>Food delivery services</span><span>Location-based services</span><span>Navigation applications</span></div>
+
+    <h5 class="sub">7. Drag and Drop</h5>
+    <p>The Drag and Drop API allows users to move elements or files from one location to another. For example, a user can drag a file into an upload area.</p>
+    <p><b>Used in:</b> file upload applications, image editors, task management applications, online design tools.</p>
+
+    <h4>2.5 Mobile Web Applications vs Native Mobile Applications</h4>
+    <p>HTML5 is commonly used to develop mobile web applications. However, mobile web applications and native applications are not exactly the same.</p>
+    <figure><!-- <img src="../images/platforms/web-vs-native.jpg" alt="Web app vs native app"> --></figure>
+    <div class="pc">
+      <div class="pro"><b>Mobile Web Application</b>
+        <p>Runs inside a mobile web browser. Generally developed using HTML5, CSS and JavaScript. Examples: mobile-friendly online shopping and banking websites.</p></div>
+      <div class="con"><b>Native Mobile Application</b>
+        <p>Developed specifically for a particular operating system (Android: Kotlin or Java; iOS: Swift or Objective-C). Normally installed through an app store or another supported distribution method.</p></div>
+    </div>
+    <p><b>Main Differences</b></p>
+    <div class="table-wrap"><table>
+      <tr><th>Mobile Web Application</th><th>Native Mobile Application</th></tr>
+      <tr><td>Runs in a web browser</td><td>Runs as an installed application</td></tr>
+      <tr><td>Uses HTML, CSS and JavaScript</td><td>Uses platform-specific technologies</td></tr>
+      <tr><td>Usually accessed through a URL</td><td>Usually installed on the device</td></tr>
+      <tr><td>Works across compatible browsers</td><td>Developed for a particular platform</td></tr>
+      <tr><td>Device access may be limited by browser APIs</td><td>Can access many native device features</td></tr>
+      <tr><td>Updates are usually made on the server</td><td>Updates may require app releases</td></tr>
+    </table></div>
+
+    <h4>2.6 Progressive Web Applications (PWA)</h4>
+    <div class="def">A <b>Progressive Web Application (PWA)</b> is a web application that uses modern browser technologies to provide an experience similar to an installed mobile application. PWAs combine the accessibility of websites with several useful application-like features.</div>
+    <figure><!-- <img src="../images/platforms/pwa.jpg" alt="Progressive Web App"> --></figure>
+    <p><b>Main Features of PWA</b></p>
+    <ol>
+      <li><b>Installability:</b> users can install supported PWAs on their devices.</li>
+      <li><b>Offline Support:</b> service workers can cache resources and support selected offline functionality.</li>
+      <li><b>Responsive Design:</b> PWAs adjust to different screen sizes.</li>
+      <li><b>Push Notifications:</b> supported browsers and operating systems can deliver notifications with user permission.</li>
+      <li><b>Fast Loading:</b> caching can improve loading speed.</li>
+      <li><b>App-Like Experience:</b> a PWA can open in a standalone window without the usual browser interface when installed and configured appropriately.</li>
+    </ol>
+    <p><b>Main Technologies Used in PWA</b></p>
+    <ul>
+      <li><b>HTML:</b> creates the structure.</li>
+      <li><b>CSS:</b> designs the interface.</li>
+      <li><b>JavaScript:</b> adds functionality.</li>
+      <li><b>Service Worker:</b> handles background tasks and caching.</li>
+      <li><b>Web App Manifest:</b> provides application information such as name and icons.</li>
+    </ul>
+
+    <h4>2.7 Advantages and 2.8 Disadvantages of HTML5 for Mobile Development</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Cross-Platform Compatibility:</b> works on different operating systems through compatible browsers.</li>
+        <li><b>Reduced Development Cost:</b> same web technologies for different devices.</li>
+        <li><b>Easy Maintenance:</b> changes are deployed on the server without users installing a new native version.</li>
+        <li><b>Multimedia Support:</b> audio and video integrate directly into web pages.</li>
+        <li><b>Responsive Design:</b> adjusts to different screen sizes.</li>
+        <li><b>Offline Capabilities:</b> modern browser technologies allow selected offline features.</li>
+        <li><b>Easy Learning:</b> common web technologies, widely taught and documented.</li>
+        <li><b>No Mandatory App Store Installation:</b> users access ordinary mobile web apps directly through a browser.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Performance Limitations:</b> demanding apps, especially graphics-intensive games, may perform better natively.</li>
+        <li><b>Browser Dependency:</b> depends on the browser's capabilities and compatibility.</li>
+        <li><b>Limited Device Access:</b> some hardware and OS features may not be available through standard web APIs.</li>
+        <li><b>Internet Dependency:</b> many web apps need an internet connection, although offline functionality can be implemented.</li>
+        <li><b>Different Browser Behavior:</b> features may behave differently across browsers and operating systems.</li>
+        <li><b>User Experience:</b> some web apps may not feel as smooth or integrated as native apps.</li>
+        <li><b>Security Concerns:</b> developers must protect stored information, validate user input, and use secure connections.</li></ol></div>
+    </div>
+
+    <h4>2.9 Real-Life Example: Creating a Mobile Student Portal</h4>
+    <p>Suppose you want to create a student portal using HTML5. Students can view their marks, check attendance, download notes, view examination schedules, and check announcements.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Technology</th><th>Use in Student Portal</th></tr>
+      <tr><td>HTML5</td><td>Creates the page structure</td></tr>
+      <tr><td>CSS3</td><td>Designs the interface</td></tr>
+      <tr><td>JavaScript</td><td>Adds interactive functionality</td></tr>
+      <tr><td>Local Storage</td><td>Saves selected settings</td></tr>
+      <tr><td>Geolocation API</td><td>Can provide location-based features</td></tr>
+      <tr><td>Audio/Video</td><td>Plays educational lectures</td></tr>
+      <tr><td>Service Worker</td><td>Supports caching and offline access</td></tr>
+    </table></div>
+    <figure><!-- <img src="../images/platforms/student-portal.jpg" alt="Student portal"> --></figure>
+    <p>When a student opens the portal on a smartphone:</p>
+    <ol class="steps">
+      <li>The browser loads the HTML structure.</li>
+      <li>CSS adjusts the layout to the mobile screen.</li>
+      <li>JavaScript handles buttons and user interactions.</li>
+      <li>The application retrieves student information from a server.</li>
+      <li>The browser displays the student's marks and attendance.</li>
+    </ol>
+    <p>This is an example of how HTML5 technologies contribute to mobile web application development.</p>
+
+    <h4>2.10 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is HTML5?</li><li>Define HTML5 for mobile development.</li><li>What is responsive web design?</li>
+      <li>What is Local Storage?</li><li>What is Session Storage?</li><li>Define Geolocation API.</li>
+      <li>What is the Canvas element?</li><li>What are Web Workers?</li>
+      <li>What is a Progressive Web Application?</li><li>What is the purpose of the Audio and Video elements?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain HTML5 for mobile application development in detail.</li>
+      <li>Discuss the major features of HTML5 for mobile devices.</li>
+      <li>Explain the advantages and disadvantages of HTML5 in mobile development.</li>
+      <li>Differentiate between mobile web applications and native mobile applications.</li>
+      <li>Explain Progressive Web Applications and their main features.</li></ol></details>
+
+    <h4>2.11 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>HTML5</td><td>Markup language used to structure modern web pages</td></tr>
+      <tr><td>Responsive Design</td><td>Website adjusts to screen size</td></tr>
+      <tr><td>Canvas</td><td>Area for drawing graphics using JavaScript</td></tr>
+      <tr><td>Local Storage</td><td>Stores browser data without automatic expiration</td></tr>
+      <tr><td>Session Storage</td><td>Stores data for a browser page session</td></tr>
+      <tr><td>Web Workers</td><td>Run JavaScript tasks in the background</td></tr>
+      <tr><td>Geolocation</td><td>Provides geographical location with permission</td></tr>
+      <tr><td>PWA</td><td>Web application with app-like features</td></tr>
+      <tr><td>Service Worker</td><td>Handles background browser tasks and caching</td></tr>
+      <tr><td>Web App Manifest</td><td>Provides installation and display information</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+<section class="topic-card" id="android-os" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>Android OS: Architecture, Framework and Application Development</h3>
+    <p>Layers, system services and how Android apps are built</p>
+  </div>
+  <div class="body">
+
+    <h4>3.1 Introduction to Android</h4>
+    <div class="def"><b>Android</b> is an open-source, Linux-based operating system mainly designed for smartphones, tablets, smart TVs, smartwatches, and other electronic devices.</div>
+    <p>It is developed and maintained by Google and the Android Open Source Project (AOSP). Android provides an environment in which users can run applications and developers can create applications using programming languages and development tools.</p>
+    <p><b>Examples of Android devices:</b></p>
+    <div class="chips"><span>Samsung smartphones</span><span>Google Pixel smartphones</span><span>Xiaomi smartphones</span><span>Oppo smartphones</span><span>Vivo smartphones</span><span>Android tablets</span></div>
+    <figure><!-- <img src="../images/platforms/android-devices.jpg" alt="Android devices"> --></figure>
+    <p><b>Main Features of Android</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Open Source</h5><p>The core platform is available through AOSP, allowing developers and manufacturers to modify and customize it.</p></div>
+      <div class="mini"><h5>2. User-Friendly Interface</h5><p>Easy-to-use interface with icons, menus, buttons, and touch interactions.</p></div>
+      <div class="mini"><h5>3. Multitasking</h5><p>Users can switch between applications; background tasks are supported.</p></div>
+      <div class="mini"><h5>4. Connectivity</h5><p>Supports Wi-Fi, Bluetooth, mobile networks, NFC, and other communication technologies.</p></div>
+      <div class="mini"><h5>5. Application Support</h5><p>A large number of educational, business, entertainment, and social media applications.</p></div>
+      <div class="mini"><h5>6. Multimedia Support</h5><p>Images, audio, videos, and other multimedia formats.</p></div>
+      <div class="mini"><h5>7. Security</h5><p>Application sandboxing, permissions, encryption, and other security mechanisms.</p></div>
+      <div class="mini"><h5>8. Customization</h5><p>Users and manufacturers can customize home screens, themes, widgets, and other interface elements.</p></div>
+    </div>
+
+    <h4>Part 1: Android Architecture</h4>
+    <h4>3.2 What is Android Architecture?</h4>
+    <div class="def"><b>Definition:</b> Android Architecture is the layered structure of the Android operating system that explains how different software components work together to manage hardware, system services, applications, and user interactions.</div>
+    <p>In simple words, it explains how Android is organized internally and how its layers communicate with each other. Each layer has its own responsibilities and provides services to the layer above it.</p>
+
+    <h4>3.3 Layers of Android Architecture</h4>
+    <p>Android architecture is commonly represented through five major layers:</p>
+    <ol><li>Linux Kernel</li><li>Hardware Abstraction Layer (HAL)</li><li>Native Libraries and Android Runtime</li><li>Application Framework</li><li>Applications</li></ol>
+    <figure><!-- <img src="../images/platforms/android-layers.jpg" alt="Android architecture layers"> --><figcaption>Layers of Android architecture</figcaption></figure>
+
+    <h5 class="sub">1. Linux Kernel</h5>
+    <p>The lowest layer of Android Architecture. It acts as a bridge between the hardware and the software of the device, helping Android communicate with and control the physical components of a smartphone.</p>
+    <p><b>Main responsibilities:</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>A. Memory Management</h5><p>Controlling and distributing the device's RAM among applications and system processes.</p><p><i>Example:</i> WhatsApp and YouTube both need memory; the kernel helps manage it.</p></div>
+      <div class="mini"><h5>B. Process Management</h5><p>A process is a program that is currently running. The kernel manages running processes and helps allocate CPU time.</p><p><i>Example:</i> opening a browser creates processes whose execution the kernel helps manage.</p></div>
+      <div class="mini"><h5>C. Device Drivers</h5><p>Software components that allow the OS to communicate with hardware.</p><ul><li>Camera drivers</li><li>Audio drivers</li><li>Display drivers</li><li>USB drivers</li><li>Wi-Fi drivers</li></ul></div>
+      <div class="mini"><h5>D. Security</h5><p>Process isolation and access controls prevent applications from accessing resources they are not authorized to use.</p></div>
+      <div class="mini"><h5>E. Power Management</h5><p>Helps manage power consumption, for example by controlling hardware activity to reduce battery usage.</p></div>
+      <div class="mini"><h5>F. Networking</h5><p>Provides networking functionality for communicating over networks.</p><ul><li>Wi-Fi communication</li><li>Internet connections</li><li>Network data transmission</li></ul></div>
+    </div>
+    <div class="explain">In short: the Linux Kernel manages hardware resources, processes, memory, security, and power.</div>
+
+    <h5 class="sub">2. Hardware Abstraction Layer (HAL)</h5>
+    <div class="def"><b>Definition:</b> HAL is a layer that provides standard interfaces between Android's higher-level software and the device hardware. In simple words, it works like a communication bridge between Android software and different hardware components.</div>
+    <p><b>Why is HAL needed?</b> Different manufacturers use different hardware. For example, Samsung, Xiaomi and Google Pixel may each use a different camera sensor. Android applications should not need to understand the internal details of every manufacturer's hardware, so HAL provides standard interfaces for different hardware implementations.</p>
+    <p><b>Main components of HAL:</b></p>
+    <ol>
+      <li><b>Camera HAL:</b> interface for camera hardware.</li>
+      <li><b>Audio HAL:</b> interface for audio hardware.</li>
+      <li><b>Bluetooth HAL:</b> interface for Bluetooth hardware.</li>
+      <li><b>Wi-Fi HAL:</b> interface for Wi-Fi hardware.</li>
+      <li><b>GPS/GNSS HAL:</b> interface for location-related hardware.</li>
+    </ol>
+    <div class="example"><b>Example: opening the camera application</b>
+      <ol>
+        <li>The application requests access to the camera.</li>
+        <li>Android's camera services communicate with the camera HAL.</li>
+        <li>The HAL implementation communicates with the camera hardware.</li>
+        <li>The camera captures an image.</li>
+        <li>The captured image is made available to the application through Android's camera system.</li>
+      </ol></div>
+    <div class="explain">In short: HAL hides hardware-specific details and provides standard interfaces for Android software.</div>
+
+    <h5 class="sub">3. Native Libraries</h5>
+    <p>Pre-written software libraries that provide important functions to Android. Many are written in C or C++.</p>
+    <div class="def"><b>Definition:</b> Native Libraries are collections of pre-written code that provide services such as graphics processing, database management, multimedia playback, and security.</div>
+    <div class="mini-grid">
+      <div class="mini"><h5>A. SQLite</h5><p>A lightweight database engine used to store and manage structured data.</p><p><i>Example:</i> a notes app saves note titles, descriptions and creation dates.</p></div>
+      <div class="mini"><h5>B. OpenGL ES</h5><p>A graphics API used for rendering 2D and 3D graphics.</p><p><i>Example:</i> mobile games display objects, animations, and visual effects.</p></div>
+      <div class="mini"><h5>C. Media Framework</h5><p>Handles audio and video.</p><p><i>Example:</i> a video application plays video files.</p></div>
+      <div class="mini"><h5>D. SSL/TLS Libraries</h5><p>Security functionality for encrypted network communication.</p><p><i>Example:</i> with HTTPS, encryption helps protect the transmitted information.</p></div>
+      <div class="mini"><h5>E. Web Rendering Engine</h5><p>Chromium-based WebView technology displays web content inside applications.</p><p><i>Example:</i> a shopping app shows a web page without opening a separate browser.</p></div>
+    </div>
+    <div class="explain">In short: Native Libraries provide ready-made functions for graphics, multimedia, databases, and other system operations.</div>
+
+    <h5 class="sub">4. Android Runtime (ART)</h5>
+    <div class="def"><b>Definition:</b> Android Runtime is the execution environment responsible for running Android application code.</div>
+    <p>Android apps are commonly developed using Kotlin or Java. Their compiled code is packaged into DEX (Dalvik Executable) bytecode, which Android Runtime executes.</p>
+    <p><b>Main responsibilities of ART:</b></p>
+    <ol>
+      <li><b>Application Execution:</b> provides the environment required to run Android applications.</li>
+      <li><b>Memory Management:</b> helps manage memory used by applications.</li>
+      <li><b>Garbage Collection:</b> automatically reclaims memory occupied by objects that are no longer needed.</li>
+      <li><b>Code Optimization:</b> uses compilation techniques to improve performance.</li>
+      <li><b>Runtime Support:</b> provides essential services required while applications are running.</li>
+    </ol>
+    <div class="example"><b>Example:</b> when you open WhatsApp, ART provides the runtime environment needed to execute its application code.</div>
+    <div class="explain">Historical point: earlier Android versions used the Dalvik Virtual Machine (DVM). ART replaced Dalvik as the default runtime beginning with Android 5.0 Lollipop.</div>
+
+    <h5 class="sub">5. Application Framework</h5>
+    <p>Provides high-level services and APIs that developers use to build Android applications. It is studied separately in Part 2.</p>
+
+    <h5 class="sub">6. Applications</h5>
+    <p>The topmost layer of Android Architecture. It contains the applications that users interact with directly.</p>
+    <div class="chips"><span>Phone</span><span>Messages</span><span>Camera</span><span>Settings</span><span>Contacts</span><span>WhatsApp</span><span>YouTube</span><span>Google Maps</span></div>
+    <div class="example"><b>Example:</b> the Camera application uses services provided by the Application Framework, which communicates with lower Android layers to access the camera hardware.</div>
+
+    <h4>3.4 How Android Architecture Works: Real-Life Example</h4>
+    <p>Suppose you open the Camera application and capture a photograph. Different layers work together:</p>
+    <figure><!-- <img src="../images/platforms/android-camera-flow.jpg" alt="Camera request through Android layers"> --></figure>
+    <ol class="steps">
+      <li><b>Application Layer:</b> you open the Camera application and press the capture button.</li>
+      <li><b>Application Framework:</b> Android's camera services manage the camera request and provide the required APIs.</li>
+      <li><b>HAL:</b> the camera HAL communicates with the specific camera hardware implementation.</li>
+      <li><b>Linux Kernel:</b> device drivers and hardware-management facilities support communication with the camera device.</li>
+      <li><b>Native Libraries:</b> graphics and image-processing components help process and handle image data.</li>
+      <li><b>Android Runtime:</b> provides the execution environment for the application's code throughout the process.</li>
+      <li><b>Result:</b> the photograph is captured and saved on the device.</li>
+    </ol>
+    <div class="explain">Notice that these layers do not work independently. They cooperate to complete the task.</div>
+
+    <h4>Part 2: Android Framework</h4>
+    <h4>3.5 What is Android Framework?</h4>
+    <div class="def"><b>Definition:</b> Android Framework is a collection of APIs and system services that provides developers with the necessary tools and functionality to build Android applications.</div>
+    <p>In simple words, it provides ready-made services that developers can use instead of writing everything from the beginning.</p>
+    <div class="example"><b>Example:</b> to send notifications you do not need to create a complete notification system yourself. Android provides a Notification Manager that helps your application display notifications.</div>
+    <figure><!-- <img src="../images/platforms/android-framework.jpg" alt="Android framework"> --></figure>
+
+    <h4>3.6 Main Components of Android Framework</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Activity Manager</h5><p>Manages the lifecycle and execution of activities. An Activity generally represents a single screen.</p><p><i>Example:</i> a shopping app may have Login, Home, Product Details and Payment activities.</p></div>
+      <div class="mini"><h5>2. Window Manager</h5><p>Manages application windows and their display on the screen: position, size, arrangement and other display operations.</p><p><i>Example:</i> when you open an app, it helps manage how the window appears.</p></div>
+      <div class="mini"><h5>3. Content Providers</h5><p>Allow applications to share and access structured data through controlled interfaces.</p><p><i>Example:</i> a messaging app requests permission to access contacts; the Contacts Content Provider gives access to the permitted information.</p></div>
+      <div class="mini"><h5>4. Resource Manager</h5><p>Manages non-code resources: images, icons, strings, colors, layout files, animations.</p><p><i>Example:</i> an app logo stored as an image resource can be used on different screens.</p></div>
+      <div class="mini"><h5>5. Notification Manager</h5><p>Allows applications to display notifications.</p><p><i>Example:</i> WhatsApp message, email, banking transaction and reminder notifications.</p></div>
+      <div class="mini"><h5>6. Location Manager</h5><p>Provides access to location-related services through supported location providers, subject to permissions.</p><p><i>Example:</i> a navigation app determines the user's position.</p></div>
+      <div class="mini"><h5>7. Package Manager</h5><p>Manages information about installed applications and their packages. It helps Android:</p><ul><li>Identify installed applications</li><li>Retrieve package information</li><li>Manage installation-related information</li><li>Check application permissions</li></ul></div>
+      <div class="mini"><h5>8. Telephony Manager</h5><p>Provides information about telephony services and the device's cellular network capabilities.</p><p><i>Example:</i> an app may use supported telephony APIs to get certain mobile network information, subject to permission and privacy restrictions.</p></div>
+    </div>
+
+    <h4>3.7 Difference Between Android Architecture and Android Framework</h4>
+    <p>These two terms are related, but they do not mean the same thing.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Android Architecture</th><th>Android Framework</th></tr>
+      <tr><td>Overall structure of Android OS</td><td>One major layer of Android</td></tr>
+      <tr><td>Contains multiple layers</td><td>Contains APIs and system services</td></tr>
+      <tr><td>Explains how Android components work together</td><td>Explains services available to applications</td></tr>
+      <tr><td>Includes kernel, HAL, runtime, libraries, etc.</td><td>Includes Activity Manager, Resource Manager, etc.</td></tr>
+      <tr><td>Broader concept</td><td>Part of Android Architecture</td></tr>
+    </table></div>
+
+    <h4>Part 3: Android Application Development</h4>
+    <h4>3.8 What is Android Application Development?</h4>
+    <div class="def"><b>Definition:</b> Android Application Development is the process of designing, coding, testing, and deploying applications that run on devices powered by the Android operating system.</div>
+    <p>In simple words, it means creating mobile applications for Android smartphones and tablets.</p>
+    <div class="chips"><span>Calculator applications</span><span>Banking applications</span><span>Shopping applications</span><span>Educational applications</span><span>Social media applications</span></div>
+    <figure><!-- <img src="../images/platforms/android-development.jpg" alt="Android development"> --></figure>
+
+    <h4>3.9 Programming Languages Used for Android Development</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Kotlin</h5><p>A modern programming language officially recommended by Google for Android development. It works with Java and helps developers write concise and safer code.</p></div>
+      <div class="mini"><h5>2. Java</h5><p>An object-oriented language widely used for Android development. Many existing Android applications and projects use Java.</p></div>
+      <div class="mini"><h5>3. C and C++</h5><p>Used for performance-intensive components and native development through the Android NDK.</p><ul><li>Game engines</li><li>Audio processing</li><li>Image processing</li><li>High-performance libraries</li></ul></div>
+    </div>
+
+    <h4>3.10 Tools Required for Android Application Development</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Android Studio</h5><p>The official IDE for Android development. It provides tools for:</p><ul><li>Writing code</li><li>Designing user interfaces</li><li>Debugging applications</li><li>Testing applications</li><li>Building application packages</li></ul></div>
+      <div class="mini"><h5>2. Android SDK</h5><p>Provides tools, libraries, APIs, and other resources required to develop Android applications.</p></div>
+      <div class="mini"><h5>3. Android Emulator</h5><p>Lets developers run and test Android applications on a computer without a physical smartphone.</p></div>
+      <div class="mini"><h5>4. Gradle</h5><p>A build automation system. It helps:</p><ul><li>Compile source code</li><li>Manage dependencies</li><li>Build application packages</li><li>Configure different application versions</li></ul></div>
+      <div class="mini"><h5>5. Android Debug Bridge (ADB)</h5><p>A command-line tool to communicate with Android devices and emulators. It can:</p><ul><li>Install applications</li><li>Run shell commands</li><li>View device logs</li><li>Debug applications</li></ul></div>
+    </div>
+    <figure><!-- <img src="../images/platforms/android-studio.jpg" alt="Android Studio"> --></figure>
+
+    <h4>3.11 Steps Involved in Android Application Development</h4>
+    <ol class="steps">
+      <li><b>Requirement Analysis:</b> identify the purpose of the application and the features it should provide. <i>Example: a student attendance application.</i></li>
+      <li><b>UI/UX Design:</b> design the application's screens, buttons, navigation, and layout.</li>
+      <li><b>Environment Setup:</b> install Android Studio, SDK, and the required development tools.</li>
+      <li><b>Coding:</b> write application code using Kotlin or Java.</li>
+      <li><b>Database Integration:</b> connect the application to a database or backend service when required.</li>
+      <li><b>Testing and Debugging:</b> test application functionality and correct programming errors.</li>
+      <li><b>Building:</b> generate an APK or Android App Bundle (AAB).</li>
+      <li><b>Deployment:</b> publish through Google Play or distribute through another supported method.</li>
+      <li><b>Maintenance:</b> fix bugs, improve security, and release updates.</li>
+    </ol>
+
+    <h4>3.12 Important Android Application Components</h4>
+    <p>Android applications commonly use four fundamental application components.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Activity</h5><p>Represents a screen with which the user can interact.</p><p><i>Example:</i> a login screen or home screen.</p></div>
+      <div class="mini"><h5>2. Service</h5><p>A component used for operations that do not require a user interface.</p><p><i>Example:</i> playing music while the user interacts with another application.</p><p>Modern Android versions restrict background services, so developers must follow the appropriate background-work rules.</p></div>
+      <div class="mini"><h5>3. Broadcast Receiver</h5><p>Allows an application to respond to broadcast messages from Android or other applications.</p><p><i>Example:</i> responding to a system broadcast that the device has finished booting.</p></div>
+      <div class="mini"><h5>4. Content Provider</h5><p>Manages and shares application data through a defined interface.</p><p><i>Example:</i> accessing contacts through the Android Contacts Provider.</p></div>
+    </div>
+
+    <h4>3.13 Advantages and 3.14 Disadvantages of Android</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li>Open-source platform through AOSP</li><li>Large application ecosystem</li><li>Supports multiple hardware manufacturers</li><li>Flexible customization</li>
+        <li>Strong development tools</li><li>Supports multitasking</li><li>Supports many connectivity technologies</li><li>Large developer community</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Fragmentation:</b> different manufacturers use different devices and Android versions.</li>
+        <li><b>Compatibility Issues:</b> applications may behave differently across devices.</li>
+        <li><b>Security Risks:</b> installing applications from untrusted sources can introduce security threats.</li>
+        <li><b>Hardware Differences:</b> developers must consider different screen sizes, processors, and device capabilities.</li>
+        <li><b>Software Updates:</b> updates may reach devices at different times depending on the manufacturer and model.</li></ol></div>
+    </div>
+
+    <h4>3.15 Complete Revision: Android OS</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Topic</th><th>Main idea</th></tr>
+      <tr><td>Android</td><td>Linux-based mobile operating system</td></tr>
+      <tr><td>Linux Kernel</td><td>Manages hardware, memory and processes</td></tr>
+      <tr><td>HAL</td><td>Connects Android software with hardware</td></tr>
+      <tr><td>Native Libraries</td><td>Provide graphics, database and multimedia functions</td></tr>
+      <tr><td>ART</td><td>Executes Android application code</td></tr>
+      <tr><td>Application Framework</td><td>Provides APIs and system services</td></tr>
+      <tr><td>Applications</td><td>Apps used directly by users</td></tr>
+      <tr><td>Activity Manager</td><td>Manages activity-related operations</td></tr>
+      <tr><td>Window Manager</td><td>Manages application windows</td></tr>
+      <tr><td>Content Provider</td><td>Shares structured data</td></tr>
+      <tr><td>Resource Manager</td><td>Manages application resources</td></tr>
+      <tr><td>Notification Manager</td><td>Displays notifications</td></tr>
+      <tr><td>Android Studio</td><td>Official Android development IDE</td></tr>
+      <tr><td>Android SDK</td><td>Development tools and APIs</td></tr>
+      <tr><td>Emulator</td><td>Runs Android virtually on a computer</td></tr>
+      <tr><td>Kotlin</td><td>Modern language for Android development</td></tr>
+      <tr><td>Java</td><td>Widely used Android programming language</td></tr>
+    </table></div>
+
+    <h4>3.16 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is Android OS?</li><li>Define Android Architecture.</li><li>What is Linux Kernel?</li><li>What is HAL?</li>
+      <li>What are Native Libraries?</li><li>What is Android Runtime (ART)?</li><li>What is Android Framework?</li>
+      <li>Define Activity Manager.</li><li>What is Content Provider?</li><li>What is Android Studio?</li>
+      <li>What is Android SDK?</li><li>What is an Android Emulator?</li><li>Define Activity.</li>
+      <li>What is a Broadcast Receiver?</li><li>What is a Service?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain Android Architecture with a diagram.</li>
+      <li>Explain the functions of the Linux Kernel in Android.</li>
+      <li>Discuss the different layers of Android Architecture.</li>
+      <li>Explain Android Framework and its main components.</li>
+      <li>Explain the complete process of Android Application Development.</li>
+      <li>Discuss the advantages and disadvantages of Android OS.</li></ol></details>
+
+  </div>
+</section>
+
+<section class="topic-card" id="ios" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>iOS: Architecture, Framework and Application Development</h3>
+    <p>Apple's layers, frameworks, languages and tools</p>
+  </div>
+  <div class="body">
+
+    <h4>4.1 Introduction to iOS</h4>
+    <div class="def"><b>Simple definition:</b> iOS is Apple's mobile operating system that provides a platform for running applications and managing the hardware and software of iPhone devices.</div>
+    <p>iOS is a mobile operating system developed by Apple Inc. for its iPhone devices. It manages the hardware and software of an iPhone and provides an environment in which users can run mobile applications.</p>
+    <p><b>iOS controls different functions of an iPhone:</b></p>
+    <div class="chips"><span>Touchscreen operations</span><span>Camera functionality</span><span>Internet connectivity</span><span>Memory management</span><span>Application execution</span><span>Security</span><span>Notifications</span><span>Multimedia operations</span></div>
+    <figure><!-- <img src="../images/platforms/ios-devices.jpg" alt="iOS devices and applications"> --></figure>
+    <p><b>Examples of applications available on iOS:</b></p>
+    <div class="chips"><span>WhatsApp</span><span>Instagram</span><span>YouTube</span><span>Safari</span><span>Apple Maps</span><span>FaceTime</span><span>Apple Music</span></div>
+
+    <h4>4.2 History of iOS</h4>
+    <ol class="steps">
+      <li><b>2007:</b> Apple introduced the first iPhone with an operating system initially called iPhone OS.</li>
+      <li><b>2008:</b> Apple introduced the App Store, allowing users to download third-party applications.</li>
+      <li><b>2010:</b> The operating system was renamed iOS.</li>
+      <li><b>2013:</b> iOS 7 introduced a major redesign of the user interface.</li>
+      <li><b>Later versions:</b> improvements in security, performance, multitasking, widgets, and application development.</li>
+      <li><b>Modern iOS:</b> advanced features such as improved privacy controls, powerful frameworks, and modern development tools.</li>
+    </ol>
+
+    <h4>4.3 Main Features of iOS</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. User-Friendly Interface</h5><p>Simple and easy to use through touch gestures, icons, buttons, menus and notifications.</p></div>
+      <div class="mini"><h5>2. Security</h5><p>Mechanisms to protect devices and user information:</p><ul><li>Application sandboxing</li><li>Code signing</li><li>Data encryption</li><li>Face ID and Touch ID</li><li>Permission controls</li></ul></div>
+      <div class="mini"><h5>3. Multitasking</h5><p>Users can switch between applications and perform supported background operations, for example listening to music while browsing the internet.</p></div>
+      <div class="mini"><h5>4. App Store</h5><p>A platform where users can discover, download, and update applications.</p></div>
+      <div class="mini"><h5>5. Siri</h5><p>Apple's virtual assistant. Users interact through voice commands to perform supported tasks.</p></div>
+      <div class="mini"><h5>6. iCloud Integration</h5><p>Apple's cloud service to synchronize and store supported information across Apple devices: photos, contacts, documents, backups.</p></div>
+      <div class="mini"><h5>7. Regular Software Updates</h5><p>New features, security improvements, and bug fixes.</p></div>
+      <div class="mini"><h5>8. Hardware and Software Integration</h5><p>Apple designs both its devices and operating systems. This close integration helps optimize performance and provides a consistent user experience.</p></div>
+    </div>
+
+    <h4>Part 1: iOS Architecture</h4>
+    <h4>4.4 What is iOS Architecture?</h4>
+    <div class="def"><b>Definition:</b> iOS Architecture is the layered structure of the iOS operating system that explains how hardware, system services, frameworks, and applications work together.</div>
+    <p>In simple words, it explains how an iPhone works internally and how different software layers communicate with each other. iOS uses four major architectural layers, and each layer provides specific services to the layer above it:</p>
+    <ol><li>Cocoa Touch Layer</li><li>Media Layer</li><li>Core Services Layer</li><li>Core OS Layer</li></ol>
+    <figure><!-- <img src="../images/platforms/ios-layers.jpg" alt="iOS architecture layers"> --><figcaption>Layers of iOS architecture</figcaption></figure>
+
+    <h5 class="sub">1. Cocoa Touch Layer</h5>
+    <p>The highest layer of iOS Architecture. It provides the frameworks and technologies required to develop the user interface and handle user interactions. This layer helps developers create screens, buttons, menus, and other interactive elements.</p>
+    <p><b>Main responsibilities:</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>A. User Interface Management</h5><p>Tools for creating application interfaces: buttons, text fields, navigation bars, tables, images, menus.</p></div>
+      <div class="mini"><h5>B. Touch Event Handling</h5><p>Handles user interactions with the touchscreen: tapping, swiping, scrolling, pinching, touching buttons.</p></div>
+      <div class="mini"><h5>C. Application Lifecycle Management</h5><p>Manages the states of an application: launching, becoming active, moving into the background, termination.</p></div>
+      <div class="mini"><h5>D. Notifications</h5><p>Facilities for managing application notifications and user interactions with them.</p></div>
+    </div>
+    <p><b>Important frameworks:</b> UIKit, SwiftUI, UserNotifications.</p>
+    <div class="example"><b>Example:</b> when you open Instagram, the interface you see, including buttons, menus, and navigation elements, uses technologies provided by the higher-level iOS frameworks.</div>
+
+    <h5 class="sub">2. Media Layer</h5>
+    <p>Provides technologies for handling graphics, animations, audio, and video. It helps applications display visual content and play multimedia.</p>
+    <ul>
+      <li><b>A. Graphics:</b> displaying images, shapes, and other visual elements.</li>
+      <li><b>B. Animation:</b> smooth animations and visual transitions.</li>
+      <li><b>C. Audio:</b> recording and playing audio.</li>
+      <li><b>D. Video:</b> playing, recording, and processing video.</li>
+    </ul>
+    <p><b>Important frameworks:</b> Core Graphics, Core Animation, AVFoundation, Core Audio, Metal.</p>
+    <div class="example"><b>Example:</b> when you play a video on an iPhone, the Media Layer provides technologies that help process and display it.</div>
+
+    <h5 class="sub">3. Core Services Layer</h5>
+    <p>Provides essential system services used by applications: important background functionality that applications need to operate.</p>
+    <ul>
+      <li><b>A. Data Management:</b> storing and managing application information.</li>
+      <li><b>B. Networking:</b> allows applications to communicate over the internet.</li>
+      <li><b>C. Location Services:</b> geographical location information, subject to user permission.</li>
+      <li><b>D. Database Support:</b> store and retrieve data.</li>
+      <li><b>E. Cloud Services:</b> communicating with cloud-based services.</li>
+    </ul>
+    <p><b>Important frameworks:</b> Core Data, Core Location, Core Foundation, Foundation, CloudKit.</p>
+    <div class="example"><b>Example:</b> when you use Apple Maps, Core Services technologies help the application work with location information and network data.</div>
+
+    <h5 class="sub">4. Core OS Layer</h5>
+    <p>The lowest layer of iOS Architecture. It provides low-level operating system functionality and communicates with the device hardware. It handles important internal operations that allow the iPhone to function.</p>
+    <ul>
+      <li><b>A. Memory Management:</b> memory used by the operating system and applications.</li>
+      <li><b>B. File System Management:</b> storing and accessing files.</li>
+      <li><b>C. Security:</b> low-level security mechanisms, including encryption and system protection.</li>
+      <li><b>D. Process Management:</b> execution and management of system processes.</li>
+      <li><b>E. Device Communication:</b> low-level interfaces and drivers for hardware.</li>
+      <li><b>F. Networking:</b> low-level networking functionality.</li>
+    </ul>
+    <p><b>Important technologies:</b> Darwin kernel, BSD components, Security, File System, Networking, Device drivers.</p>
+    <div class="example"><b>Example:</b> when you save a photograph, lower-level operating system services help manage the storage and file operations.</div>
+
+    <h4>4.5 How iOS Architecture Works: Real-Life Example</h4>
+    <p>Suppose you open the Camera application on your iPhone and capture a photograph. All four layers work together:</p>
+    <figure><!-- <img src="../images/platforms/ios-camera-flow.jpg" alt="Camera request through iOS layers"> --></figure>
+    <ol class="steps">
+      <li><b>Cocoa Touch Layer:</b> handles your interaction when you open the camera and press the capture button.</li>
+      <li><b>Media Layer:</b> provides image-processing and graphics-related technologies.</li>
+      <li><b>Core Services Layer:</b> provides supporting services such as data management.</li>
+      <li><b>Core OS Layer:</b> supports low-level hardware communication, device drivers, and file storage.</li>
+    </ol>
+    <p><b>Result:</b> the photograph is captured and saved on your iPhone.</p>
+    <div class="explain">The important point is that all four layers cooperate to perform a single task.</div>
+
+    <h4>Part 2: iOS Framework</h4>
+    <h4>4.6 What is an iOS Framework?</h4>
+    <div class="def"><b>Definition:</b> An iOS Framework is a collection of pre-written code, APIs, libraries, and services that developers use to build applications for Apple devices.</div>
+    <p>Frameworks provide ready-made functionality so developers do not have to create every feature from the beginning.</p>
+    <div class="example"><b>Example:</b> to use the iPhone camera you do not write all the camera hardware management code yourself. Apple provides the <b>AVFoundation</b> framework, which offers APIs for camera and media functionality.</div>
+    <figure><!-- <img src="../images/platforms/ios-frameworks.jpg" alt="iOS frameworks"> --></figure>
+
+    <h4>4.7 Important iOS Frameworks</h4>
+
+    <h5 class="sub">1. UIKit Framework</h5>
+    <div class="def">UIKit stands for User Interface Kit. It is a framework used to create and manage the user interface of iOS applications, with ready-made components for building application screens.</div>
+    <p><b>Main functions:</b> creating buttons, creating text fields, displaying images, managing navigation, handling touch interactions, managing view controllers.</p>
+    <div class="example"><b>Example:</b> a login application needs an email text field, a password text field, a login button and a registration link. UIKit provides components to create these elements.</div>
+    <figure><!-- <img src="../images/platforms/uikit.jpg" alt="UIKit"> --></figure>
+
+    <h5 class="sub">2. SwiftUI Framework</h5>
+    <div class="def">SwiftUI is Apple's modern declarative framework for building user interfaces across Apple platforms. Developers describe what the interface should look like, and SwiftUI manages much of the process of updating it when data changes.</div>
+    <p><b>Main functions:</b> creating application interfaces, designing buttons and forms, building navigation, creating animations, updating interfaces when data changes.</p>
+    <p><b>Example:</b> a button created with SwiftUI:</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        Button("Click Me") {
+            print("Button clicked")
+        }
+    }
+}</code></pre>
+    <p>This code creates a button with the text "Click Me".</p>
+
+    <h5 class="sub">3. Foundation Framework</h5>
+    <p>Provides essential programming features used by iOS applications.</p>
+    <p><b>Main functions:</b> managing strings, working with dates and times, handling collections, managing URLs, working with files, supporting networking-related operations.</p>
+    <div class="example"><b>Example:</b> a student application stores the student name, registration date, email address and course information. Foundation provides basic data types and utilities to manage this information.</div>
+
+    <h5 class="sub">4. Core Data Framework</h5>
+    <p>Used to manage an application's model data. It helps developers store, retrieve, and manage structured information.</p>
+    <p><b>Main functions:</b> saving application data, retrieving records, updating information, deleting records, managing relationships between data objects.</p>
+    <div class="example"><b>Example:</b> a notes application can use Core Data to store note titles, descriptions, creation dates and categories.</div>
+
+    <h5 class="sub">5. Core Location Framework</h5>
+    <p>Provides services for obtaining geographical location information.</p>
+    <p><b>Main functions:</b> accessing location information, getting latitude and longitude, monitoring location changes, supporting location-based features.</p>
+    <div class="example"><b>Example:</b> a food delivery application can use Core Location to help identify the user's delivery location. Location access requires appropriate authorization from the user.</div>
+
+    <h5 class="sub">6. AVFoundation Framework</h5>
+    <p>AVFoundation stands for Audio Video Foundation. It provides technologies for working with audio and video.</p>
+    <p><b>Main functions:</b> recording audio, playing audio, capturing video, playing video, accessing camera functionality, processing audiovisual media.</p>
+    <div class="example"><b>Example:</b> a video recording application can use AVFoundation to access the camera and record videos.</div>
+
+    <h5 class="sub">7. Core Graphics Framework</h5>
+    <p>A graphics framework used for creating and rendering two-dimensional graphics.</p>
+    <p><b>Main functions:</b> drawing shapes, creating paths, rendering images, drawing text, working with colors.</p>
+    <div class="example"><b>Example:</b> a drawing application can use Core Graphics to draw lines, circles, rectangles, and other shapes.</div>
+
+    <h5 class="sub">8. CloudKit Framework</h5>
+    <p>Allows applications to store and synchronize data using Apple's iCloud infrastructure.</p>
+    <p><b>Main functions:</b> storing data in iCloud, synchronizing supported information, managing cloud records, supporting data sharing.</p>
+    <div class="example"><b>Example:</b> a notes application can use CloudKit to synchronize notes across supported Apple devices.</div>
+
+    <h4>4.8 Difference Between UIKit and SwiftUI</h4>
+    <p>Both are used to create iOS user interfaces, but they use different development approaches.</p>
+    <div class="table-wrap"><table>
+      <tr><th>UIKit</th><th>SwiftUI</th></tr>
+      <tr><td>Traditional iOS UI framework</td><td>Modern declarative UI framework</td></tr>
+      <tr><td>Uses an imperative approach</td><td>Uses a declarative approach</td></tr>
+      <tr><td>Commonly uses Swift or Objective-C</td><td>Uses Swift</td></tr>
+      <tr><td>Uses views and view controllers</td><td>Uses views and state-driven updates</td></tr>
+      <tr><td>Offers extensive control over traditional UI components</td><td>Makes interface development more concise</td></tr>
+      <tr><td>Widely used in existing iOS applications</td><td>Commonly used in modern iOS applications</td></tr>
+    </table></div>
+
+    <h4>Part 3: iOS Application Development</h4>
+    <h4>4.9 What is iOS Application Development?</h4>
+    <div class="def"><b>Definition:</b> iOS Application Development is the process of designing, programming, testing, and deploying applications that run on Apple's iOS operating system.</div>
+    <p>In simple words, it means creating mobile applications for iPhones.</p>
+    <div class="chips"><span>Banking applications</span><span>Educational applications</span><span>Shopping applications</span><span>Social media applications</span><span>Games</span><span>Healthcare applications</span></div>
+    <figure><!-- <img src="../images/platforms/ios-development.jpg" alt="iOS development"> --></figure>
+
+    <h4>4.10 Programming Languages Used for iOS Development</h4>
+    <h5 class="sub">1. Swift</h5>
+    <p>A modern programming language developed by Apple. It is the primary language recommended for modern iOS application development.</p>
+    <p><b>Features of Swift:</b></p>
+    <ul><li>Easy-to-read syntax</li><li>Strong type system</li><li>Memory safety features</li><li>High performance</li><li>Support for object-oriented and protocol-oriented programming</li><li>Compatibility with Apple's development frameworks</li></ul>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>import Foundation
+
+let name = "Muhammad"
+
+print("Hello, \(name)")   // Output: Hello, Muhammad</code></pre>
+    <p>This program stores a name in a constant and displays a greeting.</p>
+
+    <h5 class="sub">2. Objective-C</h5>
+    <p>An object-oriented programming language historically used for Apple application development. It was widely used before Swift was introduced.</p>
+    <p><b>Main features:</b> object-oriented programming, dynamic runtime, integration with Apple's frameworks, compatibility with existing iOS projects.</p>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+int main() {
+    @autoreleasepool {
+        NSString *name = @"Ali";
+
+        NSLog(@"Hello, %@", name);
+    }
+
+    return 0;
+}</code></pre>
+    <p>Objective-C is still supported and is found in many existing Apple applications and codebases.</p>
+
+    <h4>4.11 Tools Required for iOS Application Development</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Xcode</h5><p>Apple's official IDE for developing applications for Apple platforms. Tools for:</p><ul><li>Writing Swift and Objective-C code</li><li>Designing user interfaces</li><li>Testing applications</li><li>Debugging errors</li><li>Running simulators</li><li>Building applications</li></ul></div>
+      <div class="mini"><h5>2. iOS SDK</h5><p>Provides the tools, APIs, libraries, and resources needed to develop iOS applications. It includes:</p><ul><li>Apple frameworks</li><li>Development APIs</li><li>System libraries</li><li>Simulator support</li><li>Development resources</li></ul></div>
+      <div class="mini"><h5>3. iOS Simulator</h5><p>Runs and tests iOS applications on a Mac without a physical iPhone for every test.</p><p><i>Example:</i> test an application on simulated iPhone devices with different screen sizes.</p></div>
+      <div class="mini"><h5>4. Interface Builder</h5><p>A visual interface-design tool integrated into Xcode. Design interfaces visually with buttons, labels, text fields, images and navigation elements.</p></div>
+      <div class="mini"><h5>5. Swift Package Manager</h5><p>Manages external Swift packages and dependencies.</p><p><i>Example:</i> add an external library to a project instead of manually writing all its functionality.</p></div>
+    </div>
+    <figure><!-- <img src="../images/platforms/xcode.jpg" alt="Xcode"> --></figure>
+
+    <h4>4.12 Steps Involved in iOS Application Development</h4>
+    <ol class="steps">
+      <li><b>Requirement Analysis:</b> identify the purpose of the application and its required features. <i>Example: a student management application.</i></li>
+      <li><b>UI/UX Design:</b> design application screens, buttons, navigation, and layouts.</li>
+      <li><b>Environment Setup:</b> install Xcode and configure the required iOS SDK and development tools.</li>
+      <li><b>Programming:</b> write application code using Swift or Objective-C.</li>
+      <li><b>Framework Integration:</b> use frameworks such as UIKit, SwiftUI, Core Data, and AVFoundation when needed.</li>
+      <li><b>Testing and Debugging:</b> test using the iOS Simulator and supported physical devices.</li>
+      <li><b>Building:</b> compile the application and prepare it for distribution.</li>
+      <li><b>Deployment:</b> submit to Apple's App Store review process or distribute through another supported method.</li>
+      <li><b>Maintenance:</b> fix bugs, improve performance, and release updates.</li>
+    </ol>
+
+    <h4>4.13 Important Components of an iOS Application</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. App Delegate</h5><p>An application lifecycle-related component. It handles certain application-level events and responsibilities:</p><ul><li>Application launch events</li><li>Lifecycle transitions in traditional UIKit applications</li><li>Application-level configuration</li></ul></div>
+      <div class="mini"><h5>2. Scene Delegate</h5><p>Manages the lifecycle and behavior of an individual application scene in UIKit-based applications that use the scene lifecycle. A scene generally represents an instance of an application's user interface.</p></div>
+      <div class="mini"><h5>3. View Controller</h5><p>Manages a screen or part of an application's user interface in UIKit.</p><p><i>Example:</i> a shopping app may have Login, Home, Product and Payment view controllers.</p></div>
+      <div class="mini"><h5>4. Model</h5><p>Represents the application's data and business logic.</p><p><i>Example:</i> a Student Model containing student ID, name, email and course.</p></div>
+      <div class="mini"><h5>5. View</h5><p>Represents the user interface displayed to the user: buttons, text fields, images, labels, tables.</p></div>
+      <div class="mini"><h5>6. Controller</h5><p>In the traditional Model-View-Controller (MVC) pattern, the Controller coordinates interactions between the Model and the View.</p><p><i>Example:</i> when a user presses a login button, the controller processes the input and communicates with the model or authentication service.</p></div>
+    </div>
+
+    <h4>4.14 Advantages and 4.15 Disadvantages of iOS</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Strong Security:</b> application sandboxing, encryption, and code signing.</li>
+        <li><b>User-Friendly Interface:</b> a simple and consistent user experience.</li>
+        <li><b>High Performance:</b> hardware and software integration helps optimize performance.</li>
+        <li><b>Regular Updates:</b> security improvements and new features.</li>
+        <li><b>Quality Control:</b> the App Store review process helps enforce quality and security requirements.</li>
+        <li><b>Excellent Hardware Integration:</b> apps can use Apple hardware features through supported frameworks and APIs.</li>
+        <li><b>Developer Support:</b> Xcode, SDKs, documentation, and frameworks.</li>
+        <li><b>Privacy Protection:</b> permission controls for location, camera, microphone, and contacts.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Limited Device Support:</b> designed primarily for Apple's iPhone hardware.</li>
+        <li><b>Development Cost:</b> generally requires access to a Mac and Apple's development tools.</li>
+        <li><b>Strict App Store Policies:</b> apps must follow Apple's distribution and review requirements.</li>
+        <li><b>Limited Customization:</b> less freedom to customize certain system-level features compared with Android.</li>
+        <li><b>Closed Ecosystem:</b> unlike AOSP, iOS is not an open-source operating system.</li>
+        <li><b>Development Learning Curve:</b> developers need to learn Swift or Objective-C and Apple's frameworks.</li>
+        <li><b>Hardware Restrictions:</b> less freedom to modify or directly control certain hardware and system-level functions.</li></ol></div>
+    </div>
+
+    <h4>4.16 Difference Between Android and iOS</h4>
+    <p>Both allow users to run mobile applications, but they differ in architecture, development tools, customization, and device support.</p>
+    <figure><!-- <img src="../images/platforms/android-vs-ios.jpg" alt="Android vs iOS"> --></figure>
+    <div class="table-wrap"><table>
+      <tr><th>Android</th><th>iOS</th></tr>
+      <tr><td>Developed by Google and AOSP contributors</td><td>Developed by Apple</td></tr>
+      <tr><td>Linux-based</td><td>Based on Darwin and XNU</td></tr>
+      <tr><td>Used by many manufacturers</td><td>Used on iPhones</td></tr>
+      <tr><td>Kotlin and Java commonly used</td><td>Swift and Objective-C used</td></tr>
+      <tr><td>Android Studio</td><td>Xcode</td></tr>
+      <tr><td>Android SDK</td><td>iOS SDK</td></tr>
+      <tr><td>Google Play Store</td><td>Apple App Store</td></tr>
+      <tr><td>More manufacturer customization</td><td>More controlled ecosystem</td></tr>
+      <tr><td>Supports many hardware configurations</td><td>Optimized for Apple hardware</td></tr>
+    </table></div>
+
+    <h4>4.17 Complete Revision: iOS</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Topic</th><th>Simple meaning</th></tr>
+      <tr><td>iOS</td><td>Apple's mobile operating system</td></tr>
+      <tr><td>Cocoa Touch</td><td>User interface and interaction layer</td></tr>
+      <tr><td>Media Layer</td><td>Graphics, audio, video and animation</td></tr>
+      <tr><td>Core Services</td><td>Essential application services</td></tr>
+      <tr><td>Core OS</td><td>Low-level operating system functionality</td></tr>
+      <tr><td>UIKit</td><td>Framework for building user interfaces</td></tr>
+      <tr><td>SwiftUI</td><td>Declarative UI framework</td></tr>
+      <tr><td>Foundation</td><td>Basic programming utilities</td></tr>
+      <tr><td>Core Data</td><td>Framework for managing model data</td></tr>
+      <tr><td>Core Location</td><td>Location-related services</td></tr>
+      <tr><td>AVFoundation</td><td>Audio and video functionality</td></tr>
+      <tr><td>Core Graphics</td><td>2D graphics</td></tr>
+      <tr><td>CloudKit</td><td>iCloud-based data services</td></tr>
+      <tr><td>Swift</td><td>Modern Apple programming language</td></tr>
+      <tr><td>Objective-C</td><td>Traditional Apple programming language</td></tr>
+      <tr><td>Xcode</td><td>Official Apple development IDE</td></tr>
+      <tr><td>iOS SDK</td><td>Tools and APIs for iOS development</td></tr>
+      <tr><td>Simulator</td><td>Runs iOS applications virtually</td></tr>
+      <tr><td>App Delegate</td><td>Handles application-level lifecycle events</td></tr>
+      <tr><td>View Controller</td><td>Manages a UIKit screen</td></tr>
+      <tr><td>Model</td><td>Represents application data and logic</td></tr>
+      <tr><td>View</td><td>Represents the user interface</td></tr>
+      <tr><td>Controller</td><td>Coordinates Model and View</td></tr>
+    </table></div>
+
+    <h4>4.18 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is iOS?</li><li>Define iOS Architecture.</li><li>Name the four layers of iOS Architecture.</li><li>What is Cocoa Touch?</li>
+      <li>What is the Media Layer?</li><li>Define Core Services.</li><li>What is Core OS?</li><li>What is UIKit?</li>
+      <li>What is SwiftUI?</li><li>Define Core Data.</li><li>What is Core Location?</li><li>What is AVFoundation?</li>
+      <li>What is Xcode?</li><li>What is iOS SDK?</li><li>Define Swift.</li><li>What is Objective-C?</li>
+      <li>What is App Delegate?</li><li>What is View Controller?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain iOS Architecture with a suitable diagram.</li>
+      <li>Discuss the four layers of iOS Architecture in detail.</li>
+      <li>Explain the major frameworks used in iOS application development.</li>
+      <li>Discuss the complete process of iOS Application Development.</li>
+      <li>Explain the advantages and disadvantages of iOS.</li>
+      <li>Differentiate between Android and iOS.</li>
+      <li>Explain the role of Swift and Xcode in iOS application development.</li></ol></details>
+
+  </div>
+</section>
+
+<section class="topic-card" id="windows-mobile" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>Windows Mobile</h3>
+    <p>History, architecture and application development</p>
+  </div>
+  <div class="body">
+
+    <h4>5.1 Introduction to Windows Mobile</h4>
+    <div class="def"><b>Windows Mobile</b> was a mobile operating system developed by Microsoft for smartphones and Pocket PCs. It was designed to bring some of the features of Microsoft Windows computers to mobile devices.</div>
+    <p>Windows Mobile allowed users to perform different tasks, such as:</p>
+    <ul>
+      <li>Making phone calls</li><li>Sending text messages</li><li>Sending and receiving emails</li><li>Browsing the internet</li>
+      <li>Managing contacts</li><li>Creating and editing documents</li><li>Running mobile applications</li><li>Managing calendars and appointments</li>
+    </ul>
+    <p>In simple words, Windows Mobile was Microsoft's operating system for mobile devices that allowed users to perform communication, business, and personal tasks.</p>
+    <figure><!-- <img src="../images/platforms/windows-mobile.jpg" alt="Windows Mobile devices"> --></figure>
+    <div class="explain"><b>Important:</b> Windows Mobile is a discontinued platform. Microsoft later introduced Windows Phone, followed by Windows 10 Mobile. These are related but separate operating system generations.</div>
+
+    <h4>5.2 History of Windows Mobile</h4>
+    <p>Understanding its history helps us understand how Microsoft introduced and improved mobile operating systems.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Windows CE (1996)</h5><p>A compact operating system developed by Microsoft for embedded devices and small computers. It provided the technological foundation for several early Microsoft mobile operating systems.</p></div>
+      <div class="mini"><h5>2. Pocket PC (2000)</h5><p>A platform for personal digital assistants (PDAs), with:</p><ul><li>Contact management</li><li>Calendar</li><li>Email</li><li>Document management</li><li>Personal information management</li></ul></div>
+      <div class="mini"><h5>3. Windows Mobile 2003</h5><p>Improved mobile communication and multimedia functionality:</p><ul><li>Bluetooth</li><li>Improved wireless connectivity</li><li>Multimedia applications</li><li>Better device management</li></ul></div>
+      <div class="mini"><h5>4. Windows Mobile 5.0 (2005)</h5><p>Improvements in memory management and application functionality, with better support for business users.</p></div>
+      <div class="mini"><h5>5. Windows Mobile 6 (2007)</h5><p>Improved user interface and productivity features, with better support for:</p><ul><li>Email</li><li>Office documents</li><li>Business applications</li><li>Internet browsing</li></ul></div>
+      <div class="mini"><h5>6. Windows Mobile 6.5 (2009)</h5><p>A more touch-friendly interface and an updated Start screen. One of the last major releases under the Windows Mobile name.</p></div>
+      <div class="mini"><h5>7. Windows Phone (2010)</h5><p>A new mobile operating system with a redesigned interface. It used a different application platform and user experience from Windows Mobile.</p></div>
+    </div>
+    <figure><!-- <img src="../images/platforms/windows-mobile-history.jpg" alt="Windows Mobile history"> --></figure>
+
+    <h4>5.3 Main Features of Windows Mobile</h4>
+    <p>Windows Mobile provided several features to make smartphones useful for communication, productivity, and business activities.</p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. User-Friendly Interface</h5><p>Menus, icons, buttons, and a Start menu. Users could access different applications and system settings.</p></div>
+      <div class="mini"><h5>2. Microsoft Office Support</h5><p>Users could work with documents, spreadsheets, and presentations through compatible mobile applications.</p><ul><li>Word documents</li><li>Excel spreadsheets</li><li>PowerPoint presentations</li></ul></div>
+      <div class="mini"><h5>3. Email Support</h5><p>Users could send emails, receive emails, read messages, and manage email accounts. Particularly useful for business professionals.</p></div>
+      <div class="mini"><h5>4. Internet Browsing</h5><p>Mobile internet browsing through compatible web browsers, to visit websites and access online information.</p></div>
+      <div class="mini"><h5>5. Contact Management</h5><p>Save and organize names, phone numbers, email addresses and other contact details.</p></div>
+      <div class="mini"><h5>6. Calendar and Scheduling</h5><p>Create appointments, schedule meetings, set reminders, and manage daily activities.</p></div>
+      <div class="mini"><h5>7. Multimedia Support</h5><p>Playing music, watching videos, viewing photographs, recording audio.</p></div>
+      <div class="mini"><h5>8. Wireless Connectivity</h5><p>Depending on the hardware: Wi-Fi, Bluetooth, cellular networks, USB connections.</p></div>
+      <div class="mini"><h5>9. Application Support</h5><p>Applications developed for its platform, many using Microsoft technologies such as the .NET Compact Framework.</p></div>
+      <div class="mini"><h5>10. Synchronization</h5><p>Synchronization with computers and other services: contacts, calendars, emails, files.</p></div>
+    </div>
+
+    <h4>5.4 Windows Mobile Architecture</h4>
+    <div class="def"><b>Definition:</b> Windows Mobile Architecture is the internal structure of the Windows Mobile operating system that explains how hardware, system services, application frameworks, and applications work together.</div>
+    <p>In simple words, it explains how different software components communicate with mobile device hardware and execute applications. Windows Mobile was built on Windows CE technology and used a layered software architecture.</p>
+    <figure><!-- <img src="../images/platforms/windows-mobile-architecture.jpg" alt="Windows Mobile architecture"> --><figcaption>Simplified Windows Mobile architecture</figcaption></figure>
+
+    <h5 class="sub">1. Hardware Layer</h5>
+    <p>Contains the physical components of a mobile device, which provide the physical resources needed by the operating system.</p>
+    <div class="chips"><span>Processor</span><span>RAM</span><span>Internal storage</span><span>Touchscreen</span><span>Camera</span><span>Speaker</span><span>Microphone</span><span>Network components</span></div>
+
+    <h5 class="sub">2. Kernel and Hardware Abstraction</h5>
+    <p>The kernel is the core part of the operating system. It manages the device's hardware resources and provides essential operating system functions.</p>
+    <ul>
+      <li><b>A. Memory Management:</b> manages available memory and allocates it to running applications.</li>
+      <li><b>B. Process Management:</b> helps manage running programs and their execution.</li>
+      <li><b>C. Device Management:</b> supports communication between software and hardware through device drivers.</li>
+      <li><b>D. Security:</b> basic operating system protection mechanisms.</li>
+      <li><b>E. Power Management:</b> helps control device power consumption.</li>
+    </ul>
+    <div class="explain">Windows CE provided the underlying kernel and operating system services for Windows Mobile.</div>
+
+    <h5 class="sub">3. Operating System Services</h5>
+    <p>Provides important system services required by applications, so applications can perform operations without directly controlling all hardware components.</p>
+    <div class="chips"><span>File management</span><span>Networking</span><span>Communication</span><span>Input and output</span><span>Graphics</span><span>Multimedia</span></div>
+
+    <h5 class="sub">4. Application Framework and Libraries</h5>
+    <p>Provides programming interfaces and reusable libraries that developers use to create applications.</p>
+    <div class="chips"><span>.NET Compact Framework</span><span>Windows Mobile APIs</span><span>User interface libraries</span><span>Database-related libraries</span></div>
+
+    <h5 class="sub">5. Application Layer</h5>
+    <p>The topmost layer. It contains the applications that users interact with.</p>
+    <div class="chips"><span>Calendar</span><span>Contacts</span><span>Messaging</span><span>Email</span><span>Office applications</span><span>Web browsers</span></div>
+
+    <h4>5.5 How Windows Mobile Architecture Works</h4>
+    <p>Suppose a user opens a contact management application and saves a new contact. The architectural components work together:</p>
+    <figure><!-- <img src="../images/platforms/windows-mobile-flow.jpg" alt="Saving a contact through the layers"> --></figure>
+    <ol class="steps">
+      <li><b>Application Layer:</b> the user opens the Contacts application and enters a name and phone number.</li>
+      <li><b>Application Framework:</b> the application uses available APIs and libraries to process the information.</li>
+      <li><b>Operating System Services:</b> system services help manage the data and file operations.</li>
+      <li><b>Kernel:</b> manages the necessary memory and hardware operations.</li>
+      <li><b>Hardware Layer:</b> the device's storage hardware stores the required information.</li>
+    </ol>
+    <p><b>Result:</b> the contact is saved and can be accessed later.</p>
+
+    <h4>5.6 Application Development in Windows Mobile</h4>
+    <div class="def"><b>Definition:</b> Windows Mobile Application Development is the process of designing, programming, testing, and deploying applications that run on devices using the Windows Mobile operating system.</div>
+    <p>In simple words, it means creating software applications for Windows Mobile smartphones and Pocket PCs.</p>
+    <figure><!-- <img src="../images/platforms/windows-mobile-development.jpg" alt="Windows Mobile development"> --></figure>
+
+    <h4>5.7 Programming Languages Used for Windows Mobile Development</h4>
+    <p>Microsoft provided different programming technologies for Windows Mobile development.</p>
+    <h5 class="sub">1. C#</h5>
+    <p>An object-oriented programming language developed by Microsoft. It was commonly used for Windows Mobile applications through the .NET Compact Framework.</p>
+    <p><b>Features:</b></p>
+    <ul><li>Object-oriented programming</li><li>Easy-to-understand syntax</li><li>Reusable code</li><li>Integration with Microsoft development tools</li></ul>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        string name = "Ali";
+
+        Console.WriteLine("Hello " + name);
+    }
+}</code></pre>
+    <h5 class="sub">2. C and C++</h5>
+    <p>Used for developing native applications and system-level components. They provided greater control over memory and device resources.</p>
+    <h5 class="sub">3. Visual Basic .NET</h5>
+    <p>Another language used for developing applications through Microsoft's .NET technologies. It provided a relatively simple programming syntax.</p>
+
+    <h4>5.8 Tools Used for Windows Mobile Application Development</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Microsoft Visual Studio</h5><p>An IDE developed by Microsoft, used to write, manage, build, and debug Windows Mobile applications.</p><ul><li>Writing source code</li><li>Designing user interfaces</li><li>Debugging errors</li><li>Building applications</li><li>Managing project files</li></ul></div>
+      <div class="mini"><h5>2. Windows Mobile SDK</h5><p>Software Development Kit. Provides development tools, libraries, APIs, and resources required to create applications for Windows Mobile.</p></div>
+      <div class="mini"><h5>3. .NET Compact Framework</h5><p>A reduced version of the .NET Framework designed for resource-constrained devices. It allowed developers to use languages such as C# and Visual Basic .NET.</p></div>
+      <div class="mini"><h5>4. Windows Mobile Emulator</h5><p>Allowed developers to test applications on a virtual Windows Mobile device without always requiring a physical smartphone.</p></div>
+      <div class="mini"><h5>5. ActiveSync</h5><p>Microsoft's technology for synchronizing Windows Mobile devices with computers: contacts, calendars, emails, files.</p></div>
+    </div>
+    <figure><!-- <img src="../images/platforms/visual-studio.jpg" alt="Visual Studio"> --></figure>
+
+    <h4>5.9 Steps Involved in Windows Mobile Application Development</h4>
+    <ol class="steps">
+      <li><b>Requirement Analysis:</b> identify the purpose and required features of the application.</li>
+      <li><b>User Interface Design:</b> design screens, buttons, menus, and forms.</li>
+      <li><b>Environment Setup:</b> install Visual Studio, the appropriate SDK, and development tools.</li>
+      <li><b>Programming:</b> write code using C#, C++, or other supported technologies.</li>
+      <li><b>Testing:</b> test the application using an emulator or physical device.</li>
+      <li><b>Debugging:</b> identify and correct programming errors.</li>
+      <li><b>Deployment:</b> package and install the application on compatible Windows Mobile devices.</li>
+      <li><b>Maintenance:</b> fix bugs and improve application functionality.</li>
+    </ol>
+
+    <h4>5.10 Advantages and 5.11 Disadvantages of Windows Mobile</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Microsoft Office Integration:</b> support for productivity applications and Office documents.</li>
+        <li><b>Business Support:</b> useful for business communication, scheduling, and document management.</li>
+        <li><b>Microsoft Technology Integration:</b> C#, Visual Studio, and .NET Compact Framework.</li>
+        <li><b>Email Management:</b> business and personal emails.</li>
+        <li><b>Synchronization:</b> contacts, calendars, and other information with computers.</li>
+        <li><b>Application Development Tools:</b> development environments and SDKs from Microsoft.</li>
+        <li><b>Multitasking:</b> supported, although the exact behavior depended on the device and version.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Limited Application Ecosystem:</b> fewer applications than Android and iOS.</li>
+        <li><b>Declining Market Share:</b> struggled to compete with Android and iOS.</li>
+        <li><b>Limited Developer Support:</b> the developer ecosystem became smaller over time.</li>
+        <li><b>Outdated Technology:</b> discontinued, with no regular security updates.</li>
+        <li><b>Compatibility Issues:</b> applications designed for one version or device may not work on another.</li>
+        <li><b>Limited Modern Features:</b> lacks many modern mobile application capabilities and services.</li></ol></div>
+    </div>
+
+    <h4>5.12 Difference Between Windows Mobile, Android and iOS</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Windows Mobile</th><th>Android</th><th>iOS</th></tr>
+      <tr><td>Developed by Microsoft</td><td>Developed by Google and AOSP contributors</td><td>Developed by Apple</td></tr>
+      <tr><td>Based on Windows CE</td><td>Linux-based</td><td>Based on Darwin</td></tr>
+      <tr><td>C#, C++, VB.NET</td><td>Kotlin, Java</td><td>Swift, Objective-C</td></tr>
+      <tr><td>Visual Studio</td><td>Android Studio</td><td>Xcode</td></tr>
+      <tr><td>Discontinued</td><td>Actively developed</td><td>Actively developed</td></tr>
+      <tr><td>Microsoft mobile ecosystem</td><td>Google and manufacturer ecosystem</td><td>Apple ecosystem</td></tr>
+    </table></div>
+    <div class="explain"><b>Important distinction:</b> Windows Mobile, Windows Phone, and Windows 10 Mobile are not interchangeable names. They represent different generations of Microsoft's mobile platforms.</div>
+
+    <h4>5.13 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is Windows Mobile?</li><li>Who developed Windows Mobile?</li><li>What is Windows CE?</li>
+      <li>Define Windows Mobile Architecture.</li><li>What is .NET Compact Framework?</li>
+      <li>What is Microsoft Visual Studio?</li><li>What is Windows Mobile SDK?</li><li>What is ActiveSync?</li>
+      <li>Name two programming languages used for Windows Mobile development.</li>
+      <li>What is a Windows Mobile Emulator?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Explain Windows Mobile in detail.</li><li>Discuss the features of Windows Mobile.</li>
+      <li>Explain Windows Mobile Architecture with a diagram.</li>
+      <li>Explain the process of Windows Mobile Application Development.</li>
+      <li>Discuss the advantages and disadvantages of Windows Mobile.</li>
+      <li>Compare Windows Mobile with Android and iOS.</li></ol></details>
+
+    <h4>5.14 Quick Revision</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Term</th><th>Simple meaning</th></tr>
+      <tr><td>Windows Mobile</td><td>Microsoft's discontinued mobile operating system</td></tr>
+      <tr><td>Windows CE</td><td>Compact operating system underlying Windows Mobile</td></tr>
+      <tr><td>Kernel</td><td>Manages hardware and system resources</td></tr>
+      <tr><td>C#</td><td>Object-oriented programming language</td></tr>
+      <tr><td>C++</td><td>Programming language used for native development</td></tr>
+      <tr><td>Visual Studio</td><td>Microsoft's development environment</td></tr>
+      <tr><td>SDK</td><td>Collection of development tools and libraries</td></tr>
+      <tr><td>.NET Compact Framework</td><td>Framework for developing applications on resource-limited devices</td></tr>
+      <tr><td>Emulator</td><td>Simulates a mobile device</td></tr>
+      <tr><td>ActiveSync</td><td>Synchronization technology</td></tr>
+    </table></div>
+
+  </div>
+</section>
+
+<section class="topic-card" id="eclipse" data-group="Platforms and architecture">
+  <div class="banner">
+    <h3>Eclipse</h3>
+    <p>The IDE behind early Android development</p>
+  </div>
+  <div class="body">
+
+    <h4>6.1 Introduction to Eclipse</h4>
+    <p>Eclipse is an Integrated Development Environment (IDE) used by programmers to write, edit, compile, run, test, and debug computer programs.</p>
+    <p>It provides a complete environment where developers can manage their programming projects and write code in different programming languages. Eclipse is especially known for Java development, but it can also support other languages through plugins.</p>
+    <div class="def"><b>Simple definition:</b> Eclipse is an open-source IDE that provides tools for developing, testing, debugging, and managing software applications.</div>
+    <figure><!-- <img src="../images/platforms/eclipse.jpg" alt="Eclipse IDE"> --></figure>
+
+    <h4>6.2 What is an IDE?</h4>
+    <div class="def">IDE stands for <b>Integrated Development Environment</b>. It is software that combines different programming tools in one application.</div>
+    <p>Instead of using separate programs for writing code, compiling, running, and debugging, an IDE provides these facilities together.</p>
+    <p><b>Main components of an IDE</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Code Editor</h5><p>Allows programmers to write and edit source code.</p><p><i>Example:</i> writing Java code inside Eclipse.</p></div>
+      <div class="mini"><h5>2. Compiler</h5><p>Translates source code into a form that the computer can execute. For Java, Eclipse works with the Java compiler to compile Java source files.</p></div>
+      <div class="mini"><h5>3. Debugger</h5><p>Helps programmers find and correct errors.</p><p><i>Example:</i> if a calculator produces the wrong answer, the programmer can use debugging tools to examine the program step by step.</p></div>
+      <div class="mini"><h5>4. Project Explorer</h5><p>Displays the files and folders of a programming project.</p></div>
+      <div class="mini"><h5>5. Run Tools</h5><p>Allow programmers to execute their applications and see the output.</p></div>
+    </div>
+
+    <h4>6.3 History of Eclipse</h4>
+    <ol class="steps">
+      <li>Eclipse was originally developed by IBM.</li>
+      <li>It was released as an open-source project in 2001.</li>
+      <li>It became popular for Java application development.</li>
+      <li>The Eclipse Foundation was established in 2004 to support the Eclipse ecosystem.</li>
+      <li>Later, Eclipse expanded to support many programming languages and development tools.</li>
+    </ol>
+    <p>Today, Eclipse is commonly used for Java and other software development tasks.</p>
+
+    <h4>6.4 Main Features of Eclipse</h4>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Open-Source Software</h5><p>Developers can use it without purchasing a commercial license and can contribute to its development.</p></div>
+      <div class="mini"><h5>2. Code Editor</h5><p>An advanced code editor with:</p><ul><li>Syntax highlighting</li><li>Automatic indentation</li><li>Code completion</li><li>Error highlighting</li><li>Code formatting</li></ul><p><i>Example:</i> in Java code, Eclipse highlights keywords such as <code>class</code>, <code>public</code>, and <code>static</code> in different colors.</p></div>
+      <div class="mini"><h5>3. Code Completion</h5><p>Suggests keywords, methods, and variables while the programmer is writing code. This saves time and reduces typing mistakes.</p><p><i>Example:</i> after typing <code>System.out.</code> Eclipse can suggest methods such as <code>println()</code>.</p></div>
+      <div class="mini"><h5>4. Debugging</h5><p>Tools to find errors in programs:</p><ul><li>Breakpoints</li><li>Step Into</li><li>Step Over</li><li>Step Return</li><li>Variable inspection</li></ul><p>A breakpoint temporarily pauses program execution at a selected line so the programmer can examine what is happening.</p></div>
+      <div class="mini"><h5>5. Plugin Support</h5><p>Plugins are additional software components that extend Eclipse's functionality:</p><ul><li>Java development tools</li><li>C/C++ development tools</li><li>Git integration</li><li>Database development tools</li></ul><p>Developers can add tools according to their requirements.</p></div>
+      <div class="mini"><h5>6. Project Management</h5><p>Organizes code into projects. Each project can contain:</p><ul><li>Source code files</li><li>Libraries</li><li>Resources</li><li>Configuration files</li><li>Other project-related files</li></ul></div>
+      <div class="mini"><h5>7. Multiple Programming Languages</h5><p>Through suitable tools and plugins, for example Java, C, C++, Python, PHP. Support depends on the Eclipse package and installed plugins.</p></div>
+    </div>
+
+    <h4>6.5 Architecture of Eclipse</h4>
+    <p>Eclipse uses a <b>modular architecture</b>. This means its functionality is divided into separate components that work together.</p>
+    <figure><!-- <img src="../images/platforms/eclipse-architecture.jpg" alt="Eclipse architecture"> --><figcaption>Eclipse architecture</figcaption></figure>
+    <p><b>Main components</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Eclipse Platform</h5><p>Provides the basic environment required to run Eclipse. It manages the user interface, workbench, workspace, and plugins.</p></div>
+      <div class="mini"><h5>2. Workbench</h5><p>The graphical user interface of Eclipse, containing the areas where programmers work:</p><ul><li>Code editor</li><li>Project Explorer</li><li>Console</li><li>Debug view</li></ul></div>
+      <div class="mini"><h5>3. Workspace</h5><p>A directory that stores and manages Eclipse projects and related settings. A programmer can create multiple projects inside one workspace.</p></div>
+      <div class="mini"><h5>4. Plugin System</h5><p>Allows developers to add new features to Eclipse. For example, a Java Development Tools plugin provides tools for Java programming.</p></div>
+      <div class="mini"><h5>5. Java Development Tools (JDT)</h5><p>A collection of tools that supports Java development inside Eclipse:</p><ul><li>Java code editing</li><li>Code completion</li><li>Compilation</li><li>Debugging</li><li>Java project management</li></ul></div>
+    </div>
+
+    <h4>6.6 Eclipse in Mobile Application Development</h4>
+    <p>Eclipse was historically used for Android application development. In earlier versions of Android development, programmers used Eclipse with the Android Development Tools (ADT) plugin.</p>
+    <p><b>Important tools</b></p>
+    <div class="mini-grid">
+      <div class="mini"><h5>1. Eclipse IDE</h5><p>Used to write and manage Android application code.</p></div>
+      <div class="mini"><h5>2. Android Development Tools (ADT)</h5><p>A plugin that added Android development features to Eclipse. It helped developers create Android projects, manage resources, and debug applications.</p></div>
+      <div class="mini"><h5>3. Android SDK</h5><p>Provides the libraries, APIs, and development tools needed to build Android applications.</p></div>
+      <div class="mini"><h5>4. Android Emulator</h5><p>Lets developers test Android applications on a virtual Android device without requiring a physical phone.</p></div>
+    </div>
+    <figure><!-- <img src="../images/platforms/eclipse-adt.jpg" alt="Eclipse with ADT"> --></figure>
+    <p><b>How Eclipse was used for Android development</b></p>
+    <ol class="steps">
+      <li>Install Eclipse IDE.</li><li>Install the Android SDK.</li><li>Install the ADT plugin.</li>
+      <li>Create an Android project.</li><li>Write Java code.</li><li>Design the application interface.</li>
+      <li>Run the application using an emulator or physical device.</li><li>Debug and fix errors.</li><li>Build the application package.</li>
+    </ol>
+    <div class="explain"><b>Important modern note:</b> Eclipse is no longer the official Android development IDE. Google replaced the Eclipse-based Android development workflow with Android Studio. The old ADT plugin is deprecated. Modern Android development generally uses Android Studio with Kotlin or Java.</div>
+
+    <h4>6.7 How to Create a Java Project in Eclipse</h4>
+    <p>A basic example of creating and running a Java program:</p>
+    <ol class="steps">
+      <li>Open Eclipse IDE.</li>
+      <li>Select or create a workspace.</li>
+      <li>Click <b>File → New → Java Project</b>.</li>
+      <li>Enter a project name, such as <code>MyFirstProject</code>.</li>
+      <li>Click Finish.</li>
+      <li>Create a Java class inside the source folder.</li>
+      <li>Write the following code:</li>
+    </ol>
+    <button class="btn alt copy">Copy code</button>
+<pre><code>public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println("Hello World!");
+
+    }
+}</code></pre>
+    <ol class="steps" start="8"><li>Click the Run button.</li></ol>
+    <p><b>Output:</b> <code>Hello World!</code></p>
+    <p>This demonstrates how Eclipse helps programmers write and execute Java programs.</p>
+
+    <h4>6.8 Advantages and 6.9 Disadvantages of Eclipse</h4>
+    <div class="pc">
+      <div class="pro"><b>Advantages</b><ol>
+        <li><b>Free and Open Source:</b> no commercial license needed.</li>
+        <li><b>Multiple Languages:</b> different programming languages through plugins.</li>
+        <li><b>Code Completion:</b> suggests code while programmers type.</li>
+        <li><b>Debugging Tools:</b> identify and correct programming errors.</li>
+        <li><b>Plugin Support:</b> add additional functionality.</li>
+        <li><b>Project Management:</b> organizes programming files and projects.</li>
+        <li><b>Cross-Platform:</b> available for major desktop operating systems.</li></ol></div>
+      <div class="con"><b>Disadvantages</b><ol>
+        <li><b>Resource Usage:</b> can consume considerable memory and processing resources.</li>
+        <li><b>Complex Interface:</b> beginners may find it difficult initially.</li>
+        <li><b>Plugin Problems:</b> some plugins may cause compatibility issues.</li>
+        <li><b>Configuration:</b> setting up development environments can require additional configuration.</li>
+        <li><b>Android Development:</b> its old Android development tools are deprecated and not suitable for modern Android development.</li></ol></div>
+    </div>
+
+    <h4>6.10 Difference Between Eclipse and Android Studio</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Eclipse</th><th>Android Studio</th></tr>
+      <tr><td>General-purpose IDE</td><td>IDE focused on Android development</td></tr>
+      <tr><td>Originally developed by IBM</td><td>Developed by Google</td></tr>
+      <tr><td>Uses plugins for different languages</td><td>Includes dedicated Android development tools</td></tr>
+      <tr><td>Historically supported Android through ADT</td><td>Modern official Android development environment</td></tr>
+      <tr><td>Commonly used for Java development</td><td>Supports Kotlin and Java Android development</td></tr>
+    </table></div>
+
+    <h4>6.11 Important Exam Questions</h4>
+    <details class="exam"><summary>Short questions</summary><ol>
+      <li>What is Eclipse?</li><li>Define IDE.</li><li>What is the full form of IDE?</li>
+      <li>What is a workspace in Eclipse?</li><li>What is a plugin?</li>
+      <li>What is the purpose of the Eclipse debugger?</li><li>What is JDT?</li>
+      <li>What was the purpose of the ADT plugin?</li><li>Name any four features of Eclipse.</li>
+      <li>Is Eclipse still the official IDE for Android development?</li></ol></details>
+    <details class="exam"><summary>Long questions</summary><ol>
+      <li>Define Eclipse and explain its important features.</li>
+      <li>Explain the architecture of Eclipse.</li>
+      <li>Explain the role of Eclipse in mobile application development.</li>
+      <li>Describe the steps for developing an Android application using the historical Eclipse and ADT environment.</li>
+      <li>Explain the advantages and disadvantages of Eclipse.</li></ol></details>
+
+  </div>
+</section>
+
+  </main>
+</div>
+
+<footer>IT-308 Mobile Application Development &middot; BS Information Technology
+<br>Copyright &copy; 2026 <a href="https://gcsmultan.edu.pk/">Govt. Graduate College of Science and Technology</a></footer>
+<script src="../js/script.js"></script>
+<script src="../js/outline.js"></script>
+</body>
+</html>
